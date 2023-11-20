@@ -29,7 +29,7 @@ public class cameraLook : MonoBehaviour
     {
         Vector2 delta = playerControls.Player_actionmap.lookAround.ReadValue<Vector2>();
         cinemachine.m_XAxis.Value += delta.x * 200 * lookSpeed * Time.deltaTime;
-        cinemachine.m_YAxis.Value += delta.y * lookSpeed * Time.deltaTime;
+       
         
     }
 }
