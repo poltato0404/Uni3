@@ -8,6 +8,7 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
 {
     private RectTransform rectTransform;
     private Image image;
+    private Vector3 originalPosition; // Store the original position of the image
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -16,21 +17,23 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
 
     public void OnDrag(PointerEventData eventData)
     {
-        //rectTransform.anchoredPosition += eventData.delta
-
         transform.position = Input.mousePosition;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        //throw new System.NotImplementedException();
-
         image.color = new Color(255, 255, 255, 255);
+
+        // Set the position back to the original position
+        transform.position = originalPosition;
     }
 
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
         image = GetComponent<Image>();
+
+        // Store the original position when the game starts
+        originalPosition = transform.position;
     }
 }
