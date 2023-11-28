@@ -1,39 +1,53 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
-public class DragAndDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
+public class DragAndDropGame : MonoBehaviour
 {
-    private RectTransform rectTransform;
-    private Image image;
-    private Vector3 originalPosition; // Store the original position of the image
+    public List<DraggableItem> draggableItems;
+    public List<GameObject> targetObjects;
 
-    public void OnBeginDrag(PointerEventData eventData)
-    {
-        image.color = new Color32(255, 255, 255, 170);
-    }
-
-    public void OnDrag(PointerEventData eventData)
-    {
-        transform.position = Input.mousePosition;
-    }
-
-    public void OnEndDrag(PointerEventData eventData)
-    {
-        image.color = new Color(255, 255, 255, 255);
-
-        // Set the position back to the original position
-        transform.position = originalPosition;
-    }
+    private bool isGameActive = false;
+    public List<DraggableItem> correctMatches = new List<DraggableItem>();
 
     void Start()
     {
-        rectTransform = GetComponent<RectTransform>();
-        image = GetComponent<Image>();
+        for (int i = 0; i < draggableItems.Count; i++)
+        {
+            if (i < targetObjects.Count)
+            {
+                draggableItems[i].Initialize(this, targetObjects[i]);
+            }
+            else
+            {
+                Debug.LogError("Not enough target objects for draggable items!");
+            }
+        }
+    }
 
-        // Store the original position when the game starts
-        originalPosition = transform.position;
+    void Update()
+    {
+        // You can add any game logic here that doesn't involve time, score, or buttons
+    }
+
+    public void StartGame()
+    {
+        isGameActive = true;
+    }
+
+    public void CorrectMatch(DraggableItem matchedItem)
+    {
+        // Handle correct match logic here
+        // For example, you might disable the draggable item or play a sound
+        matchedItem.gameObject.SetActive(false);
+
+        // Add the matched item to the list of correct matches
+        correctMatches.Add(matchedItem);
+
+        // Check if all items are matched
+        if (correctMatches.Count == draggableItems.Count)
+        {
+            // Game over, all items matched
+            Debug.Log("Game Over - All items matched!");
+        }
     }
 }

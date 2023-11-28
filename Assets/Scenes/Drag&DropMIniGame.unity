@@ -295,8 +295,8 @@ GameObject:
   - component: {fileID: 286236197}
   - component: {fileID: 286236196}
   m_Layer: 5
-  m_Name: GreyBox (2)
-  m_TagString: Untagged
+  m_Name: Box3
+  m_TagString: TelophaseSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -370,6 +370,7 @@ GameObject:
   - component: {fileID: 288682544}
   - component: {fileID: 288682543}
   - component: {fileID: 288682545}
+  - component: {fileID: 288682546}
   m_Layer: 5
   m_Name: Metaphase
   m_TagString: Untagged
@@ -443,9 +444,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 288682541}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0019574bfb534a54da4bbec875ff87c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 32522c0380f3d8749990b838880493ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!225 &288682546
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 288682541}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &426593859
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,8 +605,8 @@ GameObject:
   - component: {fileID: 578177288}
   - component: {fileID: 578177287}
   m_Layer: 5
-  m_Name: GreyBox
-  m_TagString: Untagged
+  m_Name: Box1
+  m_TagString: SPhaseSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -803,8 +816,8 @@ GameObject:
   - component: {fileID: 643195965}
   - component: {fileID: 643195964}
   m_Layer: 5
-  m_Name: GreyBox (1)
-  m_TagString: Untagged
+  m_Name: Box2
+  m_TagString: AnaphaseSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -917,6 +930,7 @@ RectTransform:
   - {fileID: 1145905751}
   - {fileID: 1822129856}
   - {fileID: 990757711}
+  - {fileID: 2007784300}
   m_Father: {fileID: 1246851723}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1644,8 +1658,8 @@ GameObject:
   - component: {fileID: 990757713}
   - component: {fileID: 990757712}
   m_Layer: 5
-  m_Name: GreyBox (6)
-  m_TagString: Untagged
+  m_Name: Box6
+  m_TagString: MetaphaseSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1719,8 +1733,8 @@ GameObject:
   - component: {fileID: 1145905753}
   - component: {fileID: 1145905752}
   m_Layer: 5
-  m_Name: GreyBox (3)
-  m_TagString: Untagged
+  m_Name: Box4
+  m_TagString: ChromosomeSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2017,6 +2031,7 @@ GameObject:
   - component: {fileID: 1332687701}
   - component: {fileID: 1332687700}
   - component: {fileID: 1332687702}
+  - component: {fileID: 1332687703}
   m_Layer: 5
   m_Name: Mitosis
   m_TagString: Untagged
@@ -2090,9 +2105,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1332687698}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0019574bfb534a54da4bbec875ff87c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 32522c0380f3d8749990b838880493ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!225 &1332687703
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1332687698}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1641201546
 GameObject:
   m_ObjectHideFlags: 0
@@ -2180,6 +2207,7 @@ GameObject:
   - component: {fileID: 1654120918}
   - component: {fileID: 1654120917}
   - component: {fileID: 1654120919}
+  - component: {fileID: 1654120920}
   m_Layer: 5
   m_Name: Telophase
   m_TagString: Untagged
@@ -2253,9 +2281,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1654120915}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0019574bfb534a54da4bbec875ff87c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 32522c0380f3d8749990b838880493ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!225 &1654120920
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654120915}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1734049685
 GameObject:
   m_ObjectHideFlags: 0
@@ -2268,6 +2308,7 @@ GameObject:
   - component: {fileID: 1734049688}
   - component: {fileID: 1734049687}
   - component: {fileID: 1734049689}
+  - component: {fileID: 1734049690}
   m_Layer: 5
   m_Name: Anaphase
   m_TagString: Untagged
@@ -2341,9 +2382,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1734049685}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0019574bfb534a54da4bbec875ff87c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 32522c0380f3d8749990b838880493ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!225 &1734049690
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1734049685}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1782674796
 GameObject:
   m_ObjectHideFlags: 0
@@ -2431,8 +2484,8 @@ GameObject:
   - component: {fileID: 1822129858}
   - component: {fileID: 1822129857}
   m_Layer: 5
-  m_Name: GreyBox (5)
-  m_TagString: Untagged
+  m_Name: Box5
+  m_TagString: AnaphaseSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2506,6 +2559,7 @@ GameObject:
   - component: {fileID: 1945389824}
   - component: {fileID: 1945389823}
   - component: {fileID: 1945389825}
+  - component: {fileID: 1945389826}
   m_Layer: 5
   m_Name: SPhase
   m_TagString: Untagged
@@ -2579,9 +2633,114 @@ MonoBehaviour:
   m_GameObject: {fileID: 1945389821}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32522c0380f3d8749990b838880493ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &1945389826
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945389821}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!1 &2007784299
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2007784300}
+  - component: {fileID: 2007784301}
+  - component: {fileID: 2007784302}
+  m_Layer: 5
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2007784300
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007784299}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 689565708}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2007784301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007784299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0019574bfb534a54da4bbec875ff87c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  draggableItems:
+  - {fileID: 1332687702}
+  - {fileID: 1945389825}
+  - {fileID: 1654120919}
+  - {fileID: 2012556819}
+  - {fileID: 1734049689}
+  - {fileID: 288682545}
+  targetObjects:
+  - {fileID: 578177285}
+  - {fileID: 643195962}
+  - {fileID: 286236194}
+  - {fileID: 1145905750}
+  - {fileID: 1822129855}
+  - {fileID: 990757710}
+  correctMatches:
+  - {fileID: 1332687702}
+  - {fileID: 1945389825}
+  - {fileID: 1654120919}
+  - {fileID: 2012556819}
+  - {fileID: 1734049689}
+  - {fileID: 288682545}
+--- !u!223 &2007784302
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007784299}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &2012556815
 GameObject:
   m_ObjectHideFlags: 0
@@ -2594,8 +2753,9 @@ GameObject:
   - component: {fileID: 2012556818}
   - component: {fileID: 2012556817}
   - component: {fileID: 2012556819}
+  - component: {fileID: 2012556820}
   m_Layer: 5
-  m_Name: Choromosome
+  m_Name: Chromosome
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2667,9 +2827,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 2012556815}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0019574bfb534a54da4bbec875ff87c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 32522c0380f3d8749990b838880493ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!225 &2012556820
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2012556815}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2079708094
 GameObject:
   m_ObjectHideFlags: 0
