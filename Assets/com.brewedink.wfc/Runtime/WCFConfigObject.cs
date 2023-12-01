@@ -22,7 +22,6 @@ namespace BrewedInk.WFC
         [Tooltip(
             "If the useSeed boolean is true, what seed should be used? This property should be ignored if useSeed is false.")]
         public int seed;
-        
 
         public List<TModuleObject> moduleObjects;
 
