@@ -17,6 +17,7 @@ public class mapGeneration : MonoBehaviour
     private int[] fromLeftValues;
     private List<int> pathX = new List<int>();
     private List<int> pathY = new List<int>();
+    private List<int> pathDirection = new List<int>();
 
     void Start()
     {       
@@ -77,6 +78,7 @@ public class mapGeneration : MonoBehaviour
     //}
 
     void currentPath(int x, int y){
+        List<int> direction = new List<int>();
         pathX.Add(x);
         pathY.Add(y);
     }
