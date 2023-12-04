@@ -15,13 +15,32 @@ public class mapGeneration : MonoBehaviour
     private int[] fromRightValues;
     private int[] fromUpValues;
     private int[] fromLeftValues;
-    private List<int> pathX = new List<int>();
-    private List<int> pathY = new List<int>();
-    private List<int> pathDirection = new List<int>();
+    private List<int> pathX; 
+    private List<int> pathY;
+    private List<int> pathDirection;
+    private List<int> possibleDirection;
+    private int currentDirection;
+    private int currentPositionX;
+    private int currentPositionY;
+    private int nextPositionX;
 
+    private int nextPositionY;
+
+    private int Lslot;
+    private int Dslot;
+    private int Rslot;
+    private int Uslot;
+    private int GDirection;
+    private int currentSlot;
+    private int maxPositionX;
+    private int maxPositionY;
+    //1=up,2=right,3=down,4=left
     void Start()
     {       
         //initialize lists and arrays
+        pathX = new List<int>();
+        pathY = new List<int>();
+        pathDirection = new List<int>();
         slotList = new List<GameObject>{slot1, slot2, slot3, slot4, slot5, slot6, slot7, slot8, slot9, slot10, slot11};
         fromDownValues = new int[]{1, 2, 3, 4, 9, 10, 11};
         fromRightValues = new int[]{1, 2, 5, 7, 8, 9, 10};
@@ -34,10 +53,42 @@ public class mapGeneration : MonoBehaviour
     }
 
     IEnumerator generateMaze(){
-        generateSlot(fromDown(),0,0);
+        int mapSize; 
+        currentPositionY = 0;
+        currentPositionX = 0;
+        mapSize = (xLength * yLength)-1;
+        generateSlot(fromDown(),currentPositionX,currentPositionY);
+        currentPath(currentPositionX, currentPositionY);
+        Debug.Log("direction : "+pathDirection[0]);
+        pathDirection.Add(getDirection(currentSlot));
+        while (mapSize != 0){        
+            if(pathDirection[(pathDirection.Count-1)] == 1){
+                generateSlot(fromDown(),nextPositionX,nextPositionY); 
+                currentPath(nextPositionX, nextPositionY);
+            }      
+            if(pathDirection[(pathDirection.Count-1)] == 2){
+                generateSlot(fromLeft(),nextPositionX,nextPositionY); 
+                currentPath(nextPositionX, nextPositionY);
+            }  
+            if(pathDirection[(pathDirection.Count-1)] == 3){
+                generateSlot(fromUp(),nextPositionX,nextPositionY); 
+                currentPath(nextPositionX, nextPositionY);
+            }  
+            if(pathDirection[(pathDirection.Count-1)] == 4){
+                generateSlot(fromRight(),nextPositionX,nextPositionY); 
+                currentPath(nextPositionX, nextPositionY);
+            }       
+            pathDirection.Add(getDirection(currentSlot));
+            mapSize--;
+        }
+        //while(!mapSize == 0){
+        //getdirection
+        //generateslot
+        //addtopath
+        //mapSize--
+        //}
 
-        yield return null;
-       
+        yield return null; 
     }
 
 
@@ -47,7 +98,7 @@ public class mapGeneration : MonoBehaviour
     void generateSlot(int slot, int xCoordinate, int yCoordinate){
         
         Instantiate(slotReference(slot-1),new Vector3(xCoordinate, 0, yCoordinate), Quaternion.identity, transform);
-        
+        Debug.Log(slotReference(slot-1));
     }
 
     GameObject slotReference(int slotPosition){
@@ -55,19 +106,40 @@ public class mapGeneration : MonoBehaviour
     }
 
     int fromDown(){
-        return(fromDownValues[Random.Range(0,6)]);  
+        currentDirection = 1;
+        pathDirection.Add(1);
+        Dslot = fromDownValues[Random.Range(0,6)];
+        currentSlot = Dslot;
+        Debug.Log("fromdown"+currentSlot);
+        return(Dslot);    
+        
 
     }
     int fromRight(){
-        return(fromRightValues[Random.Range(0,6)]);  
+        
+        currentDirection = 4;
+        pathDirection.Add(4);
+        Rslot = fromRightValues[Random.Range(0,6)];
+        currentSlot = Rslot;
+        return(Rslot);   
 
     }
     int fromUp(){
-        return(fromUpValues[Random.Range(0,6)]);  
+        
+        currentDirection = 3;
+        pathDirection.Add(3);
+        Uslot = fromUpValues[Random.Range(0,6)];
+        currentSlot = Uslot;
+        return(Uslot);    
 
     }
     int fromLeft(){
-        return(fromLeftValues[Random.Range(0,6)]);  
+        
+        currentDirection = 2;
+        pathDirection.Add(2);
+        Lslot = fromLeftValues[Random.Range(0,6)];
+        currentSlot = Lslot;
+        return(Lslot);  
 
     }
 
@@ -77,15 +149,114 @@ public class mapGeneration : MonoBehaviour
 
     //}
 
-    void currentPath(int x, int y){
-        List<int> direction = new List<int>();
+    void currentPath( int x, int y){      
         pathX.Add(x);
         pathY.Add(y);
     }
 
-    void getDirection(){
+    int getDirection(int feedSlot){
+        maxPositionX = (xLength/2);
+        maxPositionY = (yLength);
+        possibleDirection = new List<int>();
+        possibleDirection.Add(1);
+        possibleDirection.Add(2);
+        possibleDirection.Add(3);
+        possibleDirection.Add(4);
+         Debug.Log("Log1");
+        switch(feedSlot){
+            case 1: 
+                break;
+            case 2: 
+                possibleDirection.Remove(1);
+                possibleDirection.Remove(4);
+                break;
+            case 3: 
+                possibleDirection.Remove(1);
+                possibleDirection.Remove(2);
+                break;
+            case 4: 
+                possibleDirection.Remove(2);
+                possibleDirection.Remove(4);
+                break;
+            case 5: 
+                possibleDirection.Remove(1);
+                possibleDirection.Remove(3);
+                break;
+            case 6: 
+                possibleDirection.Remove(2);
+                possibleDirection.Remove(3);
+                break;
+            case 7: 
+                possibleDirection.Remove(3);
+                possibleDirection.Remove(4);
+                break;
+            case 8: 
+                possibleDirection.Remove(3);
+                break;
+            case 9: 
+                possibleDirection.Remove(4);
+                break;
+            case 10: 
+                possibleDirection.Remove(1);
+                break;
+            case 11: 
+                possibleDirection.Remove(2);
+                break;
+        }
+
+        if(currentPositionX == maxPositionX){
+            possibleDirection.Remove(2);
+        }
+        if(currentPositionX == (maxPositionX*-1)){
+            possibleDirection.Remove(4);
+        }
+        if(currentPositionY == (0)){
+            possibleDirection.Remove(3);
+        }
+        if(currentPositionY == (maxPositionY)){
+            possibleDirection.Remove(1);
+        }
+        if(nextPositionX == (pathX[(pathX.Count-1)]-5)){
+            possibleDirection.Remove(4);
+        }
+        if(nextPositionX == (pathX[(pathX.Count-1)]+5)){
+            possibleDirection.Remove(2);
+        }
+        if(nextPositionY == (pathY[(pathY.Count-1)]-5)){
+            possibleDirection.Remove(3);
+        }
+        if(nextPositionY == (pathY[(pathY.Count-1)]+5)){
+            possibleDirection.Remove(1);
+        }
+
+
+        Debug.Log("possibleDirection.Count" + possibleDirection.Count);
+        GDirection = possibleDirection[Random.Range(0, possibleDirection.Count-1)];
+        Debug.Log("diection"+GDirection);
+
+        switch(GDirection){
+            case 1:
+                nextPositionY = nextPositionY + 5;
+                break;           
+            case 2:
+                nextPositionX = nextPositionX + 5;
+                break;
+            case 3:
+                nextPositionY = nextPositionY - 5;
+                break;
+            case 4:
+                nextPositionX = nextPositionX - 5;
+                break;
+        }
+        Debug.Log("X:"+nextPositionX);
+        Debug.Log("Y:"+nextPositionY);
+        return(GDirection);
+
+        
 
     }
+
+    
 
     
 
