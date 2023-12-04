@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Random=UnityEngine.Random;
 using BrewedInk.WFC;
 
 /// <summary>
@@ -14,11 +15,13 @@ public class SpriteConfig : WCFConfigObject<SpriteConfigModuleObject, SpriteConf
     public int Width;
     public int Height;
     
+    
     protected override GenerationSpace CreateSpace()
     {
         // create the constraints on the modules...
         var constraintGenerator = new SocketConstraintGenerator<SpriteConfigModule>(existing => new SpriteConfigModule(existing));
         var constrainedModules = GetModules().ProduceConstraints(constraintGenerator);
+        seed = Random.Range(0, 999999);       
         return GenerationSpace.From2DGrid(Width, Height, constrainedModules, useSeed ? seed : default);
     }
     
