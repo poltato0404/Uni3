@@ -64,18 +64,22 @@ public class mapGeneration : MonoBehaviour
         while (mapSize != 0){        
             if(pathDirection[(pathDirection.Count-1)] == 1){
                 generateSlot(fromDown(),nextPositionX,nextPositionY); 
+                changePos();
                 currentPath(nextPositionX, nextPositionY);
             }      
             if(pathDirection[(pathDirection.Count-1)] == 2){
                 generateSlot(fromLeft(),nextPositionX,nextPositionY); 
+                changePos();
                 currentPath(nextPositionX, nextPositionY);
             }  
             if(pathDirection[(pathDirection.Count-1)] == 3){
                 generateSlot(fromUp(),nextPositionX,nextPositionY); 
+                changePos();
                 currentPath(nextPositionX, nextPositionY);
             }  
             if(pathDirection[(pathDirection.Count-1)] == 4){
                 generateSlot(fromRight(),nextPositionX,nextPositionY); 
+                changePos();
                 currentPath(nextPositionX, nextPositionY);
             }       
             pathDirection.Add(getDirection(currentSlot));
@@ -108,7 +112,9 @@ public class mapGeneration : MonoBehaviour
     int fromDown(){
         currentDirection = 1;
         pathDirection.Add(1);
+        //while(){
         Dslot = fromDownValues[Random.Range(0,6)];
+        //}
         currentSlot = Dslot;
         Debug.Log("fromdown"+currentSlot);
         return(Dslot);    
@@ -116,7 +122,6 @@ public class mapGeneration : MonoBehaviour
 
     }
     int fromRight(){
-        
         currentDirection = 4;
         pathDirection.Add(4);
         Rslot = fromRightValues[Random.Range(0,6)];
@@ -125,7 +130,6 @@ public class mapGeneration : MonoBehaviour
 
     }
     int fromUp(){
-        
         currentDirection = 3;
         pathDirection.Add(3);
         Uslot = fromUpValues[Random.Range(0,6)];
@@ -143,11 +147,7 @@ public class mapGeneration : MonoBehaviour
 
     }
 
-    //bool checkAvailable(int checkX, checkY){
-        
-
-
-    //}
+    
 
     void currentPath( int x, int y){      
         pathX.Add(x);
@@ -216,28 +216,40 @@ public class mapGeneration : MonoBehaviour
         if(currentPositionY == (maxPositionY)){
             possibleDirection.Remove(1);
         }
-        if(nextPositionX == (pathX[(pathX.Count-1)]-5)){
+        if(checkIsNotAvailable((nextPositionX - 5),nextPositionY)){
             possibleDirection.Remove(4);
         }
-        if(nextPositionX == (pathX[(pathX.Count-1)]+5)){
+        if(checkIsNotAvailable((nextPositionX + 5),nextPositionY)){
             possibleDirection.Remove(2);
         }
-        if(nextPositionY == (pathY[(pathY.Count-1)]-5)){
-            possibleDirection.Remove(3);
-        }
-        if(nextPositionY == (pathY[(pathY.Count-1)]+5)){
+        if(checkIsNotAvailable(nextPositionX,(nextPositionY + 5))){
             possibleDirection.Remove(1);
         }
+        if(checkIsNotAvailable(nextPositionX,(nextPositionY - 5))){
+            possibleDirection.Remove(3);
+        }
+        
+        
 
 
         Debug.Log("possibleDirection.Count" + possibleDirection.Count);
         GDirection = possibleDirection[Random.Range(0, possibleDirection.Count-1)];
         Debug.Log("diection"+GDirection);
 
+        
+        Debug.Log("X:"+nextPositionX);
+        Debug.Log("Y:"+nextPositionY);
+        return(GDirection);
+
+        
+
+    }
+
+    void changePos(){
         switch(GDirection){
             case 1:
                 nextPositionY = nextPositionY + 5;
-                break;           
+                break;       
             case 2:
                 nextPositionX = nextPositionX + 5;
                 break;
@@ -248,11 +260,25 @@ public class mapGeneration : MonoBehaviour
                 nextPositionX = nextPositionX - 5;
                 break;
         }
-        Debug.Log("X:"+nextPositionX);
-        Debug.Log("Y:"+nextPositionY);
-        return(GDirection);
+    }
 
-        
+
+
+    bool checkIsNotAvailable(int checkX, int checkY){
+        for (int i = 0; i < pathX.Count; i++)
+        {
+            if (pathX[i] == checkX && pathY[i] == checkY)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }      
+
+    
+
+
 
     }
 
@@ -262,4 +288,5 @@ public class mapGeneration : MonoBehaviour
 
     
 
-}
+    
+
