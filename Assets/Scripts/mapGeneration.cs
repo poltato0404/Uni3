@@ -26,7 +26,6 @@ public class mapGeneration : MonoBehaviour
     private List<int> newPathZ;
     private List<int> nextDirection;
 
-    private int currentDirection;
     private int currentPositionX;
     private int currentPositionZ;
     private int nextPositionX;
@@ -253,7 +252,6 @@ public class mapGeneration : MonoBehaviour
     }
 
     int fromDown(){
-        currentDirection = 1;
         pathDirection.Add(1);      
         Dslot = fromDownValues[Random.Range(0,6)];
         currentSlot = Dslot;
@@ -263,7 +261,7 @@ public class mapGeneration : MonoBehaviour
 
     }
     int fromRight(){
-        currentDirection = 4;
+       
         pathDirection.Add(4);
         Rslot = fromRightValues[Random.Range(0,6)];
         currentSlot = Rslot;
@@ -272,7 +270,6 @@ public class mapGeneration : MonoBehaviour
 
     }
     int fromUp(){
-        currentDirection = 3;
         pathDirection.Add(3);
         Uslot = fromUpValues[Random.Range(0,6)];
         currentSlot = Uslot;
@@ -281,7 +278,6 @@ public class mapGeneration : MonoBehaviour
 
     }
     int fromLeft(){
-        currentDirection = 2;
         pathDirection.Add(2);
         Lslot = fromLeftValues[Random.Range(0,6)];
         currentSlot = Lslot;
@@ -397,15 +393,14 @@ public class mapGeneration : MonoBehaviour
             Debug.Log("down is  occupied");
         }
         Debug.Log("possibleDirection after checking" + possibleDirection.Count);
-        if (true){addNextPossiblePath();Debug.Log("trying to add possible path");
-        }
-
+        addNextPossiblePath();Debug.Log("trying to add possible path");
         if((possibleDirection.Count)>0){
-        GDirection = possibleDirection[Random.Range(0, possibleDirection.Count-1)];
-        Debug.Log("diection"+GDirection);
+        GDirection = possibleDirection[Random.Range(0, possibleDirection.Count)];
+        Debug.Log("direction"+GDirection);
         return(GDirection);
         }
         else{
+
             return(0);
         }
 
@@ -474,10 +469,6 @@ public class mapGeneration : MonoBehaviour
         itlog = pathDirection[(pathDirection.Count-1)];
         return itlog;
     }
-    
-
-    
-
 
 
     }
