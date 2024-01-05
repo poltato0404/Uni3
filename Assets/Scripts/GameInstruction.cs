@@ -8,6 +8,10 @@ public class GameInstruction : MonoBehaviour
     public TextMeshProUGUI instructionsText;
     public Button startButton;
 
+    // Configurable parameters for different games
+    public string gameInstructions;
+    public string startMessage;
+
     void Start()
     {
         // Show instructions overlay when the game starts
@@ -23,7 +27,7 @@ public class GameInstruction : MonoBehaviour
         instructionsPanel.SetActive(true);
 
         // Set and display the instructions text
-        instructionsText.text = "Match the correct answers to their corresponding questions by dragging and dropping them into the designated areas.";
+        instructionsText.text = gameInstructions;
 
         // You can customize the appearance and positioning of the panel as needed
     }
@@ -34,6 +38,6 @@ public class GameInstruction : MonoBehaviour
         instructionsPanel.SetActive(false);
 
         // Add your logic to start the actual game here
-        Debug.Log("Game is starting!");
+        Debug.Log(startMessage);
     }
 }
