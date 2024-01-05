@@ -57,9 +57,6 @@ public class mapGeneration : MonoBehaviour
         fromRightValues = new int[]{1, 2, 5, 7, 8, 9, 10};
         fromUpValues = new int[]{1, 4, 6, 7, 8, 9, 11};
         fromLeftValues = new int[]{1, 3, 5, 6, 8, 10, 11};
-        
-
-        
         StartCoroutine(generateMaze());
     }
 
@@ -73,7 +70,8 @@ public class mapGeneration : MonoBehaviour
         Debug.Log("direction : "+pathDirection[0]);
         pathDirection.Add(getDirection(currentSlot));
         removeActualPath(GDirection, nextPositionX, nextPositionZ);
-        while (mapSize != 0 ){      
+        for(int i = 0; i < mapSize;  i++){  
+            
             if(getPathDirection() == 1){
                 changePos();
                 generateSlot(fromDown(),nextPositionX,nextPositionZ); 
@@ -101,39 +99,34 @@ public class mapGeneration : MonoBehaviour
                 Debug.Log(nextPositionX+","+nextPositionZ);
                 currentPath(nextPositionX, nextPositionZ);
                 removeActualPath(GDirection, nextPositionX, nextPositionZ);
-            }                 
+            }             
             else{
                 Debug.Log("Repositioning");
-                while(repositioned == false){
-                RepositionAt();
+                
+                 if (nextDirection.Count > 0){
+                RepositionAt();}
+                
                 Debug.Log("delast"+currentSlot);
                 Debug.Log("repositioned path direction "+pathDirection[(pathDirection.Count-1)]);
                 changePos();
-                }              
-                repositioned = false;
+                              
+                
                 pathDirection.Add(getDirection(currentSlot));
             }
             pathDirection.Add(getDirection(currentSlot));
-            mapSize--;
-            Debug.Log(nextDirection[0]);
             Debug.Log("x"+newPathX.Count);
             Debug.Log("z"+newPathZ.Count);
             Debug.Log("1:"+ getPathDirection());
             Debug.Log("2:"+mapSize);
             Debug.Log(itlog);
-            if(mapSize == 0){
+            if (mapSize == 0)
+        {
             Debug.Log("generation done");
-            }
         }
-        //while(!mapSize == 0){
-        //getdirection
-        //generateslot
-        //addtopath
-        //mapSize--
-        //}
 
-        yield return null; 
+        yield return null; // Allow Unity to process other tasks
     }
+}
 
     bool RepositionAt(){
         if (nextDirection[0] == 1 ){
@@ -157,7 +150,9 @@ public class mapGeneration : MonoBehaviour
             repositioned = true;
             return repositioned;
             }
+
         }
+        
 
         else if (nextDirection[0] == 2){
             if (checkIsNotAvailable((newPathX[0] + 5), newPathZ[0] )){
@@ -233,6 +228,8 @@ public class mapGeneration : MonoBehaviour
         }
 
         return false;
+
+        
 
 
     }
