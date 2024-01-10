@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -10,15 +9,19 @@ public class mapGeneration : MonoBehaviour
     //public GameObject floor;
     //Instantiate(floor, new Vector3(0, 0, 0), Quaternion.identity);
     [SerializeField] private int xLength, zLength;
-    [SerializeField] private GameObject slot1, slot2, slot3, slot4, slot5, slot6, slot7,slot8, slot9, slot10, slot11;
+    [SerializeField] private GameObject slot1, slot2, slot3, slot4, slot5, slot6, slot7,slot8, slot9, slot10, slot11, walls;
     List<GameObject> slotList;
+    private int slotToSwap;
+    private int replacementSlot;
     private int[] fromDownValues;
     private int[] fromRightValues;
     private int[] fromUpValues;
     private int[] fromLeftValues;
     private List<int> pathX; 
     private List<int> pathZ;
-    private int itlog;
+
+    private List<int> slotInMaze;
+    private int itlog,gridX,gridZ;
     private List<int> pathDirection;
     private List<int> possibleDirection;
 
@@ -42,76 +45,100 @@ public class mapGeneration : MonoBehaviour
     private int currentSlot;
     private int maxPositionX;
     private int maxPositionZ;
+
+    private int gridStartX;
+    private int gridStartZ;
+    private int mapSize, emptySlot; 
+    private List<GameObject> instantiatedClones; 
     //1=up,2=right,3=down,4=left
     void Start()
     {       
         //initialize lists and arrays
         pathX = new List<int>();
         pathZ = new List<int>();
+        slotInMaze = new List<int>();
         newPathX = new List<int>();
         newPathZ = new List<int>();
         nextDirection = new List<int>();
         pathDirection = new List<int>();
+        instantiatedClones= new List<GameObject>();
         slotList = new List<GameObject>{slot1, slot2, slot3, slot4, slot5, slot6, slot7, slot8, slot9, slot10, slot11};
         fromDownValues = new int[]{1, 2, 3, 4, 9, 10, 11};
         fromRightValues = new int[]{1, 2, 5, 7, 8, 9, 10};
         fromUpValues = new int[]{1, 4, 6, 7, 8, 9, 11};
         fromLeftValues = new int[]{1, 3, 5, 6, 8, 10, 11};
+        
+
+        
         StartCoroutine(generateMaze());
+        //createWalls();
+    }
+    
+    void createWalls(){
+        float xWallSpawn = 0f;
+        float zWallSpawn = -3.0f ;
+        Vector3 spawnPosition = new Vector3(xWallSpawn, 0f, zWallSpawn);
+        for(int i = 0; i < xLength- (xLength/2); i++){
+        spawnPosition = new Vector3(xWallSpawn, 0f, zWallSpawn);
+        Instantiate(walls, spawnPosition, Quaternion.identity);
+        xWallSpawn++;
+        }
+
+
     }
 
     IEnumerator generateMaze(){
-        int mapSize; 
+        
         currentPositionZ = 0;
         currentPositionX = 0;
         mapSize = (xLength * zLength)-1;
+        emptySlot = mapSize;
         generateSlot(fromDown(),currentPositionX,currentPositionZ);
-        currentPath(currentPositionX, currentPositionZ);
+        currentPath(currentPositionX, currentPositionZ, currentSlot);
         Debug.Log("direction : "+pathDirection[0]);
         pathDirection.Add(getDirection(currentSlot));
         removeActualPath(GDirection, nextPositionX, nextPositionZ);
-        for(int i = 0; i < mapSize;  i++){  
+        for (int i = 0; i < mapSize; i++ ){     
             
             if(getPathDirection() == 1){
                 changePos();
                 generateSlot(fromDown(),nextPositionX,nextPositionZ); 
                 Debug.Log(nextPositionX+","+nextPositionZ);
-                currentPath(nextPositionX, nextPositionZ);
+                currentPath(nextPositionX, nextPositionZ, currentSlot);
                 removeActualPath(GDirection, nextPositionX, nextPositionZ);
             }      
             else if(getPathDirection() == 2){
                 changePos();
                 generateSlot(fromLeft(),nextPositionX,nextPositionZ); 
                 Debug.Log(nextPositionX+","+nextPositionZ);
-                currentPath(nextPositionX, nextPositionZ);
+                currentPath(nextPositionX, nextPositionZ, currentSlot);
                 removeActualPath(GDirection, nextPositionX, nextPositionZ);
             }  
              else if(getPathDirection() == 3){
                 changePos();
                 generateSlot(fromUp(),nextPositionX,nextPositionZ); 
                 Debug.Log(nextPositionX+","+nextPositionZ);
-                currentPath(nextPositionX, nextPositionZ);
+                currentPath(nextPositionX, nextPositionZ, currentSlot);
                 removeActualPath(GDirection, nextPositionX, nextPositionZ);
             }  
             else if(getPathDirection() == 4){
                 changePos();
                 generateSlot(fromRight(),nextPositionX,nextPositionZ); 
                 Debug.Log(nextPositionX+","+nextPositionZ);
-                currentPath(nextPositionX, nextPositionZ);
+                currentPath(nextPositionX, nextPositionZ, currentSlot);
                 removeActualPath(GDirection, nextPositionX, nextPositionZ);
-            }             
+            }                 
             else{
+                
                 Debug.Log("Repositioning");
-                
-                 if (nextDirection.Count > 0){
-                RepositionAt();}
-                
+                while(repositioned == false){
+                RepositionAt();
                 Debug.Log("delast"+currentSlot);
                 Debug.Log("repositioned path direction "+pathDirection[(pathDirection.Count-1)]);
                 changePos();
-                              
-                
-                pathDirection.Add(getDirection(currentSlot));
+                }
+                repositioned = false;
+                //pathDirection.Add(getDirection(currentSlot));
             }
             pathDirection.Add(getDirection(currentSlot));
             Debug.Log("x"+newPathX.Count);
@@ -119,40 +146,56 @@ public class mapGeneration : MonoBehaviour
             Debug.Log("1:"+ getPathDirection());
             Debug.Log("2:"+mapSize);
             Debug.Log(itlog);
-            if (mapSize == 0)
-        {
+            emptySlot--;
+            if(emptySlot == 0){
+            Debug.Log("nextDirectionCount :"+nextDirection.Count);
             Debug.Log("generation done");
+            //break;
+            
+            }
         }
+        //while(!mapSize == 0){
+        //getdirection
+        //generateslot
+        //addtopath
+        //mapSize--
+        //}
 
-        yield return null; // Allow Unity to process other tasks
+        yield return null; 
     }
-}
 
     bool RepositionAt(){
-        if (nextDirection[0] == 1 ){
-            if (checkIsNotAvailable(newPathX[0], (newPathZ[0] + 5) )){
-            nextDirection.RemoveAt(0);
-            newPathX.RemoveAt(0);
-            newPathZ.RemoveAt(0);
-            }
-            else{
-            nextPositionX = newPathX[0];
-            nextPositionZ = newPathZ[0];
-            GDirection = nextDirection[0];
-            nextDirection.RemoveAt(0);
-            newPathX.RemoveAt(0);
-            newPathZ.RemoveAt(0);
-            Debug.Log("repositioning direction up :" +nextPositionX+"and "+nextPositionZ);
-            generateSlot(fromDown(),nextPositionX,(nextPositionZ + 5)); 
-            Debug.Log("repositioned slot current from down "+ currentSlot);
-            Debug.Log(nextPositionX+","+nextPositionZ);
-            currentPath(nextPositionX,(nextPositionZ + 5));
-            repositioned = true;
-            return repositioned;
-            }
-
-        }
         
+
+           try{
+            
+            
+
+            Debug.Log(nextDirection.Count);
+            if (nextDirection[0] == 1 ){
+                if (checkIsNotAvailable(newPathX[0], (newPathZ[0] + 5))){
+                    nextDirection.RemoveAt(0);
+                    newPathX.RemoveAt(0);
+                    newPathZ.RemoveAt(0);
+                }
+                else
+                {
+                    nextPositionX = newPathX[0];
+                    nextPositionZ = newPathZ[0];
+                    GDirection = nextDirection[0];
+                    nextDirection.RemoveAt(0);
+                    newPathX.RemoveAt(0);
+                    newPathZ.RemoveAt(0);
+                    Debug.Log("repositioning direction up :" +nextPositionX+"and "+nextPositionZ);
+                    generateSlot(fromDown(),nextPositionX,(nextPositionZ + 5)); 
+                    Debug.Log("repositioned slot current from down "+ currentSlot);
+                    Debug.Log(nextPositionX+","+nextPositionZ);
+                    currentPath(nextPositionX,(nextPositionZ + 5), currentSlot);
+                    repositioned = true;
+                    return repositioned;
+
+                }
+            }
 
         else if (nextDirection[0] == 2){
             if (checkIsNotAvailable((newPathX[0] + 5), newPathZ[0] )){
@@ -171,7 +214,7 @@ public class mapGeneration : MonoBehaviour
             generateSlot(fromLeft(),(nextPositionX + 5),nextPositionZ); 
             Debug.Log("repositioned slot current from left "+ currentSlot);
             Debug.Log(nextPositionX+","+nextPositionZ);
-            currentPath((nextPositionX + 5),nextPositionZ);
+            currentPath((nextPositionX + 5),nextPositionZ, currentSlot);
             repositioned = true;
             return repositioned;
             }
@@ -195,7 +238,7 @@ public class mapGeneration : MonoBehaviour
             generateSlot(fromUp(),nextPositionX ,(nextPositionZ - 5)); 
             Debug.Log("repositioned slot current from up "+ currentSlot);
             Debug.Log(nextPositionX+","+nextPositionZ);
-            currentPath(nextPositionX ,(nextPositionZ - 5)); 
+            currentPath(nextPositionX ,(nextPositionZ - 5), currentSlot);
             repositioned = true;
             return repositioned;
             }
@@ -203,7 +246,7 @@ public class mapGeneration : MonoBehaviour
 
         }
         else if (nextDirection[0] == 4){
-            if (checkIsNotAvailable((newPathX[0] - 5), newPathZ[0] )){
+            if (checkIsNotAvailable((newPathX[0] - 5), newPathZ[0] ) ){
             nextDirection.RemoveAt(0);
             newPathX.RemoveAt(0);
             newPathZ.RemoveAt(0);
@@ -219,18 +262,54 @@ public class mapGeneration : MonoBehaviour
             generateSlot(fromRight(),(nextPositionX - 5),nextPositionZ); 
             Debug.Log("repositioned slot current from right "+ currentSlot);
             Debug.Log(nextPositionX+","+nextPositionZ);
-            currentPath((nextPositionX - 5),nextPositionZ); 
+            currentPath((nextPositionX - 5),nextPositionZ, currentSlot);
             repositioned = true;
             return repositioned;
             }
 
 
         }
-
-        return false;
-
         
+        
+        return false;}
+        catch{
+            
+            checkEmptySpaces();
+            //sanitizePath();
+            return false;
+        }
 
+
+    }
+
+    void sanitizePath(){
+            for (int i = 0; i < newPathX.Count; i++){
+                if(notOutOfBounds(newPathX[i], newPathZ[i])){
+                    Debug.Log("Sanitizing "+ newPathX[i] +" :" + newPathZ[i]);
+                }
+                else{
+                    Debug.Log("Removing "+ newPathX[i] +" :" + newPathZ[i]);
+                    newPathX.RemoveAt(i);
+                    newPathZ.RemoveAt(i);
+                    nextDirection.RemoveAt(i);
+                }
+            }
+    }
+
+    bool notOutOfBounds(int x, int z){
+        if(
+            x <= (xLength/2)*5 &&
+            x >= (xLength/2)* -5 && 
+            z >= 0 &&
+            z <= zLength*5
+            
+        
+            
+            ){return true;}
+        
+        else{
+            return false;
+        }
 
     }
 
@@ -240,7 +319,8 @@ public class mapGeneration : MonoBehaviour
 
     void generateSlot(int slot, int xCoordinate, int zCoordinate){
         
-        Instantiate(slotReference(slot-1),new Vector3(xCoordinate, 0, zCoordinate), Quaternion.identity, transform);
+        GameObject clone = Instantiate(slotReference(slot-1),new Vector3(xCoordinate, 0, zCoordinate), Quaternion.identity, transform);
+        instantiatedClones.Add(clone);
         Debug.Log(slotReference(slot-1));
     }
 
@@ -285,13 +365,14 @@ public class mapGeneration : MonoBehaviour
 
     
 
-    void currentPath( int x, int z){      
+    void currentPath( int x, int z, int slotToAdd){      
         pathX.Add(x);
         pathZ.Add(z);
+        slotInMaze.Add(slotToAdd);
     }
 
     int getDirection(int feedSlot){
-        maxPositionX = (xLength/2*5);
+        maxPositionX = ((xLength/2)*5);
         maxPositionZ = (zLength*5);
         possibleDirection = new List<int>();
         possibleDirection.Clear();
@@ -408,29 +489,49 @@ public class mapGeneration : MonoBehaviour
     void addNextPossiblePath(){
         if (possibleDirection.Count > 1){
             for(int i = 0; i < possibleDirection.Count; i++ ){
+
+                
                 nextDirection.Add(possibleDirection[i]);
                 Debug.Log("addded to next direction " + possibleDirection[i]);
                 newPathX.Add(nextPositionX);
                 Debug.Log("addded to next X " + nextPositionX);
                 newPathZ.Add(nextPositionZ);           
-                Debug.Log("addded to next Z " + nextPositionZ);                    
+                Debug.Log("addded to next Z " + nextPositionZ);      
+                
+
+
             }
         }
 
     }
 
-    void removeActualPath(int actualPath, int x, int z){
-        for (int i = 0; i < nextDirection.Count; i++){
-            if (nextDirection[i] == actualPath && newPathX[i] == x && newPathZ[i] == z){
-                Debug.Log("removing " + nextDirection[i] + "at X: " + newPathX[i] +  " and Z: "+ newPathZ[i]);
-                nextDirection.RemoveAt(i);
-                newPathX.RemoveAt(i);
-                newPathZ.RemoveAt(i);
-            }
-        }
 
+
+    void removeActualPath(int actualPath, int x, int z)
+{
+    List<int> indicesToRemove = new List<int>();
+
+    for (int i = 0; i < nextDirection.Count; i++)
+    {
+        if (nextDirection[i] == actualPath && newPathX[i] == x && newPathZ[i] == z)
+        {
+            Debug.Log("removing " + nextDirection[i] + " at X: " + newPathX[i] + " and Z: " + newPathZ[i]);
+            indicesToRemove.Add(i);
+        }
     }
 
+    // Check if there are elements to remove
+    if (indicesToRemove.Count > 0)
+    {
+        // Remove the elements outside the loop
+        foreach (int index in indicesToRemove)
+        {
+            nextDirection.RemoveAt(index);
+            newPathX.RemoveAt(index);
+            newPathZ.RemoveAt(index);
+        }
+    }
+}
     void changePos(){
         switch(GDirection){
             case 1:
@@ -462,15 +563,290 @@ public class mapGeneration : MonoBehaviour
         return false;
     }      
 
-    int getPathDirection(){
-        itlog = pathDirection[(pathDirection.Count-1)];
+    int getPathDirection()
+{
+    if (pathDirection.Count > 0)
+    {
+        itlog = pathDirection[pathDirection.Count - 1];
         return itlog;
     }
+    else
+    {
+        return 0;
+    }
+}
+
+    void checkEmptySpaces(){
+        int state;
+        Debug.Log("checking empty spaces");
+        gridX = (xLength/2) * 5;
+        gridZ = zLength * 5;
+        gridStartX = gridX *-1;
+        gridStartZ = 0;
+
+        for (int i = 0; i < mapSize; i++ ){
+            Debug.Log("CHECKING : " + gridStartX+ " , "+  gridStartZ);
+            if(gridStartX <= gridX ){
+                
+                if(ifConnectToRight(gridStartX,gridStartZ)){      
+                    state = 2;              
+                    identifySlot((gridStartX+5), gridStartZ);
+                    destroySlot((gridStartX+5), gridStartZ);
+                    swapSlot((gridStartX+5), gridStartZ, slotToSwap, state);
+                    generateSlot(fromRight(), gridStartX,gridStartZ);
+                    nextPositionX = gridStartX;
+                    nextPositionZ = gridStartZ;
+                    Debug.Log("generating connection to right "+gridStartX +gridStartZ );
+                    //pathDirection.Add(getDirection(currentSlot));
+                    //currentPath(gridStartX, gridStartZ, currentSlot);
+                    //removeActualPath(GDirection, gridStartX, gridStartZ);
+                    break;
+                    }
+                else if(ifConnectToLeft(gridStartX,gridStartZ)){  
+                    state = 4;                  
+                    identifySlot((gridStartX-5), gridStartZ);
+                    destroySlot((gridStartX-5), gridStartZ);
+                    swapSlot((gridStartX-5), gridStartZ, slotToSwap, state);
+                    generateSlot(fromLeft(), gridStartX,gridStartZ);
+                    nextPositionX = gridStartX;
+                    nextPositionZ = gridStartZ;
+                    Debug.Log("generating connection to left "+gridStartX +gridStartZ );
+                    pathDirection.Add(getDirection(currentSlot));
+                    //currentPath(gridStartX, gridStartZ, currentSlot);
+                    //removeActualPath(GDirection, gridStartX, gridStartZ);
+                    break;
+                    }
+                else if(ifConnectToUp(gridStartX,gridStartZ)){    
+                    state = 1;                
+                    identifySlot(gridStartX, (gridStartZ+5));
+                    destroySlot(gridStartX, (gridStartZ+5));
+                    swapSlot(gridStartX, (gridStartZ+5), slotToSwap, state);
+                    generateSlot(fromUp(), gridStartX,gridStartZ);
+                    nextPositionX = gridStartX;
+                    nextPositionZ = gridStartZ;
+                    Debug.Log("generating connection to up "+gridStartX +gridStartZ );
+                    pathDirection.Add(getDirection(currentSlot));
+                    //currentPath(gridStartX, gridStartZ, currentSlot);
+                    //removeActualPath(GDirection, gridStartX, gridStartZ);
+                    break;
+                    }
+                else if(ifConnectToDown(gridStartX,gridStartZ)){     
+                    state = 3;               
+                    identifySlot(gridStartX, (gridStartZ-5));
+                    destroySlot(gridStartX, (gridStartZ-5));
+                    swapSlot(gridStartX, (gridStartZ-5), slotToSwap, state);
+                    generateSlot(fromDown(), gridStartX,gridStartZ);
+                    nextPositionX = gridStartX;
+                    nextPositionZ = gridStartZ;
+                    Debug.Log("generating connection to down "+gridStartX +gridStartZ );
+                    pathDirection.Add(getDirection(currentSlot));
+                    //currentPath(gridStartX, gridStartZ, currentSlot);
+                    //removeActualPath(GDirection, gridStartX, gridStartZ);
+                    break;
+                    }
+
+                else{
+                    gridStartX += 5;
+                }
+
+
+            }
+            else {
+                gridStartZ += 5;
+                gridStartX = gridX*-1;
+            }
+        }
 
 
     }
 
-    
+    bool ifConnectToRight(int x, int z){
+        
+        if(!checkIsNotAvailable(x,z) && checkIsNotAvailable((x+5),z) && x >= (0-gridX) ){
+            Debug.Log("connecting to Right");
+        return  true;
+        }
+        else{
+            return false;
+        }
+
+    }
+    bool ifConnectToUp(int x, int z){
+        
+        if(!checkIsNotAvailable(x,z) && checkIsNotAvailable(x,(z+5)) && z >= 0 ){
+            Debug.Log("connecting to Up");
+        return  true;
+        }
+        else{
+            return false;
+        }
+
+    }
+    bool ifConnectToLeft(int x, int z){
+        
+        if(!checkIsNotAvailable(x,z) && checkIsNotAvailable((x-5),z) && x <= (0+gridX) ){
+        Debug.Log("connecting to left");
+        return  true;
+        }
+        else{
+            return false;
+        }
+
+    }
+    bool ifConnectToDown(int x, int z){
+        
+        if(!checkIsNotAvailable(x,z) && checkIsNotAvailable((x),(z-5)) && z <= gridZ ){
+        Debug.Log("connecting to Down");
+        return  true;
+
+        }
+        else{
+            return false;
+        }
+
+    }
+
+    void identifySlot(int xGridSwap, int zGridSwap){
+        
+        for (int i = 0; i < pathX.Count; i++)
+        {
+            if (pathX[i] == xGridSwap && pathZ[i] == zGridSwap)
+            {
+                slotToSwap = slotInMaze[i];
+                pathX.RemoveAt(i);
+                pathZ.RemoveAt(i);
+                slotInMaze.RemoveAt(i);
+            }
+        }
+
+    }
+
+
+    void destroySlot(int destroyX, int destroyZ){
+        Vector3 positionToDestroy = new Vector3(destroyX, 0, destroyZ);
+
+        // Loop through the list of instantiated clones
+        for (int i = 0; i < instantiatedClones.Count; i++)
+        {
+            // Check if the position of the clone matches the specified position
+            if (instantiatedClones[i].transform.position == positionToDestroy)
+            {
+                // Destroy the clone and remove it from the list
+                Destroy(instantiatedClones[i]);
+                instantiatedClones.RemoveAt(i);
+                break; // Exit the loop since we found and destroyed the clone
+            }
+        }
+    }
+
+    void swapSlot(int swapX, int swapZ, int slotToReplace, int direction){ 
+         
+        if (direction == 2){        
+        switch (slotToReplace){
+            
+            case 2 :
+                replacementSlot = 10;
+                break;
+            case 4 :
+                replacementSlot = 11;
+                break;
+            case 7 :
+                replacementSlot = 8;
+                break;
+            case 9 :
+                replacementSlot = 1;
+                break;
+
+            default:
+
+                break;
+
+        }
+        }
+        else if (direction == 1){        
+        switch (slotToReplace){
+            
+            case 5 :
+                replacementSlot = 10;
+                break;
+            case 6 :
+                replacementSlot = 11;
+                break;
+            case 7 :
+                replacementSlot = 9;
+                break;
+            case 8 :
+                replacementSlot = 1;
+                break;
+
+            default:
+
+                break;
+
+        }
+        }
+
+        else if (direction == 3){        
+        switch (slotToReplace){
+            
+            case 2 :
+                replacementSlot = 9;
+                break;
+            case 3 :
+                replacementSlot = 11;
+                break;
+            case 5 :
+                replacementSlot = 8;
+                break;
+            case 10 :
+                replacementSlot = 1;
+                break;
+
+            default:
+
+                break;
+
+        }
+        }
+        else if (direction == 4){        
+        switch (slotToReplace){
+            
+            case 3 :
+                replacementSlot = 10;
+                break;
+            case 4:
+                replacementSlot = 9;
+                break;
+            case 6 :
+                replacementSlot = 8;
+                break;
+            case 11:
+                replacementSlot = 1;
+                break;
+
+            default:
+
+                break;
+
+        }
+        }
+
+        
+        Instantiate(slotReference(replacementSlot-1),new Vector3(swapX, 0, swapZ), Quaternion.identity, transform);
+        currentPath(swapX, swapZ, replacementSlot-1);
+        nextDirection.Add(4);      
+        newPathX.Add(swapX);
+        newPathZ.Add(swapZ);           
+                
+
+    }
+
+
+
+
+
+
+}
 
     
 
@@ -478,3 +854,4 @@ public class mapGeneration : MonoBehaviour
 
     
 
+    
