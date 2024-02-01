@@ -64,7 +64,7 @@ public class playerControScript : MonoBehaviour
         // Changes the height position of the player..
         if (playerControls.Player_actionmap.flash.triggered && groundedPlayer)
         {
-            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+            //playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
         }
 
         playerVelocity.y += gravityValue * Time.deltaTime;
