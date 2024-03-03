@@ -37,7 +37,7 @@ public class mapGeneration : MonoBehaviour
     private int nextPositionZ;
 
     private bool repositioned = false;
-
+    private int loop;
     private int Lslot;
     private int Dslot;
     private int Rslot;
@@ -54,6 +54,7 @@ public class mapGeneration : MonoBehaviour
     void Start()
     {       
         //initialize lists and arrays
+        
         pathX = new List<int>();
         pathZ = new List<int>();
         slotInMaze = new List<int>();
@@ -82,6 +83,7 @@ public class mapGeneration : MonoBehaviour
         currentPositionX = 0;
         mapSize = (xLength * zLength)-1;
         emptySlot = mapSize;
+        remainingGridlocations();
         generateSlot(fromDown(),currentPositionX,currentPositionZ);
         currentPath(currentPositionX, currentPositionZ, currentSlot);
         Debug.Log("direction : "+pathDirection[0]);
@@ -119,12 +121,15 @@ public class mapGeneration : MonoBehaviour
             else{
                 
                 Debug.Log("Repositioning");
-                while(repositioned == false){
+                loop = 0;
+                while(repositioned == false && loop < 10){
                 RepositionAt();
                 Debug.Log("delast"+currentSlot);
                 Debug.Log("repositioned path direction "+pathDirection[(pathDirection.Count-1)]);
                 changePos();
+                loop++;
                 }
+                mapSize++;
                 repositioned = false;
                 
             }
@@ -138,17 +143,21 @@ public class mapGeneration : MonoBehaviour
             if(emptySlot == 0){
             Debug.Log("nextDirectionCount :"+nextDirection.Count);
             Debug.Log("generation done");
+            for(int rem =  0; rem < RemainingX.Count; rem++){
+            Debug.Log("Remaining Grid Locations Number " + rem +" : " + RemainingX[rem]+" : "+RemainingZ[rem]);
+            }
             
             
             }
-        }
 
+            }
+        
         yield return null; 
     }
 
     bool RepositionAt(){
+        
         try{
-
             Debug.Log(nextDirection.Count);
             if (nextDirection[0] == 1 ){
                 if (checkIsNotAvailable(newPathX[0], (newPathZ[0] + 5))){
@@ -250,7 +259,11 @@ public class mapGeneration : MonoBehaviour
         
         
         return false;
-        }catch{
+
+        }
+        catch{
+            nextPositionX = RemainingX[0];
+            nextPositionZ = RemainingZ[0];
             for(int i = 0; i < RemainingX.Count; i++){
                 if(ifConnectToLeft(RemainingX[i], RemainingZ[i])){
                     swapSlot((RemainingX[i]-5), RemainingZ[i], identifySlot((RemainingX[i]-5),RemainingZ[i]), 4);
@@ -269,7 +282,6 @@ public class mapGeneration : MonoBehaviour
 
 
     }
-
 
     
 
@@ -371,9 +383,9 @@ public class mapGeneration : MonoBehaviour
             RemainingZ.Add(z);
             if(x == ((xLength/2)*5)){
                 x = -1*((xLength/2)*5);
-                z =+ 5;
+                z += 5;
             }else{
-            x =+ 5;
+            x += 5;
             }
 
         }
@@ -681,7 +693,8 @@ public class mapGeneration : MonoBehaviour
 
     void swapSlot(int swapX, int swapZ, int slotToReplace, int direction){ 
          
-        if (direction == 2){        nextDirection.Add(4); 
+        if (direction == 2){       
+        nextDirection.Add(4); 
         switch (slotToReplace){  
             
             case 2 :

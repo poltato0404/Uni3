@@ -22,12 +22,12 @@ public class animationScript : MonoBehaviour
         walk = walking.isWalking;
         if (walk == true)
         {
-            Debug.Log("walking");
+            
             characterAnimator.SetBool("isWalking", true);
         }
         else 
         {
-            Debug.Log("not walking");
+            
             characterAnimator.SetBool("isWalking", false);
         }
 
