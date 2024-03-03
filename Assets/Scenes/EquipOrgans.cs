@@ -4,6 +4,7 @@ public class EquipOrgans : MonoBehaviour
 {
     public GameObject Organ;
     public Transform OrganParent;
+    
 
     void Start()
     {
@@ -16,6 +17,7 @@ public class EquipOrgans : MonoBehaviour
         {
             Drop();
         }
+        
     }
 
     void Drop()
@@ -28,7 +30,7 @@ public class EquipOrgans : MonoBehaviour
         Organ.GetComponent<MeshCollider>().enabled = true;
 
         // Set a default position and rotation
-        Organ.transform.position = new Vector3(0f, 0f, 0f); // Replace with desired default position
+        Organ.transform.position = new Vector3(0f, 2f, 0f); // Replace with desired default position
         Organ.transform.rotation = Quaternion.identity; // Default rotation
     }
 
@@ -49,6 +51,7 @@ public class EquipOrgans : MonoBehaviour
 
         // Ensure the MeshRenderer is enabled
         MeshRenderer organRenderer = Organ.GetComponent<MeshRenderer>();
+        
         if (organRenderer != null)
         {
             organRenderer.enabled = true;
