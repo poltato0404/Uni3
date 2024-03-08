@@ -590,12 +590,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The heart, nestled between the lungs and protected by the rib cage, serves
-    as a powerful pump ensuring blood flow throughout the body. This systemic flow
-    delivers oxygen and nutrients to cells and removes waste. Additionally, the heart
-    manages pulmonary flow, sending blood to the lungs for oxygenation before distributing
-    it to the body. Lastly, the heart's own cells are nourished by coronary blood
-    vessels, part of the systemic flow.
+  m_text: 'Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in
+    laying out print, graphic or web designs. The passage is attributed to an unknown
+    typesetter in the 15th century who is thought to have scrambled parts of Cicero''s
+    De Finibus Bonorum et Malorum for use in a type specimen book. Lorem ipsum, or
+    lipsum as it is sometimes known, is dummy text used in laying out print, graphic
+    or web designs. '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1536,6 +1536,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1276675716}
   - component: {fileID: 1276675715}
+  - component: {fileID: 1276675717}
   m_Layer: 5
   m_Name: plantCell_LODx
   m_TagString: Untagged
@@ -1593,8 +1594,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1276675714}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 640, y: 481, z: -68}
+  m_LocalRotation: {x: -0, y: -0.9078685, z: -0, w: -0.41925508}
+  m_LocalPosition: {x: 703, y: 454, z: -235}
   m_LocalScale: {x: 241.05026, y: 241.05026, z: 241.05026}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1613,7 +1614,21 @@ Transform:
   - {fileID: 607404920}
   - {fileID: 9047963}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -229.575, z: 0}
+--- !u!114 &1276675717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276675714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5684a46e4d7de141b025d9ff307cd06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 7
+  item: {fileID: 0}
 --- !u!1 &1278585240
 GameObject:
   m_ObjectHideFlags: 0
