@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -55,6 +56,9 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         {
             // Handle correct match logic
             game.CorrectMatch(this);
+
+            // Set the position of the draggable item to the target position
+            rectTransform.anchoredPosition = CorrectTarget.GetComponent<RectTransform>().anchoredPosition;
         }
         else
         {

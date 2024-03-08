@@ -38,7 +38,7 @@ public class DragAndDropGame : MonoBehaviour
     {
         // Handle correct match logic here
         // For example, you might disable the draggable item or play a sound
-        matchedItem.gameObject.SetActive(false);
+        // matchedItem.gameObject.SetActive(false);
 
         // Add the matched item to the list of correct matches
         correctMatches.Add(matchedItem);
