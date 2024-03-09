@@ -22,4 +22,14 @@ public class LevelManager : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
     }
+
+    public void changeToDrag(){
+        sceneName = "Drag&DropMiniGame";
+    }
+     public void changeToMem(){
+        sceneName = "MemoryGame";
+    }
+     public void changeToSlid(){
+        sceneName = "slide";
+    }
 }
