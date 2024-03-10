@@ -21,7 +21,6 @@ public class GameControl : MonoBehaviour
         for (int i = 0; i < 7; i++)
         {
             shuffleNum = rnd.Next(0, (faceIndexes.Count));
-            // Set card face index
             var temp = Instantiate(token,
                 new Vector3(xPosition, yPosition, 0),
                 Quaternion.identity);
@@ -51,14 +50,12 @@ public class GameControl : MonoBehaviour
     {
         if (visibleFaces[0] == -1)
         {
-
             visibleFaces[0] = index;
         }
         else if (visibleFaces[1] == -2)
         {
             visibleFaces[1] = index;
         }
-
     }
 
     public void RemoveVisibleFace(int index)
