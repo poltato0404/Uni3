@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 
@@ -20,7 +21,10 @@ public class mapGeneration : MonoBehaviour
     private int[] fromLeftValues;
     public List<int> pathX; 
     public List<int> pathZ;
+    public List<int> toPassX; 
+    public List<int> toPassZ;
     public List<int> slotInMaze;
+    public List<int> toPassSlot;
     private int itlog,gridX,gridZ;
     private List<int> pathDirection;
     private List<int> possibleDirection;
@@ -51,8 +55,11 @@ public class mapGeneration : MonoBehaviour
     private int origMap;
     private List<GameObject> instantiatedClones; 
     public scatter scatter1,scatter2,scatter3;
+    private Spawner parentScript; 
+    bool clearToPass = false;
+    
     //1=up,2=right,3=down,4=left
-    void Start()
+    void Awake()
     {       
         //initialize lists and arrays
         
@@ -61,6 +68,9 @@ public class mapGeneration : MonoBehaviour
         slotInMaze = new List<int>();
         newPathX = new List<int>();
         newPathZ = new List<int>();
+        toPassX= new List<int>();
+        toPassZ = new List<int>();
+        toPassSlot = new List<int>();
         RemainingX = new List<int>();
         RemainingZ = new List<int>();
         nextDirection = new List<int>();
@@ -74,16 +84,76 @@ public class mapGeneration : MonoBehaviour
         removed = 0;
     
         StartCoroutine(generateMaze());
+         removeOuterslots();
+        Debug.Log("remaning"+RemainingX.Count);
+        parentScript = GetComponentInParent<Spawner>();
+        checkRemains();
+        // Check if the parentScript is found
+        if (parentScript != null)
+        {
+            // Access methods or variables from the parent script
+            parentScript.Check(RemainingX.Count);
+        }
+        passToParent();
         
-        scatter1.startrelocation();
-        scatter2.startrelocation();
-        scatter3.startrelocation();
-
-
-
 
         
     }
+public void passToParent(){
+    GameObject parentObject = transform.parent.gameObject;
+
+        // Check if the parent has the script you want to pass the list to
+        Spawner parentScript = parentObject.GetComponent<Spawner>();
+        if (parentScript != null)
+        {
+            // Pass the list to the parent script
+            parentScript.ReceiveListFromChild(pathX,pathZ,slotInMaze);
+        }
+}
+void checkRemains(){
+    Transform parentTransform = transform;
+    int childCount = parentTransform.childCount;
+    if (childCount < 49 )
+    {
+        parentScript.delete();
+    }
+        
+        
+}
+void removeDuplicates()
+{
+    for (int i = pathX.Count - 1; i >= 0; i--)
+    {
+        clearToPass = true; // Reset clearToPass for each iteration
+
+        for (int j = 0; j < toPassX.Count; j++)
+        {
+            if (pathZ[i] == toPassZ[j] && pathX[i] == toPassX[j])
+            {
+                clearToPass = false;
+                break; // Exit the inner loop once a match is found
+            }
+        }
+
+        if (clearToPass)
+        {
+            toPassX.Add(pathX[i]);
+            toPassZ.Add(pathZ[i]);
+            toPassSlot.Add(slotInMaze[i]);
+        }
+    }
+}
+    void removeOuterslots(){
+    for (int i = pathX.Count - 1; i >= 0; i--){
+        if (!notOutOfBounds(pathX[i], pathZ[i])){
+            destroySlot(pathX[i], pathZ[i]);
+            pathX.RemoveAt(i);
+            pathZ.RemoveAt(i);
+            slotInMaze.RemoveAt(i);
+        }
+    }
+}
+
 
     void fillSecond(){
         for(int i = 0; i < RemainingX.Count; i++){
