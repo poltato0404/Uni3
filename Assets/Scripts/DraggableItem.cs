@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+// DraggableItem.cs
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -10,8 +10,8 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     private DragAndDropGame game;
 
     // Additional properties specific to your draggable item
-    public bool IsOnCorrectTarget { get; private set; }
     public GameObject CorrectTarget { get; private set; }
+    public bool IsMatched { get; private set; }
 
     private Vector2 originalPosition;
 
@@ -21,7 +21,6 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         canvasGroup = GetComponent<CanvasGroup>();
         canvas = GetComponentInParent<Canvas>();
         originalPosition = rectTransform.anchoredPosition;
-        IsOnCorrectTarget = false;
     }
 
     public void Initialize(DragAndDropGame gameReference, GameObject correctTarget)
@@ -52,7 +51,9 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void SnapToTarget()
     {
-        if (IsMatched())
+        UpdateMatchStatus(); // Update match status before snapping to target
+
+        if (IsMatched)
         {
             // Handle correct match logic
             game.CorrectMatch(this);
@@ -67,20 +68,18 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         }
     }
 
-    private bool IsMatched()
+    private void UpdateMatchStatus()
     {
         // Check if CorrectTarget is null before accessing its RectTransform
         if (CorrectTarget != null)
         {
-            // Add logic to determine if this item is on the correct target
-            IsOnCorrectTarget = (rectTransform.anchoredPosition - CorrectTarget.GetComponent<RectTransform>().anchoredPosition).magnitude < 50f;
-
-            return IsOnCorrectTarget;
+            // Calculate if the distance between this item and the target is within a threshold
+            IsMatched = (rectTransform.anchoredPosition - CorrectTarget.GetComponent<RectTransform>().anchoredPosition).magnitude < 50f;
         }
         else
         {
             // Handle the case where CorrectTarget is null (optional)
-            return false;
+            IsMatched = false;
         }
     }
 }

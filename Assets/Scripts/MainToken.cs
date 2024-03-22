@@ -1,11 +1,11 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class MainToken : MonoBehaviour
 {
-    SpriteRenderer spriteRenderer;
     GameObject gameControl;
-
+    SpriteRenderer spriteRenderer;
     public Sprite[] faces;
     public Sprite back;
     public int faceIndex;
@@ -21,32 +21,18 @@ public class MainToken : MonoBehaviour
                 {
                     spriteRenderer.sprite = faces[faceIndex];
                     gameControl.GetComponent<GameControl>().AddVisibleFace(faceIndex);
-                    matched = gameControl.GetComponent<GameControl>().CheckMatch(faceIndex);
-
-                    if (!matched)
-                    {
-                        StartCoroutine(FlipBackAfterDelay());
-                    }
+                    matched = gameControl.GetComponent<GameControl>().CheckMatch();
                 }
             }
             else
             {
                 spriteRenderer.sprite = back;
-                gameControl.GetComponent<GameControl>().RemoveVisibleFace(this.faceIndex);
+                gameControl.GetComponent<GameControl>().RemoveVisibleFace(faceIndex);
             }
         }
     }
 
-    private IEnumerator FlipBackAfterDelay()
-    {
-        yield return new WaitForSeconds(1.0f); // Adjust the delay duration as needed
-
-        // Flip the card back to the original state
-        spriteRenderer.sprite = back;
-        gameControl.GetComponent<GameControl>().RemoveVisibleFace(this.faceIndex);
-    }
-
-    void Awake()
+    private void Awake()
     {
         gameControl = GameObject.Find("GameControl");
         spriteRenderer = GetComponent<SpriteRenderer>();

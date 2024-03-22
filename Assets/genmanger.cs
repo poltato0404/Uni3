@@ -2,36 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.IO;
 
 public class Spawner : MonoBehaviour
 {
     public GameObject objectToInstantiate; // GameObject to instantiate
     private Vector3 pos = new Vector3(0f, 0f, 0f); // Position to instantiate objects
-    public SceneData sceneData;
-    public List<int> toPassX; 
-    public List<int> toPassZ;
-    public List<int> toPassSlot; 
 
+    public List<int> toPassX;
+    public List<int> toPassZ;
+    public List<int> toPassSlot;
+    public SaveLoadJSON json;
 
     void Start()
     {
-        toPassX= new List<int>();
+
+        toPassX = new List<int>();
         toPassZ = new List<int>();
         toPassSlot = new List<int>();
         Instantiate(objectToInstantiate, pos, Quaternion.identity, transform);
-        StartCoroutine(WaitAndDoSomething());
+        //StartCoroutine(WaitAndDoSomething());
+
     }
     IEnumerator WaitAndDoSomething()
     {
-        yield return new WaitForSeconds(5); // Wait for 5 seconds
-        passTolevel1();
+        yield return new WaitForSeconds(2); // Wait for 5 seconds
+
         SceneManager.LoadScene("level1");
-        Debug.Log("Waited for 5 seconds!");
+
     }
     void passTolevel1()
-{
-    if (sceneData.list1.Count < 49)
     {
+
         // Find all GameObjects with the tag "gen"
         GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag("gen");
 
@@ -52,8 +54,8 @@ public class Spawner : MonoBehaviour
                 Debug.LogError("Child script not found on child GameObject.");
             }
         }
+
     }
-}
 
     public void Check(int i)
     {
@@ -68,23 +70,29 @@ public class Spawner : MonoBehaviour
             Instantiate(objectToInstantiate, pos, Quaternion.identity, transform);
         }
     }
-    public void delete(){
+    public void delete()
+    {
         GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag("gen");
         Instantiate(objectToInstantiate, pos, Quaternion.identity, transform);
     }
 
-public void ReceiveListFromChild(List<int> xList,List<int> zList,List<int> slotList )
-    {
-    sceneData.list1.Clear();
-    sceneData.list2.Clear();
-    sceneData.list3.Clear();
-    for (int i = 0; i < xList.Count; i++)
+    public void ReceiveListFromChild(List<int> xList, List<int> zList, List<int> slotList)
     {
 
-        sceneData.list1.Add(xList[i]);      // Add an integer to list1
-        sceneData.list2.Add(zList[i]);      // Add an integer to list2
-        sceneData.list3.Add(slotList[i]); // Add an integer to list3
-    }
+
+        PlayerData player = new PlayerData();
+
+        player.xPos.Clear();
+        player.zPos.Clear();
+        player.slot.Clear();
+        for (int i = 0; i < xList.Count; i++)
+        {
+
+            player.xPos.Add(xList[i]);      // Add an integer to list1
+            player.zPos.Add(zList[i]);      // Add an integer to list2
+            player.slot.Add(slotList[i]); // Add an integer to list3
+        }
+        json.SaveGame();
     }
 
 

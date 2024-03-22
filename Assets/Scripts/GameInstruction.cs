@@ -8,36 +8,71 @@ public class GameInstruction : MonoBehaviour
     public TextMeshProUGUI instructionsText;
     public Button startButton;
 
-    // Configurable parameters for different games
-    public string gameInstructions;
-    public string startMessage;
+    public TMP_Text scoreText; // Reference to TextMeshPro Text element for displaying score
+    public TMP_Text timerText; // Reference to TextMeshPro Text element for displaying timer
+
+    private bool isGameActive = false;
+    private int score = 0;
+    private float timer = 25f;
 
     void Start()
     {
-        // Show instructions overlay when the game starts
         ShowInstructionsOverlay();
-
-        // Attach the button click event listener
         startButton.onClick.AddListener(StartGame);
     }
 
     void ShowInstructionsOverlay()
     {
-        // Enable the instructions panel
         instructionsPanel.SetActive(true);
-
-        // Set and display the instructions text
-        instructionsText.text = gameInstructions;
-
-        // You can customize the appearance and positioning of the panel as needed
+        instructionsText.text = GetGameInstructions();
     }
 
     void StartGame()
     {
-        // Disable the instructions panel
         instructionsPanel.SetActive(false);
+        isGameActive = true;
+    }
 
-        // Add your logic to start the actual game here
-        Debug.Log(startMessage);
+    void Update()
+    {
+        if (isGameActive)
+        {
+            if (timer > 0f)
+            {
+                timer -= Time.deltaTime;
+                UpdateTimerUI();
+            }
+            else
+            {
+                EndGame(); // End the game when the timer reaches 0
+            }
+        }
+    }
+
+    void UpdateTimerUI()
+    {
+        timerText.text = "Time: " + Mathf.Ceil(timer).ToString();
+    }
+
+    void UpdateScoreUI()
+    {
+        scoreText.text = "Score: " + score.ToString();
+    }
+
+    public void AddScore(int points)
+    {
+        score += points;
+        UpdateScoreUI(); // Update the score UI when score changes
+    }
+
+    public void EndGame()
+    {
+        isGameActive = false;
+        // Add any logic to end the game here
+    }
+
+    protected virtual string GetGameInstructions()
+    {
+        return "Game instructions";
     }
 }

@@ -6,34 +6,45 @@ public class GameControl : MonoBehaviour
 {
     GameObject token;
     List<int> faceIndexes = new List<int> { 0, 1, 2, 3, 0, 1, 2, 3 };
-
     public static System.Random rnd = new System.Random();
     public int shuffleNum = 0;
     int[] visibleFaces = { -1, -2 };
-    int clicks = 0;
+    public float timer = 60.0f;
+    public int score = 0;
 
     void Start()
     {
-        int originalCnt = faceIndexes.Count;
-        float yPosition = 1.6f;
+        int originalLength = faceIndexes.Count;
+        float yPosition = 2.3f;
         float xPosition = -2.2f;
-
+        StartCoroutine(Countdown());
         for (int i = 0; i < 7; i++)
         {
             shuffleNum = rnd.Next(0, (faceIndexes.Count));
-            var temp = Instantiate(token,
-                new Vector3(xPosition, yPosition, 0),
+            var temp = Instantiate(token, new Vector3(
+                xPosition, yPosition, 0),
                 Quaternion.identity);
             temp.GetComponent<MainToken>().faceIndex = faceIndexes[shuffleNum];
             faceIndexes.Remove(faceIndexes[shuffleNum]);
             xPosition = xPosition + 4;
-            if (i == (originalCnt / 2 - 2))
+            if (i == (originalLength / 2 - 2))
             {
-                yPosition = -1.6f;
+                yPosition = -2.3f;
                 xPosition = -6.2f;
             }
         }
         token.GetComponent<MainToken>().faceIndex = faceIndexes[0];
+    }
+
+    IEnumerator Countdown()
+    {
+        while (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            yield return null;
+        }
+        // Handle time's up scenario
+        Debug.Log("Time's up!");
     }
 
     public bool TwoCardsUp()
@@ -42,6 +53,8 @@ public class GameControl : MonoBehaviour
         if (visibleFaces[0] >= 0 && visibleFaces[1] >= 0)
         {
             cardsUp = true;
+            score++;
+            Debug.Log("Score: " + score);
         }
         return cardsUp;
     }
@@ -60,17 +73,10 @@ public class GameControl : MonoBehaviour
 
     public void RemoveVisibleFace(int index)
     {
-        if (visibleFaces[0] == index)
-        {
-            visibleFaces[0] = -1;
-        }
-        else if (visibleFaces[1] == index)
-        {
-            visibleFaces[1] = -2;
-        }
+        // Implement removal logic here
     }
 
-    public bool CheckMatch(int index)
+    public bool CheckMatch()
     {
         bool success = false;
         if (visibleFaces[0] == visibleFaces[1])
@@ -80,10 +86,5 @@ public class GameControl : MonoBehaviour
             success = true;
         }
         return success;
-    }
-
-    void Awake()
-    {
-        token = GameObject.Find("Token");
     }
 }
