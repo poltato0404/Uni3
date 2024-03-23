@@ -11,10 +11,6 @@ public class playerControScript : MonoBehaviour
     private Transform cameraMain;
     public bool isWalking = false;
 
-    public int maxHealth = 100;
-    public int currentHealth;
-    public HealthBar healthBar;
-
     [SerializeField] private float playerSpeed = 2.0f;
     [SerializeField] private float jumpHeight = 1.0f;
     [SerializeField] private float gravityValue = -9.81f;
@@ -40,8 +36,6 @@ public class playerControScript : MonoBehaviour
     private void Start()
     {
         cameraMain = Camera.main.transform;
-        currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
     }
 
     void Update()
@@ -75,28 +69,5 @@ public class playerControScript : MonoBehaviour
 
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        // Check if the colliding object is an enemy
-        if (collision.gameObject.CompareTag("Guard"))
-        {
-            TakeDamage(20);
-        }
-    }
-
-    void TakeDamage(int damage)
-    {
-        currentHealth -= damage;
-        healthBar.SetHealth(currentHealth);
-
-        // Check if the player's health is less than or equal to 0
-        if (currentHealth <= 0)
-        {
-            // You may want to handle player death here (e.g., respawn or game over).
-            // For simplicity, let's just deactivate the player GameObject in this example.
-            gameObject.SetActive(false);
-        }
     }
 }
