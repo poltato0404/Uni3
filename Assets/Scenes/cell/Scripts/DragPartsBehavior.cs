@@ -6,18 +6,17 @@ public class DragCellBehavior : MonoBehaviour
     public string destinationTag = "DropZone";
     public CellParts parts;
 
-    private Transform startPosition; // Initial position of the cell
+    private Vector3 startPosition; // Initial position of the cell
 
     private void Start()
     {
-        startPosition = transform; // Assign the initial position
+        startPosition = transform.position; // Assign the initial position
     }
 
     public void OnMouseDown()
     {
         offset = transform.position - MouseWorldPosition();
         transform.GetComponent<Collider>().enabled = false;
-        startPosition = transform; // Reassign the start position
     }
 
     public void OnMouseDrag()
@@ -45,7 +44,7 @@ public class DragCellBehavior : MonoBehaviour
                 else
                 {
                     // Incorrect match - reset to start position and decrement score
-                    transform.position = startPosition.position;
+                    transform.position = startPosition;
                     transform.GetComponent<Collider>().enabled = true;
                     PartsObjectives.instance.DecrementScore(15);
                 }
