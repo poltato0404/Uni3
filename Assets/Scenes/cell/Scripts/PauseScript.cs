@@ -6,11 +6,13 @@ public class PauseScript : MonoBehaviour
 {
     public GameObject pausePanel;
     public GameObject pausePanelBlock;
+    [SerializeField] private GameObject settingsPanel;
 
     void Awake()
     {
         pausePanelBlock.SetActive(false);
         pausePanel.SetActive(false);
+        settingsPanel.SetActive(false);
     }
 
     public void PauseClick()
@@ -25,7 +27,13 @@ public class PauseScript : MonoBehaviour
 
     public void SettingsClick()
     {
-        SceneManager.LoadScene("SettingsScene");
+        settingsPanel.SetActive(true);
+        pausePanel.SetActive(false);
+    }
+    public void SettingsExitClick()
+    {
+        settingsPanel.SetActive(false);
+        pausePanel.SetActive(true);
     }
 
     public void RestartClick()
@@ -35,13 +43,24 @@ public class PauseScript : MonoBehaviour
 
     public void QuitClick()
     {
-        SceneManager.LoadScene("MainMenuScene");
+        SceneManager.LoadScene("main");
     }
 
     private void TogglePause(bool isPaused)
     {
+        
+        if(isPaused)
+        {
+            pausePanelBlock.SetActive(true);
+            pausePanel.SetActive(true);
+        }
+
+        if(false == isPaused)
+        {
+            
+            pausePanelBlock.SetActive(false);
+            pausePanel.SetActive(false);
+        }
         Time.timeScale = isPaused ? 0f : 1f; // Pause or resume time
-        pausePanelBlock.SetActive(isPaused);
-        pausePanel.SetActive(isPaused);
     }
 }
