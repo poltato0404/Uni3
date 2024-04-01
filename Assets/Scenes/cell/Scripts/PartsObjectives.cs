@@ -8,6 +8,7 @@ public class PartsObjectives : MonoBehaviour
     public GameObject gameWinLose;
 
     public int correctMatches = 0;
+    
 
     public int score;
     public TextMeshProUGUI scoreText;
@@ -101,4 +102,6 @@ public class PartsObjectives : MonoBehaviour
         if (score < 0)
             score = 0; // Ensure score doesn't go negative
     }
+
+    
 }
