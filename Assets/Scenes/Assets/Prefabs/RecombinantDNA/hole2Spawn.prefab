@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3110155535343135678
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3110155535343135679}
+  - component: {fileID: 3110155535343135616}
+  m_Layer: 0
+  m_Name: hole2Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3110155535343135679
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3110155535343135678}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.32, y: -2, z: 1.04}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3110155535343135616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3110155535343135678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 539eb1f8b11d9ae4e850f9ef165313f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPoint: {fileID: 3110155535343135679}
+  obstacles:
+  - {fileID: 270196364275790774, guid: 0c0d8877bd46f0841845d0717ee60eaa, type: 3}
+  - {fileID: 8754090553610461740, guid: 7b199244480a77b41b96391205b52381, type: 3}
+  - {fileID: 1663630456758415818, guid: 6485f257d61cd8d40993a2c11c0b4304, type: 3}
+  - {fileID: 9182127404559932469, guid: bf3895f37103a114eb7ea3a1b9e2e17b, type: 3}
+  instantiatedObject: {fileID: 0}
+  maxYPosition: 0
+  minYPosition: -2
+  spawnDelay: 2
+  moveSpeed: 2
+  hoverTime: 2
+  spawnChance: 0.4
+  lookPoint: {fileID: 0}
