@@ -12,11 +12,11 @@ public class playerControScript : MonoBehaviour, IDataPersistence
     private bool groundedPlayer;
     private Transform cameraMain;
     public bool isWalking = false;
-
+   
     [SerializeField] private float playerSpeed;
     [SerializeField] private float jumpHeight = 1.0f;
     [SerializeField] private float gravityValue = -9.81f;
-    AudioSource footsteps;
+    
 
     public Button flashButton;
     bool flashStatus;
@@ -31,7 +31,6 @@ public class playerControScript : MonoBehaviour, IDataPersistence
         flashStatus = false;
         playerSpeed = 3f;
         flashLight.GetComponent<Light>().intensity = 0;
-        footsteps = GetComponent<AudioSource>();
         playerControls = new PlayerController();
         controller = GetComponent<CharacterController>();
     }
@@ -113,15 +112,16 @@ public class playerControScript : MonoBehaviour, IDataPersistence
 
         if (move != Vector3.zero)
         {
-            footsteps.Play();
             isWalking = true;
             gameObject.transform.forward = move;
         }
         else
         {
-            footsteps.Stop();
+           
             isWalking = false;
         }
+        
+        
         
 
         // Changes the height position of the player..
