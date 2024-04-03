@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DragCellBehavior : MonoBehaviour
+public class DragPartsBehavior : MonoBehaviour
 {
     public Vector3 offset;
     public string destinationTag = "DropZone";
@@ -13,7 +13,7 @@ public class DragCellBehavior : MonoBehaviour
         startPosition = transform.position; // Assign the initial position
     }
 
-    public void OnMouseDown()
+    public void OnPartsMouseDown() // Renamed method
     {
         offset = transform.position - MouseWorldPosition();
         transform.GetComponent<Collider>().enabled = false;

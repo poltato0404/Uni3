@@ -38,7 +38,7 @@ public class PauseScript : MonoBehaviour
 
     public void RestartClick()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("Loadlevel1");
     }
 
     public void QuitClick()
@@ -48,16 +48,16 @@ public class PauseScript : MonoBehaviour
 
     private void TogglePause(bool isPaused)
     {
-        
-        if(isPaused)
+
+        if (isPaused)
         {
             pausePanelBlock.SetActive(true);
             pausePanel.SetActive(true);
         }
 
-        if(false == isPaused)
+        if (false == isPaused)
         {
-            
+
             pausePanelBlock.SetActive(false);
             pausePanel.SetActive(false);
         }
