@@ -29,6 +29,7 @@ public class playerControScript : MonoBehaviour, IDataPersistence
     private void Awake()
     {
         flashStatus = false;
+        flashButton.image.sprite = flashOffSprite;
         playerSpeed = 3f;
         flashLight.GetComponent<Light>().intensity = 0;
         playerControls = new PlayerController();
