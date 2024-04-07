@@ -12,11 +12,11 @@ public class playerControScript : MonoBehaviour, IDataPersistence
     private bool groundedPlayer;
     private Transform cameraMain;
     public bool isWalking = false;
-   
-    [SerializeField] private float playerSpeed;
+
+    [SerializeField] public float playerSpeed;
     [SerializeField] private float jumpHeight = 1.0f;
     [SerializeField] private float gravityValue = -9.81f;
-    
+
 
     public Button flashButton;
     bool flashStatus;
@@ -84,9 +84,13 @@ public class playerControScript : MonoBehaviour, IDataPersistence
 
     public void SaveData(ref GameData data)
     {
-        try{Vector3 playerV3 = transform.position;
-        data.playerPos = playerV3;}
-        catch{
+        try
+        {
+            Vector3 playerV3 = transform.position;
+            data.playerPos = playerV3;
+        }
+        catch
+        {
             Debug.Log("Cant save");
         }
     }
@@ -117,12 +121,12 @@ public class playerControScript : MonoBehaviour, IDataPersistence
         }
         else
         {
-           
+
             isWalking = false;
         }
-        
-        
-        
+
+
+
 
         // Changes the height position of the player..
         if (playerControls.Player_actionmap.flash.triggered && groundedPlayer)
