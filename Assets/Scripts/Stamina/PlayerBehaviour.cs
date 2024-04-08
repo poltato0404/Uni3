@@ -1,14 +1,17 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
     [SerializeField] StaminaBar _staminaBar;
     [SerializeField] playerControScript _playerContro;
+    [SerializeField] GameObject sprintButton; // Reference to the sprint button GameObject
 
     float _playerOriginalSpeed;
     float _playerSprintSpeed;
+    bool isSprinting = false;
+    bool isRegenerationDelayed = false; // Flag to indicate if regeneration is delayed
+    float regenerationDelayDuration = 2f; // Duration of delay in seconds
 
     void Start()
     {
@@ -18,31 +21,48 @@ public class PlayerBehaviour : MonoBehaviour
 
     void Update()
     {
-        //Stamina
-        if (Input.GetKey(KeyCode.LeftShift))
+        // If the player is sprinting, use stamina and set sprinting speed
+        if (isSprinting)
         {
             if (StaminaGameManager.staminaGameManager._playertStamina.Stamina > 0)
             {
                 PlayerUseStamina(60f);
-                if (_playerContro.playerSpeed != _playerSprintSpeed)
-                {
-                    _playerContro.playerSpeed = _playerSprintSpeed;
-                }
+                _playerContro.playerSpeed = _playerSprintSpeed;
             }
             else
             {
-                _playerContro.playerSpeed = _playerOriginalSpeed;
-
+                StopSprinting(); // Stop sprinting if stamina runs out
+                _playerContro.playerSpeed = _playerOriginalSpeed; // Reset speed to original
+                isRegenerationDelayed = true; // Set flag to delay regeneration
+                StartCoroutine(DelayedRegeneration()); // Start coroutine for delayed regeneration
             }
         }
         else
         {
-            PlayerRegenStamina();
-            if (_playerContro.playerSpeed != _playerOriginalSpeed)
+            if (!isRegenerationDelayed)
             {
-                _playerContro.playerSpeed = _playerOriginalSpeed;
+                PlayerRegenStamina(); // Regular stamina regeneration
             }
         }
+    }
+
+    IEnumerator DelayedRegeneration()
+    {
+        yield return new WaitForSeconds(regenerationDelayDuration);
+        isRegenerationDelayed = false; // Reset the flag
+        PlayerRegenStamina(); // Resume stamina regeneration
+    }
+
+    // Method called when the player presses the sprint button
+    public void StartSprinting()
+    {
+        isSprinting = true;
+    }
+
+    // Method called when the player releases the sprint button or when stamina runs out
+    public void StopSprinting()
+    {
+        isSprinting = false;
     }
 
     private void PlayerUseStamina(float staminaAmount)
