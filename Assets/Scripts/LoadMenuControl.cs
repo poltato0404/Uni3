@@ -1,25 +1,32 @@
-using GameEssentials.GameManager;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 using UnityEngine.SceneManagement;
-// public Slider progressBar;
+using UnityEngine.UI;
 
-public class LoadMenuControl : MonoBehaviour
+public class NextSceneLoader : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public Slider progressBar;
+    public float delayBeforeLoading = 1f; // Delay in seconds
+
     void Start()
     {
-        StartCoroutine(LoadAndSwitchScenes(GameManager.Instance.sceneToLoad));
-        // Prepare
+        StartCoroutine(LoadNextScene());
     }
 
-    IEnumerator LoadAndSwitchScenes(int sceneToLoad)
+    IEnumerator LoadNextScene()
     {
-        yield return new WaitForSeconds(Random.Range(1, 3));
+        yield return new WaitForSeconds(delayBeforeLoading);
 
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneToLoad);
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextSceneIndex = (currentSceneIndex + 1) % SceneManager.sceneCountInBuildSettings;
 
-        // sceneLoaded = true;
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(nextSceneIndex);
+
+        while (!asyncLoad.isDone)
+        {
+            float progress = Mathf.Clamp01(asyncLoad.progress / 0.9f);
+            progressBar.value = progress;
+            yield return null;
+        }
     }
 }
