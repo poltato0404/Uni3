@@ -137,8 +137,8 @@ public class CardHolder : MonoBehaviour
     IEnumerator CheckMatch(CardBehaviour card1, CardBehaviour card2)
     {
         yield return new WaitForSeconds(0.5f);
-
-        if (card1.matchID == card2.matchID)
+        
+        if (card1.matchID == card2.matchID && card1.cardNumber != card2.cardNumber)
         {
             firstCard = null;
             secondCard = null;
@@ -161,7 +161,12 @@ public class CardHolder : MonoBehaviour
                 gameWinLose.SetActive(true);
             }
         }
-        else
+        if (card1.cardNumber == card2.cardNumber)
+            {
+            firstCard = null;
+            secondCard = null;}
+
+        if (card1.matchID != card2.matchID)
         {
             if (score <= 0) score = 0;
             else score -= 15;

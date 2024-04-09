@@ -7,6 +7,7 @@ public class CardBehaviour : MonoBehaviour
     [SerializeField] private float lerpSpeed;
 
     public int matchID;
+    public int cardNumber;
 
     public void OnMouseDown()
     {
