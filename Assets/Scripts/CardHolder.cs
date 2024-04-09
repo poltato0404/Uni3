@@ -125,7 +125,7 @@ public class CardHolder : MonoBehaviour
         {
             secondCard = card;
             StartCoroutine(CheckMatch(firstCard, secondCard));
-        }     
+        }
     }
 
     public bool CheckMatching()
@@ -137,45 +137,48 @@ public class CardHolder : MonoBehaviour
     IEnumerator CheckMatch(CardBehaviour card1, CardBehaviour card2)
     {
         yield return new WaitForSeconds(0.5f);
-        
-        if (card1.matchID == card2.matchID && card1.cardNumber != card2.cardNumber)
+
+        if (card1 != null && card2 != null)
         {
-            firstCard = null;
-            secondCard = null;
-
-            yield return new WaitForSeconds(0.3f);
-
-            Destroy(card1.gameObject);
-            Destroy(card2.gameObject);
-
-            score += 20;
-
-            matchesMade += 1;
-
-            if(matchesMade >= 4)
+            if (card1.matchID == card2.matchID && card1.cardNumber != card2.cardNumber)
             {
-                GameManager.Instance.isLevelComplete[levelId] = true;
+                firstCard = null;
+                secondCard = null;
 
-                gameWinLose.gameObject.GetComponent<GameWinLose>().score = score;
+                yield return new WaitForSeconds(0.3f);
 
-                gameWinLose.SetActive(true);
+                Destroy(card1.gameObject);
+                Destroy(card2.gameObject);
+
+                score += 250;
+
+                matchesMade += 1;
+
+                if (matchesMade >= 4)
+                {
+                    GameManager.Instance.isLevelComplete[levelId] = true;
+
+                    gameWinLose.gameObject.GetComponent<GameWinLose>().score = score;
+
+                    gameWinLose.SetActive(true);
+                }
+            }
+            else if (card1.matchID != card2.matchID)
+            {
+                if (score <= 0) score = 0;
+                else score -= 50;
+
+                card1.FlipBack();
+                card2.FlipBack();
+                firstCard = null;
+                secondCard = null;
             }
         }
-        if (card1.cardNumber == card2.cardNumber)
-            {
-            firstCard = null;
-            secondCard = null;}
-
-        if (card1.matchID != card2.matchID)
+        else
         {
-            if (score <= 0) score = 0;
-            else score -= 15;
-
-            card1.FlipBack();
-            card2.FlipBack();
-            firstCard = null;
-            secondCard = null;
-        }   
+            // Handle the case when one or both cards are already destroyed
+            Debug.LogWarning("One or both cards have been destroyed.");
+        }
     }
 
     private void Update()

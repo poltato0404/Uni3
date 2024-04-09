@@ -20,9 +20,8 @@ public class CardBehaviour : MonoBehaviour
 
     public void FlipBack()
     {
-        StartCoroutine(FlipObject());
+        StartCoroutine(FlipBackToInitial());
     }
-
 
     IEnumerator FlipObject()
     {
@@ -31,10 +30,14 @@ public class CardBehaviour : MonoBehaviour
         Vector3 bobUp = new Vector3(transform.position.x, 2, transform.position.z);
         Vector3 bobDown = new Vector3(transform.position.x, 1, transform.position.z);
 
-        while(timeElapsed < 1f)
+        Quaternion startRotation = transform.rotation;
+        Quaternion targetRotation = Quaternion.Euler(0, 0, 180); // or Quaternion.Euler(0, 0, 0) depending on your initial state
+
+        while (timeElapsed < 1f)
         {
             timeElapsed += Time.deltaTime * lerpSpeed;
             transform.position = Vector3.Lerp(bobDown, bobUp, timeElapsed);
+            transform.rotation = Quaternion.Lerp(startRotation, targetRotation, timeElapsed);
             yield return null;
         }
 
@@ -42,21 +45,35 @@ public class CardBehaviour : MonoBehaviour
 
         timeElapsed = 0f;
 
+        // Reverse the rotation targets
+        targetRotation = Quaternion.Euler(0, 0, 0); // or Quaternion.Euler(0, 0, 180) depending on your initial state
+
         while (timeElapsed < 1f)
         {
             timeElapsed += Time.deltaTime * lerpSpeed;
             transform.position = Vector3.Lerp(bobUp, bobDown, timeElapsed);
+            transform.rotation = Quaternion.Lerp(startRotation, targetRotation, timeElapsed);
             yield return null;
         }
 
+        // Ensure the rotation is exactly the target rotation
+        transform.rotation = targetRotation;
+    }
 
-        if (transform.rotation == Quaternion.Euler(0, 0, 180))
+    private IEnumerator FlipBackToInitial()
+    {
+        float timeElapsed = 0f;
+        Quaternion startRotation = transform.rotation;
+        Quaternion targetRotation = Quaternion.Euler(0, 0, 180); // or Quaternion.Euler(0, 0, 0) depending on your initial state
+
+        while (timeElapsed < 1f)
         {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+            timeElapsed += Time.deltaTime * 1.5f; // Slower lerpSpeed
+            transform.rotation = Quaternion.Lerp(startRotation, targetRotation, timeElapsed);
+            yield return null;
         }
-        else
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 180);
-        }
+
+        // Ensure the rotation is exactly the target rotation
+        transform.rotation = targetRotation;
     }
 }
