@@ -10,6 +10,8 @@ public class mapLoader : MonoBehaviour, IDataPersistence
     List<GameObject> slotList;
     [SerializeField]GameObject instantiatedPrefab;
     NavMeshSurface navMeshSurface;
+    [SerializeField]GameObject guardAgent;
+    NavMeshAgent navMeshAgent;
     void Awake()
     {
         slotList = new List<GameObject> { slot1, slot2, slot3, slot4, slot5, slot6, slot7, slot8, slot9, slot10, slot11 };
@@ -27,6 +29,8 @@ public class mapLoader : MonoBehaviour, IDataPersistence
         }
         navMeshSurface = instantiatedPrefab.GetComponent<NavMeshSurface>();
         navMeshSurface.BuildNavMesh();
+        navMeshAgent= guardAgent.GetComponent<NavMeshAgent>();
+        navMeshAgent.enabled = true;
     }
     GameObject slotReference(int slotPosition)
     {
