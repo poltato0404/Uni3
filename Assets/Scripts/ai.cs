@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class ai : MonoBehaviour, IDataPersistence
 {
-    GameObject player;
+    public GameObject player;
     NavMeshAgent agent;
     
 
@@ -31,7 +31,7 @@ public class ai : MonoBehaviour, IDataPersistence
         animator = GetComponent<Animator>();
         possiblePatrol = new List<Vector3>();
         agent = GetComponent<NavMeshAgent>();
-        player = GameObject.Find("Player");
+        
     }
 
     // Update is called once per frame
