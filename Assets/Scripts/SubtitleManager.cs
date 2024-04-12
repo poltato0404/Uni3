@@ -2,12 +2,13 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.Video;
 
-public class SubtitleManager : MonoBehaviour
+public class SubtitleManager : MonoBehaviour, IDataPersistence
 {
     public TMP_Text subtitleText;
     public string[] subtitles;
     public float[] startTimes;
     public float[] endTimes;
+    [SerializeField] GameObject textSubt;
     public VideoPlayer videoPlayer;
 
     private bool subtitlesEnabled = true;
@@ -93,5 +94,9 @@ public class SubtitleManager : MonoBehaviour
     {
         subtitlesEnabled = false;
         subtitleText.text = "";
+        textSubt.SetActive(false);
     }
+
+    public void SaveData(ref GameData data) { }
+    public void LoadData(GameData data) { if (data.subtitle) { EnableSubtitles(); } else { DisableSubtitles(); textSubt.SetActive(false); } }
 }

@@ -1,12 +1,15 @@
 ﻿using UnityEngine ;
 using UnityEngine.UI ;
 
-public class SwitchToggle : MonoBehaviour {
+
+public class SwitchToggle : MonoBehaviour, IDataPersistence
+{
    [SerializeField] RectTransform uiHandleRectTransform ;
-   //[SerializeField] Color backgroundActiveColor;
-   //[SerializeField] Color handleActiveColor;
+    //[SerializeField] Color backgroundActiveColor;
+    //[SerializeField] Color handleActiveColor;
 
     //Image backgroundImage, handleImage;
+    public bool subtitle;
 
     //Color backgroundDefaultColor, handleDefaultColor;
 
@@ -40,4 +43,20 @@ public class SwitchToggle : MonoBehaviour {
    void OnDestroy ( ) {
       toggle.onValueChanged.RemoveListener (OnSwitch) ;
    }
+
+    public void SaveData(ref GameData data) 
+    {
+        if (toggle.isOn)
+        {
+            data.subtitle = true;
+        }
+        else 
+        {
+            data.subtitle = false;
+        }
+    }
+    public void LoadData( GameData data)
+    {
+        toggle.isOn = data.subtitle;
+    }
 }

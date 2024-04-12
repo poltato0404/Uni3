@@ -19,6 +19,7 @@ public class GameData
     public bool loadedLevel1;
     public bool loadedLevel2;
     public bool loadedLevel3;
+    public bool subtitle;
 
     public GameData(){
         this.currentLevel = 1;
@@ -34,6 +35,7 @@ public class GameData
         this.loadedLevel1=false;
         this.loadedLevel2=false;
         this.loadedLevel3=false;
+        this.subtitle = true;
 
     }
    

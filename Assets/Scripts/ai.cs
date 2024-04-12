@@ -82,7 +82,7 @@ public class ai : MonoBehaviour, IDataPersistence
 
 void Patrol()
 {
-    animator.SetTrigger("Patrolling");
+    
     if (!walkPoint)
     {
         SearchForDest();
