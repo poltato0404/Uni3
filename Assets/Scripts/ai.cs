@@ -24,6 +24,7 @@ public class ai : MonoBehaviour, IDataPersistence
     Vector3 guardPos;
     public float distanceChase;
     private Animator animator;
+    public int guardNumber;
     
     // Start is called before the first frame update
     void Start()
@@ -116,12 +117,20 @@ void SearchForDest()
     public void SaveData(ref GameData data)
     {
         Vector3 guardV3 = guardPos;
-        data.guard1Pos = guardV3;
+        if(1 == guardNumber){data.guard1Pos = guardV3;}
+        if(2 == guardNumber){data.guard2Pos = guardV3;}
+        
     }
      public void LoadData(GameData data)
     {
+         if(1 == guardNumber){
         transform.position = data.guard1Pos;
-        data.guard1Pos.y = 1.5f;
+        data.guard1Pos.y = 1.5f;}
+
+         if(2 == guardNumber){
+        transform.position = data.guard2Pos;
+        data.guard2Pos.y = 1.5f;}
+
         possiblePatrol = data.slotPosition;
 
         if (!data.loadedLevel1)

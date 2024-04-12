@@ -20,7 +20,16 @@ public class GameData
     public bool loadedLevel2;
     public bool loadedLevel3;
     public bool subtitle;
-
+    public bool cellTheoryFinished;
+    public bool cellStructureFinished;
+    public bool cellCycleFinished;
+    public bool plantOrganFinished;
+    public bool animalOrganFInished;
+    public bool feedBackFinished;
+    public bool mendelFinished;
+    public bool dogmaFinished;
+    public bool recombinantFinished;
+  
     public GameData(){
         this.currentLevel = 1;
         this.playerStamina = 100;
@@ -30,12 +39,22 @@ public class GameData
         this.playerPos = new Vector3(0,0,0);
         this.devicePos= new Vector3(0,0,0);
         this.playerScore = 0;
-        this.guard1Pos = new Vector3(0,0,0);
-        this.guard2Pos= new Vector3(0,0,0);
+        this.guard1Pos = new Vector3(0,1.5f,0);
+        this.guard2Pos= new Vector3(0,1.5f,0);
         this.loadedLevel1=false;
         this.loadedLevel2=false;
         this.loadedLevel3=false;
         this.subtitle = true;
+        this.cellTheoryFinished = false;
+        this.cellStructureFinished = false;
+        this.cellCycleFinished = false;
+        this.plantOrganFinished = false;
+        this.animalOrganFInished = false;
+        this.feedBackFinished = false;
+        this.mendelFinished = false;
+        this.dogmaFinished = false;
+        this.recombinantFinished = false;
+
 
     }
    

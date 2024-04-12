@@ -11,6 +11,8 @@ public class mapLoader : MonoBehaviour, IDataPersistence
     [SerializeField]GameObject instantiatedPrefab;
     NavMeshSurface navMeshSurface;
     [SerializeField]GameObject guardAgent;
+    [SerializeField]GameObject coin;
+    [SerializeField]GameObject laptop;
     NavMeshAgent navMeshAgent;
     void Awake()
     {
@@ -31,9 +33,35 @@ public class mapLoader : MonoBehaviour, IDataPersistence
         navMeshSurface.BuildNavMesh();
         navMeshAgent= guardAgent.GetComponent<NavMeshAgent>();
         navMeshAgent.enabled = true;
+        int index;
+        Vector3 pos;
+        int guards = data.currentLevel;
+        for (int i = 1 ; i < guards; i++){ 
+            if(1==i){instantiateGuards( data.guard1Pos, i);}
+            if(2==i){instantiateGuards( data.guard2Pos, i);}                     
+        }
+        index = Random.Range(0, data.slotPosition.Count);
+         pos = data.slotPosition[index];
+         pos.y = 2;
+        Instantiate(laptop,pos, Quaternion.identity);
+        for(int i = 0 ; i < 5; i++){
+        index = Random.Range(0, data.slotPosition.Count);
+         pos = data.slotPosition[index];
+         pos.y = 2;
+        Instantiate(coin,pos, Quaternion.identity);
+
+        }
+        
     }
     GameObject slotReference(int slotPosition)
     {
         return (slotList[(slotPosition-1)]);
+    }
+
+    void instantiateGuards(Vector3 pos, int assign)
+    {
+        GameObject guard = Instantiate(guardAgent,pos, Quaternion.identity);
+        ai script = guard.GetComponent<ai>();
+        script.guardNumber = assign;
     }
 }
