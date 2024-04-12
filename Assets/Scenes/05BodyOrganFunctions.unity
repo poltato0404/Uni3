@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -236,6 +236,36 @@ PrefabInstance:
       propertyPath: minigameID
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 6284077847976977294, guid: def6d0d5a718e334b99cd394682a8a2c,
+        type: 3}
+      propertyPath: disabledGameobjects.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6284077847976977294, guid: def6d0d5a718e334b99cd394682a8a2c,
+        type: 3}
+      propertyPath: disabledGameobjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 1182679405}
+    - target: {fileID: 6284077847976977294, guid: def6d0d5a718e334b99cd394682a8a2c,
+        type: 3}
+      propertyPath: disabledGameobjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 595007654}
+    - target: {fileID: 6284077847976977294, guid: def6d0d5a718e334b99cd394682a8a2c,
+        type: 3}
+      propertyPath: disabledGameobjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 1322228905}
+    - target: {fileID: 6284077847976977294, guid: def6d0d5a718e334b99cd394682a8a2c,
+        type: 3}
+      propertyPath: disabledGameobjects.Array.data[3]
+      value: 
+      objectReference: {fileID: 2048898529}
+    - target: {fileID: 6284077847976977294, guid: def6d0d5a718e334b99cd394682a8a2c,
+        type: 3}
+      propertyPath: disabledGameobjects.Array.data[4]
+      value: 
+      objectReference: {fileID: 1924099125}
     - target: {fileID: 8609071206299654328, guid: def6d0d5a718e334b99cd394682a8a2c,
         type: 3}
       propertyPath: m_Name
@@ -3396,7 +3426,7 @@ MonoBehaviour:
   scoreText: {fileID: 1041389091}
   questText: {fileID: 1393371043}
   delayBetweenCharacters: 0.01
-  totalTime: 0
+  totalTime: 60
   timerText: {fileID: 733405456}
 --- !u!1 &2048898529
 GameObject:

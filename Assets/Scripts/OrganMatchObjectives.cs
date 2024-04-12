@@ -82,7 +82,7 @@ public class OrganMatchObjectives : MonoBehaviour
             }
 
             gameWinLose.SetActive(true);
-            //Debug.Log("Timer Ran out!");
+            Debug.Log("Timer Ran out!");
         }
     }
 
@@ -114,6 +114,7 @@ public class OrganMatchObjectives : MonoBehaviour
             }
 
             gameWinLose.SetActive(true);
+            Debug.Log("TShowText");
         }
     }
 }

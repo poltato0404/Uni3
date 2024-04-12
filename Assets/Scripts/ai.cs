@@ -76,7 +76,7 @@ public class ai : MonoBehaviour, IDataPersistence
         
     Vector3 directionToPlayer = (player.transform.position - transform.position).normalized;
     Vector3 chasePosition = player.transform.position - directionToPlayer * distanceChase;; // Adjust 2.0f to control the distance behind the player
-    animator.SetTrigger("Chasing");
+    
     agent.SetDestination(chasePosition);
     }
 
