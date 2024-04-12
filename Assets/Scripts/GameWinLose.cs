@@ -18,7 +18,7 @@ public class GameWinLose : MonoBehaviour
 
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
             Instance = this;
     }
 
@@ -29,7 +29,7 @@ public class GameWinLose : MonoBehaviour
 
     public void OnGamePreExit()
     {
-        foreach(GameObject go in gameObjectsToDisable)
+        foreach (GameObject go in gameObjectsToDisable)
         {
             go.SetActive(false);
         }
@@ -40,13 +40,6 @@ public class GameWinLose : MonoBehaviour
         scoreText.text = gameScore.text;
 
         Time.timeScale = 0.0f;
-    }
-
-
-    public void OnClick_TryAgainButton()
-    {
-        Time.timeScale = 1.0f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void OnClick_MainMenuButton()

@@ -2179,6 +2179,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2148489302802042240, guid: 5092921e0be50d1488b825d3fc213fad,
+        type: 3}
+      propertyPath: gameScore
+      value: 
+      objectReference: {fileID: 219180905}
+    - target: {fileID: 2295856358915862017, guid: 5092921e0be50d1488b825d3fc213fad,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2983299600061610251, guid: 5092921e0be50d1488b825d3fc213fad,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bf7ca82fc93227443a2922d68aae8a1b,
+        type: 3}
     - target: {fileID: 5438274997178390498, guid: 5092921e0be50d1488b825d3fc213fad,
         type: 3}
       propertyPath: m_Pivot.x
@@ -2301,7 +2317,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 5092921e0be50d1488b825d3fc213fad, type: 3}
 --- !u!1 &766042101 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 5438274997178390510, guid: 5092921e0be50d1488b825d3fc213fad,
+  m_CorrespondingSourceObject: {fileID: 2295856358915862017, guid: 5092921e0be50d1488b825d3fc213fad,
     type: 3}
   m_PrefabInstance: {fileID: 766042100}
   m_PrefabAsset: {fileID: 0}
@@ -3031,6 +3047,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameStarterCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8609071206299654328, guid: def6d0d5a718e334b99cd394682a8a2c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

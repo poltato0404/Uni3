@@ -229,12 +229,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3568182}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &35934379 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5438274997178390510, guid: 5092921e0be50d1488b825d3fc213fad,
-    type: 3}
-  m_PrefabInstance: {fileID: 1819366597}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &129010770
 GameObject:
   m_ObjectHideFlags: 0
@@ -913,7 +907,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelId: 3
-  gameWinLose: {fileID: 35934379}
+  gameWinLose: {fileID: 1819366598}
   correctMatches: 0
   score: 0
   scoreText: {fileID: 512927630}
@@ -5034,6 +5028,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameStarterCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 8609071206299654328, guid: def6d0d5a718e334b99cd394682a8a2c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6297,6 +6296,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2148489302802042240, guid: 5092921e0be50d1488b825d3fc213fad,
+        type: 3}
+      propertyPath: gameScore
+      value: 
+      objectReference: {fileID: 512927630}
+    - target: {fileID: 2295856358915862017, guid: 5092921e0be50d1488b825d3fc213fad,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2983299600061610251, guid: 5092921e0be50d1488b825d3fc213fad,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 65de069adc4589a4ea118d0c7d89f37a,
+        type: 3}
     - target: {fileID: 5438274997178390498, guid: 5092921e0be50d1488b825d3fc213fad,
         type: 3}
       propertyPath: m_Pivot.x
@@ -6412,6 +6427,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5092921e0be50d1488b825d3fc213fad, type: 3}
+--- !u!1 &1819366598 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2295856358915862017, guid: 5092921e0be50d1488b825d3fc213fad,
+    type: 3}
+  m_PrefabInstance: {fileID: 1819366597}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1866826167
 GameObject:
   m_ObjectHideFlags: 0
