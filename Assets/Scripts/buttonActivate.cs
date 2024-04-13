@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class buttonActivate : MonoBehaviour
 {
-    public LevelManager  levman;
+    public LevelManager levman;
     [SerializeField] private GameObject changeToMinigame;
 
     void Start()
@@ -15,15 +15,8 @@ public class buttonActivate : MonoBehaviour
     // OnTriggerExit is called when another collider exits this collider
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag ==  "memory")
-        {
-            changeToMinigame.SetActive(false);
-        }
-         if (other.gameObject.tag ==  "slide" )
-        {
-            changeToMinigame.SetActive(false);
-        }
-         if (other.gameObject.tag ==  "dragndrop")
+
+        if (other.gameObject.tag == "device")
         {
             changeToMinigame.SetActive(false);
         }
@@ -32,21 +25,11 @@ public class buttonActivate : MonoBehaviour
     // OnTriggerEnter is called when another collider enters this collider
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "dragndrop")
-        {
-            changeToMinigame.SetActive(true);
-            levman.changeToDrag();
 
-        }
-        if (other.gameObject.tag == "slide")
+        if (other.gameObject.tag == "device")
         {
             changeToMinigame.SetActive(true);
-            levman.changeToSlid();
-        }
-        if (other.gameObject.tag == "memory")
-        {
-            changeToMinigame.SetActive(true);
-            levman.changeToMem();
+
         }
     }
 }

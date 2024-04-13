@@ -7,7 +7,7 @@ public class ai : MonoBehaviour, IDataPersistence
 {
     public GameObject player;
     NavMeshAgent agent;
-    
+
 
     [SerializeField] LayerMask groundLayer, playerLayer;
 
@@ -25,14 +25,14 @@ public class ai : MonoBehaviour, IDataPersistence
     public float distanceChase;
     private Animator animator;
     public int guardNumber;
-    
+
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         possiblePatrol = new List<Vector3>();
         agent = GetComponent<NavMeshAgent>();
-        
+
     }
 
     // Update is called once per frame
@@ -40,108 +40,114 @@ public class ai : MonoBehaviour, IDataPersistence
     {
         guardPos = transform.position;
         RaycastHit hit;
-    if (Physics.Raycast(transform.position, (player.transform.position - transform.position).normalized, out hit, sightRange, playerLayer))
-    {
-        if (hit.collider.CompareTag("Player"))
+        if (Physics.Raycast(transform.position, (player.transform.position - transform.position).normalized, out hit, sightRange, playerLayer))
         {
-            playerInSight = true;
-            // If player is in sight, chase the player
-            chase();
-            playerInAttackRange = Physics.CheckSphere(transform.position, attackRange,playerLayer);
-            if(playerInAttackRange){Attack();}
-            if(!playerInAttackRange){animator.SetTrigger("notAttacking");}
-            return; // Exit early to prioritize chasing the player
+            if (hit.collider.CompareTag("Player"))
+            {
+                playerInSight = true;
+                // If player is in sight, chase the player
+                chase();
+                playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerLayer);
+                if (playerInAttackRange) { Attack(); }
+                if (!playerInAttackRange) { animator.SetTrigger("notAttacking"); }
+                return; // Exit early to prioritize chasing the player
+            }
         }
-    }
 
-    // If player is not in sight, continue patrolling
-    playerInSight = false;
-    Patrol();
+        // If player is not in sight, continue patrolling
+        playerInSight = false;
+        Patrol();
 
 
-    // Make the guard face the direction it's traveling
-    if (agent.velocity.magnitude > 0.1f) // Check if the guard is moving
-    {
-        Vector3 lookDirection = agent.velocity.normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(lookDirection);
-        transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * agent.angularSpeed);
-    }
+        // Make the guard face the direction it's traveling
+        if (agent.velocity.magnitude > 0.1f) // Check if the guard is moving
+        {
+            Vector3 lookDirection = agent.velocity.normalized;
+            Quaternion lookRotation = Quaternion.LookRotation(lookDirection);
+            transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * agent.angularSpeed);
+        }
 
-    applyGravity();
+        applyGravity();
 
-    //end of update
+        //end of update
     }
 
     void chase()
     {
-        
-    Vector3 directionToPlayer = (player.transform.position - transform.position).normalized;
-    Vector3 chasePosition = player.transform.position - directionToPlayer * distanceChase;; // Adjust 2.0f to control the distance behind the player
-    
-    agent.SetDestination(chasePosition);
+
+        Vector3 directionToPlayer = (player.transform.position - transform.position).normalized;
+        Vector3 chasePosition = player.transform.position - directionToPlayer * distanceChase; ; // Adjust 2.0f to control the distance behind the player
+
+        agent.SetDestination(chasePosition);
     }
 
-void Patrol()
-{
-    
-    if (!walkPoint)
+    void Patrol()
     {
-        SearchForDest();
-    }
-    else
-    {
-        agent.SetDestination(destPoint);
-        if (agent.remainingDistance < 1f) // Check if agent is close to the destination
+
+        if (!walkPoint)
         {
-            walkPoint = false;
+            SearchForDest();
+        }
+        else
+        {
+            agent.SetDestination(destPoint);
+            if (agent.remainingDistance < 1f) // Check if agent is close to the destination
+            {
+                walkPoint = false;
+            }
         }
     }
-}
 
-void SearchForDest()
-{
-    NavMeshAgent agent = GetComponent<NavMeshAgent>();
-    int i = Random.Range(0, possiblePatrol.Count);
-    destPoint = possiblePatrol[i];
-    
-    NavMeshHit hit;
-    if (NavMesh.SamplePosition(destPoint, out hit, 10.0f, NavMesh.AllAreas))
+    void SearchForDest()
     {
-        destPoint = hit.position;
-        agent.SetDestination(destPoint);
-        walkPoint = true;
+        NavMeshAgent agent = GetComponent<NavMeshAgent>();
+        int i = Random.Range(0, possiblePatrol.Count);
+        try { destPoint = possiblePatrol[i]; }
+        catch { }
+
+
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(destPoint, out hit, 10.0f, NavMesh.AllAreas))
+        {
+            destPoint = hit.position;
+            agent.SetDestination(destPoint);
+            walkPoint = true;
+        }
     }
-}
 
 
     public void SaveData(ref GameData data)
     {
         Vector3 guardV3 = guardPos;
-        if(1 == guardNumber){data.guard1Pos = guardV3;}
-        if(2 == guardNumber){data.guard2Pos = guardV3;}
-        
-    }
-     public void LoadData(GameData data)
-    {
-         if(1 == guardNumber){
-        transform.position = data.guard1Pos;
-        data.guard1Pos.y = 1.5f;}
+        if (1 == guardNumber) { data.guard1Pos = guardV3; }
+        if (2 == guardNumber) { data.guard2Pos = guardV3; }
 
-         if(2 == guardNumber){
-        transform.position = data.guard2Pos;
-        data.guard2Pos.y = 1.5f;}
+    }
+    public void LoadData(GameData data)
+    {
+        if (1 == guardNumber)
+        {
+            transform.position = data.guard1Pos;
+            data.guard1Pos.y = 1.5f;
+        }
+
+        if (2 == guardNumber)
+        {
+            transform.position = data.guard2Pos;
+            data.guard2Pos.y = 1.5f;
+        }
 
         possiblePatrol = data.slotPosition;
 
         if (!data.loadedLevel1)
-         {
+        {
             int i = Random.Range(0, data.slotPosition.Count);
             transform.position = data.slotPosition[i];
             data.loadedLevel1 = true;
         }
-        
-        
-        
+
+
+
     }
     private void Attack()
     {
@@ -155,7 +161,7 @@ void SearchForDest()
         // Apply the velocity to the position
         transform.position += velocity * Time.deltaTime;
 
-        
+
     }
-   
+
 }

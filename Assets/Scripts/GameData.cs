@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class GameData 
+public class GameData
 
 {
     public int currentLevel;
@@ -14,8 +14,9 @@ public class GameData
     public Vector3 playerPos;
     public Vector3 devicePos;
     public int playerScore;
-    public Vector3 guard1Pos; 
-    public Vector3 guard2Pos; 
+    public int playerCoins;
+    public Vector3 guard1Pos;
+    public Vector3 guard2Pos;
     public bool loadedLevel1;
     public bool loadedLevel2;
     public bool loadedLevel3;
@@ -29,21 +30,37 @@ public class GameData
     public bool mendelFinished;
     public bool dogmaFinished;
     public bool recombinantFinished;
-  
-    public GameData(){
+
+    public int level1Score;
+    public int level2Score;
+    public int level3Score;
+    public int cellTheoryScore;
+    public int cellStructureScore;
+    public int cellCycleScore;
+    public int plantOrganScore;
+    public int animalOrganScore;
+    public int feedBackScore;
+    public int mendelScore;
+    public int dogmaScore;
+    public int recombinantScore;
+    public List<Vector3> coins;
+    public GameData()
+    {
         this.currentLevel = 1;
         this.playerStamina = 100;
         this.enemyCount = 0;
-        slotPosition = new List<Vector3>();
-        slotReference = new List<int>();
-        this.playerPos = new Vector3(0,0,0);
-        this.devicePos= new Vector3(0,0,0);
+        this.playerCoins = 0;
+        this.slotPosition = new List<Vector3>();
+        this.slotReference = new List<int>();
+        this.playerPos = new Vector3(0, 0, 0);
+        this.devicePos = new Vector3(0, 0, 0);
+        this.coins = new List<Vector3>();
         this.playerScore = 0;
-        this.guard1Pos = new Vector3(0,1.5f,0);
-        this.guard2Pos= new Vector3(0,1.5f,0);
-        this.loadedLevel1=false;
-        this.loadedLevel2=false;
-        this.loadedLevel3=false;
+        this.guard1Pos = new Vector3(0, 1.5f, 0);
+        this.guard2Pos = new Vector3(0, 1.5f, 0);
+        this.loadedLevel1 = false;
+        this.loadedLevel2 = false;
+        this.loadedLevel3 = false;
         this.subtitle = true;
         this.cellTheoryFinished = false;
         this.cellStructureFinished = false;
@@ -54,8 +71,20 @@ public class GameData
         this.mendelFinished = false;
         this.dogmaFinished = false;
         this.recombinantFinished = false;
+        this.level1Score = 0;
+        this.level2Score = 0;
+        this.level3Score = 0;
+        this.cellTheoryScore = 0;
+        this.cellStructureScore = 0;
+        this.cellCycleScore = 0;
+        this.plantOrganScore = 0;
+        this.animalOrganScore = 0;
+        this.feedBackScore = 0;
+        this.mendelScore = 0;
+        this.dogmaScore = 0;
+        this.recombinantScore = 0;
 
 
     }
-   
+
 }

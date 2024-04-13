@@ -34,7 +34,7 @@ public class GameWinLose : MonoBehaviour
             go.SetActive(false);
         }
 
-        if (score > 0) headerText.text = "You did Great!";
+        if (score > 0) headerText.text = "VICTORY";
         else if (score <= 0) headerText.text = "Try Again...";
 
         scoreText.text = gameScore.text;

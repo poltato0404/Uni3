@@ -1,22 +1,36 @@
 using UnityEngine;
 
-public class DragCellBehavior : MonoBehaviour
+public class DragPartsBehavior : MonoBehaviour
 {
     public Vector3 offset;
     public string destinationTag = "DropZone";
     public CellParts parts;
 
     private Vector3 startPosition; // Initial position of the cell
+    private Rotatable rotatableScript; // Reference to the Rotatable scriptG
+
+    [SerializeField] GameObject drag;
+    Isdragging dragStat;
 
     private void Start()
     {
+        dragStat = drag.GetComponent<Isdragging>();
         startPosition = transform.position; // Assign the initial position
+        rotatableScript = GetComponent<Rotatable>(); // Get reference to Rotatable script
     }
 
     public void OnMouseDown()
     {
+        Debug.Log("Mouse Down");
+        dragStat.isDragging = true;
         offset = transform.position - MouseWorldPosition();
         transform.GetComponent<Collider>().enabled = false;
+        // Disable rotation when dragging starts
+        if (rotatableScript != null)
+        {
+            rotatableScript.OnDragStart();
+
+        }
     }
 
     public void OnMouseDrag()
@@ -26,6 +40,7 @@ public class DragCellBehavior : MonoBehaviour
 
     public void OnMouseUp()
     {
+        dragStat.isDragging = false;
         var rayOrigin = Camera.main.transform.position;
         var rayDirection = MouseWorldPosition() - Camera.main.transform.position;
         RaycastHit hitInfo;
@@ -53,6 +68,11 @@ public class DragCellBehavior : MonoBehaviour
             {
                 transform.GetComponent<Collider>().enabled = true;
             }
+        }
+        // Enable rotation when dragging ends
+        if (rotatableScript != null)
+        {
+            rotatableScript.OnDragEnd();
         }
     }
 

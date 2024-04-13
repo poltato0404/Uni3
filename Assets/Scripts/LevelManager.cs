@@ -9,13 +9,13 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void changeScene()
@@ -23,13 +23,4 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
-    public void changeToDrag(){
-        sceneName = "Drag&DropMiniGame";
-    }
-     public void changeToMem(){
-        sceneName = "MemoryGame";
-    }
-     public void changeToSlid(){
-        sceneName = "slide";
-    }
 }
