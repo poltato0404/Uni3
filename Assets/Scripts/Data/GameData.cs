@@ -44,6 +44,9 @@ public class GameData
     public int dogmaScore;
     public int recombinantScore;
     public List<Vector3> coins;
+
+    public List<InventoryItem> inventory;
+
     public GameData()
     {
         this.currentLevel = 1;
@@ -84,6 +87,7 @@ public class GameData
         this.dogmaScore = 0;
         this.recombinantScore = 0;
 
+        this.inventory = new List<InventoryItem>();
 
     }
 
