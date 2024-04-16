@@ -12,6 +12,7 @@ public class InventoryManager : MonoBehaviour
             if (!slot.imageIcon.enabled)
             {
                 slot.AddItem(item);
+                Debug.Log("Item added to inventory slot.");
                 return;
             }
         }
@@ -24,6 +25,7 @@ public class InventoryManager : MonoBehaviour
         foreach (InventorySlot slot in slots)
         {
             slot.ClearSlot();
+            Debug.Log("Inventory slot cleared.");
         }
     }
 }
