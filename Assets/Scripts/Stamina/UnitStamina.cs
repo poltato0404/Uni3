@@ -73,7 +73,9 @@ public class UnitStamina
     {
         if (_currentStamina > 0)
         {
+            Debug.Log("use stamina" + staminaAmount + "remaining" + _currentStamina);
             _currentStamina -= staminaAmount * Time.deltaTime;
+
         }
     }
 

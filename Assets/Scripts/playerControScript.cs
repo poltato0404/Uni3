@@ -103,11 +103,7 @@ public class playerControScript : MonoBehaviour, IDataPersistence
 
     void Update()
     {
-        groundedPlayer = controller.isGrounded;
-        if (groundedPlayer && playerVelocity.y < 0)
-        {
-            playerVelocity.y = 0f;
-        }
+        
 
         Vector2 movementInput = playerControls.Player_actionmap.movePlayer.ReadValue<Vector2>();
         Vector3 move = (cameraMain.forward * movementInput.y + cameraMain.right * movementInput.x);
@@ -127,7 +123,11 @@ public class playerControScript : MonoBehaviour, IDataPersistence
         }
 
 
-
+        groundedPlayer = controller.isGrounded;
+        if (groundedPlayer && playerVelocity.y < 0)
+        {
+            playerVelocity.y = 0f;
+        }
 
         // Changes the height position of the player..
         if (playerControls.Player_actionmap.flash.triggered && groundedPlayer)

@@ -35,6 +35,7 @@ public class DataPersistenceManager : MonoBehaviour
    {
         this.gameData = new GameData();
    }
+   
 
    public void LoadGame()
    {
@@ -48,6 +49,7 @@ public class DataPersistenceManager : MonoBehaviour
         foreach (IDataPersistence dataPersistentObj in dataPersistentObects)
         {
             dataPersistentObj.LoadData(gameData);
+            Debug.Log("load game");
         } 
    }
 

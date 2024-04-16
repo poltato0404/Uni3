@@ -10,6 +10,7 @@ public class PlayerBehaviour : MonoBehaviour
     float _playerOriginalSpeed;
     float _playerSprintSpeed;
     bool isSprinting = false;
+    public Vector3 playerPos;
     bool isRegenerationDelayed = false; // Flag to indicate if regeneration is delayed
     float regenerationDelayDuration = 2f; // Duration of delay in seconds
 
@@ -21,6 +22,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     void Update()
     {
+        playerPos = transform.position;
         // If the player is sprinting, use stamina and set sprinting speed
         if (isSprinting)
         {
