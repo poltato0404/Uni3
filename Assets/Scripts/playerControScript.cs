@@ -11,9 +11,11 @@ public class playerControScript : MonoBehaviour, IDataPersistence
     private Vector3 playerVelocity;
     private bool groundedPlayer;
     private Transform cameraMain;
+    public bool slowed = false;
     public bool isWalking = false;
 
     [SerializeField] public float playerSpeed;
+    public bool isSprintin;
     [SerializeField] private float jumpHeight = 1.0f;
     [SerializeField] private float gravityValue = -9.81f;
 
@@ -71,11 +73,13 @@ public class playerControScript : MonoBehaviour, IDataPersistence
     public void isSprinting()
     {
         playerSpeed = 5f;
+        isSprintin = true;
     }
 
     public void notSprinting()
     {
         playerSpeed = 3f;
+        isSprintin = false;
     }
 
     private void Start()
@@ -103,8 +107,10 @@ public class playerControScript : MonoBehaviour, IDataPersistence
 
     void Update()
     {
-        
-
+        if(!slowed){
+        if(isSprintin){playerSpeed = 5f;}else{ playerSpeed = 3f;}
+        }
+        if(slowed){if (isSprintin){playerSpeed = 3f;} else{playerSpeed = 1f;} }
         Vector2 movementInput = playerControls.Player_actionmap.movePlayer.ReadValue<Vector2>();
         Vector3 move = (cameraMain.forward * movementInput.y + cameraMain.right * movementInput.x);
         move.y = 0f;

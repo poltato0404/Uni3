@@ -29,6 +29,7 @@ public class ai : MonoBehaviour, IDataPersistence
     private Animator animator;
     private GameData gameData;
     public int guardNumber;
+    playerControScript playCon;
 
     [SerializeField]private string filename;
 
@@ -70,6 +71,7 @@ public class ai : MonoBehaviour, IDataPersistence
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+         playCon = player.GetComponent<playerControScript>();
         animator = GetComponent<Animator>();
         possiblePatrol = new List<Vector3>();
         Vector3 thisPos = transform.position;
@@ -107,7 +109,7 @@ public class ai : MonoBehaviour, IDataPersistence
                 chase();
                 playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerLayer);
                 if (playerInAttackRange) { Attack(); Debug.Log("attack"); }
-                if (!playerInAttackRange) { animator.SetTrigger("notAttacking"); Debug.Log("no attack"); }
+                if (!playerInAttackRange) { animator.SetTrigger("notAttacking"); Debug.Log("no attack"); playCon.slowed = false;}
                 return; // Exit early to prioritize chasing the player
             }
         }
@@ -181,7 +183,7 @@ public class ai : MonoBehaviour, IDataPersistence
     private void Attack()
     {
         animator.SetTrigger("Attacking");
-        
+        playCon.slowed = true;
         StaminaGameManager.staminaGameManager._playertStamina.UseStamina(40f);
         _staminaBar.SetStamina(StaminaGameManager.staminaGameManager._playertStamina.Stamina);
         
