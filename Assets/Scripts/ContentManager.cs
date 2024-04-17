@@ -15,6 +15,7 @@ public class ContentManager : MonoBehaviour
 
     [Header("Pagination Buttons")]
     public Button nextButton;
+    public Button prevButton;
 
     [Header("Page Settings")]
     public bool useTimer = false;
@@ -37,6 +38,7 @@ public class ContentManager : MonoBehaviour
         Debug.Log("Content Manager Script Attached!");
 
         nextButton.onClick.AddListener(NextContent);
+        prevButton.onClick.AddListener(PreviousContent);
 
         InitializeDots();
 
