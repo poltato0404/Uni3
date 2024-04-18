@@ -10,24 +10,20 @@ public class PlayerDataDisplay : MonoBehaviour, IDataPersistence
 
     private GameData playerData;
 
-    // Start is called before the first frame update
     void Start()
     {
         // Load player data
         DataPersistenceManager.instance.LoadGame();
 
-        // Update UI with player data
         UpdatePlayerDataUI();
     }
 
-    // Method to update UI with player data
     private void UpdatePlayerDataUI()
     {
         currentLevelText.text = "Current Level: " + playerData.currentLevel;
         level1ScoreText.text = "Level 1 Score: " + playerData.level1Score;
         level2ScoreText.text = "Level 2 Score: " + playerData.level2Score;
         level3ScoreText.text = "Level 3 Score: " + playerData.level3Score;
-        // Update other TextMeshPro Text elements with relevant player data
     }
 
     // Implement the IDataPersistence interface methods
