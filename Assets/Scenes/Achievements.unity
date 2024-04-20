@@ -726,10 +726,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: dataManager
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2388984019024419347, guid: 0239b573311e1544b9151364bd05f6cc, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2414686492945630684, guid: 0239b573311e1544b9151364bd05f6cc,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 504539367}
   m_SourcePrefab: {fileID: 100100000, guid: 0239b573311e1544b9151364bd05f6cc, type: 3}
 --- !u!1 &173995004
 GameObject:
@@ -2183,6 +2188,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 424987700}
   m_CullTransparentMesh: 1
+--- !u!1 &504539364 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2414686492945630684, guid: 0239b573311e1544b9151364bd05f6cc,
+    type: 3}
+  m_PrefabInstance: {fileID: 136400737}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &504539367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504539364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f0f85ab9accb7a4980440d9895219dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  filename: data.json
 --- !u!1 &506138261
 GameObject:
   m_ObjectHideFlags: 0
@@ -2350,10 +2374,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acfb5e8f385c9654c808fb36c9507a66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLevelText: {fileID: 1726202040}
-  level1ScoreText: {fileID: 1491305797}
-  level2ScoreText: {fileID: 1213528616}
-  level3ScoreText: {fileID: 382105355}
 --- !u!4 &519747170
 Transform:
   m_ObjectHideFlags: 0
@@ -2381,18 +2401,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2d7073499c9b974ebd283ae95c5853c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  easyButton: {fileID: 1638805808}
-  aveButton: {fileID: 173995006}
-  hardButton: {fileID: 221457285}
-  cellTheoryScoreText: {fileID: 755574732}
-  cellStructureScoreText: {fileID: 330012356}
-  cellCycleScoreText: {fileID: 766138786}
-  plantOrganScoreText: {fileID: 276961791}
-  animalOrganScoreText: {fileID: 1571150110}
-  feedBackScoreText: {fileID: 128662298}
-  mendelScoreText: {fileID: 1604656178}
-  dogmaScoreText: {fileID: 1658554353}
-  recombinantScoreText: {fileID: 313338677}
 --- !u!1 &560363676
 GameObject:
   m_ObjectHideFlags: 0
