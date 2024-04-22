@@ -6,6 +6,12 @@ using UnityEngine;
 public class GameData
 
 {
+    public string username;
+    public string name;
+    public string password;
+    public string securityQuestion;
+    public string securityAnswer;
+
     public int currentLevel;
     public int playerStamina;
     public int enemyCount;
@@ -49,6 +55,12 @@ public class GameData
 
     public GameData()
     {
+        this.username = "";
+        this.name = "";
+        this.password = "";
+        this.securityQuestion = "";
+        this.securityAnswer = "";
+
         this.currentLevel = 1;
         this.playerStamina = 100;
         this.enemyCount = 0;
