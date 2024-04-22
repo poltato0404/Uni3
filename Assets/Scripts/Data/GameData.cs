@@ -49,6 +49,7 @@ public class GameData
     public int mendelScore;
     public int dogmaScore;
     public int recombinantScore;
+    public int numberOfDrinks;
     public List<Vector3> coins;
 
     public List<InventoryItem> inventory;
@@ -67,7 +68,7 @@ public class GameData
         this.playerCoins = 0;
         this.slotPosition = new List<Vector3>();
         this.slotReference = new List<int>();
-        this.playerPos = new Vector3(0, 0, 0);
+        this.playerPos = new Vector3(0, 1.5f, 0);
         this.devicePos = new Vector3(0, 0, 0);
         this.coins = new List<Vector3>();
         this.playerScore = 0;
@@ -98,6 +99,7 @@ public class GameData
         this.mendelScore = 0;
         this.dogmaScore = 0;
         this.recombinantScore = 0;
+        
 
         this.inventory = new List<InventoryItem>();
 

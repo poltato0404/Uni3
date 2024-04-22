@@ -86,4 +86,9 @@ public class UnitStamina
             _currentStamina += _staminaGegenSpeed * Time.deltaTime;
         }
     }
+
+    public void drink()
+    {
+        _currentStamina += 50f;
+    }
 }

@@ -88,14 +88,14 @@ public class mapGeneration : MonoBehaviour
         removeOuterslots();
         Debug.Log("remaning" + RemainingX.Count);
         parentScript = GetComponentInParent<Spawner>();
-        checkRemains();
+        try{
+        checkRemains();}
+        catch{}
         // Check if the parentScript is found
-        if (parentScript != null)
-        {
-            // Access methods or variables from the parent script
-            parentScript.Check(RemainingX.Count);
-        }
-        parentScript.collate(pathX, pathZ, slotInMaze);
+        
+        try{
+        parentScript.collate(pathX, pathZ, slotInMaze);}
+        catch{}
 
 
 

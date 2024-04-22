@@ -10,6 +10,7 @@ public class ai : MonoBehaviour, IDataPersistence
     [SerializeField] StaminaBar _staminaBar;
     
     public float raycastDistance = 0.1f;
+    public bool flashed = false;
 
     [SerializeField] LayerMask groundLayer, playerLayer;
 
@@ -61,7 +62,7 @@ public class ai : MonoBehaviour, IDataPersistence
         {
             int i = Random.Range(0, data.slotPosition.Count);
             transform.position = data.slotPosition[i];
-            data.loadedLevel1 = true;
+            
         }
 
 
@@ -88,6 +89,8 @@ public class ai : MonoBehaviour, IDataPersistence
     // Update is called once per frame
     void Update()
     {
+        if(flashed){animator.SetTrigger("flashed");agent.SetDestination(transform.position); return;}
+        animator.SetTrigger("notflashed");
         guardPos = transform.position;
         RaycastHit hit;
         // Make the guard face the direction it's traveling
