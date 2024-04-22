@@ -11,6 +11,8 @@ public class MainMenuControl : MonoBehaviour
 
     private void Start()
     {
+        // Commented to prevent null referencing errors
+        /*
         int buttonsToActivate = 0;
 
         foreach (bool levels in GameManager.Instance.isLevelComplete)
@@ -36,6 +38,7 @@ public class MainMenuControl : MonoBehaviour
                 buttons[i].textObject.SetActive(true);
             }
         }
+        */
     }
 
 

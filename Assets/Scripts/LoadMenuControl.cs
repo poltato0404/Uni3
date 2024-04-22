@@ -1,32 +1,45 @@
-using UnityEngine;
+using GameEssentials.GameManager;
 using System.Collections;
-using UnityEngine.SceneManagement;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+// public Slider progressBar;
 
-public class NextSceneLoader : MonoBehaviour
+public class LoadMenuControl : MonoBehaviour
 {
-    public Slider progressBar;
-    public float delayBeforeLoading = 1f; // Delay in seconds
+    const float MULTIPLIER = 0.01f;
+    // Start is called before the first frame update
+    public Image loadFill;
 
     void Start()
     {
-        StartCoroutine(LoadNextScene());
+        StartCoroutine(LoadAndSwitchScenes(GameManager.Instance.sceneToLoad));
+        // Prepare
     }
 
-    IEnumerator LoadNextScene()
+    IEnumerator LoadAndSwitchScenes(int sceneToLoad)
     {
-        yield return new WaitForSeconds(delayBeforeLoading);
+        loadFill.fillAmount = 10 * MULTIPLIER;
 
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        int nextSceneIndex = (currentSceneIndex + 1) % SceneManager.sceneCountInBuildSettings;
+        yield return new WaitForSeconds(Random.Range(1, 3));
 
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(nextSceneIndex);
+        loadFill.fillAmount = 30 * MULTIPLIER;
 
-        while (!asyncLoad.isDone)
-        {
-            float progress = Mathf.Clamp01(asyncLoad.progress / 0.9f);
-            progressBar.value = progress;
-            yield return null;
-        }
+        yield return new WaitForSeconds(Random.Range(1, 3)); // Range(inclusive, exclusive) (1, 4) (1 2 3)
+
+        loadFill.fillAmount = 90 * MULTIPLIER;
+
+        yield return new WaitForSeconds(Random.Range(1, 3));
+
+        loadFill.fillAmount = 100 * MULTIPLIER;
+
+        yield return new WaitForSeconds(0.5f);
+
+        // you waited 3.5 or 6.5 seconds
+
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneToLoad);
+
+        // sceneLoaded = true;
     }
-}
+};
