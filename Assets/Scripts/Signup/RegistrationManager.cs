@@ -1,20 +1,71 @@
 using UnityEngine;
 using TMPro;
-using System.Collections.Generic;
+using UnityEngine.UI;
 using System.IO;
 using System.Text;
 using UnityEngine.SceneManagement;
 
 public class RegistrationManager : MonoBehaviour, IDataPersistence
 {
-    [SerializeField] private TMP_InputField usernameField;
-    [SerializeField] private TMP_InputField nameField;
-    [SerializeField] private TMP_InputField passwordField;
-    [SerializeField] private TMP_InputField confirmPasswordField;
-    [SerializeField] private TMP_InputField securityQuesField;
-    [SerializeField] private TMP_InputField securityAnsField;
+    public TMP_InputField usernameField;
+    public TMP_InputField nameField;
+    public TMP_InputField passwordField;
+    public TMP_InputField confirmPasswordField;
+    public TMP_InputField securityQuesField;
+    public TMP_InputField securityAnsField;
+    [SerializeField] private Image passwordVisibilityButtonImage;
+    [SerializeField] private Sprite passwordVisibleSprite;
+    [SerializeField] private Sprite passwordHiddenSprite;
 
-    private List<GameData> registerData = new List<GameData>();
+    private bool isPasswordVisible = false;
+    private char hiddenCharacter = '●'; // Change this to '●' for circles or '*' for asterisks
+
+    private GameData registerData;
+
+    private void Start()
+    {
+        // Set the content type to Password initially
+        SetContentType(TMP_InputField.ContentType.Password);
+    }
+
+    // Method to toggle the visibility of the password fields
+    public void TogglePasswordVisibility()
+    {
+        isPasswordVisible = !isPasswordVisible;
+
+        // Toggle the content type based on the visibility state
+        if (isPasswordVisible)
+        {
+            SetContentType(TMP_InputField.ContentType.Standard);
+        }
+        else
+        {
+            SetContentType(TMP_InputField.ContentType.Password);
+        }
+    }
+
+    // Method to set the content type and display character for the password fields
+    private void SetContentType(TMP_InputField.ContentType contentType)
+    {
+        passwordField.contentType = contentType;
+        confirmPasswordField.contentType = contentType;
+
+        // Set the display character for password fields
+        if (contentType == TMP_InputField.ContentType.Password)
+        {
+            passwordField.inputType = TMP_InputField.InputType.Password;
+            confirmPasswordField.inputType = TMP_InputField.InputType.Password;
+        }
+        else if (contentType == TMP_InputField.ContentType.Standard)
+        {
+            passwordField.inputType = TMP_InputField.InputType.Standard;
+            confirmPasswordField.inputType = TMP_InputField.InputType.Standard;
+        }
+
+        // Force update to reflect the changes in the input field
+        passwordField.ForceLabelUpdate();
+        confirmPasswordField.ForceLabelUpdate();
+    }
 
     public void RegisterUser()
     {
@@ -25,7 +76,7 @@ public class RegistrationManager : MonoBehaviour, IDataPersistence
         string securityQues = securityQuesField.text;
         string securityAns = securityAnsField.text;
 
-        if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(confirmPassword) || string.IsNullOrEmpty(securityQues) || string.IsNullOrEmpty(securityAns))
+        if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(name) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(confirmPassword) || string.IsNullOrEmpty(securityQues) || string.IsNullOrEmpty(securityAns))
         {
             Debug.LogError("Please fill in all fields!");
             return;
@@ -37,26 +88,19 @@ public class RegistrationManager : MonoBehaviour, IDataPersistence
             return;
         }
 
-        // Check if the username already exists
-        if (UserExists(username))
-        {
-            Debug.LogError("Username already exists!");
-            return;
-        }
-
         // Here you would handle the registration logic using the registration data
         string hashedPassword = HashPassword(password);
 
         // Create a new GameData object to store registration data
-        GameData newUser = new GameData();
-        newUser.username = username;
-        newUser.name = name;
-        newUser.password = password;
-        newUser.securityQuestion = securityQues;
-        newUser.securityAnswer = securityAns;
+        registerData = new GameData();
+        registerData.username = username;
+        registerData.name = name;
+        registerData.password = hashedPassword;
+        registerData.securityQuestion = securityQues;
+        registerData.securityAnswer = securityAns;
 
-        // Pass the new user data to the SaveData method
-        SaveData(ref newUser);
+        // Save the registration data
+        SaveData(ref registerData);
 
         Debug.Log("User registered successfully!");
 
@@ -78,18 +122,6 @@ public class RegistrationManager : MonoBehaviour, IDataPersistence
         }
     }
 
-    private bool UserExists(string username)
-    {
-        foreach (GameData user in registerData)
-        {
-            if (user.username == username)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public void LoadData(GameData data)
     {
         // Implement loading data if needed
@@ -97,6 +129,12 @@ public class RegistrationManager : MonoBehaviour, IDataPersistence
 
     public void SaveData(ref GameData data)
     {
-        registerData.Add(data);
+        data.username = usernameField.text;
+        data.name = nameField.text;
+        data.password = passwordField.text;
+        data.securityQuestion = securityQuesField.text;
+        data.securityAnswer = securityAnsField.text;
+
+        registerData = data;
     }
 }
