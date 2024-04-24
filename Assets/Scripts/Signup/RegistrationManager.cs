@@ -14,61 +14,78 @@ public class RegistrationManager : MonoBehaviour, IDataPersistence
     public TMP_InputField securityQuesField;
     public TMP_InputField securityAnsField;
     [SerializeField] private Image passwordVisibilityButtonImage;
+    [SerializeField] private Image confirmPasswordVisibilityButtonImage;
     [SerializeField] private Sprite passwordVisibleSprite;
     [SerializeField] private Sprite passwordHiddenSprite;
 
     private bool isPasswordVisible = false;
-    private char hiddenCharacter = '●'; // Change this to '●' for circles or '*' for asterisks
+    private bool isConfirmPasswordVisible = false;
+    private char hiddenCharacter = '●';
+    public TMP_Text errorMessageText;
 
     private GameData registerData;
 
     private void Start()
     {
         // Set the content type to Password initially
-        SetContentType(TMP_InputField.ContentType.Password);
+        SetContentType(TMP_InputField.ContentType.Password, passwordField);
+        SetContentType(TMP_InputField.ContentType.Password, confirmPasswordField);
     }
 
-    // Method to toggle the visibility of the password fields
-    public void TogglePasswordVisibility()
+    public void TogglePasswordFieldVisibility()
     {
         isPasswordVisible = !isPasswordVisible;
 
-        // Toggle the content type based on the visibility state
         if (isPasswordVisible)
         {
-            SetContentType(TMP_InputField.ContentType.Standard);
+            SetContentType(TMP_InputField.ContentType.Standard, passwordField);
+            passwordVisibilityButtonImage.sprite = passwordVisibleSprite;
         }
         else
         {
-            SetContentType(TMP_InputField.ContentType.Password);
+            SetContentType(TMP_InputField.ContentType.Password, passwordField);
+            passwordVisibilityButtonImage.sprite = passwordHiddenSprite;
         }
     }
 
-    // Method to set the content type and display character for the password fields
-    private void SetContentType(TMP_InputField.ContentType contentType)
+    public void ToggleConfirmPasswordFieldVisibility()
     {
-        passwordField.contentType = contentType;
-        confirmPasswordField.contentType = contentType;
+        isConfirmPasswordVisible = !isConfirmPasswordVisible;
 
-        // Set the display character for password fields
+        if (isConfirmPasswordVisible)
+        {
+            SetContentType(TMP_InputField.ContentType.Standard, confirmPasswordField);
+            confirmPasswordVisibilityButtonImage.sprite = passwordVisibleSprite;
+        }
+        else
+        {
+            SetContentType(TMP_InputField.ContentType.Password, confirmPasswordField);
+            confirmPasswordVisibilityButtonImage.sprite = passwordHiddenSprite;
+        }
+    }
+
+    private void SetContentType(TMP_InputField.ContentType contentType, TMP_InputField inputField)
+    {
+        inputField.contentType = contentType;
+
         if (contentType == TMP_InputField.ContentType.Password)
         {
-            passwordField.inputType = TMP_InputField.InputType.Password;
-            confirmPasswordField.inputType = TMP_InputField.InputType.Password;
+            inputField.inputType = TMP_InputField.InputType.Password;
         }
         else if (contentType == TMP_InputField.ContentType.Standard)
         {
-            passwordField.inputType = TMP_InputField.InputType.Standard;
-            confirmPasswordField.inputType = TMP_InputField.InputType.Standard;
+            inputField.inputType = TMP_InputField.InputType.Standard;
         }
 
         // Force update to reflect the changes in the input field
-        passwordField.ForceLabelUpdate();
-        confirmPasswordField.ForceLabelUpdate();
+        inputField.ForceLabelUpdate();
     }
 
     public void RegisterUser()
     {
+        // Clear previous error messages
+        errorMessageText.text = "";
+
         string username = usernameField.text;
         string name = nameField.text;
         string password = passwordField.text;
@@ -78,17 +95,17 @@ public class RegistrationManager : MonoBehaviour, IDataPersistence
 
         if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(name) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(confirmPassword) || string.IsNullOrEmpty(securityQues) || string.IsNullOrEmpty(securityAns))
         {
-            Debug.LogError("Please fill in all fields!");
+            errorMessageText.text = "Please fill in all fields!";
             return;
         }
 
         if (password != confirmPassword)
         {
-            Debug.LogError("Passwords do not match!");
+            errorMessageText.text = "Passwords do not match!";
             return;
         }
 
-        // Here you would handle the registration logic using the registration data
+        // Handle the registration logic using the registration data
         string hashedPassword = HashPassword(password);
 
         // Create a new GameData object to store registration data
@@ -99,7 +116,6 @@ public class RegistrationManager : MonoBehaviour, IDataPersistence
         registerData.securityQuestion = securityQues;
         registerData.securityAnswer = securityAns;
 
-        // Save the registration data
         SaveData(ref registerData);
 
         Debug.Log("User registered successfully!");
@@ -131,7 +147,7 @@ public class RegistrationManager : MonoBehaviour, IDataPersistence
     {
         data.username = usernameField.text;
         data.name = nameField.text;
-        data.password = passwordField.text;
+        data.password = HashPassword(passwordField.text); // Store hashed password
         data.securityQuestion = securityQuesField.text;
         data.securityAnswer = securityAnsField.text;
 

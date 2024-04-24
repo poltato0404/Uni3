@@ -11,6 +11,7 @@ public class LoginManager : MonoBehaviour, IDataPersistence
     [SerializeField] private Image passwordVisibilityButtonImage;
     [SerializeField] private Sprite passwordVisibleSprite;
     [SerializeField] private Sprite passwordHiddenSprite;
+    public TMP_Text errorMessageText;
 
     private GameData registerData;
 
@@ -74,12 +75,12 @@ public class LoginManager : MonoBehaviour, IDataPersistence
             }
             else
             {
-                Debug.LogError("Incorrect password!");
+                errorMessageText.text = "Incorrect password!"; // Display error message
             }
         }
         else
         {
-            Debug.LogError("Username not found!");
+            errorMessageText.text = "Username not found!"; // Display error message
         }
     }
 
