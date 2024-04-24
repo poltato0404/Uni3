@@ -21,9 +21,9 @@ public class PlayerDataDisplay : MonoBehaviour, IDataPersistence
     private void UpdatePlayerDataUI()
     {
         currentLevelText.text = "Current Level: " + playerData.currentLevel;
-        level1ScoreText.text = "Level 1 Score: " + playerData.level1Score;
-        level2ScoreText.text = "Level 2 Score: " + playerData.level2Score;
-        level3ScoreText.text = "Level 3 Score: " + playerData.level3Score;
+        level1ScoreText.text = "Score: " + playerData.level1Score;
+        level2ScoreText.text = "Score: " + playerData.level2Score;
+        level3ScoreText.text = "Score: " + playerData.level3Score;
     }
 
     // Implement the IDataPersistence interface methods

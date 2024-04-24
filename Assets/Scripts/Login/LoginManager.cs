@@ -1,13 +1,60 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using System.Text;
 
 public class LoginManager : MonoBehaviour, IDataPersistence
 {
     public TMP_InputField usernameField;
     public TMP_InputField passwordField;
+    [SerializeField] private Image passwordVisibilityButtonImage;
+    [SerializeField] private Sprite passwordVisibleSprite;
+    [SerializeField] private Sprite passwordHiddenSprite;
 
     private GameData registerData;
+
+    private bool isPasswordVisible = false;
+
+    private void Start()
+    {
+        // Set the content type to Password initially
+        SetContentType(TMP_InputField.ContentType.Password);
+    }
+
+    public void TogglePasswordFieldVisibility()
+    {
+        isPasswordVisible = !isPasswordVisible;
+
+        if (isPasswordVisible)
+        {
+            SetContentType(TMP_InputField.ContentType.Standard);
+            passwordVisibilityButtonImage.sprite = passwordVisibleSprite;
+        }
+        else
+        {
+            SetContentType(TMP_InputField.ContentType.Password);
+            passwordVisibilityButtonImage.sprite = passwordHiddenSprite;
+        }
+    }
+
+    private void SetContentType(TMP_InputField.ContentType contentType)
+    {
+        passwordField.contentType = contentType;
+
+        if (contentType == TMP_InputField.ContentType.Password)
+        {
+            passwordField.inputType = TMP_InputField.InputType.Password;
+        }
+        else if (contentType == TMP_InputField.ContentType.Standard)
+        {
+            passwordField.inputType = TMP_InputField.InputType.Standard;
+        }
+
+        // Force update to reflect the changes in the input field
+        passwordField.ForceLabelUpdate();
+    }
+
     public void LoginUser()
     {
         string enteredUsername = usernameField.text;
@@ -38,8 +85,17 @@ public class LoginManager : MonoBehaviour, IDataPersistence
 
     private string HashPassword(string password)
     {
-        // Your password hashing logic here
-        return password; // For demonstration, simply return the password as is
+        using (System.Security.Cryptography.SHA256 sha256Hash = System.Security.Cryptography.SHA256.Create())
+        {
+            byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(password));
+
+            StringBuilder builder = new StringBuilder();
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                builder.Append(bytes[i].ToString("x2"));
+            }
+            return builder.ToString();
+        }
     }
 
     // IDataPersistence interface methods
