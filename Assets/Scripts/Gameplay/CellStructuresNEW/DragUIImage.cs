@@ -13,6 +13,26 @@ public class DragUIImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     private GameObject m_DraggingIcon;
     private RectTransform m_DraggingPlane;
 
+    #region MOBILE_INPUT
+    public delegate void TouchDelegate(Touch eventData);
+    public static event TouchDelegate OnTouchDown;
+    public static event TouchDelegate OnTouchUp;
+    public static event TouchDelegate OnTouchDrag;
+    #endregion
+
+    public string destinationTag = "DropZone";
+
+
+    private void OnEnable()
+    {
+        OnTouchUp += OnTouchUpCallback;
+    }
+
+    private void OnDisable()
+    {
+        OnTouchUp -= OnTouchUpCallback;
+    }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         DragAroundPivot.instance.isUIBeingDragged = true;
@@ -93,21 +113,23 @@ public class DragUIImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     public void OnPointerUp(PointerEventData eventData)
     {
         DragAroundPivot.instance.isUIBeingDragged = false;
-        
+
         if (EventSystem.current.IsPointerOverGameObject())
         {
             // Raycast from the pointer position
-            Ray ray = Camera.main.ScreenPointToRay(eventData.position);
-            RaycastHit hit;
+#if UNITY_EDITOR
+            Ray editorRay = Camera.main.ScreenPointToRay(eventData.position);
 
-            if (Physics.Raycast(ray, out hit))
+            RaycastHit editorHit;
+
+            if (Physics.Raycast(editorRay, out editorHit))
             {
                 // Check if the hit object has the MatchCellPart component
-                MatchCellPart hitMatchCellPart = hit.collider.GetComponent<MatchCellPart>();
+                MatchCellPart hitMatchCellPart = editorHit.collider.GetComponent<MatchCellPart>();
                 if (hitMatchCellPart != null)
                 {
                     // Do something with the hitMatchCellPart (e.g., call a method)
-                    if(hitMatchCellPart.MatchCells(thisCellPart, GetComponent<Image>().sprite))
+                    if (hitMatchCellPart.MatchCells(thisCellPart, GetComponent<Image>().sprite))
                     {
                         this.enabled = false;
                         var image = GetComponent<Image>();
@@ -122,16 +144,47 @@ public class DragUIImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
                     }
                 }
             }
+#endif
         }
-        
     }
 
-    public static bool IsPointerOverUIObject()
+    void OnTouchUpCallback(Touch touchEvent)
     {
-        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
-        eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-        List<RaycastResult> results = new List<RaycastResult>();
-        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
-        return results.Count > 0;
+        var rayOrigin = Camera.main.transform.position;
+        var rayDirection = TouchWorldPosition(touchEvent) - Camera.main.transform.position;
+        RaycastHit hitInfo;
+        if (Physics.Raycast(rayOrigin, rayDirection, out hitInfo))
+        {
+            if(hitInfo.transform.tag == destinationTag)
+            {
+                if (hitInfo.transform.gameObject.GetComponent<MatchCellPart>().MatchCells(thisCellPart, GetComponent<Image>().sprite))
+                {
+                    this.enabled = false;
+                    var image = GetComponent<Image>();
+                    var tempColor = image.color;
+                    tempColor.r = 0;
+                    tempColor.g = 255;
+                    tempColor.b = 0;
+                    tempColor.a = 0.5f;
+                    image.color = tempColor;
+                    if (m_DraggingIcon != null)
+                        Destroy(m_DraggingIcon);
+                }
+            }
+        }
+    }
+
+    Vector3 TouchWorldPosition(Touch eventData)
+    { 
+        {
+            // Set a default depth for the touch position
+            float touchDepth = 10f; // You might need to adjust this value based on your scene setup
+
+            // Create a new vector3 with touch position and the default depth
+            Vector3 touchScreenPos = new Vector3(eventData.position.x, eventData.position.y, touchDepth);
+
+            // Convert the touch position from screen to world space
+            return Camera.main.ScreenToWorldPoint(touchScreenPos);
+        }
     }
 }
