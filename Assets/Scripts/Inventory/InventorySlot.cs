@@ -1,11 +1,15 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 using TMPro; // Add this line to import TextMeshPro namespace
 
 public class InventorySlot : MonoBehaviour
 {
     public Image imageIcon;
     public TextMeshProUGUI itemText; // Reference to TextMeshPro component
+    public FakeTerminal terminal;
+    public GameObject canvas;
+    public PauseScript2 pos;
 
     public void AddItem(InventoryItem item)
     {
@@ -28,4 +32,14 @@ public class InventorySlot : MonoBehaviour
 
         Debug.Log("Inventory slot cleared.");
     }
+    void Update(){
+        if (itemText.text == "Laptop")
+        {
+            Button button = GetComponent<Button>();
+             button.interactable = true;
+        }
+    }
+
+    
+    
 }

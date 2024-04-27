@@ -20,6 +20,14 @@ public class mapLoader : MonoBehaviour, IDataPersistence
     }
     public void SaveData(ref GameData data)
     {
+        
+        switch(data.currentLevel)
+        {
+            case 1: data.loadedLevel1 = true; break;
+            case 2: data.loadedLevel2 = true; break;
+            case 3: data.loadedLevel3 = true; break;
+        }
+        
 
     }
     public void LoadData(GameData data)
@@ -36,21 +44,57 @@ public class mapLoader : MonoBehaviour, IDataPersistence
         int index;
         Vector3 pos;
         int guards = data.currentLevel;
-        instantiateGuards(data.guard1Pos, 1);
-        // for (int i = 1; i < guards; i++)
-        // {
-        //     if (1 == i) { instantiateGuards(data.guard1Pos, i); }
-        //     if (2 == i) { instantiateGuards(data.guard2Pos, i); }
-        // }
+        
+        for (int i = 1; i < guards+1; i++)
+        {
+            if (1 == i) { instantiateGuards(data.guard1Pos, i); }
+            if (2 == i) { instantiateGuards(data.guard2Pos, i); }
+            if (3 == i) { instantiateGuards(data.guard3Pos, i); }
+        }
         index = Random.Range(0, data.slotPosition.Count);
         pos = data.slotPosition[index];
         pos.y = 1;
-        if (data.loadedLevel1) { Instantiate(laptop, data.devicePos, Quaternion.identity); }
-        else
+        switch(data.currentLevel)
         {
-            Instantiate(laptop, pos, Quaternion.identity);
-            data.devicePos = pos;
+            case 1: 
+                if (data.loadedLevel1)
+                { 
+                    Instantiate(laptop, data.devicePos, Quaternion.identity);  
+                    Debug.Log("level1 loaded device : "+ data.loadedLevel1);
+                } 
+                else
+                {
+                    Instantiate(laptop, pos, Quaternion.identity);
+                    data.devicePos = pos;
+                }
+                break;
+            case 2: 
+                if(data.loadedLevel2) 
+                { 
+                    Instantiate(laptop, data.devicePos, Quaternion.identity);  
+                    Debug.Log("level1 loaded device : "+ data.loadedLevel2);
+                } 
+                else
+                {
+                    Instantiate(laptop, pos, Quaternion.identity);
+                    data.devicePos = pos;
+                }
+                break;
+            case 3: 
+                if (data.loadedLevel3)
+                 { 
+                    Instantiate(laptop, data.devicePos, Quaternion.identity);  
+                    Debug.Log("level1 loaded device : "+ data.loadedLevel3);
+                } 
+                 else
+                {
+                    Instantiate(laptop, pos, Quaternion.identity);
+                    data.devicePos = pos;
+                }
+                break;
         }
+        
+       
         for (int i = 0; i < 5; i++)
         {
             index = Random.Range(0, data.slotPosition.Count);

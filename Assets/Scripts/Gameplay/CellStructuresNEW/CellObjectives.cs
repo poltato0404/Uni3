@@ -9,6 +9,7 @@ public class CellObjectives : MonoBehaviour
 
     public GameObject gameWinLose;
     public int score;
+    public saveCS saver;
     public TextMeshProUGUI scoreText;
 
     [Header("Timer Properties")]
@@ -34,11 +35,8 @@ public class CellObjectives : MonoBehaviour
     public void AddMatches(int i, int scoreToAdd)
     {
         completedMatches += i;
-
-        if(score <= 0)
-            score = 0;
-        else
-            score += scoreToAdd;
+        score += scoreToAdd;
+        if(score<0){score = 0;}
         CheckCompletion();
     }
 
@@ -46,17 +44,23 @@ public class CellObjectives : MonoBehaviour
     {
         if (completedMatches > 5)
         {
+            isWin = true;
+            saver.finished = isWin;
+            saver.score = score;
             gameWinLose.GetComponent<GameWinLose>().timeLeft = currentTime;
             gameWinLose.gameObject.GetComponent<GameWinLose>().score = score;
-
+            
             gameWinLose.SetActive(true);
-            isWin = true;
+            
+            
         }
     }
 
     #region TIMER_AND_SCORE
     private void Update()
     {
+        saver.finished = isWin;
+        saver.score = score;
         ScoreCounter();
         CountdownTimer();
     }

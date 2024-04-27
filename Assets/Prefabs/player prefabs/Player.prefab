@@ -1929,6 +1929,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da0e7fe2019ed914d840ca0207971b98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxDistance: 10
+  interactableLayers:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &4825657748824494741
 GameObject:
   m_ObjectHideFlags: 0
@@ -2393,8 +2397,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b5b21b58d1103a43a99c34980562d2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slowed: 0
   isWalking: 1
   playerSpeed: 3
+  isSprintin: 0
   jumpHeight: 1
   gravityValue: -9.81
   flashButton: {fileID: 0}
@@ -2516,6 +2522,12 @@ MonoBehaviour:
   _staminaBar: {fileID: 0}
   _playerContro: {fileID: 2686234307086297415}
   sprintButton: {fileID: 0}
+  playerPos: {x: 0, y: 0, z: 0}
+  numberOfDrinks: 0
+  drinkTMP: {fileID: 0}
+  gameOver: {fileID: 0}
+  pausePanelBlock: {fileID: 0}
+  inventory: {fileID: 0}
 --- !u!1 &5777697046302821421
 GameObject:
   m_ObjectHideFlags: 0

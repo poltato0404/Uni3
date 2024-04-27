@@ -109,9 +109,9 @@ public class PlayerBehaviour : MonoBehaviour,IDataPersistence
         case 1:
             if(data.loadedLevel1){ numberOfDrinks = data.numberOfDrinks;}else{numberOfDrinks =3;}break;
         case 2:
-        if(data.loadedLevel1){ numberOfDrinks = data.numberOfDrinks;}else{numberOfDrinks =6; }break;
+        if(data.loadedLevel2){ numberOfDrinks = data.numberOfDrinks;}else{numberOfDrinks =6; }break;
         case 3:
-        if(data.loadedLevel1){ numberOfDrinks = data.numberOfDrinks;}else{numberOfDrinks =9; }break;
+        if(data.loadedLevel3){ numberOfDrinks = data.numberOfDrinks;}else{numberOfDrinks =9; }break;
         }
 
         setDrinkText(numberOfDrinks);
@@ -139,6 +139,13 @@ public class PlayerBehaviour : MonoBehaviour,IDataPersistence
        
         // You can add conditions to identify the specific object you want to interact with
         if (collidedObject.CompareTag("Coin"))
+        {
+             Debug.Log("collide");
+            InventoryItem item = collidedObject.GetComponent<InventoryItem>();
+            inventory.AddItemToInventory(item);
+            Destroy(collidedObject);
+        }
+        if (collidedObject.CompareTag("device"))
         {
              Debug.Log("collide");
             InventoryItem item = collidedObject.GetComponent<InventoryItem>();

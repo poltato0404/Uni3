@@ -2,11 +2,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
-using GameEssentials.GameManager;
+
 
 public class GameWinLose : MonoBehaviour
 {
     public int minigameID;
+    public CardHolder card;
 
     public static GameWinLose Instance;
 
@@ -35,6 +36,7 @@ public class GameWinLose : MonoBehaviour
     {
         OnGamePreExit();
     }
+   
 
     public void OnGamePreExit()
     {
@@ -77,8 +79,7 @@ public class GameWinLose : MonoBehaviour
 
     public void OnClick_NextSceneButton()
     {
-        if(GameManager.Instance != null)
-            GameManager.Instance.SaveData();
+        
 
         Time.timeScale = 1.0f;
 
@@ -90,10 +91,10 @@ public class GameWinLose : MonoBehaviour
             case 4: // buildIndex = 4 == 04 Cell Division
             case 6: // buildIndex = 6 == 02 Feedback Mechanism -- might change
             case 8: // buildIndex = 8 == 01 Recombinant DNA -- might change
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene("laptop");
                 break;
             default:
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                SceneManager.LoadScene("laptop");
                 break;
         }
     }
@@ -101,6 +102,6 @@ public class GameWinLose : MonoBehaviour
     public void OnClick_MainMenuButton()
     {
         Time.timeScale = 1.0f;
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("laptop");
     }
 }

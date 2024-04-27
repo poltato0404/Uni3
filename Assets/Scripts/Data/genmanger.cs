@@ -23,7 +23,7 @@ public class Spawner : MonoBehaviour, IDataPersistence
         yield return new WaitForSeconds(3); // Wait for 5 seconds
         mapGeneration Script = GetComponentInChildren<mapGeneration>();
         collate(Script.pathX, Script.pathZ, Script.slotInMaze);
-        SceneManager.LoadScene("level1");
+        SceneManager.LoadScene("helo");
     }
     
 
@@ -52,6 +52,9 @@ public class Spawner : MonoBehaviour, IDataPersistence
     }
     public void LoadData( GameData data)
     {
+        Debug.Log("loadedlevel"+ data.loadedLevel1 + data.currentLevel);
+        data.loadedLevel1=false;
+        
 
     }
 

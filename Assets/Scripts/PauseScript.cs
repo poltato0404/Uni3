@@ -54,6 +54,15 @@ public class PauseScript2 : MonoBehaviour
         SceneManager.LoadScene("main");
     }
 
+    public void openTerminal()
+    {
+        Time.timeScale = 0f;
+    }
+    public void closeTerminal()
+    {
+        Time.timeScale = 1f;
+    }
+
     private void TogglePause(bool isPaused)
     {
 

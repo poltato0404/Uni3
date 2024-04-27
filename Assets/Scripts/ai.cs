@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class ai : MonoBehaviour, IDataPersistence
 {
     public GameObject player;
+    public int currentlevel;
     NavMeshAgent agent;
     [SerializeField] StaminaBar _staminaBar;
     
@@ -57,13 +58,39 @@ public class ai : MonoBehaviour, IDataPersistence
             transform.position = data.guard2Pos;
             data.guard2Pos.y = 1.5f;
         }
-
-        if (!data.loadedLevel1)
+         if (3 == guardNumber)
         {
-            int i = Random.Range(0, data.slotPosition.Count);
-            transform.position = data.slotPosition[i];
-            
+            transform.position = data.guard3Pos;
+            data.guard2Pos.y = 1.5f;
         }
+        switch(data.currentLevel){
+            case 1: 
+                if (!data.loadedLevel1)
+            {
+                int i = Random.Range(0, data.slotPosition.Count);
+                transform.position = data.slotPosition[i];
+                
+            }
+            break;
+             case 2: 
+                if (!data.loadedLevel2)
+            {
+                int i = Random.Range(0, data.slotPosition.Count);
+                transform.position = data.slotPosition[i];
+                
+            }
+            break;
+             case 3: 
+                if (!data.loadedLevel3)
+            {
+                int i = Random.Range(0, data.slotPosition.Count);
+                transform.position = data.slotPosition[i];
+                
+            }
+            break;
+        }
+
+        
 
 
 
