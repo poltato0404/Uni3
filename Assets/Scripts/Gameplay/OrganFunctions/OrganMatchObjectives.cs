@@ -1,4 +1,3 @@
-using GameEssentials.GameManager;
 using System;
 using System.Collections;
 using TMPro;
@@ -129,17 +128,17 @@ public class OrganMatchObjectives : MonoBehaviour
         questText.text = "";
 
         for (int i = 0; i < text.Length; i++)
-        if (matches < 7)
-        {
-            questText.text += text[i];
-            yield return new WaitForSeconds(delayBetweenCharacters);
-        }
+            if (matches < 7)
+            {
+                questText.text += text[i];
+                yield return new WaitForSeconds(delayBetweenCharacters);
+            }
 
         if (matches >= 7)
         {
             if (score > 0)
             {
-                GameManager.Instance.isLevelComplete[levelId] = true;
+                //GameManager.Instance.isLevelComplete[levelId] = true;
             }
             gameWinLose.GetComponent<GameWinLose>().timeLeft = currentTime;
             gameWinLose.GetComponent<GameWinLose>().score = score;

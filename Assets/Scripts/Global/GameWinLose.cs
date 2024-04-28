@@ -7,7 +7,7 @@ using TMPro;
 public class GameWinLose : MonoBehaviour
 {
     public int minigameID;
-    public CardHolder card;
+    //public CardHolder card;
 
     public static GameWinLose Instance;
 
@@ -28,7 +28,7 @@ public class GameWinLose : MonoBehaviour
 
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
             Instance = this;
     }
 
@@ -36,11 +36,11 @@ public class GameWinLose : MonoBehaviour
     {
         OnGamePreExit();
     }
-   
+
 
     public void OnGamePreExit()
     {
-        foreach(GameObject go in gameObjectsToDisable)
+        foreach (GameObject go in gameObjectsToDisable)
         {
             go.SetActive(false);
         }
@@ -58,7 +58,7 @@ public class GameWinLose : MonoBehaviour
             badgeImage.sprite = badgeSprites[9];
             loseButton.SetActive(true);
         }
-        else if(timeLeft <= 0)
+        else if (timeLeft <= 0)
         {
             headerText.text = "TIME'S UP!";
             badgeImage.sprite = badgeSprites[9];
@@ -79,7 +79,7 @@ public class GameWinLose : MonoBehaviour
 
     public void OnClick_NextSceneButton()
     {
-        
+
 
         Time.timeScale = 1.0f;
 
