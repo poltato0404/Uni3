@@ -13,6 +13,8 @@ public enum Game
 public class OrganMatchObjectives : MonoBehaviour
 {
     // 5th minigame
+    public SaveOS saver;
+
     public int levelId = 4;
 
     public GameObject gameWinLose;
@@ -26,6 +28,7 @@ public class OrganMatchObjectives : MonoBehaviour
 
     public int score;
     public TextMeshProUGUI scoreText;
+    public bool finished = true;
 
     public GameObject popupriddleUI;
     public TextMeshProUGUI popupUIText;
@@ -52,6 +55,8 @@ public class OrganMatchObjectives : MonoBehaviour
 
     private void Update()
     {
+        saver.finished = finished;
+        saver.score = score;
         UpdateMatches();
         UpdateScore();
         UpdateTimer();
@@ -138,7 +143,7 @@ public class OrganMatchObjectives : MonoBehaviour
         {
             if (score > 0)
             {
-                //GameManager.Instance.isLevelComplete[levelId] = true;
+                finished = true;
             }
             gameWinLose.GetComponent<GameWinLose>().timeLeft = currentTime;
             gameWinLose.GetComponent<GameWinLose>().score = score;

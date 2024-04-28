@@ -24,7 +24,7 @@ public class GameData
     public Vector3 guard1Pos;
     public Vector3 guard2Pos;
     public Vector3 guard3Pos;
-   
+
     public bool loadedLevel1;
     public bool loadedLevel2;
     public bool loadedLevel3;
@@ -33,7 +33,7 @@ public class GameData
     public bool cellStructureFinished;
     public bool cellCycleFinished;
     public bool plantOrganFinished;
-    public bool animalOrganFInished;
+    public bool animalOrganFinished;
     public bool feedBackFinished;
     public bool mendelFinished;
     public bool dogmaFinished;
@@ -85,7 +85,7 @@ public class GameData
         this.cellStructureFinished = false;
         this.cellCycleFinished = false;
         this.plantOrganFinished = false;
-        this.animalOrganFInished = false;
+        this.animalOrganFinished = false;
         this.feedBackFinished = false;
         this.mendelFinished = false;
         this.dogmaFinished = false;
@@ -102,7 +102,7 @@ public class GameData
         this.mendelScore = 0;
         this.dogmaScore = 0;
         this.recombinantScore = 0;
-        
+
 
         this.inventory = new List<InventoryItem>();
 
