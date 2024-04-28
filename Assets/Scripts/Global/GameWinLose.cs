@@ -2,12 +2,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
-
+using GameEssentials.GameManager;
 
 public class GameWinLose : MonoBehaviour
 {
     public int minigameID;
-    //public CardHolder card;
 
     public static GameWinLose Instance;
 
@@ -28,7 +27,7 @@ public class GameWinLose : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
+        if(Instance == null)
             Instance = this;
     }
 
@@ -37,10 +36,9 @@ public class GameWinLose : MonoBehaviour
         OnGamePreExit();
     }
 
-
     public void OnGamePreExit()
     {
-        foreach (GameObject go in gameObjectsToDisable)
+        foreach(GameObject go in gameObjectsToDisable)
         {
             go.SetActive(false);
         }
@@ -58,7 +56,7 @@ public class GameWinLose : MonoBehaviour
             badgeImage.sprite = badgeSprites[9];
             loseButton.SetActive(true);
         }
-        else if (timeLeft <= 0)
+        else if(timeLeft <= 0)
         {
             headerText.text = "TIME'S UP!";
             badgeImage.sprite = badgeSprites[9];
@@ -79,22 +77,21 @@ public class GameWinLose : MonoBehaviour
 
     public void OnClick_NextSceneButton()
     {
-
+        GameManager.Instance.SaveData();
 
         Time.timeScale = 1.0f;
 
         Debug.Log(SceneManager.GetActiveScene().buildIndex);
 
-        /// Build Index
         switch (SceneManager.GetActiveScene().buildIndex)
         {
-            case 4: // buildIndex = 4 == 04 Cell Division
-            case 6: // buildIndex = 6 == 02 Feedback Mechanism -- might change
-            case 8: // buildIndex = 8 == 01 Recombinant DNA -- might change
-                SceneManager.LoadScene("laptop");
+            case 3:
+            case 5:
+            case 7:
+                SceneManager.LoadScene(0);
                 break;
             default:
-                SceneManager.LoadScene("laptop");
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                 break;
         }
     }
@@ -102,6 +99,6 @@ public class GameWinLose : MonoBehaviour
     public void OnClick_MainMenuButton()
     {
         Time.timeScale = 1.0f;
-        SceneManager.LoadScene("laptop");
+        SceneManager.LoadScene(0);
     }
 }

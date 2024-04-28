@@ -9,7 +9,6 @@ using UnityEngine.SocialPlatforms.Impl;
 public class CardHolder : MonoBehaviour
 {
     // 6th minigame
-    public saveCT saver;
     public int levelId = 5;
 
     public GameObject gameWinLose;
@@ -21,7 +20,6 @@ public class CardHolder : MonoBehaviour
 
     public Sprite[] answerImages;
     public Image[] answerImage;
-    public bool finished = true;
 
     public CardBehaviour firstCard;
     public CardBehaviour secondCard;
@@ -168,7 +166,7 @@ public class CardHolder : MonoBehaviour
 
                 if (matchesMade >= 4)
                 {
-                    finished = true;
+                    GameManager.Instance.isLevelComplete[levelId] = true;
 
                     gameWinLose.GetComponent<GameWinLose>().timeLeft = currentTime;
                     gameWinLose.gameObject.GetComponent<GameWinLose>().score = score;
@@ -198,8 +196,6 @@ public class CardHolder : MonoBehaviour
 
     private void Update()
     {
-        saver.finished = finished;
-        saver.score = score;
         ScoreCounter();
         CountdownTimer();
     }
@@ -230,13 +226,4 @@ public class CardHolder : MonoBehaviour
             //Debug.Log("Timer Ran out!");
         }
     }
-
-    
-
-
-
-
-
-
-
 }

@@ -7,7 +7,6 @@ public class MatchCellPart : MonoBehaviour
 {
     public CellPart thisCellPart;
     public Image dropImage;
-    public CellObjectives cell;
 
     public bool MatchCells(CellPart cellPart, Sprite sprite)
     {
@@ -16,7 +15,7 @@ public class MatchCellPart : MonoBehaviour
             dropImage.sprite = sprite;
             VAFeedback.Instance.RightAnswer(this.transform);
 
-            cell.AddMatches(1, 50);
+            CellObjectives.instance.AddMatches(1, 50);
 
             this.enabled = false;
             return true;
@@ -24,7 +23,7 @@ public class MatchCellPart : MonoBehaviour
         else
         {
             VAFeedback.Instance.WrongAnswer(this.transform);
-            cell.AddMatches(0, -25);
+            CellObjectives.instance.AddMatches(0, -25);
             Debug.Log("Doesn't match");
             return false;
         }

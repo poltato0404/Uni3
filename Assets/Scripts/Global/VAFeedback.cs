@@ -25,7 +25,7 @@ public class VAFeedback : MonoBehaviour
     public void RightAnswer(Transform position)
     {
         source.PlayOneShot(clips[0]);
-        GameObject obj = Instantiate(rightAnswerPrefab, position.position, Quaternion.identity);
+        GameObject obj = Instantiate(rightAnswerPrefab, position.position, Quaternion.Euler(0f, 180f, 0f));
 
         obj.GetComponent<Canvas>().worldCamera = Camera.main;
     }
@@ -33,7 +33,7 @@ public class VAFeedback : MonoBehaviour
     public void WrongAnswer(Transform position)
     {
         source.PlayOneShot(clips[1]);
-        GameObject obj = Instantiate(wrongAnswerPrefab, position.position, Quaternion.identity);
+        GameObject obj = Instantiate(wrongAnswerPrefab, position.position, Quaternion.Euler(0f, 180f, 0f));
 
         obj.GetComponent<Canvas>().worldCamera = Camera.main;
     }

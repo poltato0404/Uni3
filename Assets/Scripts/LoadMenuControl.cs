@@ -14,19 +14,15 @@ public class LoadMenuControl : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(LoadAndSwitchScenes());
+        StartCoroutine(LoadAndSwitchScenes(GameManager.Instance.sceneToLoad));
         // Prepare
     }
 
-    IEnumerator LoadAndSwitchScenes()
+    IEnumerator LoadAndSwitchScenes(int sceneToLoad)
     {
         loadFill.fillAmount = 10 * MULTIPLIER;
 
         yield return new WaitForSeconds(Random.Range(1, 3));
-
-        loadFill.fillAmount = 30 * MULTIPLIER;
-
-        yield return new WaitForSeconds(Random.Range(1, 3)); // Range(inclusive, exclusive) (1, 4) (1 2 3)
 
         loadFill.fillAmount = 90 * MULTIPLIER;
 
@@ -36,10 +32,8 @@ public class LoadMenuControl : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        // you waited 3.5 or 6.5 seconds
-
-        SceneManager.LoadScene("helo");
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneToLoad);
 
         // sceneLoaded = true;
     }
-};
+}
