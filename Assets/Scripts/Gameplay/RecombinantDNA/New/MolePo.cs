@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public enum Type
+public enum Type1
 {
     Bomb,
     Mole
 }
 
-public class MolePop : MonoBehaviour
+public class MolePop1 : MonoBehaviour
 {
-    public Type type;
+    public Type1 type;
 
     public string answer;
     public bool isHit = false;
@@ -23,7 +23,7 @@ public class MolePop : MonoBehaviour
 
     private void Start()
     {
-        if (type == Type.Mole)
+        if (type == Type1.Mole)
         {
             float randomValue = Random.value;
             if (randomValue < randomTextChance)
@@ -46,11 +46,11 @@ public class MolePop : MonoBehaviour
     {
         switch (type)
         {
-            case Type.Mole:
+            case Type1.Mole:
                 ObstacleSpawner.Instance.DestroyMole(answer, this.transform);
                 Destroy(this.gameObject, 0.1f);
                 break;
-            case Type.Bomb:
+            case Type1.Bomb:
                 //Debug.Log("LOSE");
                 ObjectivesRecombinantDNA.Instance.gameWinLose.SetActive(true);
                 Destroy(this.gameObject, 0.1f);
