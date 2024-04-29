@@ -1,9 +1,9 @@
-public enum Nucleotide
-{
-    A,
-    T,
-    G,
-    C,
-    U,
-    None
-}
+// public enum Nucleotide
+// {
+//     A,
+//     T,
+//     G,
+//     C,
+//     U,
+//     None
+// }
