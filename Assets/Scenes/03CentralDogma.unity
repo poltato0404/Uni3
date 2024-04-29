@@ -244,17 +244,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cab0ae1affc3d745b000d13434b1165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 0, z: 0}
-  destinationTag: DropZone
-  nucleotide: 0
-  state: 1
-  polypeptide: 0
-  materials:
-  - {fileID: 2100000, guid: e8dfebc4d6aa2ae40970c7c338e74b2b, type: 2}
-  - {fileID: 2100000, guid: 3a002c8f3e542ef4ebe476b06553227b, type: 2}
-  - {fileID: 2100000, guid: f30da61851fb4d74f8b13793f94a6c71, type: 2}
-  - {fileID: 2100000, guid: 317fa5e10f7b284408ac63cdbc72c8e8, type: 2}
-  - {fileID: 2100000, guid: 7bcc7d9a1a78be24491742ba4366e99c, type: 2}
 --- !u!1001 &6720113
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -815,11 +804,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a5e316f43fb5c247aa8051c53efbfcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRunning: 1
-  spawnDelay: 4
-  spawnChance: 0.3
-  nucleotidePrefab: {fileID: 5096194417409711390, guid: 19bbec02690736f498317a3321863065,
-    type: 3}
 --- !u!114 &130340798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1150,20 +1134,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 203459635}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cab0ae1affc3d745b000d13434b1165, type: 3}
+  m_Script: {fileID: 11500000, guid: cc79d5f99b640e34e8d196f5e56cea97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0, z: 0}
   destinationTag: DropZone
   nucleotide: 5
   state: 0
-  polypeptide: 1
+  polypeptide: 3
   materials:
   - {fileID: 2100000, guid: e8dfebc4d6aa2ae40970c7c338e74b2b, type: 2}
   - {fileID: 2100000, guid: 3a002c8f3e542ef4ebe476b06553227b, type: 2}
   - {fileID: 2100000, guid: f30da61851fb4d74f8b13793f94a6c71, type: 2}
   - {fileID: 2100000, guid: 317fa5e10f7b284408ac63cdbc72c8e8, type: 2}
   - {fileID: 2100000, guid: 7bcc7d9a1a78be24491742ba4366e99c, type: 2}
+--- !u!1 &212637958 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8984574787056634062, guid: 1bf0cf7e0a3831f479326371bfa0d320,
+    type: 3}
+  m_PrefabInstance: {fileID: 771206472}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &214462579
 GameObject:
   m_ObjectHideFlags: 0
@@ -1366,6 +1356,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 243743835}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &246537918 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8984574787056634062, guid: 1bf0cf7e0a3831f479326371bfa0d320,
+    type: 3}
+  m_PrefabInstance: {fileID: 2027244798}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &252263235
 GameObject:
   m_ObjectHideFlags: 0
@@ -1411,11 +1407,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a5e316f43fb5c247aa8051c53efbfcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRunning: 1
-  spawnDelay: 4
-  spawnChance: 0.3
-  nucleotidePrefab: {fileID: 5096194417409711390, guid: 19bbec02690736f498317a3321863065,
-    type: 3}
 --- !u!114 &252263238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1554,17 +1545,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cab0ae1affc3d745b000d13434b1165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 0, z: 0}
-  destinationTag: DropZone
-  nucleotide: 0
-  state: 1
-  polypeptide: 0
-  materials:
-  - {fileID: 2100000, guid: e8dfebc4d6aa2ae40970c7c338e74b2b, type: 2}
-  - {fileID: 2100000, guid: 3a002c8f3e542ef4ebe476b06553227b, type: 2}
-  - {fileID: 2100000, guid: f30da61851fb4d74f8b13793f94a6c71, type: 2}
-  - {fileID: 2100000, guid: 317fa5e10f7b284408ac63cdbc72c8e8, type: 2}
-  - {fileID: 2100000, guid: 7bcc7d9a1a78be24491742ba4366e99c, type: 2}
 --- !u!1001 &264200321
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1861,17 +1841,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cab0ae1affc3d745b000d13434b1165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 0, z: 0}
-  destinationTag: DropZone
-  nucleotide: 0
-  state: 1
-  polypeptide: 0
-  materials:
-  - {fileID: 2100000, guid: e8dfebc4d6aa2ae40970c7c338e74b2b, type: 2}
-  - {fileID: 2100000, guid: 3a002c8f3e542ef4ebe476b06553227b, type: 2}
-  - {fileID: 2100000, guid: f30da61851fb4d74f8b13793f94a6c71, type: 2}
-  - {fileID: 2100000, guid: 317fa5e10f7b284408ac63cdbc72c8e8, type: 2}
-  - {fileID: 2100000, guid: 7bcc7d9a1a78be24491742ba4366e99c, type: 2}
 --- !u!1001 &333249491
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2347,6 +2316,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &452393361 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8984574787056634062, guid: 1bf0cf7e0a3831f479326371bfa0d320,
+    type: 3}
+  m_PrefabInstance: {fileID: 917111279}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &458221883
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2551,17 +2526,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cab0ae1affc3d745b000d13434b1165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 0, z: 0}
-  destinationTag: DropZone
-  nucleotide: 0
-  state: 1
-  polypeptide: 0
-  materials:
-  - {fileID: 2100000, guid: e8dfebc4d6aa2ae40970c7c338e74b2b, type: 2}
-  - {fileID: 2100000, guid: 3a002c8f3e542ef4ebe476b06553227b, type: 2}
-  - {fileID: 2100000, guid: f30da61851fb4d74f8b13793f94a6c71, type: 2}
-  - {fileID: 2100000, guid: 317fa5e10f7b284408ac63cdbc72c8e8, type: 2}
-  - {fileID: 2100000, guid: 7bcc7d9a1a78be24491742ba4366e99c, type: 2}
 --- !u!1001 &538492883
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2971,10 +2935,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f07be6c49a72e7941bf046d7ba06506e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nucleotideToMatch: 3
-  polypeptideToMatch: 0
-  materialToChange: {fileID: 2100000, guid: f976e7105922339498e9ac8155366d92, type: 2}
-  _renderer: {fileID: 1463492102}
 --- !u!114 &637879241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3408,11 +3368,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a5e316f43fb5c247aa8051c53efbfcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRunning: 1
-  spawnDelay: 4
-  spawnChance: 0.3
-  nucleotidePrefab: {fileID: 5096194417409711390, guid: 19bbec02690736f498317a3321863065,
-    type: 3}
 --- !u!114 &754640281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3724,10 +3679,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8984574787777572579, guid: 1bf0cf7e0a3831f479326371bfa0d320,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 771206476}
-    - targetCorrespondingSourceObject: {fileID: 8984574787777572579, guid: 1bf0cf7e0a3831f479326371bfa0d320,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 771206477}
   m_SourcePrefab: {fileID: 100100000, guid: 1bf0cf7e0a3831f479326371bfa0d320, type: 3}
 --- !u!4 &771206473 stripped
@@ -3748,22 +3699,6 @@ MeshRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 771206472}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &771206476
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 771206474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f07be6c49a72e7941bf046d7ba06506e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nucleotideToMatch: 5
-  polypeptideToMatch: 2
-  materialToChange: {fileID: 2100000, guid: f976e7105922339498e9ac8155366d92, type: 2}
-  _renderer: {fileID: 771206475}
 --- !u!114 &771206477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4054,10 +3989,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f07be6c49a72e7941bf046d7ba06506e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nucleotideToMatch: 2
-  polypeptideToMatch: 0
-  materialToChange: {fileID: 2100000, guid: f976e7105922339498e9ac8155366d92, type: 2}
-  _renderer: {fileID: 2113886887}
 --- !u!114 &835156966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4313,17 +4244,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cab0ae1affc3d745b000d13434b1165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 0, z: 0}
-  destinationTag: DropZone
-  nucleotide: 0
-  state: 1
-  polypeptide: 0
-  materials:
-  - {fileID: 2100000, guid: e8dfebc4d6aa2ae40970c7c338e74b2b, type: 2}
-  - {fileID: 2100000, guid: 3a002c8f3e542ef4ebe476b06553227b, type: 2}
-  - {fileID: 2100000, guid: f30da61851fb4d74f8b13793f94a6c71, type: 2}
-  - {fileID: 2100000, guid: 317fa5e10f7b284408ac63cdbc72c8e8, type: 2}
-  - {fileID: 2100000, guid: 7bcc7d9a1a78be24491742ba4366e99c, type: 2}
+--- !u!1 &906052953 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8984574787056634062, guid: 1bf0cf7e0a3831f479326371bfa0d320,
+    type: 3}
+  m_PrefabInstance: {fileID: 1228932080}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &914162044
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4548,10 +4474,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f07be6c49a72e7941bf046d7ba06506e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nucleotideToMatch: 5
-  polypeptideToMatch: 1
-  materialToChange: {fileID: 2100000, guid: f976e7105922339498e9ac8155366d92, type: 2}
-  _renderer: {fileID: 917111282}
 --- !u!114 &917111284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4646,15 +4568,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0, z: 0}
   destinationTag: DropZone
-  nucleotide: 5
+  nucleotide: 0
   state: 0
-  polypeptide: 2
-  materials:
-  - {fileID: 2100000, guid: e8dfebc4d6aa2ae40970c7c338e74b2b, type: 2}
-  - {fileID: 2100000, guid: 3a002c8f3e542ef4ebe476b06553227b, type: 2}
-  - {fileID: 2100000, guid: f30da61851fb4d74f8b13793f94a6c71, type: 2}
-  - {fileID: 2100000, guid: 317fa5e10f7b284408ac63cdbc72c8e8, type: 2}
-  - {fileID: 2100000, guid: 7bcc7d9a1a78be24491742ba4366e99c, type: 2}
+  polypeptide: 0
+  materials: []
 --- !u!65 &963395441
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4738,17 +4655,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cab0ae1affc3d745b000d13434b1165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 0, z: 0}
-  destinationTag: DropZone
-  nucleotide: 5
-  state: 0
-  polypeptide: 2
-  materials:
-  - {fileID: 2100000, guid: e8dfebc4d6aa2ae40970c7c338e74b2b, type: 2}
-  - {fileID: 2100000, guid: 3a002c8f3e542ef4ebe476b06553227b, type: 2}
-  - {fileID: 2100000, guid: f30da61851fb4d74f8b13793f94a6c71, type: 2}
-  - {fileID: 2100000, guid: 317fa5e10f7b284408ac63cdbc72c8e8, type: 2}
-  - {fileID: 2100000, guid: 7bcc7d9a1a78be24491742ba4366e99c, type: 2}
 --- !u!1001 &1006320121
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4870,17 +4776,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cab0ae1affc3d745b000d13434b1165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 0, z: 0}
-  destinationTag: DropZone
-  nucleotide: 0
-  state: 1
-  polypeptide: 0
-  materials:
-  - {fileID: 2100000, guid: e8dfebc4d6aa2ae40970c7c338e74b2b, type: 2}
-  - {fileID: 2100000, guid: 3a002c8f3e542ef4ebe476b06553227b, type: 2}
-  - {fileID: 2100000, guid: f30da61851fb4d74f8b13793f94a6c71, type: 2}
-  - {fileID: 2100000, guid: 317fa5e10f7b284408ac63cdbc72c8e8, type: 2}
-  - {fileID: 2100000, guid: 7bcc7d9a1a78be24491742ba4366e99c, type: 2}
 --- !u!1 &1101828557 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8984574787777572579, guid: 1bf0cf7e0a3831f479326371bfa0d320,
@@ -4899,10 +4794,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f07be6c49a72e7941bf046d7ba06506e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nucleotideToMatch: 4
-  polypeptideToMatch: 0
-  materialToChange: {fileID: 2100000, guid: f976e7105922339498e9ac8155366d92, type: 2}
-  _renderer: {fileID: 1279024931}
 --- !u!114 &1101828563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5040,17 +4931,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cab0ae1affc3d745b000d13434b1165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 0, z: 0}
-  destinationTag: DropZone
-  nucleotide: 0
-  state: 1
-  polypeptide: 0
-  materials:
-  - {fileID: 2100000, guid: e8dfebc4d6aa2ae40970c7c338e74b2b, type: 2}
-  - {fileID: 2100000, guid: 3a002c8f3e542ef4ebe476b06553227b, type: 2}
-  - {fileID: 2100000, guid: f30da61851fb4d74f8b13793f94a6c71, type: 2}
-  - {fileID: 2100000, guid: 317fa5e10f7b284408ac63cdbc72c8e8, type: 2}
-  - {fileID: 2100000, guid: 7bcc7d9a1a78be24491742ba4366e99c, type: 2}
 --- !u!1001 &1228932080
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5192,10 +5072,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f07be6c49a72e7941bf046d7ba06506e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nucleotideToMatch: 5
-  polypeptideToMatch: 4
-  materialToChange: {fileID: 2100000, guid: f976e7105922339498e9ac8155366d92, type: 2}
-  _renderer: {fileID: 1228932083}
 --- !u!114 &1228932085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5510,10 +5386,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f07be6c49a72e7941bf046d7ba06506e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nucleotideToMatch: 4
-  polypeptideToMatch: 0
-  materialToChange: {fileID: 2100000, guid: f976e7105922339498e9ac8155366d92, type: 2}
-  _renderer: {fileID: 771517291}
 --- !u!114 &1272076700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5741,11 +5613,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a5e316f43fb5c247aa8051c53efbfcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRunning: 1
-  spawnDelay: 4
-  spawnChance: 0.3
-  nucleotidePrefab: {fileID: 5096194417409711390, guid: 19bbec02690736f498317a3321863065,
-    type: 3}
 --- !u!114 &1289745638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5807,11 +5674,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a5e316f43fb5c247aa8051c53efbfcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRunning: 1
-  spawnDelay: 4
-  spawnChance: 0.3
-  nucleotidePrefab: {fileID: 5096194417409711390, guid: 19bbec02690736f498317a3321863065,
-    type: 3}
 --- !u!114 &1298351483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5949,17 +5811,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cab0ae1affc3d745b000d13434b1165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 0, z: 0}
-  destinationTag: DropZone
-  nucleotide: 0
-  state: 1
-  polypeptide: 0
-  materials:
-  - {fileID: 2100000, guid: e8dfebc4d6aa2ae40970c7c338e74b2b, type: 2}
-  - {fileID: 2100000, guid: 3a002c8f3e542ef4ebe476b06553227b, type: 2}
-  - {fileID: 2100000, guid: f30da61851fb4d74f8b13793f94a6c71, type: 2}
-  - {fileID: 2100000, guid: 317fa5e10f7b284408ac63cdbc72c8e8, type: 2}
-  - {fileID: 2100000, guid: 7bcc7d9a1a78be24491742ba4366e99c, type: 2}
 --- !u!1001 &1351970387
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6092,18 +5943,18 @@ MonoBehaviour:
   gameWinLose: {fileID: 1404753202}
   polypeptideCubes: {fileID: 602590629}
   polypetideStrands:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 452393361}
+  - {fileID: 212637958}
+  - {fileID: 246537918}
+  - {fileID: 906052953}
   mRNAStrand: {fileID: 398786389}
   RNAStrand: {fileID: 1542066041}
   nucleotideSpawner:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 252263235}
+  - {fileID: 130340795}
+  - {fileID: 754640278}
+  - {fileID: 1298351480}
+  - {fileID: 1289745635}
   score: 0
   scoreText: {fileID: 435484701}
   totalTime: 120
@@ -6127,10 +5978,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f07be6c49a72e7941bf046d7ba06506e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nucleotideToMatch: 4
-  polypeptideToMatch: 0
-  materialToChange: {fileID: 2100000, guid: f976e7105922339498e9ac8155366d92, type: 2}
-  _renderer: {fileID: 1594157000}
 --- !u!114 &1354762474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6165,10 +6012,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f07be6c49a72e7941bf046d7ba06506e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nucleotideToMatch: 2
-  polypeptideToMatch: 0
-  materialToChange: {fileID: 2100000, guid: f976e7105922339498e9ac8155366d92, type: 2}
-  _renderer: {fileID: 763598151}
 --- !u!114 &1356268820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6398,17 +6241,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cab0ae1affc3d745b000d13434b1165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 0, z: 0}
-  destinationTag: DropZone
-  nucleotide: 0
-  state: 1
-  polypeptide: 0
-  materials:
-  - {fileID: 2100000, guid: e8dfebc4d6aa2ae40970c7c338e74b2b, type: 2}
-  - {fileID: 2100000, guid: 3a002c8f3e542ef4ebe476b06553227b, type: 2}
-  - {fileID: 2100000, guid: f30da61851fb4d74f8b13793f94a6c71, type: 2}
-  - {fileID: 2100000, guid: 317fa5e10f7b284408ac63cdbc72c8e8, type: 2}
-  - {fileID: 2100000, guid: 7bcc7d9a1a78be24491742ba4366e99c, type: 2}
 --- !u!1001 &1404753201
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6734,10 +6566,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f07be6c49a72e7941bf046d7ba06506e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nucleotideToMatch: 4
-  polypeptideToMatch: 0
-  materialToChange: {fileID: 2100000, guid: f976e7105922339498e9ac8155366d92, type: 2}
-  _renderer: {fileID: 2146090955}
 --- !u!114 &1473801416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6832,15 +6660,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0, z: 0}
   destinationTag: DropZone
-  nucleotide: 5
+  nucleotide: 0
   state: 0
-  polypeptide: 4
-  materials:
-  - {fileID: 2100000, guid: e8dfebc4d6aa2ae40970c7c338e74b2b, type: 2}
-  - {fileID: 2100000, guid: 3a002c8f3e542ef4ebe476b06553227b, type: 2}
-  - {fileID: 2100000, guid: f30da61851fb4d74f8b13793f94a6c71, type: 2}
-  - {fileID: 2100000, guid: 317fa5e10f7b284408ac63cdbc72c8e8, type: 2}
-  - {fileID: 2100000, guid: 7bcc7d9a1a78be24491742ba4366e99c, type: 2}
+  polypeptide: 0
+  materials: []
 --- !u!65 &1487253580
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6924,17 +6747,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cab0ae1affc3d745b000d13434b1165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 0, z: 0}
-  destinationTag: DropZone
-  nucleotide: 5
-  state: 0
-  polypeptide: 4
-  materials:
-  - {fileID: 2100000, guid: e8dfebc4d6aa2ae40970c7c338e74b2b, type: 2}
-  - {fileID: 2100000, guid: 3a002c8f3e542ef4ebe476b06553227b, type: 2}
-  - {fileID: 2100000, guid: f30da61851fb4d74f8b13793f94a6c71, type: 2}
-  - {fileID: 2100000, guid: 317fa5e10f7b284408ac63cdbc72c8e8, type: 2}
-  - {fileID: 2100000, guid: 7bcc7d9a1a78be24491742ba4366e99c, type: 2}
 --- !u!1 &1487294131 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8984574787777572579, guid: 1bf0cf7e0a3831f479326371bfa0d320,
@@ -6953,10 +6765,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f07be6c49a72e7941bf046d7ba06506e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nucleotideToMatch: 2
-  polypeptideToMatch: 0
-  materialToChange: {fileID: 2100000, guid: f976e7105922339498e9ac8155366d92, type: 2}
-  _renderer: {fileID: 2131212551}
 --- !u!114 &1487294137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7398,10 +7206,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f07be6c49a72e7941bf046d7ba06506e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nucleotideToMatch: 0
-  polypeptideToMatch: 0
-  materialToChange: {fileID: 2100000, guid: f976e7105922339498e9ac8155366d92, type: 2}
-  _renderer: {fileID: 1911828220}
 --- !u!114 &1546572914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8295,17 +8099,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cab0ae1affc3d745b000d13434b1165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 0, z: 0}
-  destinationTag: DropZone
-  nucleotide: 0
-  state: 1
-  polypeptide: 0
-  materials:
-  - {fileID: 2100000, guid: e8dfebc4d6aa2ae40970c7c338e74b2b, type: 2}
-  - {fileID: 2100000, guid: 3a002c8f3e542ef4ebe476b06553227b, type: 2}
-  - {fileID: 2100000, guid: f30da61851fb4d74f8b13793f94a6c71, type: 2}
-  - {fileID: 2100000, guid: 317fa5e10f7b284408ac63cdbc72c8e8, type: 2}
-  - {fileID: 2100000, guid: 7bcc7d9a1a78be24491742ba4366e99c, type: 2}
 --- !u!1001 &1842701257
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8637,10 +8430,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f07be6c49a72e7941bf046d7ba06506e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nucleotideToMatch: 2
-  polypeptideToMatch: 0
-  materialToChange: {fileID: 2100000, guid: f976e7105922339498e9ac8155366d92, type: 2}
-  _renderer: {fileID: 1557615592}
 --- !u!114 &1916592093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9204,10 +8993,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f07be6c49a72e7941bf046d7ba06506e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nucleotideToMatch: 5
-  polypeptideToMatch: 3
-  materialToChange: {fileID: 2100000, guid: f976e7105922339498e9ac8155366d92, type: 2}
-  _renderer: {fileID: 2027244801}
 --- !u!114 &2027244803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9242,10 +9027,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f07be6c49a72e7941bf046d7ba06506e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nucleotideToMatch: 0
-  polypeptideToMatch: 0
-  materialToChange: {fileID: 2100000, guid: f976e7105922339498e9ac8155366d92, type: 2}
-  _renderer: {fileID: 309037923}
 --- !u!114 &2037591379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9438,10 +9219,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f07be6c49a72e7941bf046d7ba06506e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nucleotideToMatch: 3
-  polypeptideToMatch: 0
-  materialToChange: {fileID: 2100000, guid: f976e7105922339498e9ac8155366d92, type: 2}
-  _renderer: {fileID: 92430332}
 --- !u!114 &2108412192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9579,17 +9356,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cab0ae1affc3d745b000d13434b1165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 0, z: 0}
-  destinationTag: DropZone
-  nucleotide: 0
-  state: 1
-  polypeptide: 0
-  materials:
-  - {fileID: 2100000, guid: e8dfebc4d6aa2ae40970c7c338e74b2b, type: 2}
-  - {fileID: 2100000, guid: 3a002c8f3e542ef4ebe476b06553227b, type: 2}
-  - {fileID: 2100000, guid: f30da61851fb4d74f8b13793f94a6c71, type: 2}
-  - {fileID: 2100000, guid: 317fa5e10f7b284408ac63cdbc72c8e8, type: 2}
-  - {fileID: 2100000, guid: 7bcc7d9a1a78be24491742ba4366e99c, type: 2}
 --- !u!23 &2113886887 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 8984574787056634061, guid: 1bf0cf7e0a3831f479326371bfa0d320,
@@ -9815,17 +9581,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cab0ae1affc3d745b000d13434b1165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 0, z: 0}
-  destinationTag: DropZone
-  nucleotide: 0
-  state: 1
-  polypeptide: 0
-  materials:
-  - {fileID: 2100000, guid: e8dfebc4d6aa2ae40970c7c338e74b2b, type: 2}
-  - {fileID: 2100000, guid: 3a002c8f3e542ef4ebe476b06553227b, type: 2}
-  - {fileID: 2100000, guid: f30da61851fb4d74f8b13793f94a6c71, type: 2}
-  - {fileID: 2100000, guid: 317fa5e10f7b284408ac63cdbc72c8e8, type: 2}
-  - {fileID: 2100000, guid: 7bcc7d9a1a78be24491742ba4366e99c, type: 2}
 --- !u!23 &2146090955 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 8984574787056634061, guid: 1bf0cf7e0a3831f479326371bfa0d320,
@@ -9975,7 +9730,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5096194416071441429}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cab0ae1affc3d745b000d13434b1165, type: 3}
+  m_Script: {fileID: 11500000, guid: cc79d5f99b640e34e8d196f5e56cea97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0, z: 0}
