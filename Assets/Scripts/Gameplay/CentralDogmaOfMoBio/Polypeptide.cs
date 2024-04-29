@@ -1,8 +1,8 @@
-// public enum Polypeptide
-// {
-//     None,
-//     Methionine,
-//     Isoleucine,
-//     Serine,
-//     Tryptophan
-// }
+public enum Polypeptide1
+{
+    None,
+    Methionine,
+    Isoleucine,
+    Serine,
+    Tryptophan
+}

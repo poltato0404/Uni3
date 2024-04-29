@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CubeDestroyer : MonoBehaviour
+public class CubeDestroyer1 : MonoBehaviour
 {
     public void OnTriggerEnter(Collider other)
     {
