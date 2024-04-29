@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -272,7 +272,6 @@ GameObject:
   - component: {fileID: 130354925}
   - component: {fileID: 130354924}
   - component: {fileID: 130354923}
-  - component: {fileID: 130354927}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -364,21 +363,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &130354927
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 130354922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 289979a14b2e2ac45a952c0f03f7edb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myMixer: {fileID: 24100000, guid: 988f9ac569820404c9073c7afef04ab7, type: 2}
-  musicSlider: {fileID: 6672156222967437215}
-  SFXSlider: {fileID: 2685245492024526974}
 --- !u!1 &337021495
 GameObject:
   m_ObjectHideFlags: 0
@@ -975,7 +959,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3518722827812263748}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f7de6bac5b7f1e40a1e467dc50dcd93, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b7f70c2d3e40ca4a90ecb9f22faca61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   uiHandleRectTransform: {fileID: 6863046153176861281}
@@ -1841,7 +1825,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 130354927}
+      - m_Target: {fileID: 3961218722818064745}
         m_TargetAssemblyTypeName: VolumeSettings, Assembly-CSharp
         m_MethodName: SetSFXVolume
         m_Mode: 1
@@ -2385,7 +2369,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8121719179746167968}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 255d6b3e4d4bf5d4da39d1e82a89f1f2, type: 3}
+  m_Script: {fileID: 11500000, guid: e30196a0300d96e4183aac3d52634700, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   myMixer: {fileID: 24100000, guid: 988f9ac569820404c9073c7afef04ab7, type: 2}
@@ -3700,7 +3684,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 130354927}
+      - m_Target: {fileID: 3961218722818064745}
         m_TargetAssemblyTypeName: VolumeSettings, Assembly-CSharp
         m_MethodName: SetMusicVolume
         m_Mode: 1
@@ -3905,7 +3889,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1505330867422896696}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42a8aa26049ed3d44ac9ea90e89f509b, type: 3}
+  m_Script: {fileID: 11500000, guid: c67079572e966cf4081107896a21078a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   resolutionDropdown: {fileID: 5027648029943048679}
@@ -3953,7 +3937,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 22301720600052002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ebd00e68c784b64a8c9a1a5b89a878e, type: 3}
+  m_Script: {fileID: 11500000, guid: db4467a41e6618c41a85b2184cd3288d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: main
@@ -4057,7 +4041,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6466751460334401289}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c4ebc8ad03433844acb3986cc39fc9c, type: 3}
+  m_Script: {fileID: 11500000, guid: 8633dcc631dbd9349bc2e1397a891a97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   resolutionControl: {fileID: 7216215662172064327}
