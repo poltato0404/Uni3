@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using GameEssentials.GameManager;
 
-public enum PlayState1
+public enum PlayState
 {
     Win,
     Play,
@@ -13,12 +13,12 @@ public enum PlayState1
     Wait
 }
 
-public class ObjectivesRecombinantDNA1 : MonoBehaviour
+public class ObjectivesRecombinantDNA : MonoBehaviour
 {
     // 1st minigame
     public int levelId = 0;
 
-    public PlayState1 currentState;
+    public PlayState currentState;
 
     public GameObject gameWinLose;
 
@@ -36,7 +36,7 @@ public class ObjectivesRecombinantDNA1 : MonoBehaviour
     };
     public TextMeshProUGUI questionsText;
 
-    public static ObjectivesRecombinantDNA1 Instance;
+    public static ObjectivesRecombinantDNA Instance;
 
     [Header("Timer Properties")]
     public float totalTime;
@@ -63,15 +63,115 @@ public class ObjectivesRecombinantDNA1 : MonoBehaviour
 
     private void Update()
     {
-        CountdownTime1();
+        CountdownTime();
+        ScoreCounter();
     }
 
     public void SubmitAnswer(string answer, Transform position)
     {
-        // Your existing logic for submitting answers
+        switch (currentQuestion)
+        {
+            case 0:
+                if(answer == "DNA Isolation")
+                {
+                    // Correct answer
+                    currentQuestion = 1;
+                    questionsText.text = questions[currentQuestion];
+                    score += 10;
+                    VAFeedback.Instance.RightAnswer(position);
+                }
+                else if(answer == "Bomb")
+                {
+                    // Lose
+                }
+                else
+                {
+                    VAFeedback.Instance.WrongAnswer(position);
+                    if (score <= 0)
+                        score = 0;
+                    else
+                        score -= 5;
+                }
+                break;
+            case 1:
+                if (answer == "Gene Insertion")
+                {
+                    // Correct answer
+                    currentQuestion = 2;
+                    questionsText.text = questions[currentQuestion];
+                    score += 10;
+                    VAFeedback.Instance.RightAnswer(position);
+                }
+                else if (answer == "Bomb")
+                {
+                    // Lose
+                }
+                else
+                {
+                    VAFeedback.Instance.WrongAnswer(position);
+                    if (score <= 0)
+                        score = 0;
+                    else
+                        score -= 5;
+                }
+                break;
+            case 2:
+                if (answer == "Vector Transfer")
+                {
+                    // Correct answer
+                    currentQuestion = 3;
+                    questionsText.text = questions[currentQuestion];
+                    score += 10;
+                    VAFeedback.Instance.RightAnswer(position);
+                }
+                else if (answer == "Bomb")
+                {
+                    // Lose
+                }
+                else
+                {
+                    VAFeedback.Instance.WrongAnswer(position);
+                    if (score <= 0)
+                        score = 0;
+                    else
+                        score -= 5;
+                }
+                break;
+            case 3:
+                if (answer == "Cloning and Screening")
+                {
+                    // Correct answer
+                    currentQuestion = 0;
+                    questionsText.text = questions[currentQuestion];
+                    score += 10;
+                    VAFeedback.Instance.RightAnswer(position);
+                    if (score > 0)
+                    {
+                        GameManager.Instance.isLevelComplete[levelId] = true;
+                    }
+                    gameWinLose.GetComponent<GameWinLose>().timeLeft = currentTime;
+                    gameWinLose.GetComponent<GameWinLose>().score = score;
+                    gameWinLose.SetActive(true);
+                }
+                else if (answer == "Bomb")
+                {
+                    // Lose
+                }
+                else
+                {
+                    VAFeedback.Instance.WrongAnswer(position);
+                    if (score <= 0)
+                        score = 0;
+                    else
+                        score -= 5;
+                }
+                break;
+            default:
+                return;
+        }
     }
 
-    void CountdownTime1()
+    void CountdownTime()
     {
         currentTime -= Time.deltaTime;
 

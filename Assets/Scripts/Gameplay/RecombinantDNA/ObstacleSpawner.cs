@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class ObstacleSpawner1 : MonoBehaviour
+public class ObstacleSpawner : MonoBehaviour
 {
     public Transform spawnPoint;
     public List<GameObject> obstacles;
@@ -14,18 +14,18 @@ public class ObstacleSpawner1 : MonoBehaviour
 
     public Transform lookPoint;
 
-    public static ObstacleSpawner1 Instance;
+    public static ObstacleSpawner Instance;
 
-    private void Awake1 ()
+    private void Awake()
     {
         if(Instance == null)
             Instance = this;
     }
 
 
-    public void Start1()
+    public void Start()
     {
-        StartCoroutine(SpawnLoop1());
+        StartCoroutine(SpawnLoop());
     }
 
     /*
@@ -35,7 +35,7 @@ public class ObstacleSpawner1 : MonoBehaviour
     }
     */
 
-    IEnumerator SpawnLoop1()
+    IEnumerator SpawnLoop()
     {
         while (true)
         {
@@ -54,7 +54,7 @@ public class ObstacleSpawner1 : MonoBehaviour
         }
     }
 
-    public void DestroyMole1 (string answer, Transform transform)
+    public void DestroyMole(string answer, Transform transform)
     {
         ObjectivesRecombinantDNA.Instance.SubmitAnswer(answer, transform);
     }
