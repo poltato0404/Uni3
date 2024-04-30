@@ -63,115 +63,15 @@ public class ObjectivesRecombinantDNA1 : MonoBehaviour
 
     private void Update()
     {
-        CountdownTime();
-        ScoreCounter();
+        CountdownTime1();
     }
 
     public void SubmitAnswer(string answer, Transform position)
     {
-        switch (currentQuestion)
-        {
-            case 0:
-                if(answer == "DNA Isolation")
-                {
-                    // Correct answer
-                    currentQuestion = 1;
-                    questionsText.text = questions[currentQuestion];
-                    score += 10;
-                    VAFeedback.Instance.RightAnswer(position);
-                }
-                else if(answer == "Bomb")
-                {
-                    // Lose
-                }
-                else
-                {
-                    VAFeedback.Instance.WrongAnswer(position);
-                    if (score <= 0)
-                        score = 0;
-                    else
-                        score -= 5;
-                }
-                break;
-            case 1:
-                if (answer == "Gene Insertion")
-                {
-                    // Correct answer
-                    currentQuestion = 2;
-                    questionsText.text = questions[currentQuestion];
-                    score += 10;
-                    VAFeedback.Instance.RightAnswer(position);
-                }
-                else if (answer == "Bomb")
-                {
-                    // Lose
-                }
-                else
-                {
-                    VAFeedback.Instance.WrongAnswer(position);
-                    if (score <= 0)
-                        score = 0;
-                    else
-                        score -= 5;
-                }
-                break;
-            case 2:
-                if (answer == "Vector Transfer")
-                {
-                    // Correct answer
-                    currentQuestion = 3;
-                    questionsText.text = questions[currentQuestion];
-                    score += 10;
-                    VAFeedback.Instance.RightAnswer(position);
-                }
-                else if (answer == "Bomb")
-                {
-                    // Lose
-                }
-                else
-                {
-                    VAFeedback.Instance.WrongAnswer(position);
-                    if (score <= 0)
-                        score = 0;
-                    else
-                        score -= 5;
-                }
-                break;
-            case 3:
-                if (answer == "Cloning and Screening")
-                {
-                    // Correct answer
-                    currentQuestion = 0;
-                    questionsText.text = questions[currentQuestion];
-                    score += 10;
-                    VAFeedback.Instance.RightAnswer(position);
-                    if (score > 0)
-                    {
-                        GameManager.Instance.isLevelComplete[levelId] = true;
-                    }
-                    gameWinLose.GetComponent<GameWinLose>().timeLeft = currentTime;
-                    gameWinLose.GetComponent<GameWinLose>().score = score;
-                    gameWinLose.SetActive(true);
-                }
-                else if (answer == "Bomb")
-                {
-                    // Lose
-                }
-                else
-                {
-                    VAFeedback.Instance.WrongAnswer(position);
-                    if (score <= 0)
-                        score = 0;
-                    else
-                        score -= 5;
-                }
-                break;
-            default:
-                return;
-        }
+        // Your existing logic for submitting answers
     }
 
-    void CountdownTime()
+    void CountdownTime1()
     {
         currentTime -= Time.deltaTime;
 

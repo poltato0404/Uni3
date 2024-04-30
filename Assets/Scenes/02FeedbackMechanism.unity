@@ -668,10 +668,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6c2076187509be49b13e60eac5c82c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questTrigger: 0
-  popup: {fileID: 0}
-  score: 0
-  identifier: 0
 --- !u!135 &189252129
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1186,7 +1182,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2694896036719236270, guid: 61784ed77a5522041889b291f26558e0,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 771659683}
+      addedObject: {fileID: 771659688}
   m_SourcePrefab: {fileID: 100100000, guid: 61784ed77a5522041889b291f26558e0, type: 3}
 --- !u!114 &219180905 stripped
 MonoBehaviour:
@@ -1694,10 +1690,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6c2076187509be49b13e60eac5c82c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questTrigger: 0
-  popup: {fileID: 0}
-  score: 0
-  identifier: 0
 --- !u!1 &600004471
 GameObject:
   m_ObjectHideFlags: 0
@@ -1924,8 +1916,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8f0e18942cbe7243939c6b427b1a708, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  point: {fileID: 0}
-  score: 0
 --- !u!1 &682799092
 GameObject:
   m_ObjectHideFlags: 0
@@ -2153,7 +2143,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 771659683}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: QuestManager, Assembly-CSharp
         m_MethodName: ProceedQuest
         m_Mode: 1
@@ -2453,7 +2443,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 219180904}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &771659683
+--- !u!114 &771659688
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2462,7 +2452,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 771659678}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bbc928fbc0f90747965adc0b8cdc06f, type: 3}
+  m_Script: {fileID: 11500000, guid: 495967b68cae7f14c8f74cf83a677acb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   levelId: 1
@@ -2484,8 +2474,9 @@ MonoBehaviour:
   - You're in the heat quite a while, you're body is slowly getting thirsty
   - Don't go in that hot spring, the water may seem tempting but it got hot because
     of the sun!
+  - 
   delayBetweenCharacters: 0.1
-  totalTime: 0
+  totalTime: 120
   timerText: {fileID: 219180906}
 --- !u!1 &854092749
 GameObject:
@@ -2943,10 +2934,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6c2076187509be49b13e60eac5c82c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questTrigger: 0
-  popup: {fileID: 0}
-  score: 0
-  identifier: 0
 --- !u!135 &966154679
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3013,10 +3000,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6c2076187509be49b13e60eac5c82c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questTrigger: 0
-  popup: {fileID: 0}
-  score: 0
-  identifier: 0
 --- !u!135 &984020461
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4142,10 +4125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6c2076187509be49b13e60eac5c82c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questTrigger: 0
-  popup: {fileID: 0}
-  score: 0
-  identifier: 0
 --- !u!1001 &1500825834
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4287,10 +4266,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6c2076187509be49b13e60eac5c82c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questTrigger: 0
-  popup: {fileID: 0}
-  score: 0
-  identifier: 0
 --- !u!135 &1554797160
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5173,11 +5148,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c0180f41c02cc6488ec34af3c909b8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookAt: {fileID: 2117645800}
-  offset: {x: 0, y: 3.5, z: 0}
-  Player: {fileID: 0}
-  distance: 4.5
-  sensitivity: 4
 --- !u!1001 &1980246022
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,128 +1,133 @@
-using GameEssentials.GameManager;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using UnityEngine;
+// using GameEssentials.GameManager;
+// using System;
+// using System.Collections;
+// using System.Collections.Generic;
+// using TMPro;
+// using UnityEngine;
 
-public class ObjectiveHandler1 : MonoBehaviour
-{
-    // 3rd minigame
-    public int levelId = 2;
+// //parang nagalaw ko na to nun, pero hanggang gumagana gow
+// //may onjectivehand file ka na din ata rei sa new folder
 
-    public GameObject gameWinLose;
+// //pinalitan ko na ng 2 rei, nag eerror
 
-    [Header("Gameplay Objectives")]
-    public GameObject polypeptideCubes;
-    public GameObject[] polypetideStrands;
-    public GameObject mRNAStrand;
-    public GameObject RNAStrand;
-    public GameObject[] nucleotideSpawner;
+// public class ObjectiveHandler2 : MonoBehaviour
+// {
+//     // 3rd minigame
+//     public int levelId = 2;
 
-    public static ObjectiveHandler1 instance;
+//     public GameObject gameWinLose;
 
-    public int score;
-    public TextMeshProUGUI scoreText;
+//     [Header("Gameplay Objectives")]
+//     public GameObject polypeptideCubes;
+//     public GameObject[] polypetideStrands;
+//     public GameObject mRNAStrand;
+//     public GameObject RNAStrand;
+//     public GameObject[] nucleotideSpawner;
 
-    [Header("Timer Properties")]
-    public float totalTime;
-    private float currentTime;
-    [SerializeField] private TextMeshProUGUI timerText;
+//     public static ObjectiveHandler2 instance;
 
-    [SerializeField] private int matchCount;
+//     public int score;
+//     public TextMeshProUGUI scoreText;
 
-    private void Awake()
-    {
-        if(instance == null)
-            instance = this;
-    }
+//     [Header("Timer Properties")]
+//     public float totalTime;
+//     private float currentTime;
+//     [SerializeField] private TextMeshProUGUI timerText;
 
-    private void Start()
-    {
-        currentTime = totalTime;
-    }
+//     [SerializeField] private int matchCount;
 
-    private void OnEnable()
-    {
-        CodonMatch.OnRightMatch += OnMatchAddCount;
-    }
+//     private void Awake()
+//     {
+//         if(instance == null)
+//             instance = this;
+//     }
 
-    private void OnDisable()
-    {
-        CodonMatch.OnRightMatch -= OnMatchAddCount;
-    }
+//     private void Start()
+//     {
+//         currentTime = totalTime;
+//     }
 
-    private void OnMatchAddCount(int count)
-    {
-        matchCount += count;
+//     private void OnEnable()
+//     {
+//         CodonMatch.OnRightMatch += OnMatchAddCount;
+//     }
 
-        if(matchCount == 12 )
-        {
-            PrepareNextObjective();
-        }
+//     private void OnDisable()
+//     {
+//         CodonMatch.OnRightMatch -= OnMatchAddCount;
+//     }
+
+//     private void OnMatchAddCount(int count)
+//     {
+//         matchCount += count;
+
+//         if(matchCount == 12 )
+//         {
+//             PrepareNextObjective();
+//         }
         
-        if(matchCount == 16)
-        {
-            if (score > 0)
-            {
-                GameManager.Instance.isLevelComplete[levelId] = true;
-            }
+//         if(matchCount == 16)
+//         {
+//             if (score > 0)
+//             {
+//                 GameManager.Instance.isLevelComplete[levelId] = true;
+//             }
 
-            gameWinLose.GetComponent<GameWinLose>().timeLeft = currentTime;
-            gameWinLose.GetComponent<GameWinLose>().score = score;
-            gameWinLose.SetActive(true);
-        }
-    }
+//             gameWinLose.GetComponent<GameWinLose>().timeLeft = currentTime;
+//             gameWinLose.GetComponent<GameWinLose>().score = score;
+//             gameWinLose.SetActive(true);
+//         }
+//     }
 
-    void PrepareNextObjective()
-    {
-        mRNAStrand.transform.position = new Vector3(mRNAStrand.transform.position.x, -3, mRNAStrand.transform.position.z);
-        RNAStrand.SetActive(false);
+//     void PrepareNextObjective()
+//     {
+//         mRNAStrand.transform.position = new Vector3(mRNAStrand.transform.position.x, -3, mRNAStrand.transform.position.z);
+//         RNAStrand.SetActive(false);
 
-        polypeptideCubes.SetActive(true);
+//         polypeptideCubes.SetActive(true);
 
-        foreach (GameObject obj in polypetideStrands)
-        {
-            obj.SetActive(true);
-        }
+//         foreach (GameObject obj in polypetideStrands)
+//         {
+//             obj.SetActive(true);
+//         }
 
-        foreach(GameObject obj in nucleotideSpawner)
-        {
-            obj.SetActive(false);
-        }
-    }
-
-
-    private void Update()
-    {
-        CountdownTimer();
-        ScoreCounter();
-    }
-
-    private void ScoreCounter()
-    {
-        scoreText.text = score.ToString("D4");
-    }
-
-    private void CountdownTimer()
-    {
-        currentTime -= Time.deltaTime;
-
-        currentTime = Mathf.Clamp(currentTime, 0, totalTime);
-
-        int minutes = Mathf.FloorToInt(currentTime / 60f);
-        int seconds = Mathf.FloorToInt(currentTime % 60f);
-
-        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+//         foreach(GameObject obj in nucleotideSpawner)
+//         {
+//             obj.SetActive(false);
+//         }
+//     }
 
 
-        if (currentTime <= 0f)
-        {
-            //Lose
-            gameWinLose.GetComponent<GameWinLose>().timeLeft = currentTime;
-            gameWinLose.GetComponent<GameWinLose>().score = score;
-            gameWinLose.SetActive(true);
-            //Debug.Log("Timer Ran out!");
-        }
-    }
-}
+//     private void Update()
+//     {
+//         CountdownTimer();
+//         ScoreCounter();
+//     }
+
+//     private void ScoreCounter()
+//     {
+//         scoreText.text = score.ToString("D4");
+//     }
+
+//     private void CountdownTimer()
+//     {
+//         currentTime -= Time.deltaTime;
+
+//         currentTime = Mathf.Clamp(currentTime, 0, totalTime);
+
+//         int minutes = Mathf.FloorToInt(currentTime / 60f);
+//         int seconds = Mathf.FloorToInt(currentTime % 60f);
+
+//         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+
+
+//         if (currentTime <= 0f)
+//         {
+//             //Lose
+//             gameWinLose.GetComponent<GameWinLose>().timeLeft = currentTime;
+//             gameWinLose.GetComponent<GameWinLose>().score = score;
+//             gameWinLose.SetActive(true);
+//             //Debug.Log("Timer Ran out!");
+//         }
+//     }
+// }

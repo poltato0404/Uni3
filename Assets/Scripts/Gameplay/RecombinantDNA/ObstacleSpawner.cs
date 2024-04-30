@@ -16,16 +16,16 @@ public class ObstacleSpawner1 : MonoBehaviour
 
     public static ObstacleSpawner1 Instance;
 
-    private void Awake()
+    private void Awake1 ()
     {
         if(Instance == null)
             Instance = this;
     }
 
 
-    public void Start()
+    public void Start1()
     {
-        StartCoroutine(SpawnLoop());
+        StartCoroutine(SpawnLoop1());
     }
 
     /*
@@ -35,7 +35,7 @@ public class ObstacleSpawner1 : MonoBehaviour
     }
     */
 
-    IEnumerator SpawnLoop()
+    IEnumerator SpawnLoop1()
     {
         while (true)
         {
@@ -54,7 +54,7 @@ public class ObstacleSpawner1 : MonoBehaviour
         }
     }
 
-    public void DestroyMole(string answer, Transform transform)
+    public void DestroyMole1 (string answer, Transform transform)
     {
         ObjectivesRecombinantDNA.Instance.SubmitAnswer(answer, transform);
     }
