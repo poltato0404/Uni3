@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CodonMatch1 : MonoBehaviour
+public class CodonMatch : MonoBehaviour
 {
     public delegate void DelEventOnRightMatch(int count);
     public static event DelEventOnRightMatch OnRightMatch;

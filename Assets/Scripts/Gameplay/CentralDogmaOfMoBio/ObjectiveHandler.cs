@@ -44,12 +44,12 @@ public class ObjectiveHandler : MonoBehaviour
 
     private void OnEnable()
     {
-        CodonMatch1.OnRightMatch += OnMatchAddCount;
+        CodonMatch.OnRightMatch += OnMatchAddCount;
     }
 
     private void OnDisable()
     {
-        CodonMatch1.OnRightMatch -= OnMatchAddCount;
+        CodonMatch.OnRightMatch -= OnMatchAddCount;
     }
 
     private void OnMatchAddCount(int count)
