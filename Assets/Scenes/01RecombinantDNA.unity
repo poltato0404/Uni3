@@ -1427,18 +1427,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1444010137 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2694896035535421062, guid: 61784ed77a5522041889b291f26558e0,
-    type: 3}
-  m_PrefabInstance: {fileID: 2694896037481737810}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1446331858
 GameObject:
   m_ObjectHideFlags: 0
@@ -1480,11 +1468,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1446331858}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d86619430a87c249b101f6315f3f2ce, type: 3}
+  m_Script: {fileID: 11500000, guid: b7994208c255c2044b1bc5f44253e37c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   levelId: 0
-  currentState: 1
+  currentState: 0
   gameWinLose: {fileID: 857722339}
   score: 0
   scoreText: {fileID: 1382274708}
@@ -1497,9 +1485,9 @@ MonoBehaviour:
     organism?
   - What's the final stage, involving amplifying the gene and identifying successful
     cells?
-  questionsText: {fileID: 1444010137}
+  questionsText: {fileID: 2694896037481737812}
   totalTime: 120
-  timerText: {fileID: 1923921921}
+  timerText: {fileID: 2694896037481737813}
 --- !u!4 &1461079190 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6807818978558656131, guid: e0e074d1422ade04da0468e52dc2a02f,
@@ -1706,18 +1694,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1809497175}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1923921921 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2694896035625981523, guid: 61784ed77a5522041889b291f26558e0,
-    type: 3}
-  m_PrefabInstance: {fileID: 2694896037481737810}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1954329009
 GameObject:
   m_ObjectHideFlags: 0
@@ -2935,6 +2911,30 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2694896037481737810}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2694896037481737812 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2694896035535421062, guid: 61784ed77a5522041889b291f26558e0,
+    type: 3}
+  m_PrefabInstance: {fileID: 2694896037481737810}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2694896037481737813 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2694896035625981523, guid: 61784ed77a5522041889b291f26558e0,
+    type: 3}
+  m_PrefabInstance: {fileID: 2694896037481737810}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3110155536512196320
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3079,7 +3079,7 @@ MonoBehaviour:
   - {fileID: 1663630456758415818, guid: 6485f257d61cd8d40993a2c11c0b4304, type: 3}
   - {fileID: 9182127404559932469, guid: bf3895f37103a114eb7ea3a1b9e2e17b, type: 3}
   - {fileID: 6192606660767950230, guid: 63049ae238588da4489aa45a064d8f7d, type: 3}
-  spawnDelay: 3
+  spawnDelay: 2
   spawnChance: 0.5
   lookPoint: {fileID: 656745003}
 --- !u!1001 &3374951500516852969
@@ -3226,7 +3226,7 @@ MonoBehaviour:
   - {fileID: 1663630456758415818, guid: 6485f257d61cd8d40993a2c11c0b4304, type: 3}
   - {fileID: 9182127404559932469, guid: bf3895f37103a114eb7ea3a1b9e2e17b, type: 3}
   - {fileID: 6192606660767950230, guid: 63049ae238588da4489aa45a064d8f7d, type: 3}
-  spawnDelay: 3
+  spawnDelay: 2
   spawnChance: 0.5
   lookPoint: {fileID: 656745003}
 --- !u!1001 &4014822065416175948
@@ -3373,7 +3373,7 @@ MonoBehaviour:
   - {fileID: 1663630456758415818, guid: 6485f257d61cd8d40993a2c11c0b4304, type: 3}
   - {fileID: 9182127404559932469, guid: bf3895f37103a114eb7ea3a1b9e2e17b, type: 3}
   - {fileID: 6192606660767950230, guid: 63049ae238588da4489aa45a064d8f7d, type: 3}
-  spawnDelay: 3
+  spawnDelay: 2
   spawnChance: 0.5
   lookPoint: {fileID: 656745003}
 --- !u!1001 &6807818980018942485
@@ -3520,7 +3520,7 @@ MonoBehaviour:
   - {fileID: 1663630456758415818, guid: 6485f257d61cd8d40993a2c11c0b4304, type: 3}
   - {fileID: 9182127404559932469, guid: bf3895f37103a114eb7ea3a1b9e2e17b, type: 3}
   - {fileID: 6192606660767950230, guid: 63049ae238588da4489aa45a064d8f7d, type: 3}
-  spawnDelay: 3
+  spawnDelay: 2
   spawnChance: 0.5
   lookPoint: {fileID: 656745003}
 --- !u!1660057539 &9223372036854775807
