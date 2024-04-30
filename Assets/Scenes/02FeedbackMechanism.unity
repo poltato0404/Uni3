@@ -634,6 +634,7 @@ GameObject:
   - component: {fileID: 189252127}
   - component: {fileID: 189252129}
   - component: {fileID: 189252128}
+  - component: {fileID: 189252130}
   m_Layer: 0
   m_Name: Q1W
   m_TagString: Untagged
@@ -689,6 +690,22 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.30762827
   m_Center: {x: 0, y: 0, z: 0.052984502}
+--- !u!114 &189252130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189252126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1da6dbd2e8f1e14f8b9414017e06340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questTrigger: 0
+  popup: {fileID: 0}
+  score: 15
+  identifier: 1
 --- !u!1 &207035604
 GameObject:
   m_ObjectHideFlags: 0
@@ -1023,6 +1040,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2694896036175362246, guid: 61784ed77a5522041889b291f26558e0,
+        type: 3}
+      propertyPath: m_text
+      value: 0000
       objectReference: {fileID: 0}
     - target: {fileID: 2694896036719236270, guid: 61784ed77a5522041889b291f26558e0,
         type: 3}
@@ -1634,6 +1656,7 @@ GameObject:
   - component: {fileID: 550764839}
   - component: {fileID: 550764840}
   - component: {fileID: 550764841}
+  - component: {fileID: 550764842}
   m_Layer: 0
   m_Name: Q1
   m_TagString: Untagged
@@ -1690,6 +1713,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6c2076187509be49b13e60eac5c82c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &550764842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550764838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1da6dbd2e8f1e14f8b9414017e06340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questTrigger: 0
+  popup: {fileID: 0}
+  score: 15
+  identifier: 0
 --- !u!1 &600004471
 GameObject:
   m_ObjectHideFlags: 0
@@ -2899,6 +2938,7 @@ GameObject:
   - component: {fileID: 966154677}
   - component: {fileID: 966154679}
   - component: {fileID: 966154678}
+  - component: {fileID: 966154680}
   m_Layer: 0
   m_Name: Q3
   m_TagString: Untagged
@@ -2955,6 +2995,22 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &966154680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966154676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1da6dbd2e8f1e14f8b9414017e06340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questTrigger: 2
+  popup: {fileID: 0}
+  score: 20
+  identifier: 0
 --- !u!1 &984020458
 GameObject:
   m_ObjectHideFlags: 0
@@ -2966,6 +3022,7 @@ GameObject:
   - component: {fileID: 984020459}
   - component: {fileID: 984020461}
   - component: {fileID: 984020460}
+  - component: {fileID: 984020462}
   m_Layer: 0
   m_Name: Q2W
   m_TagString: Untagged
@@ -3021,6 +3078,22 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.3407082
   m_Center: {x: 0.15929182, y: 0, z: 0}
+--- !u!114 &984020462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984020458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1da6dbd2e8f1e14f8b9414017e06340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questTrigger: 1
+  popup: {fileID: 0}
+  score: 15
+  identifier: 1
 --- !u!1 &1038401124
 GameObject:
   m_ObjectHideFlags: 0
@@ -4069,6 +4142,7 @@ GameObject:
   - component: {fileID: 1466356047}
   - component: {fileID: 1466356049}
   - component: {fileID: 1466356050}
+  - component: {fileID: 1466356051}
   m_Layer: 0
   m_Name: Q3W
   m_TagString: Untagged
@@ -4125,6 +4199,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6c2076187509be49b13e60eac5c82c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1466356051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1466356046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1da6dbd2e8f1e14f8b9414017e06340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questTrigger: 2
+  popup: {fileID: 0}
+  score: 15
+  identifier: 0
 --- !u!1001 &1500825834
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4230,6 +4320,7 @@ GameObject:
   - component: {fileID: 1554797158}
   - component: {fileID: 1554797160}
   - component: {fileID: 1554797159}
+  - component: {fileID: 1554797161}
   m_Layer: 0
   m_Name: Q2
   m_TagString: Untagged
@@ -4287,6 +4378,22 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1554797161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554797157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1da6dbd2e8f1e14f8b9414017e06340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questTrigger: 1
+  popup: {fileID: 0}
+  score: 15
+  identifier: 0
 --- !u!1001 &1557051391
 PrefabInstance:
   m_ObjectHideFlags: 0
