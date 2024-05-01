@@ -7,10 +7,7 @@ public class InventorySlot : MonoBehaviour
 {
     public Image imageIcon;
     public TextMeshProUGUI itemText; // Reference to TextMeshPro component
-    public FakeTerminal terminal;
-    public GameObject canvas;
-    public PauseScript2 pos;
-
+    
     public void AddItem(InventoryItem item)
     {
         imageIcon.sprite = item.itemIcon;
