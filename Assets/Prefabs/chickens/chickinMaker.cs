@@ -1,14 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class chickinMaker : MonoBehaviour
 {
-    GameObject chicken;
+    private GameObject chicken; // Store reference to instantiated chicken
     public float heightAbove = 1.0f; // Height above the script holder
 
-    public void InstantiateChicken(GameObject chick)
+    public void InstantiateChicken(GameObject chickPrefab)
     {
+        if (chickPrefab == null)
+        {
+            Debug.LogError("Object to instantiate is not assigned.");
+            return;
+        }
+
         // Get the position of the script holder
         Vector3 scriptHolderPosition = transform.position;
 
@@ -20,21 +24,19 @@ public class chickinMaker : MonoBehaviour
         );
 
         // Instantiate the GameObject at the new position
-        if (chick != null)
-        {
-            Instantiate(chick, instantiatePosition, Quaternion.identity);
-        }
-        else
-        {
-            Debug.LogError("Object to instantiate is not assigned.");
-        }
-
-        chicken = chick;
+        chicken = Instantiate(chickPrefab, instantiatePosition, Quaternion.identity);
     }
 
     public void destroyChick()
     {
-        Destroy(chicken);
+        if (chicken != null)
+        {
+            Destroy(chicken); // Destroy the instantiated chicken
+            chicken = null; // Clear the reference
+        }
+        else
+        {
+            Debug.LogError("No chicken to destroy.");
+        }
     }
-    
 }

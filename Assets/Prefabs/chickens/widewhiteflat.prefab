@@ -178,6 +178,7 @@ GameObject:
   - component: {fileID: 1287819059517520479}
   - component: {fileID: 6686078430296012588}
   - component: {fileID: -1308801367534663992}
+  - component: {fileID: 8517357502536655342}
   m_Layer: 0
   m_Name: widewhiteflat
   m_TagString: Untagged
@@ -260,6 +261,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 50
   item: {fileID: 0}
+--- !u!114 &8517357502536655342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4531197023010907011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16b8fddf30f398b4e99873da0e837e87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rayColor: {r: 1, g: 0, b: 0, a: 1}
+  rayLength: 100
+  dragRange: 1
+  holder: {fileID: 0}
+  returnSpeed: 5
+  chickenNumber: 7
 --- !u!1 &5860855107084140711
 GameObject:
   m_ObjectHideFlags: 0

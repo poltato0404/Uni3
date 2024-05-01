@@ -19,7 +19,7 @@ public class chickenManager : MonoBehaviour
 
     }
 
-    void resetChickens(){
+    public void resetChickens(){
         p1.destroyChick();
         p2.destroyChick();
         p3.destroyChick();
@@ -38,6 +38,7 @@ public class chickenManager : MonoBehaviour
         p8.InstantiateChicken(chickens[7]);
 
     }
+    
 
     
 }
