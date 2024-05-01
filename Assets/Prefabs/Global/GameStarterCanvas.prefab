@@ -262,7 +262,6 @@ RectTransform:
   - {fileID: 842008246282503591}
   - {fileID: 8326204175686030529}
   - {fileID: 1917737841375234280}
-  - {fileID: 5219253397775770504}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -357,47 +356,8 @@ MonoBehaviour:
   - How to Play?
   - How to Play?
   - How to Play?
-  minigameInfo:
-  - 'A classic Whack-a-Mole game, these moles have an answer in their heads that
-    corresponds to the answer of the question.
-
-
-    Be careful! The holes may sometimes
-    pop out a bomb or a mole may have a wrong answer on them.
-
-
-    You have to be
-    quick and watch the moles carefully.'
-  - 'It''s summer now! You and your family enjoy a nice time in the swimming pool,
-    but suddenly you feel a little light-headed and you start to feel more thirsty
-    as it becomes gradually hotter and hotter.
-
-
-    Quickly you must guide your
-    character to safety!'
-  - -Blank-
-  - -Blank-
-  - -Blank-
-  - -Blank-
-  - -Blank-
-  introductionText:
-  - 'Enter the world of genetic engineering with Recombinant DNA. Investigate on
-    the steps in Recombinant DNA Technology. '
-  - Learn how organisms keep internal balance through processes like temperature
-    control. This game teaches players how different body systems respond to changes
-    and maintain stability, known as homeostasis.
-  - Decode the Central Dogma of Molecular Biology. Investigate how genetic information
-    flows from DNA to RNA to proteins, essential for understanding how cells function.
-  - Embark on a journey through the Cell Cycle and uncover the secrets of cell division.
-    Investigate the phases of Interphase and Mitosis!
-  - 'Embark on a detective journey through the Animal Organ System, where organs
-    work together in harmony. Solve riddles to uncover the secrets of how each organ
-    plays a crucial role in the body''s functions. '
-  - Unlock the mysteries of life as you delve into the Cell Theory. Discover the
-    scientists who paved the way for this revolutionary concept.
-  - Put on your detective hat and explore the inner workings of cells. Investigate
-    the structures that keep cells functioning, from the powerhouse mitochondria
-    to the intricate endoplasmic reticulum.
+  minigameInfo: []
+  introductionText: []
   introText: {fileID: 3165087619179826187}
   introPanelScreen: {fileID: 6098857928520319601}
 --- !u!1 &842008245031518410
@@ -839,6 +799,7 @@ RectTransform:
   - {fileID: 842008245035533583}
   - {fileID: 8931316027154867833}
   - {fileID: 2863071494756436753}
+  - {fileID: 5219253397775770504}
   - {fileID: 842008246498914915}
   - {fileID: 846723141821225151}
   m_Father: {fileID: 842008244978331283}
@@ -1330,16 +1291,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3527720712074775126}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.82644624, y: 0.7751938, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 842008244978331283}
+  m_Father: {fileID: 842008246282503591}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.080093, y: 195}
+  m_AnchoredPosition: {x: -0, y: 136.43411}
   m_SizeDelta: {x: 1059.7018, y: 107.5956}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7536010616378158340
@@ -2241,12 +2202,12 @@ PrefabInstance:
     - target: {fileID: 2360061668185458268, guid: 30f45a546b335da488bc9999ca9500e6,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2360061668185458268, guid: 30f45a546b335da488bc9999ca9500e6,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -62
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2360061668185458268, guid: 30f45a546b335da488bc9999ca9500e6,
         type: 3}
@@ -2263,10 +2224,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2991416515927677171, guid: 30f45a546b335da488bc9999ca9500e6,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 56c55a8fbc09fbb458989eb0debcc51a,
+        type: 2}
+    - target: {fileID: 2991416515927677171, guid: 30f45a546b335da488bc9999ca9500e6,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 56c55a8fbc09fbb458989eb0debcc51a, type: 2}
     - target: {fileID: 7998055438577585349, guid: 30f45a546b335da488bc9999ca9500e6,
         type: 3}
       propertyPath: m_Name
       value: InfoPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 7998055438577585349, guid: 30f45a546b335da488bc9999ca9500e6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
