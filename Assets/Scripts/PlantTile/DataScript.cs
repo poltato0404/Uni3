@@ -7,7 +7,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [System.Serializable]
-public class TileData {
+public class TileData
+{
     public string Title;
     public string[] CorrectAnswers;
     public string[] WrongAnswers;
@@ -17,6 +18,9 @@ public class TileData {
 
 public class DataScript : MonoBehaviour
 {
+    public SavePS saver;
+    public bool finished = true;
+
     public List<TileData> tileDataList;
     public List<int> usedQuestions;
     public TileData selectedQuestion;
@@ -31,7 +35,8 @@ public class DataScript : MonoBehaviour
 
     void Awake()
     {
-        tileDataList.Add(new TileData {
+        tileDataList.Add(new TileData
+        {
             Title = "Root System",
             CorrectAnswers = new string[] {
                 "Absorbs water and nutrients",
@@ -49,7 +54,8 @@ public class DataScript : MonoBehaviour
             isDone = false
         });
 
-        tileDataList.Add(new TileData {
+        tileDataList.Add(new TileData
+        {
             Title = "Vascular System",
             CorrectAnswers = new string[] {
                 "Transports water, nutrients, and sugars throughout the plant",
@@ -67,7 +73,8 @@ public class DataScript : MonoBehaviour
             isDone = false
         });
 
-        tileDataList.Add(new TileData {
+        tileDataList.Add(new TileData
+        {
             Title = "Leaves",
             CorrectAnswers = new string[] {
                 "Produce food through photosynthesis",
@@ -85,7 +92,8 @@ public class DataScript : MonoBehaviour
             isDone = false
         });
 
-        tileDataList.Add(new TileData {
+        tileDataList.Add(new TileData
+        {
             Title = "Stem",
             CorrectAnswers = new string[] {
                 "Supports the plant's structure",
@@ -103,7 +111,8 @@ public class DataScript : MonoBehaviour
             isDone = false
         });
 
-        tileDataList.Add(new TileData {
+        tileDataList.Add(new TileData
+        {
             Title = "Shoot System",
             CorrectAnswers = new string[] {
                 "Consists of stems, leaves, and branches",
@@ -124,6 +133,8 @@ public class DataScript : MonoBehaviour
     void Update()
     {
         scoreText.text = playerScore.ToString();
+        saver.finished = finished;
+        saver.score = playerScore;
     }
 
     public async Task setTileText()
@@ -134,15 +145,16 @@ public class DataScript : MonoBehaviour
         }
     }
     public async Task getQuestion()
-    {   
+    {
         resetTiles();
         titleText = GameObject.Find("TitleTextMesh").GetComponent<TextMeshPro>();
         int randomNumber;
         if (usedQuestions.Count != 5)
         {
-            do {
+            do
+            {
                 randomNumber = Random.Range(0, 5);
-            } 
+            }
             while (usedQuestions.Contains(randomNumber));
 
             usedQuestions.Add(randomNumber);
@@ -159,12 +171,13 @@ public class DataScript : MonoBehaviour
     {
         int wrongAnswerLength = selectedQuestion.WrongAnswers.Length;
         int increasingNumber = 0;
-        while(wrongAnswerLength > 0)
+        while (wrongAnswerLength > 0)
         {
             int randomTile = 0;
-            do {
-                    randomTile = Random.Range(0, 9);
-                } 
+            do
+            {
+                randomTile = Random.Range(0, 9);
+            }
             while (selectedTiles.Contains(randomTile));
 
             selectedTiles.Add(randomTile);
@@ -180,12 +193,13 @@ public class DataScript : MonoBehaviour
         int correctAnswerLength = selectedQuestion.CorrectAnswers.Length;
         int increasingNumber = 0;
 
-        while(correctAnswerLength > 0)
+        while (correctAnswerLength > 0)
         {
             int randomTile = 0;
-            do {
-                    randomTile = Random.Range(0, 9);
-                } 
+            do
+            {
+                randomTile = Random.Range(0, 9);
+            }
             while (selectedTiles.Contains(randomTile));
 
             selectedTiles.Add(randomTile);
@@ -194,10 +208,12 @@ public class DataScript : MonoBehaviour
             increasingNumber++;
             correctAnswerLength--;
         }
+        // Set finished to true when the player has answered all questions
+        finished = true;
     }
 
     void resetTiles()
     {
-        
+
     }
 }

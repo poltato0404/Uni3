@@ -34,27 +34,27 @@ public class EndSceneSubtitle : MonoBehaviour
         startTimes = new float[]
         {
             0f,
-            7f,
-            13f,
+            6f,
+            12f,
             18f,
-            28f,
-            33f,
-            38f,
+            26f,
+            31f,
+            36f,
             41f,
-            44f
+            43f
         };
 
         endTimes = new float[]
         {
-            3f,
+            4f,
             12f,
             24f,
             27f,
-            32f,
+            30f,
+            35f,
             38f,
-            40,
-            43f,
-            45f
+            42f,
+            44f
         };
     }
 

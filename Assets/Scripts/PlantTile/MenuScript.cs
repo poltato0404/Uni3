@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class MenuScript : MonoBehaviour
 {
     public GameObject pausePanel, pausePanelBlock, settingsPanel, menuPanel;
-    public GameObject onOffSoundBtn;
 
     void Awake()
     {
@@ -21,7 +20,7 @@ public class MenuScript : MonoBehaviour
         pausePanelBlock.SetActive(true);
         pausePanel.GetComponent<Animator>().SetBool("isPaused", true);
     }
-    
+
     public void resumeClick()
     {
         togglePauseResume();
@@ -44,26 +43,6 @@ public class MenuScript : MonoBehaviour
     public void quitClick()
     {
         Application.Quit();
-    }
-
-    public void toggleSound()
-    {
-        float volumeToggle = 0.5f;
-        if (onOffSoundBtn.transform.GetChild(0).GetComponent<Text>().text == "ON")
-        {
-            onOffSoundBtn.transform.GetChild(0).GetComponent<Text>().text = "OFF";
-            volumeToggle = 0;
-        }
-        else
-        {
-            onOffSoundBtn.transform.GetChild(0).GetComponent<Text>().text = "ON";
-            volumeToggle = 0.5f;
-        }
-
-        foreach(GameObject obj in GameObject.FindGameObjectsWithTag("SoundObject"))
-        {
-            obj.GetComponent<AudioSource>().volume = volumeToggle;
-        }
     }
 
     public void restartClick()

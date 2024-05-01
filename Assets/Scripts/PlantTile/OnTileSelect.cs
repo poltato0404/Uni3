@@ -20,19 +20,22 @@ public class OnTileSelect : MonoBehaviour
     }
     void Start()
     {
-        
+
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(0))
+        {
             var isPaused = GameObject.Find("GameManager").GetComponent<TimerScript>().stopTime;
-            if (isPaused) {
-                if (EventSystem.current.IsPointerOverGameObject()) {
+            if (isPaused)
+            {
+                if (EventSystem.current.IsPointerOverGameObject())
+                {
                     return;
                 }
             }
-            
+
             GameObject.Find("ButtonSound").GetComponent<AudioSource>().Play();
             if (gameObject == getClickedObj(out RaycastHit hit))
             {
@@ -45,7 +48,7 @@ public class OnTileSelect : MonoBehaviour
     GameObject getClickedObj(out RaycastHit hit)
     {
         GameObject target = null;
-        Ray ray  = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray.origin, ray.direction * 10, out hit))
         {
             target = hit.collider.gameObject;
@@ -67,8 +70,8 @@ public class OnTileSelect : MonoBehaviour
                     var timerScript = GameObject.Find("GameManager").GetComponent<TimerScript>();
                     timerScript.stopTime = true;
                     GameObject.Find("PanelFinish").GetComponent<Animator>().SetBool("GameFinish", true);
-                    GameObject.Find("TitleFinish").GetComponent<Text>().text = "GAME COMPLETE";
-                    GameObject.Find("ScoreFinish").GetComponent<Text>().text = "Score: "+ dataList.GetComponent<DataScript>().playerScore;
+                    GameObject.Find("TitleFinish").GetComponent<Text>().text = "VICTORY";
+                    GameObject.Find("ScoreFinish").GetComponent<Text>().text = "SCORE: " + dataList.GetComponent<DataScript>().playerScore;
                 }
                 else
                 {
@@ -79,7 +82,7 @@ public class OnTileSelect : MonoBehaviour
                     dataList.GetComponent<DataScript>().playerScore += 50;
                     await dataList.GetComponent<DataScript>().getQuestion();
                 }
-                
+
             }
         }
         else
@@ -88,7 +91,7 @@ public class OnTileSelect : MonoBehaviour
             {
                 dataList.GetComponent<DataScript>().playerScore -= 10;
             }
-            
+
             GameObject.Find("WrongSound").GetComponent<AudioSource>().Play();
             gameObject.GetComponent<MeshRenderer>().material = wrongMat;
             dataList.GetComponent<DataScript>().correctCount = 0;
@@ -99,7 +102,7 @@ public class OnTileSelect : MonoBehaviour
     IEnumerator waitForDelayThenReset()
     {
         yield return new WaitForSeconds(0.5f);
-        foreach(TextMeshPro obj in dataList.GetComponent<DataScript>().tileTexts)
+        foreach (TextMeshPro obj in dataList.GetComponent<DataScript>().tileTexts)
         {
             obj.transform.parent.GetComponent<MeshRenderer>().material = neutralMat;
             dataList.GetComponent<DataScript>().correctCount = 0;
