@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 8583146858647884491}
   - component: {fileID: 4661978792321391982}
   - component: {fileID: 7446238312083777956}
-  - component: {fileID: -5115974776983128527}
   - component: {fileID: 52795874288287927}
   - component: {fileID: 6296650399512251558}
   - component: {fileID: 4579381447831422490}
+  - component: {fileID: 3663541579743188369}
   m_Layer: 0
   m_Name: Yeopjeon
   m_TagString: Coin
@@ -87,20 +87,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-5115974776983128527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8959531281939941489}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5684a46e4d7de141b025d9ff307cd06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 50
-  item: {fileID: 8959531281939941489}
 --- !u!114 &52795874288287927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,3 +149,17 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.13733578, y: 0.011187624, z: 0.13733578}
   m_Center: {x: 0, y: -4.656613e-10, z: 0}
+--- !u!114 &3663541579743188369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8959531281939941489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2ac58e08d491d41af3dafe65d875c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: Bios
+  itemIcon: {fileID: 21300000, guid: 032d58cf17df65e43bc3a679a65bb37f, type: 3}
