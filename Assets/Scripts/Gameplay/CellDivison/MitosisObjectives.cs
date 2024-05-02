@@ -15,40 +15,51 @@ public class MitosisObjectives : MonoBehaviour
     public TextMeshProUGUI scoreText;
 
     [Header("Timer Properties")]
+    public saveCD saver;
     public float totalTime;
     private float currentTime;
     [SerializeField] private TextMeshProUGUI timerText;
 
     public static MitosisObjectives instance;
+    public bool finished = false;
 
     private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
             instance = this;
     }
 
     private void Start()
     {
         currentTime = totalTime;
+
     }
 
 
     private void Update()
     {
+        saver.finished = true;
+        saver.score = score;
         CountdownTimer();
         ScoreCounter();
-
-        if (correctMatches >= 8 )
+        GameWinLose canvasGWl = gameWinLose.GetComponent<GameWinLose>();
+        canvasGWl.score = score;
+        canvasGWl.timeLeft = currentTime;
+        if (correctMatches >= 8)
         {
             gameWinLose.SetActive(true);
+
             if (score > 0)
             {
-                //dsadsaomdasjdmas
+                saver.finished = true;
+                saver.score = score;
+                canvasGWl.score = score;
+                finished = true;
             }
 
-            gameWinLose.GetComponent<GameWinLose>().timeLeft = currentTime;
-            gameWinLose.GetComponent<GameWinLose>().score = score;
-            
+            canvasGWl.timeLeft = currentTime;
+            canvasGWl.score = score;
+
         }
     }
 
