@@ -15,7 +15,7 @@ public class MatchCellPart : MonoBehaviour
             dropImage.sprite = sprite;
             VAFeedback.Instance.RightAnswer(this.transform);
 
-            CellObjectives.instance.AddMatches(1, 50);
+            CellObjectives.instance.AddMatches(1, 166);
 
             this.enabled = false;
             return true;

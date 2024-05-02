@@ -7,9 +7,12 @@ public class InventorySlot : MonoBehaviour
 {
     public Image imageIcon;
     public TextMeshProUGUI itemText; // Reference to TextMeshPro component
-    
+    public InventoryManager inventoryManager;
+    InventoryItem itemInSlot;
     public void AddItem(InventoryItem item)
     {
+        itemInSlot = item;
+        inventoryManager.itemsInInventory.Add(itemInSlot);
         imageIcon.sprite = item.itemIcon;
         imageIcon.enabled = true;
 
@@ -29,14 +32,24 @@ public class InventorySlot : MonoBehaviour
 
         Debug.Log("Inventory slot cleared.");
     }
-    void Update(){
+    void Update()
+    {
         if (itemText.text == "Laptop")
         {
             Button button = GetComponent<Button>();
-             button.interactable = true;
+            button.interactable = true;
         }
+
+
+
+
     }
 
-    
-    
+    public string IteminSlot()
+    {
+        return itemText.text;
+    }
+
+
+
 }

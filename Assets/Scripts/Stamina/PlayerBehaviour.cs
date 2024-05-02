@@ -1,8 +1,8 @@
 using System.Collections;
 using UnityEngine;
-using TMPro; 
+using TMPro;
 
-public class PlayerBehaviour : MonoBehaviour,IDataPersistence
+public class PlayerBehaviour : MonoBehaviour, IDataPersistence
 {
     [SerializeField] StaminaBar _staminaBar;
     [SerializeField] playerControScript _playerContro;
@@ -22,7 +22,7 @@ public class PlayerBehaviour : MonoBehaviour,IDataPersistence
 
     void Start()
     {
-         pausePanelBlock.SetActive(false);
+        pausePanelBlock.SetActive(false);
         gameOver.SetActive(false);
         _playerOriginalSpeed = _playerContro.playerSpeed;
         _playerSprintSpeed = _playerContro.playerSpeed * 2f;
@@ -30,7 +30,7 @@ public class PlayerBehaviour : MonoBehaviour,IDataPersistence
 
     void Update()
     {
-        if (StaminaGameManager.staminaGameManager._playertStamina.Stamina  < 1)
+        if (StaminaGameManager.staminaGameManager._playertStamina.Stamina < 1)
         {
             GameOver();
         }
@@ -91,44 +91,52 @@ public class PlayerBehaviour : MonoBehaviour,IDataPersistence
         StaminaGameManager.staminaGameManager._playertStamina.RegenStamina();
         _staminaBar.SetStamina(StaminaGameManager.staminaGameManager._playertStamina.Stamina);
     }
-     public void drinkEnergy()
+    public void drinkEnergy()
     {
-        if(numberOfDrinks>0){
-         StaminaGameManager.staminaGameManager._playertStamina.drink();
-         numberOfDrinks--;
-         setDrinkText(numberOfDrinks);
-         }
+        if (numberOfDrinks > 0)
+        {
+            StaminaGameManager.staminaGameManager._playertStamina.drink();
+            numberOfDrinks--;
+            setDrinkText(numberOfDrinks);
+        }
     }
-    public void SaveData(ref GameData data) {
-        
+    public void SaveData(ref GameData data)
+    {
+
         data.numberOfDrinks = numberOfDrinks;
 
     }
-    public void LoadData(GameData data) {
-        switch(data.currentLevel){
-        case 1:
-            if(data.loadedLevel1){ numberOfDrinks = data.numberOfDrinks;}else{numberOfDrinks =3;}break;
-        case 2:
-        if(data.loadedLevel2){ numberOfDrinks = data.numberOfDrinks;}else{numberOfDrinks =6; }break;
-        case 3:
-        if(data.loadedLevel3){ numberOfDrinks = data.numberOfDrinks;}else{numberOfDrinks =9; }break;
+    public void LoadData(GameData data)
+    {
+        switch (data.currentLevel)
+        {
+            case 1:
+                if (data.loadedLevel1) { numberOfDrinks = data.numberOfDrinks; } else { numberOfDrinks = 3; }
+                break;
+            case 2:
+                if (data.loadedLevel2) { numberOfDrinks = data.numberOfDrinks; } else { numberOfDrinks = 6; }
+                break;
+            case 3:
+                if (data.loadedLevel3) { numberOfDrinks = data.numberOfDrinks; } else { numberOfDrinks = 9; }
+                break;
         }
 
         setDrinkText(numberOfDrinks);
-        
-        
+
+
     }
 
-    public void setDrinkText(int x){
+    public void setDrinkText(int x)
+    {
         drinkTMP.text = x.ToString();
     }
 
     public void GameOver()
     {
 
-            pausePanelBlock.SetActive(true);
-            gameOver.SetActive(true);
-            Time.timeScale =  0f;
+        pausePanelBlock.SetActive(true);
+        gameOver.SetActive(true);
+        Time.timeScale = 0f;
 
     }
 
@@ -136,21 +144,28 @@ public class PlayerBehaviour : MonoBehaviour,IDataPersistence
     {
         // Access the GameObject that this object collided with
         GameObject collidedObject = other.gameObject;
-       
+
         // You can add conditions to identify the specific object you want to interact with
         if (collidedObject.CompareTag("Coin"))
         {
-             Debug.Log("collide");
+            Debug.Log("collide");
             InventoryItem item = collidedObject.GetComponent<InventoryItem>();
             inventory.AddItemToInventory(item);
-            Destroy(collidedObject);
+            collidedObject.SetActive(false);
         }
         if (collidedObject.CompareTag("device"))
         {
-             Debug.Log("collide");
+            Debug.Log("collide");
             InventoryItem item = collidedObject.GetComponent<InventoryItem>();
             inventory.AddItemToInventory(item);
-            Destroy(collidedObject);
+            collidedObject.SetActive(false);
+        }
+        if (collidedObject.CompareTag("folder"))
+        {
+            Debug.Log("collide");
+            InventoryItem item = collidedObject.GetComponent<InventoryItem>();
+            inventory.AddItemToInventory(item);
+            collidedObject.SetActive(false);
         }
     }
 

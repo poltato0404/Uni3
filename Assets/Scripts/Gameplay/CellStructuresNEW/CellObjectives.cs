@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class CellObjectives : MonoBehaviour
 {
+    public saveCS saver;
+
     public static CellObjectives instance;
 
     public GameObject gameWinLose;
@@ -42,6 +44,9 @@ public class CellObjectives : MonoBehaviour
     {
         if (completedMatches > 5)
         {
+            isWin = true;
+            saver.finished = isWin;
+            saver.score = score;
             gameWinLose.GetComponent<GameWinLose>().timeLeft = currentTime;
             gameWinLose.gameObject.GetComponent<GameWinLose>().score = score;
 
@@ -53,6 +58,8 @@ public class CellObjectives : MonoBehaviour
     #region TIMER_AND_SCORE
     private void Update()
     {
+        saver.finished = isWin;
+        saver.score = score;
         ScoreCounter();
         CountdownTimer();
     }

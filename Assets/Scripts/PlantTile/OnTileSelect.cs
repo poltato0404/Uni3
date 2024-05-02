@@ -79,7 +79,12 @@ public class OnTileSelect : MonoBehaviour
                     dataList.GetComponent<DataScript>().correctCount = 0;
                     dataList.GetComponent<DataScript>().tileTexts.Clear();
                     dataList.GetComponent<DataScript>().selectedTiles.Clear();
-                    dataList.GetComponent<DataScript>().playerScore += 50;
+
+                    // Adjust score calculation to ensure a total score of 1000
+                    int remainingScore = 1000 - dataList.GetComponent<DataScript>().playerScore;
+                    int additionalScore = Mathf.Min(remainingScore, 250);
+                    dataList.GetComponent<DataScript>().playerScore += additionalScore;
+
                     await dataList.GetComponent<DataScript>().getQuestion();
                 }
 
@@ -90,6 +95,10 @@ public class OnTileSelect : MonoBehaviour
             if (dataList.GetComponent<DataScript>().playerScore >= 10)
             {
                 dataList.GetComponent<DataScript>().playerScore -= 10;
+            }
+            else
+            {
+                dataList.GetComponent<DataScript>().playerScore = 0; // Ensure score doesn't go negative
             }
 
             GameObject.Find("WrongSound").GetComponent<AudioSource>().Play();

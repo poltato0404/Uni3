@@ -39,8 +39,6 @@ public class GameStarter : MonoBehaviour
     public void Start()
     {
         // In case there might be some residual text
-        minigameTitle.text = "";
-        minigameDesc.text = "";
         OnInitiate();
     }
 
