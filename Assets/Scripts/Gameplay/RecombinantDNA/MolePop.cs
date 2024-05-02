@@ -56,7 +56,7 @@ public class MolePop : MonoBehaviour
                 Destroy(this.gameObject, 0.1f);
                 break;
         }
-        
+
     }
 
     public void DestroyMe()

@@ -21,6 +21,8 @@ public class GameWinLose : MonoBehaviour
 
     public Image badgeImage;
     public Sprite[] badgeSprites;
+    [SerializeField] private TMP_Text coinText;
+    [SerializeField] private TMP_Text keyText;
 
 
     public TextMeshProUGUI scoreText;
@@ -53,6 +55,8 @@ public class GameWinLose : MonoBehaviour
         else if (score <= 0)
         {
             headerText.text = "TRY AGAIN";
+            coinText.SetText("0");
+            keyText.SetText("0");
             badgeImage.sprite = badgeSprites[9];
             loseButton.SetActive(true);
         }

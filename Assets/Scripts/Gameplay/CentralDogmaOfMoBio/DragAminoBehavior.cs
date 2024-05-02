@@ -66,7 +66,7 @@ public class DragAminoBehavior : MonoBehaviour
 
     void LifeTime()
     {
-        if(state == State.Dynamic)
+        if (state == State.Dynamic)
         {
             Destroy(this.gameObject);
         }
@@ -93,9 +93,9 @@ public class DragAminoBehavior : MonoBehaviour
         var rayOrigin = Camera.main.transform.position;
         var rayDirection = MouseWorldPosition() - Camera.main.transform.position;
         RaycastHit hitInfo;
-        if(Physics.Raycast(rayOrigin, rayDirection, out hitInfo))
+        if (Physics.Raycast(rayOrigin, rayDirection, out hitInfo))
         {
-            if(hitInfo.transform.tag == destinationTag)
+            if (hitInfo.transform.tag == destinationTag)
             {
                 transform.position = hitInfo.transform.position;
                 transform.rotation = Quaternion.Euler(0f, 0f, 0f);
@@ -103,7 +103,7 @@ public class DragAminoBehavior : MonoBehaviour
                 // Else Negative feedback
                 if (hitInfo.transform.gameObject.GetComponent<CodonMatch>().isMatch(nucleotide, polypeptide, this.gameObject))
                 {
-                    ObjectiveHandler.instance.score += 10;
+                    ObjectiveHandler.instance.score += 60;
                     VAFeedback.Instance.RightAnswer(hitInfo.transform);
                     transform.GetComponent<Collider>().enabled = false;
                     state = State.Static;
@@ -111,7 +111,7 @@ public class DragAminoBehavior : MonoBehaviour
                 else
                 {
                     if (ObjectiveHandler.instance.score <= 0) ObjectiveHandler.instance.score = 0;
-                    else ObjectiveHandler.instance.score -= 5;
+                    else ObjectiveHandler.instance.score -= 20;
                     VAFeedback.Instance.WrongAnswer(hitInfo.transform);
                     transform.GetComponent<Collider>().enabled = true;
                     rb.isKinematic = false;

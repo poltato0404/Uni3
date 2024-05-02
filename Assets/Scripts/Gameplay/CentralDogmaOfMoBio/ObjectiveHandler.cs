@@ -33,7 +33,7 @@ public class ObjectiveHandler : MonoBehaviour
 
     private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
             instance = this;
     }
 
@@ -56,16 +56,17 @@ public class ObjectiveHandler : MonoBehaviour
     {
         matchCount += count;
 
-        if(matchCount == 12 )
+        if (matchCount == 12)
         {
             PrepareNextObjective();
         }
-        
-        if(matchCount == 16)
+
+        if (matchCount == 16)
         {
             if (score > 0)
             {
-                GameManager.Instance.isLevelComplete[levelId] = true;
+                //GameManager.Instance.isLevelComplete[levelId] = true;
+
             }
 
             gameWinLose.GetComponent<GameWinLose>().timeLeft = currentTime;
@@ -86,7 +87,7 @@ public class ObjectiveHandler : MonoBehaviour
             obj.SetActive(true);
         }
 
-        foreach(GameObject obj in nucleotideSpawner)
+        foreach (GameObject obj in nucleotideSpawner)
         {
             obj.SetActive(false);
         }

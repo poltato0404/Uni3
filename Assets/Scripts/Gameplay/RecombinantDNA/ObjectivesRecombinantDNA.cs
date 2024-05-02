@@ -28,7 +28,7 @@ public class ObjectivesRecombinantDNA : MonoBehaviour
     public int currentQuestion;
 
     public string[] questions =
-    { 
+    {
         "Which steps initiates genetic engineering by extracting DNA with the desired gene?",
         "What's the process of inserting a gene into a carrier module?",
         "What's the phase involving transferring the gene-carrying vector into the host organism?",
@@ -46,7 +46,7 @@ public class ObjectivesRecombinantDNA : MonoBehaviour
 
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
             Instance = this;
     }
 
@@ -72,15 +72,15 @@ public class ObjectivesRecombinantDNA : MonoBehaviour
         switch (currentQuestion)
         {
             case 0:
-                if(answer == "DNA Isolation")
+                if (answer == "DNA Isolation")
                 {
                     // Correct answer
                     currentQuestion = 1;
                     questionsText.text = questions[currentQuestion];
-                    score += 10;
+                    score += 250;
                     VAFeedback.Instance.RightAnswer(position);
                 }
-                else if(answer == "Bomb")
+                else if (answer == "Bomb")
                 {
                     // Lose
                 }
@@ -90,7 +90,7 @@ public class ObjectivesRecombinantDNA : MonoBehaviour
                     if (score <= 0)
                         score = 0;
                     else
-                        score -= 5;
+                        score -= 125;
                 }
                 break;
             case 1:
@@ -99,7 +99,7 @@ public class ObjectivesRecombinantDNA : MonoBehaviour
                     // Correct answer
                     currentQuestion = 2;
                     questionsText.text = questions[currentQuestion];
-                    score += 10;
+                    score += 250;
                     VAFeedback.Instance.RightAnswer(position);
                 }
                 else if (answer == "Bomb")
@@ -112,7 +112,7 @@ public class ObjectivesRecombinantDNA : MonoBehaviour
                     if (score <= 0)
                         score = 0;
                     else
-                        score -= 5;
+                        score -= 125;
                 }
                 break;
             case 2:
@@ -121,7 +121,7 @@ public class ObjectivesRecombinantDNA : MonoBehaviour
                     // Correct answer
                     currentQuestion = 3;
                     questionsText.text = questions[currentQuestion];
-                    score += 10;
+                    score += 250;
                     VAFeedback.Instance.RightAnswer(position);
                 }
                 else if (answer == "Bomb")
@@ -134,7 +134,7 @@ public class ObjectivesRecombinantDNA : MonoBehaviour
                     if (score <= 0)
                         score = 0;
                     else
-                        score -= 5;
+                        score -= 125;
                 }
                 break;
             case 3:
@@ -143,11 +143,11 @@ public class ObjectivesRecombinantDNA : MonoBehaviour
                     // Correct answer
                     currentQuestion = 0;
                     questionsText.text = questions[currentQuestion];
-                    score += 10;
+                    score += 250;
                     VAFeedback.Instance.RightAnswer(position);
                     if (score > 0)
                     {
-                        GameManager.Instance.isLevelComplete[levelId] = true;
+                        //GameManager.Instance.isLevelComplete[levelId] = true;
                     }
                     gameWinLose.GetComponent<GameWinLose>().timeLeft = currentTime;
                     gameWinLose.GetComponent<GameWinLose>().score = score;
@@ -163,7 +163,7 @@ public class ObjectivesRecombinantDNA : MonoBehaviour
                     if (score <= 0)
                         score = 0;
                     else
-                        score -= 5;
+                        score -= 125;
                 }
                 break;
             default:
@@ -183,7 +183,7 @@ public class ObjectivesRecombinantDNA : MonoBehaviour
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
 
 
-        if(currentTime <= 0f)
+        if (currentTime <= 0f)
         {
             //Lose
             gameWinLose.GetComponent<GameWinLose>().timeLeft = currentTime;
