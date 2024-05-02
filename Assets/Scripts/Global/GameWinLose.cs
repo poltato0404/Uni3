@@ -81,19 +81,7 @@ public class GameWinLose : MonoBehaviour
 
         Time.timeScale = 1.0f;
 
-        Debug.Log(SceneManager.GetActiveScene().buildIndex);
-
-        switch (SceneManager.GetActiveScene().buildIndex)
-        {
-            case 3:
-            case 5:
-            case 7:
-                SceneManager.LoadScene(0);
-                break;
-            default:
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-                break;
-        }
+        SceneManager.LoadScene("laptop");
     }
 
     public void OnClick_MainMenuButton()

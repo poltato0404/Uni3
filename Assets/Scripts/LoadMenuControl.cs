@@ -14,11 +14,11 @@ public class LoadMenuControl : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(LoadAndSwitchScenes(GameManager.Instance.sceneToLoad));
+        StartCoroutine(LoadAndSwitchScenes());
         // Prepare
     }
 
-    IEnumerator LoadAndSwitchScenes(int sceneToLoad)
+    IEnumerator LoadAndSwitchScenes()
     {
         loadFill.fillAmount = 10 * MULTIPLIER;
 
@@ -32,7 +32,7 @@ public class LoadMenuControl : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneToLoad);
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("level1");
 
         // sceneLoaded = true;
     }
