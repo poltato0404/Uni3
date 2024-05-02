@@ -8,7 +8,7 @@ public class GameStarter : MonoBehaviour
 {
     public int minigameID;
 
-    public TextMeshProUGUI minigameTitle, 
+    public TextMeshProUGUI minigameTitle,
                            minigameDesc;
 
 
@@ -50,38 +50,38 @@ public class GameStarter : MonoBehaviour
         {
             case 0:
                 minigameTitle.text = minigameTitles[0];
-                minigameDesc.text = minigameInfo[0];
-                introText.text = introductionText[0];
+                //minigameDesc.text = minigameInfo[0];
+                // introText.text = introductionText[0];
                 break;
             case 1:
                 minigameTitle.text = minigameTitles[1];
-                minigameDesc.text = minigameInfo[1];
-                introText.text = introductionText[1];
+                //minigameDesc.text = minigameInfo[1];
+                //introText.text = introductionText[1];
                 break;
             case 2:
                 minigameTitle.text = minigameTitles[2];
-                minigameDesc.text = minigameInfo[2];
-                introText.text = introductionText[2];
+                // minigameDesc.text = minigameInfo[2];
+                // introText.text = introductionText[2];
                 break;
             case 3:
                 minigameTitle.text = minigameTitles[3];
-                minigameDesc.text = minigameInfo[3];
-                introText.text = introductionText[3];
+                //minigameDesc.text = minigameInfo[3];
+                // introText.text = introductionText[3];
                 break;
             case 4:
                 minigameTitle.text = minigameTitles[4];
-                minigameDesc.text = minigameInfo[4];
-                introText.text = introductionText[4];
+                //minigameDesc.text = minigameInfo[4];
+                //introText.text = introductionText[4];
                 break;
             case 5:
                 minigameTitle.text = minigameTitles[5];
-                minigameDesc.text = minigameInfo[5];
-                introText.text = introductionText[5];
+                //minigameDesc.text = minigameInfo[5];
+                //introText.text = introductionText[5];
                 break;
             case 6:
                 minigameTitle.text = minigameTitles[6];
-                minigameDesc.text = minigameInfo[6];
-                introText.text = introductionText[6];
+                //minigameDesc.text = minigameInfo[6];
+                //introText.text = introductionText[6];
                 break;
             default: // Just in case
                 break;
@@ -93,8 +93,8 @@ public class GameStarter : MonoBehaviour
 
     public void OnClick_PlayButton()
     {
-        if(disabledGameobjects.Count > 0)
-            foreach(GameObject gameObject in disabledGameobjects)
+        if (disabledGameobjects.Count > 0)
+            foreach (GameObject gameObject in disabledGameobjects)
             {
                 gameObject.SetActive(true);
             }
@@ -105,7 +105,7 @@ public class GameStarter : MonoBehaviour
     public void OnClick_QuitButton()
     {
         // Just in case the time scale gets carried over the scene, we reset it back
-        Time.timeScale = 1.0f; 
+        Time.timeScale = 1.0f;
         SceneManager.LoadScene(0);
     }
 }

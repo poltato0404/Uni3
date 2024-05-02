@@ -466,8 +466,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 56c55a8fbc09fbb458989eb0debcc51a, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 56c55a8fbc09fbb458989eb0debcc51a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2340,11 +2340,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4580728770489592469}
     m_Modifications:
-    - target: {fileID: 8509358731365070419, guid: eaff3abc7c65ea44ba45612752ac2c8f,
-        type: 3}
-      propertyPath: sceneName
-      value: GameTutorial
-      objectReference: {fileID: 0}
     - target: {fileID: 3872308785093707222, guid: b04af7a1cc707ee438dd8d8ca8d28813,
         type: 3}
       propertyPath: m_Name
@@ -2454,6 +2449,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8509358731365070419, guid: eaff3abc7c65ea44ba45612752ac2c8f,
+        type: 3}
+      propertyPath: sceneName
+      value: GameTutorial
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2664,8 +2664,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 56c55a8fbc09fbb458989eb0debcc51a, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 56c55a8fbc09fbb458989eb0debcc51a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8123,7 +8123,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9153604633734555503}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: archiveVideo, Assembly-CSharp
         m_MethodName: playVideo1
         m_Mode: 1
@@ -10851,7 +10851,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9153604633734555503}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: archiveVideo, Assembly-CSharp
         m_MethodName: playVideo4
         m_Mode: 1
@@ -11777,31 +11777,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1042928434}
     m_Modifications:
-    - target: {fileID: 5108633584721692429, guid: 29b3401c2cd19f74eacb979303d3e0c0,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5108633584721692429, guid: 28590597b76e0244ea8655c3f6aeb879,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5108633584721692429, guid: aa764b34897b45743804ffe1844656af,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5108633584721692429, guid: aa764b34897b45743804ffe1844656af,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7083238304402581147, guid: aa764b34897b45743804ffe1844656af,
-        type: 3}
-      propertyPath: m_Value
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 5108633584721692429, guid: 7dc8209dd8a976a458f67a1036f44724,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -11916,6 +11891,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: staminaBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108633584721692429, guid: 29b3401c2cd19f74eacb979303d3e0c0,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108633584721692429, guid: 28590597b76e0244ea8655c3f6aeb879,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108633584721692429, guid: aa764b34897b45743804ffe1844656af,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108633584721692429, guid: aa764b34897b45743804ffe1844656af,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7083238304402581147, guid: aa764b34897b45743804ffe1844656af,
+        type: 3}
+      propertyPath: m_Value
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -23597,7 +23597,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9153604633734555503}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: archiveVideo, Assembly-CSharp
         m_MethodName: playVideo1
         m_Mode: 1
@@ -30302,21 +30302,6 @@ Transform:
   - {fileID: 3942986274298829290}
   - {fileID: 7893303451208371059}
   m_Father: {fileID: 3775426157457291194}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &2908496423059817029
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4385203147037468867}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1476.8103, y: -756.8578, z: 3092.4236}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2908882680987064860
 MeshFilter:
@@ -37527,7 +37512,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9153604633734555503}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: archiveVideo, Assembly-CSharp
         m_MethodName: playVideo8
         m_Mode: 1
@@ -43919,7 +43904,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9153604633734555503}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: archiveVideo, Assembly-CSharp
         m_MethodName: playVideo5
         m_Mode: 1
@@ -44372,23 +44357,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4094763928597717304}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &4385203147037468867
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2908496423059817029}
-  - component: {fileID: 9153604633734555503}
-  m_Layer: 0
-  m_Name: videomanager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!114 &4389194530587970276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56152,7 +56120,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9153604633734555503}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: archiveVideo, Assembly-CSharp
         m_MethodName: playVideo2
         m_Mode: 1
@@ -67099,7 +67067,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9153604633734555503}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: archiveVideo, Assembly-CSharp
         m_MethodName: playVideo7
         m_Mode: 1
@@ -71756,7 +71724,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9153604633734555503}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: archiveVideo, Assembly-CSharp
         m_MethodName: playVideo9
         m_Mode: 1
@@ -73007,6 +72975,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2186170282806826456}
+  - component: {fileID: 7470319587872444137}
   m_Layer: 0
   m_Name: Audio Manager
   m_TagString: Untagged
@@ -73014,6 +72983,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7470319587872444137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7470319587872444136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeb6b43fb2d299142a0d43ebfe0fd0bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myMixer: {fileID: 24100000, guid: 988f9ac569820404c9073c7afef04ab7, type: 2}
+  musicSlider: {fileID: 2343233405234914064}
+  SFXSlider: {fileID: 6440002788178967793}
 --- !u!65 &7474113984154000983
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -79601,7 +79585,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9153604633734555503}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: archiveVideo, Assembly-CSharp
         m_MethodName: playVideo3
         m_Mode: 1
@@ -89373,18 +89357,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &9153604633734555503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4385203147037468867}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6d550f949fdfdd4c966afbcddba65f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &9154822419959071381
 Transform:
   m_ObjectHideFlags: 0
@@ -89995,7 +89967,6 @@ SceneRoots:
   - {fileID: 6623236384362801579}
   - {fileID: 4928162617291588187}
   - {fileID: 8788665939040147281}
-  - {fileID: 2908496423059817029}
   - {fileID: 2186170282806826456}
   - {fileID: 925089972}
   - {fileID: 548450540}

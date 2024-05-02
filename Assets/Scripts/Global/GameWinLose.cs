@@ -27,7 +27,7 @@ public class GameWinLose : MonoBehaviour
 
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
             Instance = this;
     }
 
@@ -38,7 +38,7 @@ public class GameWinLose : MonoBehaviour
 
     public void OnGamePreExit()
     {
-        foreach(GameObject go in gameObjectsToDisable)
+        foreach (GameObject go in gameObjectsToDisable)
         {
             go.SetActive(false);
         }
@@ -56,7 +56,7 @@ public class GameWinLose : MonoBehaviour
             badgeImage.sprite = badgeSprites[9];
             loseButton.SetActive(true);
         }
-        else if(timeLeft <= 0)
+        else if (timeLeft <= 0)
         {
             headerText.text = "TIME'S UP!";
             badgeImage.sprite = badgeSprites[9];
@@ -77,7 +77,7 @@ public class GameWinLose : MonoBehaviour
 
     public void OnClick_NextSceneButton()
     {
-        GameManager.Instance.SaveData();
+        // GameManager.Instance.SaveData();
 
         Time.timeScale = 1.0f;
 
@@ -99,6 +99,6 @@ public class GameWinLose : MonoBehaviour
     public void OnClick_MainMenuButton()
     {
         Time.timeScale = 1.0f;
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("laptop");
     }
 }

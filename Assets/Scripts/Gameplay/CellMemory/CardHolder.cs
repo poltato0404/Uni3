@@ -160,13 +160,13 @@ public class CardHolder : MonoBehaviour
                 Destroy(card2.gameObject);
 
                 score += 250;
-                
+
 
                 matchesMade += 1;
 
                 if (matchesMade >= 4)
                 {
-                    GameManager.Instance.isLevelComplete[levelId] = true;
+                    //GameManager.Instance.isLevelComplete[levelId] = true;
 
                     gameWinLose.GetComponent<GameWinLose>().timeLeft = currentTime;
                     gameWinLose.gameObject.GetComponent<GameWinLose>().score = score;
