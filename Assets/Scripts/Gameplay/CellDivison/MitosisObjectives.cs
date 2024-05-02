@@ -38,16 +38,17 @@ public class MitosisObjectives : MonoBehaviour
         CountdownTimer();
         ScoreCounter();
 
-        if (correctMatches >= 8 && !gameWinLose.activeInHierarchy)
+        if (correctMatches >= 8 )
         {
+            gameWinLose.SetActive(true);
             if (score > 0)
             {
-                GameManager.Instance.isLevelComplete[levelId] = true;
+                //dsadsaomdasjdmas
             }
 
             gameWinLose.GetComponent<GameWinLose>().timeLeft = currentTime;
             gameWinLose.GetComponent<GameWinLose>().score = score;
-            gameWinLose.SetActive(true);
+            
         }
     }
 
