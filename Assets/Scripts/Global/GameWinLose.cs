@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
-using GameEssentials.GameManager;
 
 public class GameWinLose : MonoBehaviour
 {
@@ -63,20 +62,23 @@ public class GameWinLose : MonoBehaviour
         else if (timeLeft <= 0)
         {
             headerText.text = "TIME'S UP!";
+            coinText.SetText("0");
+            keyText.SetText("0");
             badgeImage.sprite = badgeSprites[9];
             loseButton.SetActive(true);
         }
 
         scoreText.text = score.ToString("D4");
+        Debug.Log("Score: " + score);
 
         Time.timeScale = 0.0f;
     }
 
-
     public void OnClick_TryAgainButton()
     {
         Time.timeScale = 1.0f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentSceneName);
     }
 
     public void OnClick_NextSceneButton()
