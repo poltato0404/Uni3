@@ -18,45 +18,41 @@ public class SubtitleManager : MonoBehaviour, IDataPersistence
         // Populate subtitle data
         subtitles = new string[]
         {
-            "Hello?",
-            "Hello, Detective.",
-            "I think I saw the criminal biologist.",
-            "I saw him entering this abandoned building right now!",
-            "I really tried to follow him...but",
-            "he suddenly disappeared.",
-            "You're not going to believe me.",
-            "and I am not even sure if I will really believe in myself...",
-            "but this building...",
-            "is like a labyrinth of mysteries."
+            "My father Dr. Smith is on the verge of receiving a prestigious award.",
+            "he's a notable Biologist scientist.",
+            "And everything changed when he was framed and imprisoned.",
+            "I know who framed him up...",
+            "out of jealousy.",
+            "It was his colleague",
+            "Dr. Doe",
+            "Just have to find pieces of evidence here",
+            "And stop Dr. Doe from destroying it"
         };
 
-        // Define start and end times for each subtitle line
         startTimes = new float[]
         {
-            5f,  // Start time of first subtitle
-            6f,
-            7f,
+            1f,  // Start time of first subtitle
+            5f,
+            8f,
             11f,
-            14f,
-            17f,
-            21f,
-            22f,
-            26f,
-            29f
+            13f,
+            16f,
+            18f,
+            20f,
+            23f
         };
 
         endTimes = new float[]
         {
-            6f,  // End time of first subtitle
-            7f,
+            4f,  // End time of first subtitle
+            8f,
             11f,
+            13f,
             14f,
             17f,
-            20f,
+            19f,
             22f,
-            25f,
-            28f,
-            32f
+            25f
         };
     }
 
@@ -64,14 +60,12 @@ public class SubtitleManager : MonoBehaviour, IDataPersistence
     {
         if (!subtitlesEnabled)
         {
-            // If subtitles are disabled, clear the subtitle text and return
             subtitleText.text = "";
             return;
         }
 
         double currentTime = videoPlayer.time;
 
-        // Check if current time falls within subtitle time range
         for (int i = 0; i < subtitles.Length; i++)
         {
             if (currentTime >= (double)startTimes[i] && currentTime <= (double)endTimes[i])
@@ -81,7 +75,6 @@ public class SubtitleManager : MonoBehaviour, IDataPersistence
             }
         }
 
-        // If no subtitle is being displayed, clear the subtitle text
         subtitleText.text = "";
     }
 
