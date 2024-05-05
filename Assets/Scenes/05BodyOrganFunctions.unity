@@ -1802,7 +1802,12 @@ PrefabInstance:
     - target: {fileID: 1798794550313469286, guid: bae8bc8527badee478b798f8c83870f3,
         type: 3}
       propertyPath: m_text
-      value: You've got a Fingerprints/ DNA!
+      value: You've got the record of his Fingerprints/ DNA!
+      objectReference: {fileID: 0}
+    - target: {fileID: 1798794550313469286, guid: bae8bc8527badee478b798f8c83870f3,
+        type: 3}
+      propertyPath: m_margin.x
+      value: 51.21228
       objectReference: {fileID: 0}
     - target: {fileID: 1798794550313469286, guid: bae8bc8527badee478b798f8c83870f3,
         type: 3}
@@ -2149,6 +2154,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5863661952116842098, guid: bae8bc8527badee478b798f8c83870f3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5863661952116842098, guid: bae8bc8527badee478b798f8c83870f3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -124
+      objectReference: {fileID: 0}
     - target: {fileID: 5906148559058818869, guid: bae8bc8527badee478b798f8c83870f3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2229,7 +2244,8 @@ PrefabInstance:
     - target: {fileID: 8710618155630001934, guid: bae8bc8527badee478b798f8c83870f3,
         type: 3}
       propertyPath: m_text
-      value: An evidence that links Dr. Doe directly to the framing of Dr. Smith.
+      value: This is an evidence that links Dr. Doe directly to the framing of Dr.
+        Smith.
       objectReference: {fileID: 0}
     - target: {fileID: 8710618155630001934, guid: bae8bc8527badee478b798f8c83870f3,
         type: 3}
@@ -2239,7 +2255,7 @@ PrefabInstance:
     - target: {fileID: 8710618155630001934, guid: bae8bc8527badee478b798f8c83870f3,
         type: 3}
       propertyPath: m_HorizontalAlignment
-      value: 8
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9071027667338828728, guid: bae8bc8527badee478b798f8c83870f3,
         type: 3}
@@ -3460,7 +3476,7 @@ MonoBehaviour:
   m_margin: {x: -196.60095, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &951583981
@@ -3595,7 +3611,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: -318.6427, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1013951747
@@ -5616,9 +5632,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Try and drag the box to another.
+  m_text: 'Drag the box to another to show the connection of different organ systems. '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ed362c39a5ed5b84aa4dc5543279e8a6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 06d688a36bfd4c145af5ba54cb2b5c3a, type: 2}
   m_sharedMaterial: {fileID: 1993886729859395180, guid: ed362c39a5ed5b84aa4dc5543279e8a6,
     type: 2}
   m_fontSharedMaterials: []
@@ -5683,7 +5699,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1393371044
