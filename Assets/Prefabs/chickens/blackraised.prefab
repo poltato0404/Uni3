@@ -306,6 +306,7 @@ GameObject:
   - component: {fileID: 6900782613380202513}
   - component: {fileID: -3480743903450204638}
   - component: {fileID: 8407412655766687828}
+  - component: {fileID: 3415261994724807040}
   m_Layer: 0
   m_Name: blackraised
   m_TagString: Untagged
@@ -406,6 +407,22 @@ MonoBehaviour:
   holder: {fileID: 0}
   returnSpeed: 5
   chickenNumber: 3
+  plateSafe: 0
+--- !u!114 &3415261994724807040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3740021612782535363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b618ffc2d7909fd4b9827a26e2701efa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isBlack: 1
+  isLarge: 0
+  isRaised: 1
 --- !u!1 &4426649862261634261
 GameObject:
   m_ObjectHideFlags: 0

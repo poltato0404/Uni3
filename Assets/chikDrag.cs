@@ -11,6 +11,7 @@ public class ObjectDrag : MonoBehaviour
     public GameObject holder;
     public float returnSpeed = 5f; // Speed at which the object returns to the start position
     public int chickenNumber;
+    ChickenTraits chick;
     plateScript ps;
     [SerializeField] bool plateSafe;
 
@@ -22,6 +23,7 @@ public class ObjectDrag : MonoBehaviour
         ps = holder.GetComponent<plateScript>();
         dragRange = 1f; 
         plateSafe = true;
+        chick = GetComponent<ChickenTraits>();
     }
 
     void Update()
@@ -55,7 +57,7 @@ public class ObjectDrag : MonoBehaviour
     {
         Vector3 plateTop = new Vector3 (0, 1f, 7f);
         transform.position = plateTop;
-        ps.addChicken();
+        ps.addChicken(chick);
         
     }
     private bool IsNearHolder()

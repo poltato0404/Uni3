@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8700515384749127188}
   - component: {fileID: -4504676290398223630}
   - component: {fileID: 3824300507202443584}
+  - component: {fileID: 8150798055826332029}
   m_Layer: 0
   m_Name: wideblack
   m_TagString: Untagged
@@ -113,6 +114,22 @@ MonoBehaviour:
   holder: {fileID: 0}
   returnSpeed: 5
   chickenNumber: 5
+  plateSafe: 0
+--- !u!114 &8150798055826332029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 212167415115809690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b618ffc2d7909fd4b9827a26e2701efa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isBlack: 1
+  isLarge: 1
+  isRaised: 0
 --- !u!1 &1064156447218872253
 GameObject:
   m_ObjectHideFlags: 0
