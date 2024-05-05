@@ -356,15 +356,27 @@ MonoBehaviour:
   - How to Play?
   - How to Play?
   - How to Play?
-  minigameInfo:
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  introductionText: []
+  minigameInfo: []
+  introductionText:
+  - "Welcome to the exciting world of \"Recombinant DNA,\" where the classic fun
+    of Whack-a-Mole meets the fascinating world of Genetics! \r\n\r\n\r\nGet ready
+    to put your reflexes and your brain as you whack your way. Your mission? To investigate
+    the steps in Recombinant DNA Technology. \r\n"
+  - Learn how organisms keep internal balance through processes like temperature
+    control. This game teaches players how different body systems respond to changes
+    and maintain stability, known as homeostasis.
+  - Decode the Central Dogma of Molecular Biology. Investigate how genetic information
+    flows from DNA to RNA to proteins, essential for understanding how cells function.
+  - Embark on a journey through the Cell Cycle and uncover the secrets of cell division.
+    Investigate the phases of Interphase and Mitosis!
+  - 'Embark on a detective journey through the Animal Organ System, where organs
+    work together in harmony. Solve riddles to uncover the secrets of how each organ
+    plays a crucial role in the body''s functions. '
+  - Unlock the mysteries of life as you delve into the Cell Theory. Discover the
+    scientists who paved the way for this revolutionary concept.
+  - Put on your detective hat and explore the inner workings of cells. Investigate
+    the structures that keep cells functioning, from the powerhouse mitochondria
+    to the intricate endoplasmic reticulum.
   introText: {fileID: 3165087619179826187}
   introPanelScreen: {fileID: 6098857928520319601}
 --- !u!1 &842008245031518410
@@ -1128,7 +1140,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Scoring: Maximum of 1000 points.'
+  m_text: 'Scoring: Each incorrect answer will result in a deduction.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 06d688a36bfd4c145af5ba54cb2b5c3a, type: 2}
   m_sharedMaterial: {fileID: 2293297795633500468, guid: 06d688a36bfd4c145af5ba54cb2b5c3a,
@@ -2131,6 +2143,32 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 842008244978331283}
     m_Modifications:
+    - target: {fileID: 1274823917126042303, guid: 30f45a546b335da488bc9999ca9500e6,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 06d688a36bfd4c145af5ba54cb2b5c3a,
+        type: 2}
+    - target: {fileID: 1274823917126042303, guid: 30f45a546b335da488bc9999ca9500e6,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1736732930139567265, guid: 30f45a546b335da488bc9999ca9500e6,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1646.536
+      objectReference: {fileID: 0}
+    - target: {fileID: 1736732930139567265, guid: 30f45a546b335da488bc9999ca9500e6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -6.5017
+      objectReference: {fileID: 0}
+    - target: {fileID: 1985219315940436845, guid: 30f45a546b335da488bc9999ca9500e6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2360061668185458268, guid: 30f45a546b335da488bc9999ca9500e6,
         type: 3}
       propertyPath: m_Pivot.x
@@ -2235,13 +2273,33 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 56c55a8fbc09fbb458989eb0debcc51a,
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee,
         type: 2}
     - target: {fileID: 2991416515927677171, guid: 30f45a546b335da488bc9999ca9500e6,
         type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 2180264, guid: 56c55a8fbc09fbb458989eb0debcc51a, type: 2}
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 3652375812119687223, guid: 30f45a546b335da488bc9999ca9500e6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7190586982151565246, guid: 30f45a546b335da488bc9999ca9500e6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7338686752418131386, guid: 30f45a546b335da488bc9999ca9500e6,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -18.9377
+      objectReference: {fileID: 0}
+    - target: {fileID: 7338686752418131386, guid: 30f45a546b335da488bc9999ca9500e6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 12.336491
+      objectReference: {fileID: 0}
     - target: {fileID: 7998055438577585349, guid: 30f45a546b335da488bc9999ca9500e6,
         type: 3}
       propertyPath: m_Name
