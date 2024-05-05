@@ -22,7 +22,9 @@ public class EndSceneSubtitle : MonoBehaviour
         {
             "After months of searching, tonight, everything ends here.",
             "Big news! Dr. Smith is free, and Dr. Doe is in trouble for doing the wrong thing.",
-            "It is with great honor that we present the Nobel Prize in Biology to Dr. Smith for his groundbreaking research and unwavering commitment to truth and justice.",
+            "It is with great honor that we present the Nobel Prize in Biology to Dr. Smith",
+            "for his groundbreaking research",
+            "and unwavering commitment to truth and justice.",
             "Son, I always believed that the truth would prevail",
             "Since you were young, I always knew you'd become a great detective instead of a scientist.",
             "Thank you for never giving up on me.",
@@ -37,6 +39,8 @@ public class EndSceneSubtitle : MonoBehaviour
             6f,
             12f,
             18f,
+            20f,
+            18f,
             26f,
             31f,
             36f,
@@ -46,8 +50,10 @@ public class EndSceneSubtitle : MonoBehaviour
 
         endTimes = new float[]
         {
-            4f,
+            3f,
             12f,
+            17f,
+            19f,
             24f,
             27f,
             30f,

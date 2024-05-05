@@ -15,7 +15,7 @@ public enum PlayState
 
 public class ObjectivesRecombinantDNA : MonoBehaviour
 {
-    // 1st minigame
+    public SaveRecombi saver;
     public int levelId = 0;
 
     public PlayState currentState;
@@ -42,6 +42,7 @@ public class ObjectivesRecombinantDNA : MonoBehaviour
     public float totalTime;
     private float currentTime;
     [SerializeField] private TextMeshProUGUI timerText;
+    public bool finished = true;
 
 
     private void Awake()
@@ -63,6 +64,8 @@ public class ObjectivesRecombinantDNA : MonoBehaviour
 
     private void Update()
     {
+        saver.finished = finished;
+        saver.score = score;
         CountdownTime();
         ScoreCounter();
     }
@@ -152,6 +155,7 @@ public class ObjectivesRecombinantDNA : MonoBehaviour
                     gameWinLose.GetComponent<GameWinLose>().timeLeft = currentTime;
                     gameWinLose.GetComponent<GameWinLose>().score = score;
                     gameWinLose.SetActive(true);
+                    finished = true; // Set finished to true once the game is completed
                 }
                 else if (answer == "Bomb")
                 {
