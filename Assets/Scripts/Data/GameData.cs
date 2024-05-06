@@ -23,7 +23,7 @@ public class GameData
     public int playerCoins;
     public Vector3 guard1Pos;
     public Vector3 guard2Pos;
-    public Vector3 guard3Pos;
+
 
     public bool loadedLevel1;
     public bool loadedLevel2;
@@ -51,7 +51,11 @@ public class GameData
     public int mendelScore;
     public int dogmaScore;
     public int recombinantScore;
+    public int drinkLevel;
+    public int flashLevel;
+    public int shoeLevel;
     public int numberOfDrinks;
+
     public List<Vector3> coins;
 
     public List<InventoryItem> inventory;
@@ -76,7 +80,7 @@ public class GameData
         this.playerScore = 0;
         this.guard1Pos = new Vector3(0, 1.5f, 0);
         this.guard2Pos = new Vector3(0, 1.5f, 0);
-        this.guard3Pos = new Vector3(0, 1.5f, 0);
+
         this.loadedLevel1 = false;
         this.loadedLevel2 = false;
         this.loadedLevel3 = false;
@@ -102,6 +106,10 @@ public class GameData
         this.mendelScore = 0;
         this.dogmaScore = 0;
         this.recombinantScore = 0;
+        this.shoeLevel = 1;
+        this.flashLevel = 1;
+        this.drinkLevel = 1;
+        this.numberOfDrinks = 3;
 
 
         this.inventory = new List<InventoryItem>();

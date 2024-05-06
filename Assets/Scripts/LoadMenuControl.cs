@@ -32,7 +32,7 @@ public class LoadMenuControl : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("level1");
+        SceneManager.LoadScene("level1");
 
         // sceneLoaded = true;
     }

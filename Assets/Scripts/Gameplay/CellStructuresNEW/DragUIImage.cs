@@ -124,6 +124,9 @@ public class DragUIImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
             if (Physics.Raycast(editorRay, out editorHit))
             {
+                Debug.DrawRay(editorRay.origin, editorRay.direction * editorHit.distance, Color.green);
+
+
                 // Check if the hit object has the MatchCellPart component
                 MatchCellPart hitMatchCellPart = editorHit.collider.GetComponent<MatchCellPart>();
                 if (hitMatchCellPart != null)
@@ -155,7 +158,7 @@ public class DragUIImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         RaycastHit hitInfo;
         if (Physics.Raycast(rayOrigin, rayDirection, out hitInfo))
         {
-            if(hitInfo.transform.tag == destinationTag)
+            if (hitInfo.transform.tag == destinationTag)
             {
                 if (hitInfo.transform.gameObject.GetComponent<MatchCellPart>().MatchCells(thisCellPart, GetComponent<Image>().sprite))
                 {
@@ -175,7 +178,7 @@ public class DragUIImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     }
 
     Vector3 TouchWorldPosition(Touch eventData)
-    { 
+    {
         {
             // Set a default depth for the touch position
             float touchDepth = 10f; // You might need to adjust this value based on your scene setup

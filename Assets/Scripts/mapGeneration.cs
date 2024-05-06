@@ -10,7 +10,7 @@ public class mapGeneration : MonoBehaviour
     // Start is called before the first frame update
     //public GameObject floor;
     //Instantiate(floor, new Vector3(0, 0, 0), Quaternion.identity);
-    [SerializeField] private int xLength, zLength;
+    [SerializeField] public int xLength, zLength;
     [SerializeField] private GameObject slot1, slot2, slot3, slot4, slot5, slot6, slot7, slot8, slot9, slot10, slot11;
     List<GameObject> slotList;
     private int slotToSwap;
@@ -60,7 +60,7 @@ public class mapGeneration : MonoBehaviour
     bool clearToPass = false;
 
     //1=up,2=right,3=down,4=left
-    void Awake()
+    public void startGenerating()
     {
         //initialize lists and arrays
 
@@ -85,17 +85,23 @@ public class mapGeneration : MonoBehaviour
         removed = 0;
 
         StartCoroutine(generateMaze());
+        fillSecond();
         removeOuterslots();
+
         Debug.Log("remaning" + RemainingX.Count);
         parentScript = GetComponentInParent<Spawner>();
-        try{
-        checkRemains();}
-        catch{}
+        try
+        {
+            checkRemains();
+        }
+        catch { }
         // Check if the parentScript is found
-        
-        try{
-        parentScript.collate(pathX, pathZ, slotInMaze);}
-        catch{}
+
+        try
+        {
+            parentScript.collate(pathX, pathZ, slotInMaze);
+        }
+        catch { }
 
 
 
@@ -106,9 +112,9 @@ public class mapGeneration : MonoBehaviour
         int randomIndex = Random.Range(0, pathX.Count);
         Vector3 randomPosition = new Vector3(pathX[randomIndex], 0, pathZ[randomIndex]);
         scatter1.transform.position = randomPosition;
-        
+
     }
-    
+
     void checkRemains()
     {
         Transform parentTransform = transform;
@@ -442,12 +448,12 @@ public class mapGeneration : MonoBehaviour
     {
         try
         {
-            
+
             for (int i = 0; i < RemainingX.Count; i++)
             {
                 if (ifConnectToLeft(RemainingX[i], RemainingZ[i]))
                 {
-                    swapSlot((RemainingX[i] - 5), RemainingZ[i], identifySlot((RemainingX[i] - 5), RemainingZ[i]), 4); 
+                    swapSlot((RemainingX[i] - 5), RemainingZ[i], identifySlot((RemainingX[i] - 5), RemainingZ[i]), 4);
                     nextPositionX = RemainingX[0];
                     nextPositionZ = RemainingZ[0];
                     break;
@@ -461,7 +467,7 @@ public class mapGeneration : MonoBehaviour
                 }
                 else if (ifConnectToUp(RemainingX[i], RemainingZ[i]))
                 {
-                    swapSlot(RemainingX[i], (RemainingZ[i] + 5), identifySlot(RemainingX[i], (RemainingZ[i] + 5)), 1); 
+                    swapSlot(RemainingX[i], (RemainingZ[i] + 5), identifySlot(RemainingX[i], (RemainingZ[i] + 5)), 1);
                     nextPositionX = RemainingX[0];
                     nextPositionZ = RemainingZ[0];
                     break;
@@ -476,8 +482,10 @@ public class mapGeneration : MonoBehaviour
 
             }
         }
-         catch {
-         checkEmpty(); }
+        catch
+        {
+            checkEmpty();
+        }
     }
 
 

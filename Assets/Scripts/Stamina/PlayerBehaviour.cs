@@ -111,19 +111,52 @@ public class PlayerBehaviour : MonoBehaviour, IDataPersistence
         switch (data.currentLevel)
         {
             case 1:
-                if (data.loadedLevel1) { numberOfDrinks = data.numberOfDrinks; } else { numberOfDrinks = 3; }
+                if (data.loadedLevel1) { numberOfDrinks = data.numberOfDrinks; }
+                else
+                {
+                    numberOfDrinks = drinkSwitch(data.drinkLevel);
+                }
                 break;
             case 2:
-                if (data.loadedLevel2) { numberOfDrinks = data.numberOfDrinks; } else { numberOfDrinks = 6; }
+                if (data.loadedLevel2) { numberOfDrinks = data.numberOfDrinks; }
+                else
+                {
+                    numberOfDrinks = drinkSwitch(data.drinkLevel);
+                }
                 break;
             case 3:
-                if (data.loadedLevel3) { numberOfDrinks = data.numberOfDrinks; } else { numberOfDrinks = 9; }
+                if (data.loadedLevel3) { numberOfDrinks = data.numberOfDrinks; }
+                else
+                {
+                    numberOfDrinks = drinkSwitch(data.drinkLevel);
+                }
                 break;
         }
 
+        switch (data.shoeLevel)
+        {
+            case 1:
+                _playerSprintSpeed = _playerContro.playerSpeed * 1.5f;
+                break;
+            case 2:
+                _playerSprintSpeed = _playerContro.playerSpeed * 2f;
+                break;
+            case 3:
+                _playerSprintSpeed = _playerContro.playerSpeed * 2.5f;
+                break;
+        }
+
+
+
+
         setDrinkText(numberOfDrinks);
+    }
 
 
+    public int drinkSwitch(int y)
+    {
+        y *= 3;
+        return drinkSwitch(y);
     }
 
     public void setDrinkText(int x)

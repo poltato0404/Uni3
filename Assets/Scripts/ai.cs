@@ -9,7 +9,7 @@ public class ai : MonoBehaviour, IDataPersistence
     public int currentlevel;
     NavMeshAgent agent;
     [SerializeField] StaminaBar _staminaBar;
-    
+
     public float raycastDistance = 0.1f;
     public bool flashed = false;
 
@@ -33,7 +33,7 @@ public class ai : MonoBehaviour, IDataPersistence
     public int guardNumber;
     playerControScript playCon;
 
-    [SerializeField]private string filename;
+    [SerializeField] private string filename;
 
     public void SaveData(ref GameData data)
     {
@@ -46,7 +46,7 @@ public class ai : MonoBehaviour, IDataPersistence
     {
         Debug.Log("sss:" + data.slotPosition.Count);
         possiblePatrol = data.slotPosition;
-        
+
         if (1 == guardNumber)
         {
             transform.position = data.guard1Pos;
@@ -58,39 +58,36 @@ public class ai : MonoBehaviour, IDataPersistence
             transform.position = data.guard2Pos;
             data.guard2Pos.y = 1.5f;
         }
-         if (3 == guardNumber)
+
+        switch (data.currentLevel)
         {
-            transform.position = data.guard3Pos;
-            data.guard2Pos.y = 1.5f;
-        }
-        switch(data.currentLevel){
-            case 1: 
+            case 1:
                 if (!data.loadedLevel1)
-            {
-                int i = Random.Range(0, data.slotPosition.Count);
-                transform.position = data.slotPosition[i];
-                
-            }
-            break;
-             case 2: 
+                {
+                    int i = Random.Range(0, data.slotPosition.Count);
+                    transform.position = data.slotPosition[i];
+
+                }
+                break;
+            case 2:
                 if (!data.loadedLevel2)
-            {
-                int i = Random.Range(0, data.slotPosition.Count);
-                transform.position = data.slotPosition[i];
-                
-            }
-            break;
-             case 3: 
+                {
+                    int i = Random.Range(0, data.slotPosition.Count);
+                    transform.position = data.slotPosition[i];
+
+                }
+                break;
+            case 3:
                 if (!data.loadedLevel3)
-            {
-                int i = Random.Range(0, data.slotPosition.Count);
-                transform.position = data.slotPosition[i];
-                
-            }
-            break;
+                {
+                    int i = Random.Range(0, data.slotPosition.Count);
+                    transform.position = data.slotPosition[i];
+
+                }
+                break;
         }
 
-        
+
 
 
 
@@ -99,7 +96,7 @@ public class ai : MonoBehaviour, IDataPersistence
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-         playCon = player.GetComponent<playerControScript>();
+        playCon = player.GetComponent<playerControScript>();
         animator = GetComponent<Animator>();
         possiblePatrol = new List<Vector3>();
         Vector3 thisPos = transform.position;
@@ -116,7 +113,7 @@ public class ai : MonoBehaviour, IDataPersistence
     // Update is called once per frame
     void Update()
     {
-        if(flashed){animator.SetTrigger("flashed");agent.SetDestination(transform.position); return;}
+        if (flashed) { animator.SetTrigger("flashed"); agent.SetDestination(transform.position); return; }
         animator.SetTrigger("notflashed");
         guardPos = transform.position;
         RaycastHit hit;
@@ -139,7 +136,7 @@ public class ai : MonoBehaviour, IDataPersistence
                 chase();
                 playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerLayer);
                 if (playerInAttackRange) { Attack(); Debug.Log("attack"); }
-                if (!playerInAttackRange) { animator.SetTrigger("notAttacking"); Debug.Log("no attack"); playCon.slowed = false;}
+                if (!playerInAttackRange) { animator.SetTrigger("notAttacking"); Debug.Log("no attack"); playCon.slowed = false; }
                 return; // Exit early to prioritize chasing the player
             }
         }
@@ -180,7 +177,7 @@ public class ai : MonoBehaviour, IDataPersistence
         }
     }
     IEnumerator WaitOneSecond()
-    { 
+    {
 
         // Wait for one second
         yield return new WaitForSeconds(1f);
@@ -190,14 +187,14 @@ public class ai : MonoBehaviour, IDataPersistence
     }
     void SearchForDest()
     {
-        
+
         Debug.Log("searching destination");
         NavMeshAgent agent = GetComponent<NavMeshAgent>();
         int i = Random.Range(0, possiblePatrol.Count);
 
         Debug.Log(possiblePatrol.Count);
-        destPoint = possiblePatrol[i]; Debug.Log(destPoint); 
-        
+        destPoint = possiblePatrol[i]; Debug.Log(destPoint);
+
 
 
         NavMeshHit hit;
@@ -216,7 +213,7 @@ public class ai : MonoBehaviour, IDataPersistence
         playCon.slowed = true;
         StaminaGameManager.staminaGameManager._playertStamina.UseStamina(40f);
         _staminaBar.SetStamina(StaminaGameManager.staminaGameManager._playertStamina.Stamina);
-        
+
     }
 
     private void applyGravity()
@@ -225,7 +222,7 @@ public class ai : MonoBehaviour, IDataPersistence
         NavMeshAgent agent = this.GetComponent<NavMeshAgent>();
         Vector3 agentPosition = agent.transform.position;
         // Assuming this code is inside an Update() method or similar loop
-        if (IsGrounded() && agentPosition.y >0)
+        if (IsGrounded() && agentPosition.y > 0)
         {
             // Update velocity based on gravity
             velocity.y -= gravity * Time.deltaTime;
@@ -235,13 +232,13 @@ public class ai : MonoBehaviour, IDataPersistence
 
         }
 
-       
+
 
         // Check if the NavMeshAgent component is valid
         if (agent != null)
         {
             // Get the position of the NavMeshAgent
-            
+
 
             // Set the position of the objectToPosition at the same height as the NavMeshAgent
             Vector3 newPosition = new Vector3(agentPosition.x, agentPosition.y + agent.baseOffset, agentPosition.z);

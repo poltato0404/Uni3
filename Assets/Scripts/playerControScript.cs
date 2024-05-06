@@ -25,7 +25,7 @@ public class playerControScript : MonoBehaviour, IDataPersistence
     [SerializeField] private Sprite flashOffSprite;
     [SerializeField] private Sprite flashOnSprite;
     public GameObject flashLight;
-    public float flashLevel = 2.5f;
+    public float flashLevel;
     private PlayerController playerControls;
 
     private void Awake()
@@ -103,14 +103,27 @@ public class playerControScript : MonoBehaviour, IDataPersistence
     {
         transform.position = data.playerPos;
         data.playerPos.y = 1.5f;
+        switch (data.flashLevel)
+        {
+            case 1:
+                flashLevel = 2.5f;
+                break;
+            case 2:
+                flashLevel = 5f;
+                break;
+            case 3:
+                flashLevel = 7.5f;
+                break;
+        }
     }
 
     void Update()
     {
-        if(!slowed){
-        if(isSprintin){playerSpeed = 5f;}else{ playerSpeed = 3f;}
+        if (!slowed)
+        {
+            if (isSprintin) { playerSpeed = 5f; } else { playerSpeed = 3f; }
         }
-        if(slowed){if (isSprintin){playerSpeed = 3f;} else{playerSpeed = 1f;} }
+        if (slowed) { if (isSprintin) { playerSpeed = 3f; } else { playerSpeed = 1f; } }
         Vector2 movementInput = playerControls.Player_actionmap.movePlayer.ReadValue<Vector2>();
         Vector3 move = (cameraMain.forward * movementInput.y + cameraMain.right * movementInput.x);
         move.y = 0f;
@@ -145,5 +158,5 @@ public class playerControScript : MonoBehaviour, IDataPersistence
         controller.Move(playerVelocity * Time.deltaTime);
     }
 
-   
+
 }

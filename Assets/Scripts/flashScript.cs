@@ -56,6 +56,33 @@ public class FlashScript : MonoBehaviour
             Debug.DrawRay(lightPosition, lightDirection * maxDistance, isHit ? Color.red : Color.blue);
         }
     }
+    public void SaveData(ref GameData data)
+    {
+
+    }
+    public void LoadData(GameData data)
+    {
+
+        switch (data.flashLevel)
+        {
+            case 1:
+                sphereRadius = 5f;
+                maxDistance = 10f;
+
+                break;
+            case 2:
+                sphereRadius = 10f;
+                maxDistance = 15f;
+
+                break;
+            case 3:
+                sphereRadius = 15f;
+                maxDistance = 20f;
+
+                break;
+        }
+    }
+
 
     private void OnStartHit(RaycastHit hitInfo)
     {
