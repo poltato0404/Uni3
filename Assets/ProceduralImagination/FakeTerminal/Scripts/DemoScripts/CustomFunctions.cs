@@ -10,11 +10,11 @@ public class CustomFunctions : MonoBehaviour
 
     public void AllLightsOnOff()
     {
-        if(lights != null)
+        if (lights != null)
         {
-            foreach(Light light in lights)
+            foreach (Light light in lights)
             {
-                if(light.gameObject.activeSelf)
+                if (light.gameObject.activeSelf)
                 {
                     light.gameObject.SetActive(false);
                 }
@@ -28,7 +28,7 @@ public class CustomFunctions : MonoBehaviour
 
     public void DirectionalLightOnOff()
     {
-        if(directional.gameObject.activeSelf)
+        if (directional.gameObject.activeSelf)
         {
             directional.gameObject.SetActive(false);
         }
@@ -38,19 +38,24 @@ public class CustomFunctions : MonoBehaviour
         }
     }
 
-    public void returnToMaze(){
+    public void returnToMaze()
+    {
         SceneManager.LoadScene("level1");
     }
-    public void l1m1(){
+    public void l1m1()
+    {
         SceneManager.LoadScene("06CellMemory");
     }
-    public void l1m2(){
-        SceneManager.LoadScene("07 Cell Structures");
+    public void l1m2()
+    {
+        SceneManager.LoadScene("03CentralDogma");
     }
-    public void l1m3(){
+    public void l1m3()
+    {
         SceneManager.LoadScene("04CellDivision");
     }
-    public void nextLvl(){
-        SceneManager.LoadScene("exit");
+    public void nextLvl()
+    {
+        SceneManager.LoadScene("Shop");
     }
 }

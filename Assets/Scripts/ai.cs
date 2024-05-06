@@ -42,6 +42,8 @@ public class ai : MonoBehaviour, IDataPersistence
         if (2 == guardNumber) { data.guard2Pos = guardV3; }
 
     }
+
+
     public void LoadData(GameData data)
     {
         Debug.Log("sss:" + data.slotPosition.Count);
@@ -61,14 +63,7 @@ public class ai : MonoBehaviour, IDataPersistence
 
         switch (data.currentLevel)
         {
-            case 1:
-                if (!data.loadedLevel1)
-                {
-                    int i = Random.Range(0, data.slotPosition.Count);
-                    transform.position = data.slotPosition[i];
 
-                }
-                break;
             case 2:
                 if (!data.loadedLevel2)
                 {

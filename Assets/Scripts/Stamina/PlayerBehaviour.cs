@@ -9,6 +9,7 @@ public class PlayerBehaviour : MonoBehaviour, IDataPersistence
     [SerializeField] GameObject sprintButton; // Reference to the sprint button GameObject
 
     float _playerOriginalSpeed;
+    public InventoryItem laptop;
     float _playerSprintSpeed;
     bool isSprinting = false;
     public Vector3 playerPos;
@@ -18,7 +19,11 @@ public class PlayerBehaviour : MonoBehaviour, IDataPersistence
     [SerializeField] private TMP_Text drinkTMP;
     public GameObject gameOver;
     public GameObject pausePanelBlock;
+    public int numberOfCoins;
+    public TextMeshProUGUI cointText;
     [SerializeField] InventoryManager inventory;
+
+    [SerializeField] mapLoader mapL;
 
     void Start()
     {
@@ -30,6 +35,7 @@ public class PlayerBehaviour : MonoBehaviour, IDataPersistence
 
     void Update()
     {
+        cointText.text = numberOfCoins.ToString();
         if (StaminaGameManager.staminaGameManager._playertStamina.Stamina < 1)
         {
             GameOver();
@@ -104,10 +110,14 @@ public class PlayerBehaviour : MonoBehaviour, IDataPersistence
     {
 
         data.numberOfDrinks = numberOfDrinks;
+        data.playerCoins = numberOfCoins;
 
     }
     public void LoadData(GameData data)
     {
+        if (data.isLaptopRetrieved) { inventory.AddItemToInventory(laptop); }
+        numberOfCoins = data.playerCoins;
+
         switch (data.currentLevel)
         {
             case 1:
@@ -156,7 +166,7 @@ public class PlayerBehaviour : MonoBehaviour, IDataPersistence
     public int drinkSwitch(int y)
     {
         y *= 3;
-        return drinkSwitch(y);
+        return y;
     }
 
     public void setDrinkText(int x)
@@ -182,9 +192,10 @@ public class PlayerBehaviour : MonoBehaviour, IDataPersistence
         if (collidedObject.CompareTag("Coin"))
         {
             Debug.Log("collide");
-            InventoryItem item = collidedObject.GetComponent<InventoryItem>();
-            inventory.AddItemToInventory(item);
+            numberOfCoins++;
+            //RemoveCoinPosition(collidedObject.transform.position);
             collidedObject.SetActive(false);
+
         }
         if (collidedObject.CompareTag("device"))
         {
@@ -192,15 +203,33 @@ public class PlayerBehaviour : MonoBehaviour, IDataPersistence
             InventoryItem item = collidedObject.GetComponent<InventoryItem>();
             inventory.AddItemToInventory(item);
             collidedObject.SetActive(false);
+            mapL.gotLaptop = true;
         }
         if (collidedObject.CompareTag("folder"))
         {
             Debug.Log("collide");
-            InventoryItem item = collidedObject.GetComponent<InventoryItem>();
-            inventory.AddItemToInventory(item);
+
             collidedObject.SetActive(false);
         }
     }
+
+    // private void RemoveCoinPosition(Vector3 positionToRemove)
+    // {
+    //     // Search for the position in the list and remove it
+    //     for (int i = 0; i < mapL.coinList.Count; i++)
+    //     {
+    //         if (mapL.coinList[i] == positionToRemove)
+    //         {
+    //             // Remove the position from the list
+    //             mapL.coinList.RemoveAt(i);
+
+    //             // Break the loop as we found and removed the position
+    //             break;
+    //         }
+    //     }
+    //     mapL.coinList.RemoveAll(item => item == Vector3.zero);
+    // }
+
 
 
 

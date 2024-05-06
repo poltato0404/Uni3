@@ -9,18 +9,22 @@ public class mapLoader : MonoBehaviour, IDataPersistence
     [SerializeField] private GameObject slot1, slot2, slot3, slot4, slot5, slot6, slot7, slot8, slot9, slot10, slot11;
     List<GameObject> slotList;
     [SerializeField] GameObject instantiatedPrefab;
+    [SerializeField] GameObject docu;
     NavMeshSurface navMeshSurface;
     [SerializeField] GameObject guardAgent;
+    public List<Vector3> coinList;
     [SerializeField] GameObject coin;
     [SerializeField] GameObject laptop;
     NavMeshAgent navMeshAgent;
+    public bool gotLaptop;
     void Awake()
     {
         slotList = new List<GameObject> { slot1, slot2, slot3, slot4, slot5, slot6, slot7, slot8, slot9, slot10, slot11 };
+
     }
     public void SaveData(ref GameData data)
     {
-
+        data.isLaptopRetrieved = gotLaptop;
         switch (data.currentLevel)
         {
             case 1: data.loadedLevel1 = true; break;
@@ -28,10 +32,14 @@ public class mapLoader : MonoBehaviour, IDataPersistence
             case 3: data.loadedLevel3 = true; break;
         }
 
+        data.coins = coinList;
+
 
     }
     public void LoadData(GameData data)
     {
+        gotLaptop = data.isLaptopRetrieved;
+
         for (int i = 0; i < data.slotPosition.Count; i++)
         {
             Instantiate(slotReference(data.slotReference[i]), data.slotPosition[i], Quaternion.identity);
@@ -54,58 +62,87 @@ public class mapLoader : MonoBehaviour, IDataPersistence
         index = Random.Range(0, data.slotPosition.Count);
         pos = data.slotPosition[index];
         pos.y = 1;
+        for (int i = 0; i < 9; i++)
+        {
+            index = Random.Range(0, data.slotPosition.Count);
+            pos = data.slotPosition[index];
+            pos.y = 1;
+            Instantiate(coin, pos, Quaternion.identity);
+
+        }
+        index = Random.Range(0, data.slotPosition.Count);
+        pos = data.slotPosition[index];
+        pos.y = 1;
+        Instantiate(docu, pos, Quaternion.identity);
         switch (data.currentLevel)
         {
             case 1:
                 if (data.loadedLevel1)
                 {
-                    Instantiate(laptop, data.devicePos, Quaternion.identity);
-                    Debug.Log("level1 loaded device : " + data.loadedLevel1);
+                    if (!data.isLaptopRetrieved)
+                    {
+                        Instantiate(laptop, data.devicePos, Quaternion.identity);
+                        Debug.Log("level1 loaded device : " + data.loadedLevel1);
+                    }
+
+                    for (int i = 0; i < data.coins.Count; i++)
+                    {
+                        Instantiate(coin, data.coins[i], Quaternion.identity);
+                    }
                 }
                 else
                 {
-                    Instantiate(laptop, pos, Quaternion.identity);
-                    data.devicePos = pos;
+                    if (!data.isLaptopRetrieved)
+                    {
+                        Instantiate(laptop, pos, Quaternion.identity);
+                        data.devicePos = pos;
+                    }
+                    coinList = data.coins;
+                    // for (int i = 0; i < 9; i++)
+                    // {
+                    //     index = Random.Range(0, data.slotPosition.Count);
+                    //     pos = data.slotPosition[index];
+                    //     pos.y = 1;
+                    //     Instantiate(coin, pos, Quaternion.identity);
+                    //     data.coins.Add(pos);
+                    //     coinList.Add(pos);
+                    // }
                 }
                 break;
             case 2:
-                if (data.loadedLevel2)
+
+                if (data.loadedLevel1)
                 {
-                    Instantiate(laptop, data.devicePos, Quaternion.identity);
-                    Debug.Log("level1 loaded device : " + data.loadedLevel2);
+
+                    for (int i = 0; i < data.coins.Count; i++)
+                    {
+                        Instantiate(coin, data.coins[i], Quaternion.identity);
+                    }
                 }
                 else
                 {
-                    Instantiate(laptop, pos, Quaternion.identity);
-                    data.devicePos = pos;
+                    for (int i = 0; i < 9; i++)
+                    {
+                        index = Random.Range(0, data.slotPosition.Count);
+                        pos = data.slotPosition[index];
+                        pos.y = 1;
+                        Instantiate(coin, pos, Quaternion.identity);
+                        data.coins.Add(pos);
+                        coinList.Add(pos);
+                    }
                 }
+
+
+
                 break;
             case 3:
-                if (data.loadedLevel3)
-                {
-                    Instantiate(laptop, data.devicePos, Quaternion.identity);
-                    Debug.Log("level1 loaded device : " + data.loadedLevel3);
-                }
-                else
-                {
-                    Instantiate(laptop, pos, Quaternion.identity);
-                    data.devicePos = pos;
-                }
+
                 break;
         }
 
 
-        for (int i = 0; i < 5; i++)
-        {
-            index = Random.Range(0, data.slotPosition.Count);
-            pos = data.slotPosition[index];
-            pos.y = 1;
 
-            Instantiate(coin, pos, Quaternion.identity);
 
-        }
-
-        bakeScene();
 
     }
     GameObject slotReference(int slotPosition)
@@ -119,8 +156,5 @@ public class mapLoader : MonoBehaviour, IDataPersistence
         ai script = guard.GetComponent<ai>();
         script.guardNumber = assign;
     }
-    void bakeScene()
-    {
 
-    }
 }

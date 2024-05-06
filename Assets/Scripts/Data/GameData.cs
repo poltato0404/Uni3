@@ -55,6 +55,8 @@ public class GameData
     public int flashLevel;
     public int shoeLevel;
     public int numberOfDrinks;
+    public int remainingCoins;
+    public bool isLaptopRetrieved;
 
     public List<Vector3> coins;
 
@@ -64,10 +66,11 @@ public class GameData
     {
         this.username = "";
         this.name = "";
+        this.isLaptopRetrieved = false;
         this.password = "";
         this.securityQuestion = "";
         this.securityAnswer = "";
-
+        this.remainingCoins = 18;
         this.currentLevel = 1;
         this.playerStamina = 100;
         this.enemyCount = 0;
