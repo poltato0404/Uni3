@@ -62,6 +62,12 @@ public class FakeTerminal : MonoBehaviour
     public string[] inputs_L1M1;
     public string[] inputs_L1M2;
     public string[] inputs_L1M3;
+    public string[] inputs_L2M1;
+    public string[] inputs_L2M2;
+    public string[] inputs_L2M3;
+    public string[] inputs_L3M1;
+    public string[] inputs_L3M2;
+    public string[] inputs_L3M3;
     public string[] inputs_nextLVL;
     //public string[] text_return;
 
@@ -450,6 +456,84 @@ public class FakeTerminal : MonoBehaviour
                                          printError = false;
                             
                                          cust.l1m2();
+                            
+                                     }
+                                 }
+                             }
+                             foreach(string inputs_L2M2 in inputs_L2M2)
+                             {
+                                 if(outputText[actualLine].Length >= lineIntro.Length)
+                                 {
+                                     if(outputText[actualLine].Replace("" + cursor_Char, "").Substring(lineIntro.Length) == inputs_L2M2)
+                                     {
+                                         printError = false;
+                            
+                                         cust.l2m2();
+                            
+                                     }
+                                 }
+                             }
+                             foreach(string inputs_L2M1 in inputs_L2M1)
+                             {
+                                 if(outputText[actualLine].Length >= lineIntro.Length)
+                                 {
+                                     if(outputText[actualLine].Replace("" + cursor_Char, "").Substring(lineIntro.Length) == inputs_L2M1)
+                                     {
+                                         printError = false;
+                            
+                                         cust.l2m1();
+                            
+                                     }
+                                 }
+                             }
+                             foreach(string inputs_L2M3 in inputs_L2M3)
+                             {
+                                 if(outputText[actualLine].Length >= lineIntro.Length)
+                                 {
+                                     if(outputText[actualLine].Replace("" + cursor_Char, "").Substring(lineIntro.Length) == inputs_L2M3)
+                                     {
+                                         printError = false;
+                            
+                                         cust.l2m3();
+                            
+                                     }
+                                 }
+                             }
+                             foreach(string inputs_L3M1 in inputs_L3M1)
+                             {
+                                 if(outputText[actualLine].Length >= lineIntro.Length)
+                                 {
+                                     if(outputText[actualLine].Replace("" + cursor_Char, "").Substring(lineIntro.Length) == inputs_L3M1)
+                                     {
+                                         printError = false;
+                            
+                                         cust.l3m1();
+                            
+                                     }
+                                 }
+                             }
+                             foreach(string inputs_L3M2 in inputs_L3M2)
+                             {
+                                 if(outputText[actualLine].Length >= lineIntro.Length)
+                                 {
+                                     if(outputText[actualLine].Replace("" + cursor_Char, "").Substring(lineIntro.Length) == inputs_L3M2)
+                                     {
+                                         printError = false;
+                            
+                                         cust.l3m2();
+                            
+                                     }
+                                 }
+                             }
+                             foreach(string inputs_L3M3 in inputs_L3M3)
+                             {
+                                 if(outputText[actualLine].Length >= lineIntro.Length)
+                                 {
+                                     if(outputText[actualLine].Replace("" + cursor_Char, "").Substring(lineIntro.Length) == inputs_L3M3)
+                                     {
+                                         printError = false;
+                            
+                                         cust.l3m3();
                             
                                      }
                                  }

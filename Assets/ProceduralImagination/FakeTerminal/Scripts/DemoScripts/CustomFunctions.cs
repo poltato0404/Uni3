@@ -46,13 +46,41 @@ public class CustomFunctions : MonoBehaviour
     {
         SceneManager.LoadScene("06CellMemory");
     }
+
     public void l1m2()
     {
-        SceneManager.LoadScene("03CentralDogma");
+        SceneManager.LoadScene("07CellStructures");
     }
     public void l1m3()
     {
         SceneManager.LoadScene("04CellDivision");
+    }
+
+    public void l2m1()
+    {
+        SceneManager.LoadScene("PlantGame");
+    }
+    
+    public void l2m2()
+    {
+        SceneManager.LoadScene("02FeedbackMechanism");
+    }
+    public void l2m3()
+    {
+        SceneManager.LoadScene("05BodyOrganFunctions");
+    }
+     public void l3m1()
+    {
+        SceneManager.LoadScene("mendel");
+    }
+    
+    public void l3m2()
+    {
+        SceneManager.LoadScene("03CentralDogma");
+    }
+    public void l3m3()
+    {
+        SceneManager.LoadScene("01RecombinantDNA");
     }
     public void nextLvl()
     {
