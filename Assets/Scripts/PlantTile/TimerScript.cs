@@ -16,25 +16,25 @@ public class TimerScript : MonoBehaviour
     {
         if (seconds < 10)
         {
-            timeTxt.text = "0"+minute+":0"+seconds;
+            timeTxt.text = "0" + minute + ":0" + seconds;
             if (minute < 10)
             {
-                timeTxt.text = "0"+minute+":0"+seconds;
+                timeTxt.text = "0" + minute + ":0" + seconds;
             }
             else
             {
-                timeTxt.text = minute+":0"+seconds;
+                timeTxt.text = minute + ":0" + seconds;
             }
         }
         else
         {
             if (minute < 10)
             {
-                timeTxt.text = "0"+minute+":"+seconds;
+                timeTxt.text = "0" + minute + ":" + seconds;
             }
             else
             {
-                timeTxt.text = minute+":"+seconds;
+                timeTxt.text = minute + ":" + seconds;
             }
         }
 
@@ -42,7 +42,7 @@ public class TimerScript : MonoBehaviour
         {
             GameObject.Find("PanelFinish").GetComponent<Animator>().SetBool("GameFinish", true);
             GameObject.Find("TitleFinish").GetComponent<Text>().text = "GAME OVER";
-            GameObject.Find("ScoreFinish").GetComponent<Text>().text = "Score: "+ GameObject.Find("DataScript").GetComponent<DataScript>().playerScore;
+            GameObject.Find("ScoreFinish").GetComponent<Text>().text = "Score: " + GameObject.Find("DataScript").GetComponent<DataScript>().playerScore;
             isDead = true;
         }
 
@@ -55,36 +55,36 @@ public class TimerScript : MonoBehaviour
 
     public IEnumerator startTimer()
     {
-            if (minute > 0) 
-            { 
-                // minute--; 
-                while(minute > 0 && !stopTime)
-                {
-                    if (seconds <= 0 && minute > 0 && !stopTime)
-                    {
-                        minute -= 1;
-                        seconds = 60;
-                    }
-
-                    while(seconds > 0 && !stopTime)
-                    {
-                        seconds--;
-                        yield return new WaitForSeconds(1);
-                    }
-                }
-            }
-            else 
+        if (minute > 0)
+        {
+            // minute--; 
+            while (minute > 0 && !stopTime)
             {
-                while(seconds > 0 && !stopTime)
+                if (seconds <= 0 && minute > 0 && !stopTime)
+                {
+                    minute -= 1;
+                    seconds = 60;
+                }
+
+                while (seconds > 0 && !stopTime)
                 {
                     seconds--;
                     yield return new WaitForSeconds(1);
                 }
-                
-                if (seconds <= 0)
-                {
-                    // StartCoroutine(gameFinish());
-                }
             }
+        }
+        else
+        {
+            while (seconds > 0 && !stopTime)
+            {
+                seconds--;
+                yield return new WaitForSeconds(1);
+            }
+
+            if (seconds <= 0)
+            {
+                // StartCoroutine(gameFinish());
+            }
+        }
     }
 }
