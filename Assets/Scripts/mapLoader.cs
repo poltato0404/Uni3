@@ -59,17 +59,15 @@ public class mapLoader : MonoBehaviour, IDataPersistence
             if (3 == i) { instantiateGuards(data.guard2Pos, i); }
 
         }
-        index = Random.Range(0, data.slotPosition.Count);
-        pos = data.slotPosition[index];
-        pos.y = 1;
-        for (int i = 0; i < 9; i++)
-        {
-            index = Random.Range(0, data.slotPosition.Count);
-            pos = data.slotPosition[index];
-            pos.y = 1;
-            Instantiate(coin, pos, Quaternion.identity);
+        
+        // for (int i = 0; i < 9; i++)
+        // {
+        //     index = Random.Range(0, data.slotPosition.Count);
+        //     pos = data.slotPosition[index];
+        //     pos.y = 1;
+        //     Instantiate(coin, pos, Quaternion.identity);
 
-        }
+        // }
         index = Random.Range(0, data.slotPosition.Count);
         pos = data.slotPosition[index];
         pos.y = 1;
@@ -79,6 +77,7 @@ public class mapLoader : MonoBehaviour, IDataPersistence
             case 1:
                 if (data.loadedLevel1)
                 {
+                    coinList = data.coins;
                     if (!data.isLaptopRetrieved)
                     {
                         Instantiate(laptop, data.devicePos, Quaternion.identity);
@@ -97,16 +96,14 @@ public class mapLoader : MonoBehaviour, IDataPersistence
                         Instantiate(laptop, pos, Quaternion.identity);
                         data.devicePos = pos;
                     }
-                    coinList = data.coins;
-                    // for (int i = 0; i < 9; i++)
-                    // {
-                    //     index = Random.Range(0, data.slotPosition.Count);
-                    //     pos = data.slotPosition[index];
-                    //     pos.y = 1;
-                    //     Instantiate(coin, pos, Quaternion.identity);
-                    //     data.coins.Add(pos);
-                    //     coinList.Add(pos);
-                    // }
+                    for (int i = 0; i < 9; i++)
+                    {
+                        index = Random.Range(0, data.slotPosition.Count);
+                        pos = data.slotPosition[index];
+                        pos.y = 1;
+                        Instantiate(coin, pos, Quaternion.identity);
+                        coinList.Add(pos);
+                    }
                 }
                 break;
             case 2:
@@ -127,7 +124,6 @@ public class mapLoader : MonoBehaviour, IDataPersistence
                         pos = data.slotPosition[index];
                         pos.y = 1;
                         Instantiate(coin, pos, Quaternion.identity);
-                        data.coins.Add(pos);
                         coinList.Add(pos);
                     }
                 }

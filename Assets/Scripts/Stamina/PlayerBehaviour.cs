@@ -193,7 +193,7 @@ public class PlayerBehaviour : MonoBehaviour, IDataPersistence
         {
             Debug.Log("collide");
             numberOfCoins++;
-            //RemoveCoinPosition(collidedObject.transform.position);
+            RemoveCoinPosition(collidedObject.transform.position);
             collidedObject.SetActive(false);
 
         }
@@ -213,22 +213,22 @@ public class PlayerBehaviour : MonoBehaviour, IDataPersistence
         }
     }
 
-    // private void RemoveCoinPosition(Vector3 positionToRemove)
-    // {
-    //     // Search for the position in the list and remove it
-    //     for (int i = 0; i < mapL.coinList.Count; i++)
-    //     {
-    //         if (mapL.coinList[i] == positionToRemove)
-    //         {
-    //             // Remove the position from the list
-    //             mapL.coinList.RemoveAt(i);
+    private void RemoveCoinPosition(Vector3 positionToRemove)
+    {
+        // Search for the position in the list and remove it
+        for (int i = 0; i < mapL.coinList.Count; i++)
+        {
+            if (mapL.coinList[i] == positionToRemove)
+            {
+                // Remove the position from the list
+                mapL.coinList.RemoveAt(i);
 
-    //             // Break the loop as we found and removed the position
-    //             break;
-    //         }
-    //     }
-    //     mapL.coinList.RemoveAll(item => item == Vector3.zero);
-    // }
+                // Break the loop as we found and removed the position
+                break;
+            }
+        }
+        mapL.coinList.RemoveAll(item => item == Vector3.zero);
+    }
 
 
 
