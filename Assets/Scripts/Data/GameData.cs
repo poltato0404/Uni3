@@ -56,7 +56,10 @@ public class GameData
     public int shoeLevel;
     public int numberOfDrinks;
     public int remainingCoins;
+
     public bool isLaptopRetrieved;
+    public bool isCoinRetrieved;
+    public bool isDocumentRetrieved;
 
     public List<Vector3> coins;
 
@@ -83,7 +86,8 @@ public class GameData
         this.playerScore = 0;
         this.guard1Pos = new Vector3(0, 1.5f, 0);
         this.guard2Pos = new Vector3(0, 1.5f, 0);
-
+        this.isCoinRetrieved = false;
+        this.isDocumentRetrieved = false;
         this.loadedLevel1 = false;
         this.loadedLevel2 = false;
         this.loadedLevel3 = false;

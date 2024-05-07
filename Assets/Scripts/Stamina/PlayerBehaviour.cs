@@ -22,6 +22,7 @@ public class PlayerBehaviour : MonoBehaviour, IDataPersistence
     public int numberOfCoins;
     public TextMeshProUGUI cointText;
     [SerializeField] InventoryManager inventory;
+    public promptManager prompt;
 
     [SerializeField] mapLoader mapL;
 
@@ -193,6 +194,7 @@ public class PlayerBehaviour : MonoBehaviour, IDataPersistence
         {
             Debug.Log("collide");
             numberOfCoins++;
+            prompt.promptCoin();
             RemoveCoinPosition(collidedObject.transform.position);
             collidedObject.SetActive(false);
 
@@ -200,6 +202,7 @@ public class PlayerBehaviour : MonoBehaviour, IDataPersistence
         if (collidedObject.CompareTag("device"))
         {
             Debug.Log("collide");
+            prompt.promptLaptop();
             InventoryItem item = collidedObject.GetComponent<InventoryItem>();
             inventory.AddItemToInventory(item);
             collidedObject.SetActive(false);
@@ -208,7 +211,7 @@ public class PlayerBehaviour : MonoBehaviour, IDataPersistence
         if (collidedObject.CompareTag("folder"))
         {
             Debug.Log("collide");
-
+            prompt.promptDocument();
             collidedObject.SetActive(false);
         }
     }
