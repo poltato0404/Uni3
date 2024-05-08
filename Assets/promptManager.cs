@@ -11,18 +11,19 @@ public class promptManager : MonoBehaviour, IDataPersistence
     [SerializeField] private TextMeshProUGUI instructionText;
     [SerializeField] private TextMeshProUGUI instructionTitle;
     [SerializeField] private GameObject Panel;
+    public List<string> evidenceStringList;
     public void promptLaptop()
     {
-        if(!isLaptopRetrieved)
+        if (!isLaptopRetrieved)
         {
             Panel.SetActive(true);
             instructionTitle.text = "Item Found";
-            instructionText.text = "You have found an old laptop. How about you open it in your inventory? ";
+            instructionText.text = "You have found an old laptop. It looks like it belong to Dr. Doe. \n You Remebered that he uses bits_blitz as an alias. How about you open it in your inventory? ";
         }
     }
     public void promptCoin()
     {
-        if(!isCoinRetrieved)
+        if (!isCoinRetrieved)
         {
             Panel.SetActive(true);
             instructionTitle.text = "Item Found";
@@ -30,22 +31,21 @@ public class promptManager : MonoBehaviour, IDataPersistence
             isCoinRetrieved = true;
         }
     }
-    public void promptDocument()
+    public void promptDocument(int y)
     {
-        if(!isDocumentRetrieved)
-        {
-            Panel.SetActive(true);
-            instructionTitle.text = "Item Found";
-            instructionText.text = "You have Found a Document!";
-            isDocumentRetrieved = true;
-        }
+
+        Panel.SetActive(true);
+        instructionTitle.text = "Item Found";
+        instructionText.text = "You have Found a Document \n Labeled " + evidenceStringList[y] + ". \n Try inputting it into a device";
+        isDocumentRetrieved = true;
+
 
     }
     public void SaveData(ref GameData data)
     {
         data.isDocumentRetrieved = isDocumentRetrieved;
         data.isCoinRetrieved = isCoinRetrieved;
-        
+
 
     }
     public void LoadData(GameData data)

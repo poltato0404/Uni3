@@ -62,12 +62,16 @@ public class GameData
     public bool isDocumentRetrieved;
 
     public List<Vector3> coins;
+    public List<Vector3> docuList;
+    public int stringCountEvidence;
+
 
     public List<InventoryItem> inventory;
 
     public GameData()
     {
         this.username = "";
+        this.stringCountEvidence = 0;
         this.name = "";
         this.isLaptopRetrieved = false;
         this.password = "";
@@ -83,6 +87,7 @@ public class GameData
         this.playerPos = new Vector3(0, 1.5f, 0);
         this.devicePos = new Vector3(0, 0, 0);
         this.coins = new List<Vector3>();
+        this.docuList = new List<Vector3>();
         this.playerScore = 0;
         this.guard1Pos = new Vector3(0, 1.5f, 0);
         this.guard2Pos = new Vector3(0, 1.5f, 0);

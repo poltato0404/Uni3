@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CustomFunctions : MonoBehaviour
+public class CustomFunctions : MonoBehaviour, IDataPersistence
 {
     public List<Light> lights;
     public Light directional;
+    public bool level1Complete;
+    public bool level2Complete;
+    public bool level3Complete;
 
     public void AllLightsOnOff()
     {
@@ -49,7 +52,8 @@ public class CustomFunctions : MonoBehaviour
 
     public void l1m2()
     {
-        SceneManager.LoadScene("07CellStructures");
+        SceneManager.LoadScene("03CentralDogma");
+        //SceneManager.LoadScene("07CellStructures");
     }
     public void l1m3()
     {
@@ -60,7 +64,7 @@ public class CustomFunctions : MonoBehaviour
     {
         SceneManager.LoadScene("PlantGame");
     }
-    
+
     public void l2m2()
     {
         SceneManager.LoadScene("02FeedbackMechanism");
@@ -69,11 +73,11 @@ public class CustomFunctions : MonoBehaviour
     {
         SceneManager.LoadScene("05BodyOrganFunctions");
     }
-     public void l3m1()
+    public void l3m1()
     {
         SceneManager.LoadScene("mendel");
     }
-    
+
     public void l3m2()
     {
         SceneManager.LoadScene("03CentralDogma");
@@ -85,5 +89,10 @@ public class CustomFunctions : MonoBehaviour
     public void nextLvl()
     {
         SceneManager.LoadScene("Shop");
+    }
+    public void SaveData(ref GameData data) { }
+    public void LoadData(GameData data)
+    {
+
     }
 }

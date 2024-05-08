@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using System.Collections.Generic;
+using System;
 
 public class PlayerBehaviour : MonoBehaviour, IDataPersistence
 {
@@ -12,6 +14,7 @@ public class PlayerBehaviour : MonoBehaviour, IDataPersistence
     public InventoryItem laptop;
     float _playerSprintSpeed;
     bool isSprinting = false;
+
     public Vector3 playerPos;
     bool isRegenerationDelayed = false; // Flag to indicate if regeneration is delayed
     float regenerationDelayDuration = 2f; // Duration of delay in seconds
@@ -22,6 +25,7 @@ public class PlayerBehaviour : MonoBehaviour, IDataPersistence
     public int numberOfCoins;
     public TextMeshProUGUI cointText;
     [SerializeField] InventoryManager inventory;
+    [SerializeField] int stringEvidenceCount;
     public promptManager prompt;
 
     [SerializeField] mapLoader mapL;
@@ -112,12 +116,14 @@ public class PlayerBehaviour : MonoBehaviour, IDataPersistence
 
         data.numberOfDrinks = numberOfDrinks;
         data.playerCoins = numberOfCoins;
+        data.stringCountEvidence = stringEvidenceCount;
 
     }
     public void LoadData(GameData data)
     {
         if (data.isLaptopRetrieved) { inventory.AddItemToInventory(laptop); }
         numberOfCoins = data.playerCoins;
+        stringEvidenceCount = data.stringCountEvidence;
 
         switch (data.currentLevel)
         {
@@ -211,7 +217,9 @@ public class PlayerBehaviour : MonoBehaviour, IDataPersistence
         if (collidedObject.CompareTag("folder"))
         {
             Debug.Log("collide");
-            prompt.promptDocument();
+            prompt.promptDocument(stringEvidenceCount);
+            stringEvidenceCount++;
+            removeDocu(collidedObject.transform.position);
             collidedObject.SetActive(false);
         }
     }
@@ -231,6 +239,22 @@ public class PlayerBehaviour : MonoBehaviour, IDataPersistence
             }
         }
         mapL.coinList.RemoveAll(item => item == Vector3.zero);
+    }
+    private void removeDocu(Vector3 positionToRemove)
+    {
+        // Search for the position in the list and remove it
+        for (int i = 0; i < mapL.docuList.Count; i++)
+        {
+            if (mapL.docuList[i] == positionToRemove)
+            {
+                // Remove the position from the list
+                mapL.docuList.RemoveAt(i);
+
+                // Break the loop as we found and removed the position
+                break;
+            }
+        }
+        mapL.docuList.RemoveAll(item => item == Vector3.zero);
     }
 
 

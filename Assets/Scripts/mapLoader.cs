@@ -15,6 +15,7 @@ public class mapLoader : MonoBehaviour, IDataPersistence
     public List<Vector3> coinList;
     [SerializeField] GameObject coin;
     [SerializeField] GameObject laptop;
+    public List<Vector3> docuList;
     NavMeshAgent navMeshAgent;
     public bool gotLaptop;
     void Awake()
@@ -33,6 +34,7 @@ public class mapLoader : MonoBehaviour, IDataPersistence
         }
 
         data.coins = coinList;
+        data.docuList = docuList;
 
 
     }
@@ -59,25 +61,19 @@ public class mapLoader : MonoBehaviour, IDataPersistence
             if (3 == i) { instantiateGuards(data.guard2Pos, i); }
 
         }
-        
-        // for (int i = 0; i < 9; i++)
-        // {
-        //     index = Random.Range(0, data.slotPosition.Count);
-        //     pos = data.slotPosition[index];
-        //     pos.y = 1;
-        //     Instantiate(coin, pos, Quaternion.identity);
 
-        // }
+
         index = Random.Range(0, data.slotPosition.Count);
         pos = data.slotPosition[index];
         pos.y = 1;
-        Instantiate(docu, pos, Quaternion.identity);
+
         switch (data.currentLevel)
         {
             case 1:
                 if (data.loadedLevel1)
                 {
                     coinList = data.coins;
+                    docuList = data.docuList;
                     if (!data.isLaptopRetrieved)
                     {
                         Instantiate(laptop, data.devicePos, Quaternion.identity);
@@ -87,6 +83,10 @@ public class mapLoader : MonoBehaviour, IDataPersistence
                     for (int i = 0; i < data.coins.Count; i++)
                     {
                         Instantiate(coin, data.coins[i], Quaternion.identity);
+                    }
+                    for (int i = 0; i < data.docuList.Count; i++)
+                    {
+                        Instantiate(docu, data.docuList[i], Quaternion.identity);
                     }
                 }
                 else
@@ -104,20 +104,36 @@ public class mapLoader : MonoBehaviour, IDataPersistence
                         Instantiate(coin, pos, Quaternion.identity);
                         coinList.Add(pos);
                     }
+                    for (int i = 0; i < 3; i++)
+                    {
+                        index = Random.Range(0, data.slotPosition.Count);
+                        pos = data.slotPosition[index];
+                        pos.y = 1;
+                        Instantiate(docu, pos, Quaternion.identity);
+                        docuList.Add(pos);
+                    }
                 }
                 break;
             case 2:
 
-                if (data.loadedLevel1)
+                if (data.loadedLevel2)
                 {
+                    coinList = data.coins;
+                    docuList = data.docuList;
+
 
                     for (int i = 0; i < data.coins.Count; i++)
                     {
                         Instantiate(coin, data.coins[i], Quaternion.identity);
                     }
+                    for (int i = 0; i < data.docuList.Count; i++)
+                    {
+                        Instantiate(docu, data.docuList[i], Quaternion.identity);
+                    }
                 }
                 else
                 {
+
                     for (int i = 0; i < 9; i++)
                     {
                         index = Random.Range(0, data.slotPosition.Count);
@@ -126,12 +142,54 @@ public class mapLoader : MonoBehaviour, IDataPersistence
                         Instantiate(coin, pos, Quaternion.identity);
                         coinList.Add(pos);
                     }
+                    for (int i = 0; i < 3; i++)
+                    {
+                        index = Random.Range(0, data.slotPosition.Count);
+                        pos = data.slotPosition[index];
+                        pos.y = 1;
+                        Instantiate(docu, pos, Quaternion.identity);
+                        docuList.Add(pos);
+                    }
                 }
 
 
 
                 break;
             case 3:
+                if (data.loadedLevel3)
+                {
+                    coinList = data.coins;
+                    docuList = data.docuList;
+
+                    for (int i = 0; i < data.coins.Count; i++)
+                    {
+                        Instantiate(coin, data.coins[i], Quaternion.identity);
+                    }
+                    for (int i = 0; i < data.docuList.Count; i++)
+                    {
+                        Instantiate(docu, data.docuList[i], Quaternion.identity);
+                    }
+                }
+                else
+                {
+
+                    for (int i = 0; i < 9; i++)
+                    {
+                        index = Random.Range(0, data.slotPosition.Count);
+                        pos = data.slotPosition[index];
+                        pos.y = 1;
+                        Instantiate(coin, pos, Quaternion.identity);
+                        coinList.Add(pos);
+                    }
+                    for (int i = 0; i < 3; i++)
+                    {
+                        index = Random.Range(0, data.slotPosition.Count);
+                        pos = data.slotPosition[index];
+                        pos.y = 1;
+                        Instantiate(docu, pos, Quaternion.identity);
+                        docuList.Add(pos);
+                    }
+                }
 
                 break;
         }
