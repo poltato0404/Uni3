@@ -105,10 +105,16 @@ public class ai : MonoBehaviour, IDataPersistence
 
     }
 
+
     // Update is called once per frame
     void Update()
     {
-        if (flashed) { animator.SetTrigger("flashed"); agent.SetDestination(transform.position); return; }
+        if (flashed)
+        {
+            animator.SetTrigger("flashed"); agent.SetDestination(transform.position);
+            StartCoroutine(WaitOneSecond());
+            return;
+        }
         animator.SetTrigger("notflashed");
         guardPos = transform.position;
         RaycastHit hit;
@@ -175,7 +181,7 @@ public class ai : MonoBehaviour, IDataPersistence
     {
 
         // Wait for one second
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
 
 
         // Continue with your code after the delay

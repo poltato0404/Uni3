@@ -55,9 +55,10 @@ public class ResolutionControl : MonoBehaviour
     {
         // Apply the selected resolution
         Resolution resolution = filteredResolutions[selectedResolutionIndex];
-        Screen.SetResolution(resolution.width, resolution.height, true);
+        Screen.SetResolution(resolution.height, resolution.width, true);
 
         // Log a message indicating that the resolution has been changed
-        Debug.Log($"Resolution changed to: {resolution.width}x{resolution.height} @{resolution.refreshRate}Hz");
+        Debug.Log($"Resolution changed to: {resolution.height}x{resolution.width} @{resolution.refreshRate}Hz");
     }
+
 }
