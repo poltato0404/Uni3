@@ -13,25 +13,7 @@ public class DragUIImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     private GameObject m_DraggingIcon;
     private RectTransform m_DraggingPlane;
 
-    #region MOBILE_INPUT
-    public delegate void TouchDelegate(Touch eventData);
-    public static event TouchDelegate OnTouchDown;
-    public static event TouchDelegate OnTouchUp;
-    public static event TouchDelegate OnTouchDrag;
-    #endregion
-
     public string destinationTag = "DropZone";
-
-
-    private void OnEnable()
-    {
-        OnTouchUp += OnTouchUpCallback;
-    }
-
-    private void OnDisable()
-    {
-        OnTouchUp -= OnTouchUpCallback;
-    }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -124,9 +106,6 @@ public class DragUIImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
             if (Physics.Raycast(editorRay, out editorHit))
             {
-                Debug.DrawRay(editorRay.origin, editorRay.direction * editorHit.distance, Color.green);
-
-
                 // Check if the hit object has the MatchCellPart component
                 MatchCellPart hitMatchCellPart = editorHit.collider.GetComponent<MatchCellPart>();
                 if (hitMatchCellPart != null)
@@ -149,72 +128,11 @@ public class DragUIImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             }
 #endif
         }
-
-        foreach (Touch touch in Input.touches)
-        {
-            if (EventSystem.current.IsPointerOverGameObject(touch.fingerId))
-            {
-                // Raycast from the pointer position
-#if UNITY_EDITOR
-                Ray editorRay = Camera.main.ScreenPointToRay(eventData.position);
-
-                RaycastHit editorHit;
-
-                if (Physics.Raycast(editorRay, out editorHit))
-                {
-                    Debug.DrawRay(editorRay.origin, editorRay.direction * editorHit.distance, Color.green);
-
-
-                    // Check if the hit object has the MatchCellPart component
-                    MatchCellPart hitMatchCellPart = editorHit.collider.GetComponent<MatchCellPart>();
-                    if (hitMatchCellPart != null)
-                    {
-                        // Do something with the hitMatchCellPart (e.g., call a method)
-                        if (hitMatchCellPart.MatchCells(thisCellPart, GetComponent<Image>().sprite))
-                        {
-                            this.enabled = false;
-                            var image = GetComponent<Image>();
-                            var tempColor = image.color;
-                            tempColor.r = 0;
-                            tempColor.g = 255;
-                            tempColor.b = 0;
-                            tempColor.a = 0.5f;
-                            image.color = tempColor;
-                            if (m_DraggingIcon != null)
-                                Destroy(m_DraggingIcon);
-                        }
-                    }
-                }
-#endif
-
-            }
-        }
     }
 
     void OnTouchUpCallback(Touch touchEvent)
     {
-        var rayOrigin = Camera.main.transform.position;
-        var rayDirection = TouchWorldPosition(touchEvent) - Camera.main.transform.position;
-        RaycastHit hitInfo;
-        if (Physics.Raycast(rayOrigin, rayDirection, out hitInfo))
-        {
-            if (hitInfo.transform.tag == destinationTag)
-            {
-                if (hitInfo.transform.gameObject.GetComponent<MatchCellPart>().MatchCells(thisCellPart, GetComponent<Image>().sprite))
-                {
-                    this.enabled = false;
-                    var image = GetComponent<Image>();
-                    var tempColor = image.color;
-                    tempColor.r = 0;
-                    tempColor.g = 255;
-                    tempColor.b = 0;
-                    tempColor.a = 0.5f;
-                    image.color = tempColor;
-                    if (m_DraggingIcon != null)
-                        Destroy(m_DraggingIcon);
-                }
-            }
-        }
+
     }
 
     Vector3 TouchWorldPosition(Touch eventData)
@@ -229,5 +147,39 @@ public class DragUIImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             // Convert the touch position from screen to world space
             return Camera.main.ScreenToWorldPoint(touchScreenPos);
         }
+    }
+
+    private void Update()
+    {
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+
+            if (touch.phase == TouchPhase.Ended)
+            {
+                RaycastHit hitInfo;
+                Ray ray = Camera.main.ScreenPointToRay(touch.position);
+                if (Physics.Raycast(ray, out hitInfo))
+                {
+                    if (hitInfo.transform.tag == destinationTag)
+                    {
+                        if (hitInfo.transform.gameObject.GetComponent<MatchCellPart>().MatchCells(thisCellPart, GetComponent<Image>().sprite))
+                        {
+                            this.enabled = false;
+                            var image = GetComponent<Image>();
+                            var tempColor = image.color;
+                            tempColor.r = 0;
+                            tempColor.g = 255;
+                            tempColor.b = 0;
+                            tempColor.a = 0.5f;
+                            image.color = tempColor;
+                            if (m_DraggingIcon != null)
+                                Destroy(m_DraggingIcon);
+                        }
+                    }
+                }
+            }
+        }
+
     }
 }

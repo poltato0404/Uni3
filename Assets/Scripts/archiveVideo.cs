@@ -9,14 +9,10 @@ public class ArchiveVideo : MonoBehaviour
     [SerializeField] GameObject video1, video2, video3, video4, video5, video6, video7, video8, video9;
     [SerializeField] List<GameObject> buttons;
     [SerializeField] List<GameObject> backButtons;
-    [SerializeField] GameObject buttonForVideo1Panel;
-    [SerializeField] GameObject buttonForVideo2Panel;
     public GameObject mainPanel;
     public GameObject easyPanel;
     public GameObject avePanel;
     public GameObject hardPanel;
-    [SerializeField] GameObject panelForVideo1Info;
-    [SerializeField] GameObject panelForVideo2Info;
 
     // Declare VideoPlayer variables for each video
     VideoPlayer videoPlayer1;
@@ -47,7 +43,6 @@ public class ArchiveVideo : MonoBehaviour
         video1.SetActive(true);
         videoPlayer1.Play();
         DisableAllButtons();
-        buttonForVideo1Panel.SetActive(true);
     }
 
     public void PlayVideo2()
@@ -55,7 +50,6 @@ public class ArchiveVideo : MonoBehaviour
         video2.SetActive(true);
         videoPlayer2.Play();
         DisableAllButtons();
-        buttonForVideo2Panel.SetActive(true);
     }
 
     public void PlayVideo3()
@@ -115,27 +109,8 @@ public class ArchiveVideo : MonoBehaviour
         }
     }
 
-    public void ShowVideo1Panel()
-    {
-        panelForVideo1Info.SetActive(true);
-        buttonForVideo1Panel.SetActive(false);
-        videoPlayer1.Stop();
-        video1.SetActive(false);
-        backButtons[9].SetActive(true);
-    }
-
-    public void ShowVideo2Panel()
-    {
-        panelForVideo2Info.SetActive(true);
-        buttonForVideo2Panel.SetActive(false);
-        videoPlayer2.Stop();
-        video2.SetActive(false);
-        backButtons[10].SetActive(true);
-    }
     public void GoBackFromVideo1()
     {
-        panelForVideo1Info.SetActive(false);
-        buttonForVideo1Panel.SetActive(false);
         backButtons[0].SetActive(false);
 
         video1.SetActive(false);
@@ -148,8 +123,6 @@ public class ArchiveVideo : MonoBehaviour
 
     public void GoBackFromVideo2()
     {
-        panelForVideo2Info.SetActive(false);
-        buttonForVideo2Panel.SetActive(false);
         backButtons[1].SetActive(false);
 
         video2.SetActive(false);
@@ -248,8 +221,6 @@ public class ArchiveVideo : MonoBehaviour
     {
         backButtons[9].SetActive(false);
 
-        panelForVideo1Info.SetActive(false);
-
         EnableAllButtons();
 
         easyPanel.SetActive(true);
@@ -258,8 +229,6 @@ public class ArchiveVideo : MonoBehaviour
     public void GoBackFromPanel2Info()
     {
         backButtons[10].SetActive(false);
-
-        panelForVideo2Info.SetActive(false);
 
         EnableAllButtons();
 
@@ -272,9 +241,6 @@ public class ArchiveVideo : MonoBehaviour
         {
             button.SetActive(true);
         }
-
-        buttonForVideo1Panel.SetActive(true);
-        buttonForVideo2Panel.SetActive(true);
 
         foreach (var backButton in backButtons)
         {
