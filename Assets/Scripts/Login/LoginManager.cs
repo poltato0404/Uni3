@@ -8,79 +8,30 @@ public class LoginManager : MonoBehaviour, IDataPersistence
 {
     public TMP_InputField usernameField;
     public TMP_InputField passwordField;
-    [SerializeField] private Image passwordVisibilityButtonImage;
-    [SerializeField] private Sprite passwordVisibleSprite;
-    [SerializeField] private Sprite passwordHiddenSprite;
     public TMP_Text errorMessageText;
+    public Button loginButton; // Reference to the login button
 
     private GameData registerData;
 
-    private bool isPasswordVisible = false;
-
     private void Start()
     {
-        // Set the content type to Password initially
-        SetContentType(TMP_InputField.ContentType.Password);
-    }
-
-    public void TogglePasswordFieldVisibility()
-    {
-        isPasswordVisible = !isPasswordVisible;
-
-        if (isPasswordVisible)
-        {
-            SetContentType(TMP_InputField.ContentType.Standard);
-            passwordVisibilityButtonImage.sprite = passwordVisibleSprite;
-        }
-        else
-        {
-            SetContentType(TMP_InputField.ContentType.Password);
-            passwordVisibilityButtonImage.sprite = passwordHiddenSprite;
-        }
-    }
-
-    private void SetContentType(TMP_InputField.ContentType contentType)
-    {
-        passwordField.contentType = contentType;
-
-        if (contentType == TMP_InputField.ContentType.Password)
-        {
-            passwordField.inputType = TMP_InputField.InputType.Password;
-        }
-        else if (contentType == TMP_InputField.ContentType.Standard)
-        {
-            passwordField.inputType = TMP_InputField.InputType.Standard;
-        }
-
-        // Force update to reflect the changes in the input field
-        passwordField.ForceLabelUpdate();
+        // Disable the login button initially
+        loginButton.interactable = false;
     }
 
     public void LoginUser()
     {
-        string enteredUsername = usernameField.text;
-        string enteredPassword = passwordField.text;
-
-        // Check if the entered username exists in the registered data
-        if (registerData != null && registerData.username == enteredUsername)
+        // Check if both fields are filled
+        if (!string.IsNullOrEmpty(usernameField.text) && !string.IsNullOrEmpty(passwordField.text))
         {
-            // Compare the entered password with the registered password
-            string hashedEnteredPassword = HashPassword(enteredPassword);
-            if (registerData.password == hashedEnteredPassword)
-            {
-                Debug.Log("Login successful!");
+            string enteredUsername = usernameField.text;
+            string enteredPassword = passwordField.text;
 
-                // Load the main game scene
-                SceneManager.LoadScene("main");
-            }
-            else
-            {
-                errorMessageText.text = "Incorrect password!"; // Display error message
-            }
+            // Your existing login logic goes here...
         }
         else
         {
-            errorMessageText.text = "Username not found!"; // Display error message
+            errorMessageText.text = "Please enter both username and password!";
         }
     }
 
