@@ -18,7 +18,7 @@ public class promptManager : MonoBehaviour, IDataPersistence
         {
             Panel.SetActive(true);
             instructionTitle.text = "Item Found";
-            instructionText.text = "You have found an old laptop. It looks like it belong to Dr. Doe. \n You Remebered that he uses bits_blitz as an alias. How about you open it in your inventory? ";
+            instructionText.text = "You've found Dr. Doe's laptop! This is key for accessing the minigames. \n After finding all 3 passwords, click the laptop in your inventory to use them when you're ready. ";
         }
     }
     public void promptCoin()
@@ -27,7 +27,7 @@ public class promptManager : MonoBehaviour, IDataPersistence
         {
             Panel.SetActive(true);
             instructionTitle.text = "Item Found";
-            instructionText.text = "You have found a coin. It might be useful later on... ";
+            instructionText.text = "You found a coin! Collect these to upgrade your equipments. Keep exploring to find more. ";
             isCoinRetrieved = true;
         }
     }
@@ -36,7 +36,7 @@ public class promptManager : MonoBehaviour, IDataPersistence
 
         Panel.SetActive(true);
         instructionTitle.text = "Item Found";
-        instructionText.text = "You have Found a Document \n Labeled " + evidenceStringList[y] + ". \n Try inputting it into a device";
+        instructionText.text = "You've found a document with a password! \n " + evidenceStringList[y] + "\n Remember and collect all 3 to unlock the 3 minigames on the laptop. Keep searching. ";
         isDocumentRetrieved = true;
 
 
