@@ -14,7 +14,7 @@ public class LoadMenuControl : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(LoadAndSwitchScenes());
+        //StartCoroutine(LoadAndSwitchScenes());
         // Prepare
     }
 

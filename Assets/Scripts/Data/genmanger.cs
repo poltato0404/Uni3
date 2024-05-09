@@ -14,7 +14,7 @@ public class Spawner : MonoBehaviour, IDataPersistence
 
 
 
-    void startManager()
+    void Start()
     {
         Instantiate(objectToInstantiate, pos, Quaternion.identity, transform);
         StartCoroutine(WaitAndDoSomething());
@@ -75,7 +75,7 @@ public class Spawner : MonoBehaviour, IDataPersistence
         Debug.Log("loadedlevel" + data.loadedLevel1 + data.currentLevel);
         data.loadedLevel1 = false;
         currentLevel = data.currentLevel;
-        startManager();
+
 
     }
 

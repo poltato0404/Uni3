@@ -218,6 +218,9 @@ public class PlayerBehaviour : MonoBehaviour, IDataPersistence
         {
             Debug.Log("collide");
             prompt.promptDocument(stringEvidenceCount);
+            InventoryItem item = collidedObject.GetComponent<InventoryItem>();
+            item.itemName = prompt.evidenceStringList[stringEvidenceCount];
+            inventory.AddItemToInventory(item);
             stringEvidenceCount++;
             removeDocu(collidedObject.transform.position);
             collidedObject.SetActive(false);
