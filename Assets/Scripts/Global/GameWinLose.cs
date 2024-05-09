@@ -48,6 +48,7 @@ public class GameWinLose : MonoBehaviour
         {
             badgeImage.gameObject.SetActive(true);
             badgeImage.sprite = badgeSprites[minigameID];
+            coinText.SetText((score/10).ToString());
             headerText.text = "VICTORY!";
             winButton.SetActive(true);
         }

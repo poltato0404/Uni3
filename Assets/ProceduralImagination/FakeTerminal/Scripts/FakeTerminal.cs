@@ -4,17 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
+
 public class FakeTerminal : MonoBehaviour
 {
-    //public int custom_FunctionsNumber = 0;
+    
     [SerializeField]
-    public UnityEvent[] custom_Functions;
     public CustomFunctions cust;
     [Space][Space]
 
     public List<CustomText> custom_Inputs;
     public GameManager1 KBmng;
     public GameObject keyboard;
+    public GameObject laptop;
     public GameObject powerButton;
 
 
@@ -250,9 +251,11 @@ public class FakeTerminal : MonoBehaviour
                 oldPositionSaved = true;
             }
 
-            player_Camera.transform.position = Vector3.Lerp(player_Camera.transform.position, this.transform.position + terminal_PoVOffset, terminal_ActivationTransitionSpeed * Time.deltaTime);
-            player_Camera.transform.rotation = Quaternion.Lerp(player_Camera.transform.rotation, this.transform.rotation, terminal_ActivationTransitionSpeed * Time.deltaTime);
+                        // Instantly move the camera to the new position
+            player_Camera.transform.position = this.transform.position + terminal_PoVOffset;
 
+            // Instantly set the camera's rotation to the new rotation
+            player_Camera.transform.rotation = this.transform.rotation;
             if(!terminalStarting && terminalIsRunning)
             {
                 if (KBmng.pressed == true)
@@ -283,8 +286,11 @@ public class FakeTerminal : MonoBehaviour
 
         while(player_Camera.transform.position != oldPlayerPoVPosition)
         {
-            player_Camera.transform.position = Vector3.Lerp(player_Camera.transform.position, oldPlayerPoVPosition, terminal_ShutDownTransitionSpeed * Time.deltaTime);
-            player_Camera.transform.rotation = Quaternion.Lerp(player_Camera.transform.rotation, oldPlayerPoVRotation, terminal_ShutDownTransitionSpeed * Time.deltaTime);
+                    // Instantly reset the camera position to the original point of view
+            player_Camera.transform.position = oldPlayerPoVPosition;
+
+            // Instantly reset the camera rotation to the original orientation
+            player_Camera.transform.rotation = oldPlayerPoVRotation;
 
             yield return new WaitForEndOfFrame();
         }
@@ -302,9 +308,10 @@ public class FakeTerminal : MonoBehaviour
 
     //----//
 
-    private void ShutdownTerminal()
+    public void ShutdownTerminal()
     {
         StopAllCoroutines();
+        laptop.SetActive(true);
 
         terminalIsIdling = true;
         terminalStarting = false;
@@ -543,22 +550,7 @@ public class FakeTerminal : MonoBehaviour
 
                         //----//
 
-                        for(int custom_InputsIndex = 0; custom_InputsIndex < custom_Inputs.Count; custom_InputsIndex++)
-                        {
-                            foreach(string input_Text in custom_Inputs[custom_InputsIndex].text_Input)
-                            {
-                                if(outputText[actualLine].Length >= lineIntro.Length)
-                                {
-                                    if(outputText[actualLine].Replace("" + cursor_Char, "").Substring(lineIntro.Length) == input_Text)
-                                    {
-                                        printError = false;
-                                        PrintCustomText(custom_InputsIndex);
                         
-                                        custom_Functions[custom_InputsIndex].Invoke();
-                                    }
-                                }
-                            }
-                        }
 
                         //----//
 
@@ -599,6 +591,7 @@ public class FakeTerminal : MonoBehaviour
                                 if(!key_UseKeyToShutDown && outputText[actualLine].Replace("" + cursor_Char, "").Substring(lineIntro.Length) == input_Shutdown)
                                 {
                                     printError = false;
+                                    
                                     ShutdownTerminal();
                                 }
                             }
