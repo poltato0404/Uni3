@@ -124,8 +124,6 @@ public class GameData
         this.flashLevel = 1;
         this.drinkLevel = 1;
         this.numberOfDrinks = 3;
-
-
         this.inventory = new List<InventoryItem>();
 
     }
