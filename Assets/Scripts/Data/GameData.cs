@@ -12,6 +12,8 @@ public class GameData
     public string securityQuestion;
     public string securityAnswer;
 
+    public bool hasSavedData;
+
     public int currentLevel;
     public int playerStamina;
     public int enemyCount;
