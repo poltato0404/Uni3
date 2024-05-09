@@ -96,9 +96,9 @@ public class mapLoader : MonoBehaviour, IDataPersistence
                         Instantiate(laptop, pos, Quaternion.identity);
                         data.devicePos = pos;
                     }
-                    for (int i = 0; i < 9; i++)
+                    for (int i = 0; i < 3; i++)
                     {
-                        index = Random.Range(0, data.slotPosition.Count);
+                        index = Random.Range(1, data.slotPosition.Count);
                         pos = data.slotPosition[index];
                         pos.y = 1;
                         Instantiate(coin, pos, Quaternion.identity);
@@ -106,7 +106,7 @@ public class mapLoader : MonoBehaviour, IDataPersistence
                     }
                     for (int i = 0; i < 3; i++)
                     {
-                        index = Random.Range(0, data.slotPosition.Count);
+                        index = Random.Range(1, data.slotPosition.Count);
                         pos = data.slotPosition[index];
                         pos.y = 1;
                         Instantiate(docu, pos, Quaternion.identity);
@@ -134,9 +134,9 @@ public class mapLoader : MonoBehaviour, IDataPersistence
                 else
                 {
 
-                    for (int i = 0; i < 9; i++)
+                    for (int i = 0; i < 5; i++)
                     {
-                        index = Random.Range(0, data.slotPosition.Count);
+                        index = Random.Range(1, data.slotPosition.Count);
                         pos = data.slotPosition[index];
                         pos.y = 1;
                         Instantiate(coin, pos, Quaternion.identity);
@@ -144,7 +144,7 @@ public class mapLoader : MonoBehaviour, IDataPersistence
                     }
                     for (int i = 0; i < 3; i++)
                     {
-                        index = Random.Range(0, data.slotPosition.Count);
+                        index = Random.Range(1, data.slotPosition.Count);
                         pos = data.slotPosition[index];
                         pos.y = 1;
                         Instantiate(docu, pos, Quaternion.identity);
@@ -173,9 +173,9 @@ public class mapLoader : MonoBehaviour, IDataPersistence
                 else
                 {
 
-                    for (int i = 0; i < 9; i++)
+                    for (int i = 0; i < 7; i++)
                     {
-                        index = Random.Range(0, data.slotPosition.Count);
+                        index = Random.Range(1, data.slotPosition.Count);
                         pos = data.slotPosition[index];
                         pos.y = 1;
                         Instantiate(coin, pos, Quaternion.identity);
@@ -183,7 +183,7 @@ public class mapLoader : MonoBehaviour, IDataPersistence
                     }
                     for (int i = 0; i < 3; i++)
                     {
-                        index = Random.Range(0, data.slotPosition.Count);
+                        index = Random.Range(1, data.slotPosition.Count);
                         pos = data.slotPosition[index];
                         pos.y = 1;
                         Instantiate(docu, pos, Quaternion.identity);
