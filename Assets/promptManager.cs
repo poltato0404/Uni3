@@ -27,7 +27,7 @@ public class promptManager : MonoBehaviour, IDataPersistence
         {
             Panel.SetActive(true);
             instructionTitle.text = "Item Found";
-            instructionText.text = "You found a coin! Collect these to upgrade your equipments. Keep exploring to find more. ";
+            instructionText.text = "You found a coin! Collect these to upgrade your equipment. Keep exploring to find more. ";
             isCoinRetrieved = true;
         }
     }
