@@ -4,7 +4,6 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
-
 public class ShopManager : MonoBehaviour, IDataPersistence
 {
     public int flashLevel;
@@ -24,13 +23,14 @@ public class ShopManager : MonoBehaviour, IDataPersistence
         data.shoeLevel = shoeLevel;
         data.drinkLevel = drinkLevel;
     }
+
     public void LoadData(GameData data)
     {
         coins = data.playerCoins;
         coinText.text = data.playerCoins.ToString();
-        flashPrice.text = data.flashLevel.ToString();
-        shoePrice.text = data.shoeLevel.ToString();
-        drinkPrice.text = data.drinkLevel.ToString();
+        //flashPrice.text = data.flashLevel.ToString();
+        //shoePrice.text = data.shoeLevel.ToString();
+        //drinkPrice.text = data.drinkLevel.ToString();
         flashLevel = data.flashLevel;
         shoeLevel = data.shoeLevel;
         drinkLevel = data.drinkLevel;
@@ -38,56 +38,52 @@ public class ShopManager : MonoBehaviour, IDataPersistence
 
     public void buyFlash()
     {
-        if (coins > flashLevel)
+        int flashUpgradePrice = 10; // Set the price for the flash item to 10 coins
+        if (coins >= flashUpgradePrice)
         {
-            coins -= flashLevel;
+            coins -= flashUpgradePrice; // Deduct the price
             flashLevel++;
             coinText.text = coins.ToString();
-            flashPrice.text = flashLevel.ToString();
+            //flashPrice.text = flashLevel.ToString();
         }
         else
         {
             Transform target = transform;
-
             va.WrongAnswer(target);
         }
-
     }
 
-    public void buyshoes()
+    public void buyShoes()
     {
-
-        if (coins > shoeLevel)
+        int shoeUpgradePrice = 10; // Set the price for the shoes item to 10 coins
+        if (coins >= shoeUpgradePrice)
         {
-            coins -= shoeLevel;
+            coins -= shoeUpgradePrice; // Deduct the price
             shoeLevel++;
             coinText.text = coins.ToString();
-            shoePrice.text = shoeLevel.ToString();
-
+            //shoePrice.text = shoeLevel.ToString();
         }
         else
         {
             Transform target = transform;
-
             va.WrongAnswer(target);
         }
     }
 
-    public void buydrinks()
+    public void buyDrinks()
     {
-        if (coins > drinkLevel)
+        int drinkUpgradePrice = 10; // Set the price for the drinks item to 10 coins
+        if (coins >= drinkUpgradePrice)
         {
-            coins -= drinkLevel;
+            coins -= drinkUpgradePrice; // Deduct the price
             drinkLevel++;
             coinText.text = coins.ToString();
-            drinkPrice.text = drinkLevel.ToString();
+            //drinkPrice.text = drinkLevel.ToString();
         }
         else
         {
             Transform target = transform;
-
             va.WrongAnswer(target);
         }
     }
-
 }
