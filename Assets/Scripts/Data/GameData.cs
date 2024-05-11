@@ -66,6 +66,7 @@ public class GameData
     public List<Vector3> coins;
     public List<Vector3> docuList;
     public int stringCountEvidence;
+    public int coinsCollected;
 
 
     public List<InventoryItem> inventory;
@@ -125,6 +126,7 @@ public class GameData
         this.drinkLevel = 1;
         this.numberOfDrinks = 3;
         this.inventory = new List<InventoryItem>();
+        this.coinsCollected = 0;
 
     }
 

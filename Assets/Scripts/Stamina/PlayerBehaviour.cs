@@ -25,8 +25,9 @@ public class PlayerBehaviour : MonoBehaviour, IDataPersistence
     public int numberOfCoins;
     public TextMeshProUGUI cointText;
     [SerializeField] InventoryManager inventory;
-    [SerializeField] int stringEvidenceCount;
+    public int stringEvidenceCount;
     public promptManager prompt;
+    public int coinsCollected;
 
     [SerializeField] mapLoader mapL;
 
@@ -113,7 +114,7 @@ public class PlayerBehaviour : MonoBehaviour, IDataPersistence
     }
     public void SaveData(ref GameData data)
     {
-
+        data.coinsCollected = coinsCollected;
         data.numberOfDrinks = numberOfDrinks;
         data.playerCoins = numberOfCoins;
         data.stringCountEvidence = stringEvidenceCount;
@@ -121,6 +122,7 @@ public class PlayerBehaviour : MonoBehaviour, IDataPersistence
     }
     public void LoadData(GameData data)
     {
+        coinsCollected = data.coinsCollected;
         if (data.isLaptopRetrieved) { inventory.AddItemToInventory(laptop); }
         numberOfCoins = data.playerCoins;
         stringEvidenceCount = data.stringCountEvidence;
@@ -199,6 +201,7 @@ public class PlayerBehaviour : MonoBehaviour, IDataPersistence
         if (collidedObject.CompareTag("Coin"))
         {
             Debug.Log("collide");
+            coinsCollected++;
             numberOfCoins++;
             prompt.promptCoin();
             RemoveCoinPosition(collidedObject.transform.position);
