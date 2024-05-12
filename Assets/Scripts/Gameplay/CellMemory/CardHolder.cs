@@ -179,7 +179,7 @@ public class CardHolder : MonoBehaviour
             else if (card1.matchID != card2.matchID)
             {
                 if (score <= 0) score = 0;
-                else score -= 50;
+                else score -= 125;
 
                 VAFeedback.Instance.WrongAnswer(card2.transform);
 

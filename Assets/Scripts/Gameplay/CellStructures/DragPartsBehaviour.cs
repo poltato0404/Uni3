@@ -54,14 +54,14 @@ public class DragPartsBehavior : MonoBehaviour
                     transform.position = hitInfo.transform.position;
                     transform.GetComponent<Collider>().enabled = false;
                     PartsObjectives.instance.correctMatches += 1;
-                    PartsObjectives.instance.IncrementScore(20);
+                    PartsObjectives.instance.IncrementScore(250);
                 }
                 else
                 {
                     // Incorrect match - reset to start position and decrement score
                     transform.position = startPosition;
                     transform.GetComponent<Collider>().enabled = true;
-                    PartsObjectives.instance.DecrementScore(15);
+                    PartsObjectives.instance.DecrementScore(125);
                 }
             }
             else
