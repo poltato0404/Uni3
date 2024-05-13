@@ -37,7 +37,7 @@ public class DragCellBehavior : MonoBehaviour
                     transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
                     transform.GetComponent<Collider>().enabled = false;
                     MitosisObjectives.instance.correctMatches += 1;
-                    MitosisObjectives.instance.score += 20;
+                    MitosisObjectives.instance.score += 125;
                     VAFeedback.Instance.RightAnswer(hitInfo.transform);
                 }
                 else
@@ -45,7 +45,7 @@ public class DragCellBehavior : MonoBehaviour
                     if (MitosisObjectives.instance.score <= 0)
                         MitosisObjectives.instance.score = 0;
                     else
-                        MitosisObjectives.instance.score -= 15;
+                        MitosisObjectives.instance.score -=100;
 
                     VAFeedback.Instance.WrongAnswer(hitInfo.transform);
 

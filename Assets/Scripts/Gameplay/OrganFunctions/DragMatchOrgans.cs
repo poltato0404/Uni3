@@ -125,7 +125,7 @@ public class DragMatchOrgans : MonoBehaviour
                                 {
                                     matches[0] = true;
                                     OrganMatchObjectives.instance.AddMatches(1);
-                                    OrganMatchObjectives.instance.score += 10;
+                                    OrganMatchObjectives.instance.score += 250;
                                     VAFeedback.Instance.RightAnswer(hitInfo.transform);
                                     ShowPopup(0);
                                     //OrganMatchObjectives.instance.AddText(descriptionText[0]);
@@ -134,7 +134,7 @@ public class DragMatchOrgans : MonoBehaviour
                                 else
                                 {
                                     if (OrganMatchObjectives.instance.score <= 0) OrganMatchObjectives.instance.score = 0;
-                                    else OrganMatchObjectives.instance.score -= 5;
+                                    else OrganMatchObjectives.instance.score -= 200;
                                     VAFeedback.Instance.WrongAnswer(hitInfo.transform);
                                 }
                                 break;
@@ -143,7 +143,7 @@ public class DragMatchOrgans : MonoBehaviour
                                 {
                                     matches[1] = true;
                                     OrganMatchObjectives.instance.AddMatches(1);
-                                    OrganMatchObjectives.instance.score += 10;
+                                    OrganMatchObjectives.instance.score += 250;
                                     VAFeedback.Instance.RightAnswer(hitInfo.transform);
                                     ShowPopup(2);
                                     OrganMatchObjectives.instance.ShowRiddle(6);
@@ -152,7 +152,7 @@ public class DragMatchOrgans : MonoBehaviour
                                 else
                                 {
                                     if (OrganMatchObjectives.instance.score <= 0) OrganMatchObjectives.instance.score = 0;
-                                    else OrganMatchObjectives.instance.score -= 5;
+                                    else OrganMatchObjectives.instance.score -= 200;
                                     VAFeedback.Instance.WrongAnswer(hitInfo.transform);
                                 }
                                 break;
@@ -161,7 +161,7 @@ public class DragMatchOrgans : MonoBehaviour
                                 {
                                     matches[2] = true;
                                     OrganMatchObjectives.instance.AddMatches(1);
-                                    OrganMatchObjectives.instance.score += 10;
+                                    OrganMatchObjectives.instance.score += 250;
                                     VAFeedback.Instance.RightAnswer(hitInfo.transform);
                                     ShowPopup(1);
                                     OrganMatchObjectives.instance.ShowRiddle(4);
@@ -170,7 +170,7 @@ public class DragMatchOrgans : MonoBehaviour
                                 else
                                 {
                                     if (OrganMatchObjectives.instance.score <= 0) OrganMatchObjectives.instance.score = 0;
-                                    else OrganMatchObjectives.instance.score -= 5;
+                                    else OrganMatchObjectives.instance.score -= 200;
                                     VAFeedback.Instance.WrongAnswer(hitInfo.transform);
                                 }
                                 break;
@@ -183,7 +183,7 @@ public class DragMatchOrgans : MonoBehaviour
                             {
                                 matches[0] = true;
                                 OrganMatchObjectives.instance.AddMatches(1);
-                                OrganMatchObjectives.instance.score += 10;
+                                OrganMatchObjectives.instance.score += 250;
                                 VAFeedback.Instance.RightAnswer(hitInfo.transform);
                                 ShowPopup(0);
                                 OrganMatchObjectives.instance.ShowRiddle(0);
@@ -192,14 +192,14 @@ public class DragMatchOrgans : MonoBehaviour
                             else
                             {
                                 if (OrganMatchObjectives.instance.score <= 0) OrganMatchObjectives.instance.score = 0;
-                                else OrganMatchObjectives.instance.score -= 5;
+                                else OrganMatchObjectives.instance.score -= 200;
                                 VAFeedback.Instance.WrongAnswer(hitInfo.transform);
                             }
                         }
                         else
                         {
                             if (OrganMatchObjectives.instance.score <= 0) OrganMatchObjectives.instance.score = 0;
-                            else OrganMatchObjectives.instance.score -= 5;
+                            else OrganMatchObjectives.instance.score -= 200;
                             VAFeedback.Instance.WrongAnswer(hitInfo.transform);
                         }
                         break;
@@ -210,7 +210,7 @@ public class DragMatchOrgans : MonoBehaviour
                             {
                                 matches[0] = true;
                                 OrganMatchObjectives.instance.AddMatches(1);
-                                OrganMatchObjectives.instance.score += 10;
+                                OrganMatchObjectives.instance.score += 250;
                                 VAFeedback.Instance.RightAnswer(hitInfo.transform);
                                 ShowPopup(0);
                                 OrganMatchObjectives.instance.ShowRiddle(1);
@@ -219,14 +219,14 @@ public class DragMatchOrgans : MonoBehaviour
                             else
                             {
                                 if (OrganMatchObjectives.instance.score <= 0) OrganMatchObjectives.instance.score = 0;
-                                else OrganMatchObjectives.instance.score -= 5;
+                                else OrganMatchObjectives.instance.score -= 200;
                                 VAFeedback.Instance.WrongAnswer(hitInfo.transform);
                             }
                         }
                         else
                         {
                             if (OrganMatchObjectives.instance.score <= 0) OrganMatchObjectives.instance.score = 0;
-                            else OrganMatchObjectives.instance.score -= 5;
+                            else OrganMatchObjectives.instance.score -= 200;
                             VAFeedback.Instance.WrongAnswer(hitInfo.transform);
                         }
                         break;
@@ -238,7 +238,7 @@ public class DragMatchOrgans : MonoBehaviour
                                 {
                                     matches[0] = true;
                                     OrganMatchObjectives.instance.AddMatches(1);
-                                    OrganMatchObjectives.instance.score += 10;
+                                    OrganMatchObjectives.instance.score += 250;
                                     VAFeedback.Instance.RightAnswer(hitInfo.transform);
                                     ShowPopup(0);
                                     OrganMatchObjectives.instance.ShowRiddle(5);
@@ -247,7 +247,7 @@ public class DragMatchOrgans : MonoBehaviour
                                 else
                                 {
                                     if (OrganMatchObjectives.instance.score <= 0) OrganMatchObjectives.instance.score = 0;
-                                    else OrganMatchObjectives.instance.score -= 5;
+                                    else OrganMatchObjectives.instance.score -= 200;
                                     VAFeedback.Instance.WrongAnswer(hitInfo.transform);
                                 }
                                 break;
@@ -256,7 +256,7 @@ public class DragMatchOrgans : MonoBehaviour
                                 {
                                     matches[1] = true;
                                     OrganMatchObjectives.instance.AddMatches(1);
-                                    OrganMatchObjectives.instance.score += 10;
+                                    OrganMatchObjectives.instance.score += 250;
                                     VAFeedback.Instance.RightAnswer(hitInfo.transform);
                                     ShowPopup(1);
                                     OrganMatchObjectives.instance.ShowRiddle(2);
@@ -265,13 +265,13 @@ public class DragMatchOrgans : MonoBehaviour
                                 else
                                 {
                                     if (OrganMatchObjectives.instance.score <= 0) OrganMatchObjectives.instance.score = 0;
-                                    else OrganMatchObjectives.instance.score -= 5;
+                                    else OrganMatchObjectives.instance.score -= 200;
                                     VAFeedback.Instance.WrongAnswer(hitInfo.transform);
                                 }
                                 break;
                             case Organ.Lung:
                                 if (OrganMatchObjectives.instance.score <= 0) OrganMatchObjectives.instance.score = 0;
-                                else OrganMatchObjectives.instance.score -= 5;
+                                else OrganMatchObjectives.instance.score -= 200;
                                 VAFeedback.Instance.WrongAnswer(hitInfo.transform);
                                 break;
                         }
@@ -303,7 +303,7 @@ public class DragMatchOrgans : MonoBehaviour
                                 {
                                     matches[0] = true;
                                     OrganMatchObjectives.instance.AddMatches(1);
-                                    OrganMatchObjectives.instance.score += 10;
+                                    OrganMatchObjectives.instance.score += 250;
                                     VAFeedback.Instance.RightAnswer(hitInfo.transform);
                                     ShowPopup(0);
                                     //OrganMatchObjectives.instance.AddText(descriptionText[0]);
@@ -312,7 +312,7 @@ public class DragMatchOrgans : MonoBehaviour
                                 else
                                 {
                                     if (OrganMatchObjectives.instance.score <= 0) OrganMatchObjectives.instance.score = 0;
-                                    else OrganMatchObjectives.instance.score -= 5;
+                                    else OrganMatchObjectives.instance.score -= 200;
                                     VAFeedback.Instance.WrongAnswer(hitInfo.transform);
                                 }
                                 break;
@@ -321,7 +321,7 @@ public class DragMatchOrgans : MonoBehaviour
                                 {
                                     matches[1] = true;
                                     OrganMatchObjectives.instance.AddMatches(1);
-                                    OrganMatchObjectives.instance.score += 10;
+                                    OrganMatchObjectives.instance.score += 250;
                                     VAFeedback.Instance.RightAnswer(hitInfo.transform);
                                     ShowPopup(2);
                                     OrganMatchObjectives.instance.ShowRiddle(6);
@@ -330,7 +330,7 @@ public class DragMatchOrgans : MonoBehaviour
                                 else
                                 {
                                     if (OrganMatchObjectives.instance.score <= 0) OrganMatchObjectives.instance.score = 0;
-                                    else OrganMatchObjectives.instance.score -= 5;
+                                    else OrganMatchObjectives.instance.score -= 200;
                                     VAFeedback.Instance.WrongAnswer(hitInfo.transform);
                                 }
                                 break;
@@ -339,7 +339,7 @@ public class DragMatchOrgans : MonoBehaviour
                                 {
                                     matches[2] = true;
                                     OrganMatchObjectives.instance.AddMatches(1);
-                                    OrganMatchObjectives.instance.score += 10;
+                                    OrganMatchObjectives.instance.score += 250;
                                     VAFeedback.Instance.RightAnswer(hitInfo.transform);
                                     ShowPopup(1);
                                     OrganMatchObjectives.instance.ShowRiddle(4);
@@ -348,7 +348,7 @@ public class DragMatchOrgans : MonoBehaviour
                                 else
                                 {
                                     if (OrganMatchObjectives.instance.score <= 0) OrganMatchObjectives.instance.score = 0;
-                                    else OrganMatchObjectives.instance.score -= 5;
+                                    else OrganMatchObjectives.instance.score -= 200;
                                     VAFeedback.Instance.WrongAnswer(hitInfo.transform);
                                 }
                                 break;
@@ -361,7 +361,7 @@ public class DragMatchOrgans : MonoBehaviour
                             {
                                 matches[0] = true;
                                 OrganMatchObjectives.instance.AddMatches(1);
-                                OrganMatchObjectives.instance.score += 10;
+                                OrganMatchObjectives.instance.score += 250;
                                 VAFeedback.Instance.RightAnswer(hitInfo.transform);
                                 ShowPopup(0);
                                 OrganMatchObjectives.instance.ShowRiddle(0);
@@ -370,14 +370,14 @@ public class DragMatchOrgans : MonoBehaviour
                             else
                             {
                                 if (OrganMatchObjectives.instance.score <= 0) OrganMatchObjectives.instance.score = 0;
-                                else OrganMatchObjectives.instance.score -= 5;
+                                else OrganMatchObjectives.instance.score -= 200;
                                 VAFeedback.Instance.WrongAnswer(hitInfo.transform);
                             }
                         }
                         else
                         {
                             if (OrganMatchObjectives.instance.score <= 0) OrganMatchObjectives.instance.score = 0;
-                            else OrganMatchObjectives.instance.score -= 5;
+                            else OrganMatchObjectives.instance.score -= 200;
                             VAFeedback.Instance.WrongAnswer(hitInfo.transform);
                         }
                         break;
@@ -388,7 +388,7 @@ public class DragMatchOrgans : MonoBehaviour
                             {
                                 matches[0] = true;
                                 OrganMatchObjectives.instance.AddMatches(1);
-                                OrganMatchObjectives.instance.score += 10;
+                                OrganMatchObjectives.instance.score += 250;
                                 VAFeedback.Instance.RightAnswer(hitInfo.transform);
                                 ShowPopup(0);
                                 OrganMatchObjectives.instance.ShowRiddle(1);
@@ -397,14 +397,14 @@ public class DragMatchOrgans : MonoBehaviour
                             else
                             {
                                 if (OrganMatchObjectives.instance.score <= 0) OrganMatchObjectives.instance.score = 0;
-                                else OrganMatchObjectives.instance.score -= 5;
+                                else OrganMatchObjectives.instance.score -= 200;
                                 VAFeedback.Instance.WrongAnswer(hitInfo.transform);
                             }
                         }
                         else
                         {
                             if (OrganMatchObjectives.instance.score <= 0) OrganMatchObjectives.instance.score = 0;
-                            else OrganMatchObjectives.instance.score -= 5;
+                            else OrganMatchObjectives.instance.score -= 200;
                             VAFeedback.Instance.WrongAnswer(hitInfo.transform);
                         }
                         break;
@@ -416,7 +416,7 @@ public class DragMatchOrgans : MonoBehaviour
                                 {
                                     matches[0] = true;
                                     OrganMatchObjectives.instance.AddMatches(1);
-                                    OrganMatchObjectives.instance.score += 10;
+                                    OrganMatchObjectives.instance.score += 250;
                                     VAFeedback.Instance.RightAnswer(hitInfo.transform);
                                     ShowPopup(0);
                                     OrganMatchObjectives.instance.ShowRiddle(5);
@@ -425,7 +425,7 @@ public class DragMatchOrgans : MonoBehaviour
                                 else
                                 {
                                     if (OrganMatchObjectives.instance.score <= 0) OrganMatchObjectives.instance.score = 0;
-                                    else OrganMatchObjectives.instance.score -= 5;
+                                    else OrganMatchObjectives.instance.score -= 200;
                                     VAFeedback.Instance.WrongAnswer(hitInfo.transform);
                                 }
                                 break;
@@ -434,7 +434,7 @@ public class DragMatchOrgans : MonoBehaviour
                                 {
                                     matches[1] = true;
                                     OrganMatchObjectives.instance.AddMatches(1);
-                                    OrganMatchObjectives.instance.score += 10;
+                                    OrganMatchObjectives.instance.score += 250;
                                     VAFeedback.Instance.RightAnswer(hitInfo.transform);
                                     ShowPopup(1);
                                     OrganMatchObjectives.instance.ShowRiddle(2);
@@ -443,13 +443,13 @@ public class DragMatchOrgans : MonoBehaviour
                                 else
                                 {
                                     if (OrganMatchObjectives.instance.score <= 0) OrganMatchObjectives.instance.score = 0;
-                                    else OrganMatchObjectives.instance.score -= 5;
+                                    else OrganMatchObjectives.instance.score -= 200;
                                     VAFeedback.Instance.WrongAnswer(hitInfo.transform);
                                 }
                                 break;
                             case Organ.Lung:
                                 if (OrganMatchObjectives.instance.score <= 0) OrganMatchObjectives.instance.score = 0;
-                                else OrganMatchObjectives.instance.score -= 5;
+                                else OrganMatchObjectives.instance.score -= 200;
                                 VAFeedback.Instance.WrongAnswer(hitInfo.transform);
                                 break;
                         }

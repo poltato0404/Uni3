@@ -103,7 +103,7 @@ public class DragAminoBehavior : MonoBehaviour
                 // Else Negative feedback
                 if (hitInfo.transform.gameObject.GetComponent<CodonMatch>().isMatch(nucleotide, polypeptide, this.gameObject))
                 {
-                    ObjectiveHandler.instance.score += 60;
+                    ObjectiveHandler.instance.score += 66;
                     VAFeedback.Instance.RightAnswer(hitInfo.transform);
                     transform.GetComponent<Collider>().enabled = false;
                     state = State.Static;
