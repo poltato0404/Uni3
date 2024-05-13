@@ -24,11 +24,11 @@ public class Spawner : MonoBehaviour, IDataPersistence
         mapGeneration Script = GetComponentInChildren<mapGeneration>();
         switch (currentLevel)
         {
-            case 1: Script.xLength = 6; Script.zLength = 6; break;
+            case 1: Script.xLength = 5; Script.zLength = 5; break;
 
-            case 2: Script.xLength = 7; Script.zLength = 7; break;
+            case 2: Script.xLength = 6; Script.zLength = 6; break;
 
-            case 3: Script.xLength = 8; Script.zLength = 8; break;
+            case 3: Script.xLength = 7; Script.zLength = 7; break;
 
 
         }

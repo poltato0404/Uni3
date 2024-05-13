@@ -140,6 +140,12 @@ public class playerControScript : MonoBehaviour, IDataPersistence
 
             isWalking = false;
         }
+        if (transform.position.y < 10f)
+        {
+            Vector3 newPosition = transform.position;
+            newPosition.y = 4f;
+            transform.position = newPosition;
+        }
 
 
         groundedPlayer = controller.isGrounded;

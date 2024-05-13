@@ -46,6 +46,7 @@ public class mendelManager : MonoBehaviour
             //Lose
             gameWinLose.GetComponent<GameWinLose>().timeLeft = currentTime;
             gameWinLose.GetComponent<GameWinLose>().score = score;
+            gameWinLose.GetComponent<GameWinLose>().minigameID = 7;
             gameWinLose.SetActive(true);
             //Debug.Log("Timer Ran out!");
         }
