@@ -53,7 +53,7 @@ public class PlayerBehaviour : MonoBehaviour, IDataPersistence
         {
             if (StaminaGameManager.staminaGameManager._playertStamina.Stamina > 0)
             {
-                PlayerUseStamina(35f);
+                PlayerUseStamina(8f);
                 _playerContro.playerSpeed = _playerSprintSpeed;
             }
             else
