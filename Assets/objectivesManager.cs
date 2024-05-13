@@ -45,11 +45,13 @@ public class objectivesManager : MonoBehaviour, IDataPersistence
 
        isLaptopRetrieved = mapL.gotLaptop; 
        if(isLaptopRetrieved){
-       minor1.text = "<s> (1/1)  </s>";
+       minor1.text = "<s>(1/1)</s>";
        Main1.text = "<s>- Find a Laptop that belongs to Dr. Doe</s>"; 
        }
-
-       else{ Main1.text = "- Find a Laptop that belongs to Dr. Doe"; }
+       
+       else{ 
+         minor1.text = "(0/1)";
+        Main1.text = "- Find a Laptop that belongs to Dr. Doe"; }
 
 
        minor2.text = "("+ playerBehaviour.stringEvidenceCount +"/3)";

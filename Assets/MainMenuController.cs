@@ -4,7 +4,8 @@ using System.IO;
 
 public class MainMenuController : MonoBehaviour
 {
-    public Button continueButton;
+    public GameObject continueButton;
+    public RectTransform newbut;
 
     void OnEnable()
     {
@@ -18,7 +19,14 @@ public class MainMenuController : MonoBehaviour
         bool hasSavedData = File.Exists(Application.persistentDataPath + "/data.json");
 
         // Set the interactable property of the continue button
-        continueButton.interactable = hasSavedData;
+        continueButton.SetActive(hasSavedData); 
+
+        if(!hasSavedData)
+        {
+            Vector3 newPosition = newbut.localPosition;
+            newPosition.y = -15f;
+            newbut.localPosition = newPosition;
+        }
     }
 
     // Other menu functionality like starting a new game, accessing settings, etc.
