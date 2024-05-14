@@ -212,7 +212,7 @@ public class ai : MonoBehaviour, IDataPersistence
     {
         animator.SetTrigger("Attacking");
         playCon.slowed = true;
-        StaminaGameManager.staminaGameManager._playertStamina.UseStamina(5f);
+        StaminaGameManager.staminaGameManager._playertStamina.UseStamina(10f);
         _staminaBar.SetStamina(StaminaGameManager.staminaGameManager._playertStamina.Stamina);
 
     }

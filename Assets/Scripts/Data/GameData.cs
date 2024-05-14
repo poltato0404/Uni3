@@ -13,8 +13,9 @@ public class GameData
     public string securityAnswer;
 
     public bool hasSavedData;
-
+    public float currentTime;
     public int currentLevel;
+    public int currentScore;
     public int playerStamina;
     public int enemyCount;
     public List<Vector3> slotPosition;
@@ -73,6 +74,8 @@ public class GameData
 
     public GameData()
     {
+        this.currentTime = 0f;
+        this.currentScore = 0;
         this.username = "";
         this.stringCountEvidence = 0;
         this.name = "";
@@ -87,7 +90,7 @@ public class GameData
         this.playerCoins = 0;
         this.slotPosition = new List<Vector3>();
         this.slotReference = new List<int>();
-        this.playerPos = new Vector3(0, 1.5f, 0);
+        this.playerPos = new Vector3(0, 2f, 0);
         this.devicePos = new Vector3(0, 0, 0);
         this.coins = new List<Vector3>();
         this.docuList = new List<Vector3>();

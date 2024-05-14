@@ -53,13 +53,17 @@ public class mapLoader : MonoBehaviour, IDataPersistence
         navMeshAgent.enabled = true;
         int index;
         Vector3 pos;
-        int guards = data.currentLevel;
-
-        for (int i = 1; i < guards + 1; i++)
+        switch (data.currentLevel)
         {
-            if (2 == i) { instantiateGuards(data.guard1Pos, i); }
-            if (3 == i) { instantiateGuards(data.guard2Pos, i); }
-
+            case 1:
+                break;
+            case 2:
+                instantiateGuards(data.guard1Pos, 1);
+                break;
+            case 3:
+                instantiateGuards(data.guard1Pos, 1);
+                instantiateGuards(data.guard2Pos, 2);
+                break;
         }
 
 
