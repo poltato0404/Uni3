@@ -27,8 +27,11 @@ public class PlayerBehaviour : MonoBehaviour, IDataPersistence
     [SerializeField] InventoryManager inventory;
     public int stringEvidenceCount;
     public promptManager prompt;
-    public int coinsCollected;
+    public int coinsCollected; //per level
+    public int documentCollected; // per level
 
+    public GameObject docuObject;
+    InventoryItem item;
     [SerializeField] mapLoader mapL;
 
     void Start()
@@ -37,6 +40,7 @@ public class PlayerBehaviour : MonoBehaviour, IDataPersistence
         gameOver.SetActive(false);
         _playerOriginalSpeed = _playerContro.playerSpeed;
         _playerSprintSpeed = _playerContro.playerSpeed * 2f;
+        item = docuObject.GetComponent<InventoryItem>();
     }
 
     void Update()
@@ -115,6 +119,7 @@ public class PlayerBehaviour : MonoBehaviour, IDataPersistence
     public void SaveData(ref GameData data)
     {
         data.coinsCollected = coinsCollected;
+        data.docuCollected = documentCollected;
         data.numberOfDrinks = numberOfDrinks;
         data.playerCoins = numberOfCoins;
         data.stringCountEvidence = stringEvidenceCount;
@@ -123,7 +128,9 @@ public class PlayerBehaviour : MonoBehaviour, IDataPersistence
     public void LoadData(GameData data)
     {
         coinsCollected = data.coinsCollected;
+        documentCollected = data.docuCollected;
         if (data.isLaptopRetrieved) { inventory.AddItemToInventory(laptop); }
+
         numberOfCoins = data.playerCoins;
         stringEvidenceCount = data.stringCountEvidence;
 
@@ -169,6 +176,12 @@ public class PlayerBehaviour : MonoBehaviour, IDataPersistence
 
 
         setDrinkText(numberOfDrinks);
+        for (int i = 0; i < data.docuCollected; i++)
+        {
+            Debug.Log("docutoIN");
+            item.itemName = prompt.evidenceStringList[i];
+            inventory.AddItemToInventory(item);
+        }
     }
 
 
@@ -218,6 +231,7 @@ public class PlayerBehaviour : MonoBehaviour, IDataPersistence
             mapL.gotLaptop = true;
         }
         if (collidedObject.CompareTag("folder"))
+
         {
             Debug.Log("collide");
             prompt.promptDocument(stringEvidenceCount);
@@ -225,6 +239,7 @@ public class PlayerBehaviour : MonoBehaviour, IDataPersistence
             item.itemName = prompt.evidenceStringList[stringEvidenceCount];
             inventory.AddItemToInventory(item);
             stringEvidenceCount++;
+            documentCollected++;
             removeDocu(collidedObject.transform.position);
             collidedObject.SetActive(false);
         }

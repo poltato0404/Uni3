@@ -75,6 +75,7 @@ public class Spawner : MonoBehaviour, IDataPersistence
         Debug.Log("loadedlevel" + data.loadedLevel1 + data.currentLevel);
         data.loadedLevel1 = false;
         currentLevel = data.currentLevel;
+        data.playerPos = new Vector3(0f, 1.5f, 0f);
 
 
     }

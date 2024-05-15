@@ -14,11 +14,11 @@ public class InventoryManager : MonoBehaviour
     {
         foreach (InventorySlot slot in slots)
         {
-            if (IsItemInInventory(item))
-            {
-                Debug.Log("Item is already in the inventory.");
-                return;
-            }
+            // if (IsItemInInventory(item))
+            // {
+            //     Debug.Log("Item is already in the inventory.");
+            //     return;
+            // }
             if (!slot.imageIcon.enabled)
             {
 

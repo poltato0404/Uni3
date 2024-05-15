@@ -52,13 +52,13 @@ public class ai : MonoBehaviour, IDataPersistence
         if (1 == guardNumber)
         {
             transform.position = data.guard1Pos;
-            data.guard1Pos.y = 1.5f;
+            data.guard1Pos.y = 10f;
         }
 
         if (2 == guardNumber)
         {
             transform.position = data.guard2Pos;
-            data.guard2Pos.y = 1.5f;
+            data.guard2Pos.y = 15f;
         }
 
         switch (data.currentLevel)

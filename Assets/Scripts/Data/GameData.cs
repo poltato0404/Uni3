@@ -11,6 +11,7 @@ public class GameData
     public string password;
     public string securityQuestion;
     public string securityAnswer;
+    public int docuCollected;
 
     public bool hasSavedData;
     public float currentTime;
@@ -78,6 +79,7 @@ public class GameData
         this.currentScore = 0;
         this.username = "";
         this.stringCountEvidence = 0;
+        this.docuCollected = 0;
         this.name = "";
         this.isLaptopRetrieved = false;
         this.password = "";
