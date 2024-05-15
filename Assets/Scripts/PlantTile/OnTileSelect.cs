@@ -72,6 +72,8 @@ public class OnTileSelect : MonoBehaviour
                     GameObject.Find("PanelFinish").GetComponent<Animator>().SetBool("GameFinish", true);
                     GameObject.Find("TitleFinish").GetComponent<Text>().text = "VICTORY";
                     GameObject.Find("ScoreFinish").GetComponent<Text>().text = "SCORE: " + dataList.GetComponent<DataScript>().playerScore;
+
+                    dataList.GetComponent<DataScript>().ShowBadge();
                 }
                 else
                 {

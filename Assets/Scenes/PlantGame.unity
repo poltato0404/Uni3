@@ -6406,7 +6406,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -7.957, y: -80.942}
+  m_AnchoredPosition: {x: -7.957, y: -91}
   m_SizeDelta: {x: 461.713, y: 77.5696}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1177229102
@@ -6457,8 +6457,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22
-  m_fontSizeBase: 22
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7860,7 +7860,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.392}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -8087,7 +8087,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000038147, y: -187}
+  m_AnchoredPosition: {x: -48, y: -203}
   m_SizeDelta: {x: 522.3662, y: 134.547}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1408538856
@@ -8139,8 +8139,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22
-  m_fontSizeBase: 22
+  m_fontSize: 28
+  m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -8175,7 +8175,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0.8896103, y: 0, z: 0, w: 0}
+  m_margin: {x: 0.8896103, y: 0, z: -110.2977, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -8874,8 +8874,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.80688, y: -351}
-  m_SizeDelta: {x: 274.4636, y: 74.7009}
+  m_AnchoredPosition: {x: 0.0000019073, y: -379}
+  m_SizeDelta: {x: 326.991, y: 98.3381}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1510428990
 MonoBehaviour:
@@ -10730,12 +10730,12 @@ PrefabInstance:
     - target: {fileID: 7675613447417632539, guid: b80eb84f3092e904c814efaec4d51269,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -52.000122
+      value: -52.000244
       objectReference: {fileID: 0}
     - target: {fileID: 7675613447417632539, guid: b80eb84f3092e904c814efaec4d51269,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -178.00003
+      value: -178
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -10867,8 +10867,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 38
+  m_fontSizeBase: 38
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -12321,6 +12321,10 @@ MonoBehaviour:
   playerScore: 0
   roundFinish: 0
   neutralMat: {fileID: 2100000, guid: 9a5dcb5df81243440b35ca63e89252a3, type: 2}
+  badgeImage: {fileID: 355090155}
+  passSprite: {fileID: 21300000, guid: 4c8b5e153bfdd1d4795bc4390f2c9cd0, type: 3}
+  failSprite: {fileID: 21300000, guid: e3940ec620ada7747a438ad057dc7f52, type: 3}
+  passingScoreThreshold: 700
 --- !u!1 &2142467560
 GameObject:
   m_ObjectHideFlags: 0

@@ -33,6 +33,12 @@ public class DataScript : MonoBehaviour
     public bool roundFinish = false;
     public Material neutralMat;
 
+    // Reference to the badge image
+    public Image badgeImage;
+    public Sprite passSprite;
+    public Sprite failSprite;
+    public int passingScoreThreshold = 700;
+
     void Awake()
     {
         tileDataList.Add(new TileData
@@ -210,6 +216,18 @@ public class DataScript : MonoBehaviour
         }
         // Set finished to true when the player has answered all questions
         finished = true;
+    }
+
+    public void ShowBadge()
+    {
+        if (playerScore >= passingScoreThreshold)
+        {
+            badgeImage.sprite = passSprite;
+        }
+        else
+        {
+            badgeImage.sprite = failSprite;
+        }
     }
 
     void resetTiles()
