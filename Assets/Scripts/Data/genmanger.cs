@@ -16,8 +16,10 @@ public class Spawner : MonoBehaviour, IDataPersistence
 
     void Start()
     {
+        Time.timeScale = 1f;
         Instantiate(objectToInstantiate, pos, Quaternion.identity, transform);
         StartCoroutine(WaitAndDoSomething());
+        Debug.Log("phase complete2");
     }
     IEnumerator WaitAndDoSomething()
     {
@@ -35,7 +37,15 @@ public class Spawner : MonoBehaviour, IDataPersistence
         Script.startGenerating();
         yield return new WaitForSeconds(3); // Wait for 5 seconds
         collate(Script.pathX, Script.pathZ, Script.slotInMaze);
-        SceneManager.LoadScene("level1");
+        
+        Debug.Log("phase sheesh");
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("level1");
+        Debug.Log("phase complete");
+        // Wait until the asynchronous scene fully loads
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
     }
 
 
