@@ -29,12 +29,44 @@ public class ObjectDrag : MonoBehaviour
     void Update()
     {
         
-        // Handle touch and mouse input
-        if (Input.touchCount > 0)
+        // // Handle touch and mouse input
+        // if (Input.touchCount > 0)
+        // {
+        //     HandleTouchInput();
+        // }
+        foreach(Touch touch in Input.touches)
         {
-            HandleTouchInput();
+            if (touch.phase == TouchPhase.Began)
+            {
+                // Construct a ray from the current touch coordinates
+                Ray ray = Camera.main.ScreenPointToRay(touch.position);
+                if (Physics.Raycast(ray))
+                {
+                    switch (touch.phase)
+                    {
+                        case TouchPhase.Began:
+                            HandleBegin(GetWorldPoint(touch.position), true,touch.position );
+                            break;
+
+                        case TouchPhase.Moved:
+                            if (isDragging)
+                            {
+                                HandleMove(GetWorldPoint(touch.position));
+                            }
+                            break;
+
+                        case TouchPhase.Ended:
+                            isDragging = false;
+                            break;
+                    }
+                }
+            }
         }
-        else if (Input.GetMouseButtonDown(0) || Input.GetMouseButton(0) || Input.GetMouseButtonUp(0))
+
+
+
+
+        if (Input.GetMouseButtonDown(0) || Input.GetMouseButton(0) || Input.GetMouseButtonUp(0))
         {
             HandleMouseInput();
         }
@@ -73,7 +105,7 @@ public class ObjectDrag : MonoBehaviour
         switch (touch.phase)
         {
             case TouchPhase.Began:
-                HandleBegin(GetWorldPoint(touch.position));
+                HandleBegin(GetWorldPoint(touch.position), true,touch.position );
                 break;
 
             case TouchPhase.Moved:
@@ -93,7 +125,7 @@ public class ObjectDrag : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            HandleBegin(MouseWorldPosition());
+            HandleBegin(MouseWorldPosition(),false, new Vector3(0f, 0f, 0f));
         }
         else if (Input.GetMouseButton(0) && isDragging)
         {
@@ -105,10 +137,20 @@ public class ObjectDrag : MonoBehaviour
         }
     }
 
-    private void HandleBegin(Vector3 worldPoint)
+    private void HandleBegin(Vector3 worldPoint, bool isTouch, Vector3 touch)
     {
-        var rayOrigin = Camera.main.transform.position;
-        var rayDirection = MouseWorldPosition() - Camera.main.transform.position;
+       Vector3 rayOrigin = Camera.main.transform.position;
+        Vector3 rayDirection;
+
+        if (isTouch)
+        {
+            rayDirection = TouchWorldPosition(touch) - Camera.main.transform.position;
+        }
+        else
+        {
+            rayDirection = MouseWorldPosition() - Camera.main.transform.position;
+        }
+
         RaycastHit hit;
 
         Debug.DrawRay(rayOrigin, rayDirection * rayLength, rayColor, 1f);
@@ -136,6 +178,13 @@ public class ObjectDrag : MonoBehaviour
         return Camera.main.ScreenToWorldPoint(mouseScreenPos); // Convert to world position
     }
 
+     private Vector3 TouchWorldPosition(Vector3 touch)
+    {
+        var touchPos = touch;
+        touchPos.z = Camera.main.WorldToScreenPoint(transform.position).z; // Get z-distance
+        return Camera.main.ScreenToWorldPoint(touchPos); // Convert to world position
+    }
+
     private Vector3 GetWorldPoint(Vector2 screenPoint)
     {
         Ray ray = Camera.main.ScreenPointToRay(screenPoint);
@@ -155,4 +204,18 @@ public class ObjectDrag : MonoBehaviour
         // Smoothly move the object back to the starting position
         transform.position = Vector3.Lerp(transform.position, startPosition, Time.deltaTime * returnSpeed);
     }
+    private Vector3 GetTouchWorldPosition(Vector2 screenPoint)
+{
+    Ray ray = Camera.main.ScreenPointToRay(screenPoint);
+    float distance;
+    Plane xy = new Plane(Vector3.forward, 0); // Plane parallel to XY plane at Z=0
+
+    if (xy.Raycast(ray, out distance))
+    {
+        return ray.GetPoint(distance);
+    }
+
+    return Vector3.zero; // Default return value if the ray does not hit the plane
+}
+
 }
