@@ -6,7 +6,7 @@ using Cinemachine;
 
 public class cameraLook : MonoBehaviour
 {
-    [SerializeField] private float lookSpeed = 1;
+    [SerializeField] private float lookSpeed = 1f;
     private CinemachineFreeLook cinemachine;
     private PlayerController playerControls; 
     
@@ -28,7 +28,7 @@ public class cameraLook : MonoBehaviour
     void Update()
     {
         Vector2 delta = playerControls.Player_actionmap.lookAround.ReadValue<Vector2>();
-        cinemachine.m_XAxis.Value += delta.x * 200 * lookSpeed * Time.deltaTime;
+        cinemachine.m_XAxis.Value += delta.x * 100 * lookSpeed * Time.deltaTime;
        
         
     }

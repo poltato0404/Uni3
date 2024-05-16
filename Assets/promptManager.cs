@@ -12,6 +12,8 @@ public class promptManager : MonoBehaviour, IDataPersistence
     [SerializeField] private TextMeshProUGUI instructionTitle;
     [SerializeField] private GameObject Panel;
     public List<string> evidenceStringList;
+    void Start(){Time.timeScale = 1f;}
+
     public void promptLaptop()
     {
         if (!isLaptopRetrieved)
