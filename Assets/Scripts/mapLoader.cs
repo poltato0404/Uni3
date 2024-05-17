@@ -138,7 +138,7 @@ public class mapLoader : MonoBehaviour, IDataPersistence
                 else
                 {
 
-                    for (int i = 0; i < 5; i++)
+                    for (int i = 0; i < 3; i++)
                     {
                         index = Random.Range(1, data.slotPosition.Count);
                         pos = data.slotPosition[index];
@@ -177,7 +177,7 @@ public class mapLoader : MonoBehaviour, IDataPersistence
                 else
                 {
 
-                    for (int i = 0; i < 7; i++)
+                    for (int i = 0; i < 3; i++)
                     {
                         index = Random.Range(1, data.slotPosition.Count);
                         pos = data.slotPosition[index];

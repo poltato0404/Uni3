@@ -200,6 +200,7 @@ public class CardHolder : MonoBehaviour
     {
         saver.finished = finished;
         saver.score = score;
+        saver.time = totalTime;
         ScoreCounter();
         CountdownTimer();
     }

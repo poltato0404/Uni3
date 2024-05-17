@@ -10,12 +10,13 @@ public class leveltimer : MonoBehaviour, IDataPersistence
     private float currentTime;
     [SerializeField] private TextMeshProUGUI timerText;
 
-    public void LoadData(GameData data) 
+    public void LoadData(GameData data)
     {
         // Initialize the current time to the total time at the start
-        
 
-        switch (data.currentLevel) {
+
+        switch (data.currentLevel)
+        {
             case 1:
                 if (data.loadedLevel1) { currentTime = data.currentTime; } else { currentTime = 900f; }
                 break;
@@ -25,7 +26,7 @@ public class leveltimer : MonoBehaviour, IDataPersistence
             case 3:
                 if (data.loadedLevel3) { currentTime = data.currentTime; } else { currentTime = 1500f; }
                 break;
-        
+
         }
     }
     public void SaveData(ref GameData data)

@@ -38,15 +38,15 @@ public class MinigamesData : MonoBehaviour, IDataPersistence
     void DisplayMinigameData()
     {
         // Display minigame data in the UI
-        cellTheoryScoreText.text = "Best Score: " + loadedGameData.cellTheoryScore.ToString();
-        cellStructureScoreText.text = "Best Score: " + loadedGameData.cellStructureScore.ToString();
-        cellCycleScoreText.text = "Best Score: " + loadedGameData.cellCycleScore.ToString();
-        plantOrganScoreText.text = "Best Score: " + loadedGameData.plantOrganScore.ToString();
-        animalOrganScoreText.text = "Best Score: " + loadedGameData.animalOrganScore.ToString();
-        feedBackScoreText.text = "Best Score: " + loadedGameData.feedBackScore.ToString();
-        mendelScoreText.text = "Best Score: " + loadedGameData.mendelScore.ToString();
-        dogmaScoreText.text = "Best Score: " + loadedGameData.dogmaScore.ToString();
-        recombinantScoreText.text = "Best Score: " + loadedGameData.recombinantScore.ToString();
+        cellTheoryScoreText.text = "Score: " + loadedGameData.cellTheoryScore.ToString();
+        cellStructureScoreText.text = "Score: " + loadedGameData.cellStructureScore.ToString();
+        cellCycleScoreText.text = "Score: " + loadedGameData.cellCycleScore.ToString();
+        plantOrganScoreText.text = "Score: " + loadedGameData.plantOrganScore.ToString();
+        animalOrganScoreText.text = "Score: " + loadedGameData.animalOrganScore.ToString();
+        feedBackScoreText.text = "Score: " + loadedGameData.feedBackScore.ToString();
+        mendelScoreText.text = "Score: " + loadedGameData.mendelScore.ToString();
+        dogmaScoreText.text = "Score: " + loadedGameData.dogmaScore.ToString();
+        recombinantScoreText.text = "Score: " + loadedGameData.recombinantScore.ToString();
     }
 
     public void LoadData(GameData data)
@@ -56,6 +56,6 @@ public class MinigamesData : MonoBehaviour, IDataPersistence
     }
     public void SaveData(ref GameData data)
     {
-        
+
     }
 }

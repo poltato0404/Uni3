@@ -52,8 +52,8 @@ public class CustomFunctions : MonoBehaviour, IDataPersistence
 
     public void l1m2()
     {
-        SceneManager.LoadScene("03CentralDogma");
-        //SceneManager.LoadScene("07CellStructures");
+        //SceneManager.LoadScene("03CentralDogma");
+        SceneManager.LoadScene("07CellStructures");
     }
     public void l1m3()
     {

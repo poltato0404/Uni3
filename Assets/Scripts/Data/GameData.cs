@@ -55,6 +55,9 @@ public class GameData
     public int mendelScore;
     public int dogmaScore;
     public int recombinantScore;
+
+    public float cellTheoryTime;
+
     public int drinkLevel;
     public int flashLevel;
     public int shoeLevel;
@@ -114,6 +117,7 @@ public class GameData
         this.mendelFinished = false;
         this.dogmaFinished = false;
         this.recombinantFinished = false;
+        this.cellTheoryTime = 0f;
         this.level1Score = 0;
         this.level2Score = 0;
         this.level3Score = 0;

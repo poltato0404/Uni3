@@ -8,7 +8,7 @@ public class objectivesManager : MonoBehaviour, IDataPersistence
     public int remainingCoins;
     public int remainingDocuments;
     public bool isLaptopRetrieved;
-    public int currentLevel;
+    public int currentLeve;
     public mapLoader mapL;
 
     public TextMeshProUGUI levelText;
@@ -24,6 +24,7 @@ public class objectivesManager : MonoBehaviour, IDataPersistence
     public PlayerBehaviour playerBehaviour;
 
 
+
     public void SaveData(ref GameData data)
     {
 
@@ -32,11 +33,10 @@ public class objectivesManager : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data)
     {
-        currentLevel = data.currentLevel;
-        levelText.text = "Level " + 1;
+        currentLeve = data.currentLevel;
+        levelText.text = "Level " + currentLeve;
         Main2.text = "- Find all the documents in the level";
         Main3.text = "- Find all the coins in the level (Optional)";
-
 
     }
 
@@ -64,21 +64,8 @@ public class objectivesManager : MonoBehaviour, IDataPersistence
             minor2.text = "(3/3)";
         }
 
+        minor3.text = "(" + playerBehaviour.coinsCollected + "/3)";
 
-        switch (currentLevel)
-        {
-            case 1:
-                minor3.text = "(" + playerBehaviour.coinsCollected + "/3)";
-                break;
-
-            case 2:
-                minor3.text = "(" + playerBehaviour.coinsCollected + "/5)";
-                break;
-
-            case 3:
-                minor3.text = "(" + playerBehaviour.coinsCollected + "/7)";
-                break;
-        }
 
     }
 }
