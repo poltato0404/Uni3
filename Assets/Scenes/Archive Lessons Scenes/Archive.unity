@@ -454,6 +454,7 @@ GameObject:
   - component: {fileID: 227100596}
   - component: {fileID: 227100595}
   - component: {fileID: 227100594}
+  - component: {fileID: 227100597}
   m_Layer: 5
   m_Name: cyclesbtn (1)
   m_TagString: Untagged
@@ -524,7 +525,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 227100595}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 227100597}
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+        m_MethodName: changeScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &227100595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -563,6 +576,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 227100592}
   m_CullTransparentMesh: 1
+--- !u!114 &227100597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227100592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a0d5fda5d89b3c4cba04ed41d094d67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: Cell Cycle txt
 --- !u!1 &258123678
 GameObject:
   m_ObjectHideFlags: 0
@@ -712,6 +738,7 @@ GameObject:
   - component: {fileID: 259686533}
   - component: {fileID: 259686532}
   - component: {fileID: 259686531}
+  - component: {fileID: 259686534}
   m_Layer: 5
   m_Name: animal text btn
   m_TagString: Untagged
@@ -782,7 +809,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 259686532}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 259686534}
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+        m_MethodName: changeScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &259686532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -821,6 +860,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 259686529}
   m_CullTransparentMesh: 1
+--- !u!114 &259686534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259686529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a0d5fda5d89b3c4cba04ed41d094d67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: Animal Org
 --- !u!1 &276859938
 GameObject:
   m_ObjectHideFlags: 0
@@ -1103,6 +1155,7 @@ GameObject:
   - component: {fileID: 556030477}
   - component: {fileID: 556030476}
   - component: {fileID: 556030475}
+  - component: {fileID: 556030478}
   m_Layer: 5
   m_Name: throybtn
   m_TagString: Untagged
@@ -1173,7 +1226,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 556030476}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 556030478}
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+        m_MethodName: changeScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &556030476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1212,6 +1277,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 556030473}
   m_CullTransparentMesh: 1
+--- !u!114 &556030478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 556030473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a0d5fda5d89b3c4cba04ed41d094d67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: Cell Theory txt
 --- !u!1 &634839154
 GameObject:
   m_ObjectHideFlags: 0
@@ -1224,6 +1302,7 @@ GameObject:
   - component: {fileID: 634839158}
   - component: {fileID: 634839157}
   - component: {fileID: 634839156}
+  - component: {fileID: 634839159}
   m_Layer: 5
   m_Name: structuresbtn
   m_TagString: Untagged
@@ -1294,7 +1373,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 634839157}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 634839159}
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+        m_MethodName: changeScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &634839157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1333,6 +1424,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 634839154}
   m_CullTransparentMesh: 1
+--- !u!114 &634839159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 634839154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a0d5fda5d89b3c4cba04ed41d094d67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: Cell Structure txt
 --- !u!1 &635812234
 GameObject:
   m_ObjectHideFlags: 0
@@ -1615,6 +1719,7 @@ GameObject:
   - component: {fileID: 895058237}
   - component: {fileID: 895058236}
   - component: {fileID: 895058235}
+  - component: {fileID: 895058238}
   m_Layer: 5
   m_Name: central text btn (1)
   m_TagString: Untagged
@@ -1685,7 +1790,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 895058236}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 895058238}
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+        m_MethodName: changeScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &895058236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1724,6 +1841,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 895058233}
   m_CullTransparentMesh: 1
+--- !u!114 &895058238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 895058233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a0d5fda5d89b3c4cba04ed41d094d67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: Central
 --- !u!1 &907550261
 GameObject:
   m_ObjectHideFlags: 0
@@ -2413,6 +2543,7 @@ GameObject:
   - component: {fileID: 1224572849}
   - component: {fileID: 1224572848}
   - component: {fileID: 1224572847}
+  - component: {fileID: 1224572850}
   m_Layer: 5
   m_Name: mendel text btn
   m_TagString: Untagged
@@ -2483,7 +2614,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1224572848}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1224572850}
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+        m_MethodName: changeScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1224572848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2522,6 +2665,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1224572845}
   m_CullTransparentMesh: 1
+--- !u!114 &1224572850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224572845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a0d5fda5d89b3c4cba04ed41d094d67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: Mendel txt
 --- !u!1 &1236795184
 GameObject:
   m_ObjectHideFlags: 0
@@ -3346,6 +3502,7 @@ GameObject:
   - component: {fileID: 1632029994}
   - component: {fileID: 1632029993}
   - component: {fileID: 1632029992}
+  - component: {fileID: 1632029995}
   m_Layer: 5
   m_Name: 'feedback text btn '
   m_TagString: Untagged
@@ -3416,7 +3573,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1632029993}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1632029995}
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+        m_MethodName: changeScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1632029993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3455,6 +3624,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1632029990}
   m_CullTransparentMesh: 1
+--- !u!114 &1632029995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632029990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a0d5fda5d89b3c4cba04ed41d094d67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: Feedback
 --- !u!1 &1725380004
 GameObject:
   m_ObjectHideFlags: 0
@@ -3855,6 +4037,7 @@ GameObject:
   - component: {fileID: 1809891453}
   - component: {fileID: 1809891452}
   - component: {fileID: 1809891451}
+  - component: {fileID: 1809891454}
   m_Layer: 5
   m_Name: plant text btn
   m_TagString: Untagged
@@ -3925,7 +4108,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1809891452}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1809891454}
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+        m_MethodName: changeScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1809891452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3964,6 +4159,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1809891449}
   m_CullTransparentMesh: 1
+--- !u!114 &1809891454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1809891449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a0d5fda5d89b3c4cba04ed41d094d67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: Plant
 --- !u!1 &1894186739
 GameObject:
   m_ObjectHideFlags: 0
@@ -4248,6 +4456,7 @@ GameObject:
   - component: {fileID: 2120051324}
   - component: {fileID: 2120051323}
   - component: {fileID: 2120051322}
+  - component: {fileID: 2120051325}
   m_Layer: 5
   m_Name: recombi text btn (2)
   m_TagString: Untagged
@@ -4318,7 +4527,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2120051323}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2120051325}
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+        m_MethodName: changeScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2120051323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4357,6 +4578,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2120051320}
   m_CullTransparentMesh: 1
+--- !u!114 &2120051325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120051320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a0d5fda5d89b3c4cba04ed41d094d67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: Recombinant
 --- !u!1 &2138866129
 GameObject:
   m_ObjectHideFlags: 0
@@ -5912,7 +6146,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1683628307170639976
 RectTransform:
   m_ObjectHideFlags: 0
