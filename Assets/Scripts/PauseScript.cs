@@ -9,6 +9,7 @@ public class PauseScript2 : MonoBehaviour
     public GameObject mainPanel;
     [SerializeField] private GameObject settingsPanel;
 
+    public GameObject archivepanel;
     void Awake()
     {
         pausePanelBlock.SetActive(false);
@@ -46,6 +47,7 @@ public class PauseScript2 : MonoBehaviour
     public void ArchiveClick()
     {
         mainPanel.SetActive(true);
+        archivepanel.SetActive(true);
         pausePanel.SetActive(false);
     }
 

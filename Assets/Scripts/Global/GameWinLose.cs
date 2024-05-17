@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-public class GameWinLose : MonoBehaviour
+public class GameWinLose : MonoBehaviour, IDataPersistence
 {
     public int minigameID;
 
@@ -22,9 +22,19 @@ public class GameWinLose : MonoBehaviour
     public Sprite[] badgeSprites;
     [SerializeField] private TMP_Text coinText;
     [SerializeField] private TMP_Text keyText;
-
+    bool isWin;
 
     public TextMeshProUGUI scoreText;
+
+    public void SaveData(ref GameData data)
+    {
+        if (isWin)
+        {
+            data.coinsCollected += (score / 10);
+            data.playerCoins += (score / 10);
+        }
+    }
+    public void LoadData(GameData data) { }
 
     private void Awake()
     {
@@ -39,6 +49,7 @@ public class GameWinLose : MonoBehaviour
 
     public void OnGamePreExit()
     {
+        isWin = false;
         foreach (GameObject go in gameObjectsToDisable)
         {
             go.SetActive(false);
@@ -48,9 +59,10 @@ public class GameWinLose : MonoBehaviour
         {
             badgeImage.gameObject.SetActive(true);
             badgeImage.sprite = badgeSprites[minigameID];
-            coinText.SetText((score/10).ToString());
+            coinText.SetText((score / 10).ToString());
             headerText.text = "VICTORY!";
             winButton.SetActive(true);
+            isWin = true;
         }
         else if (score <= 0)
         {

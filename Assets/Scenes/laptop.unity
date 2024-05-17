@@ -4566,6 +4566,7 @@ GameObject:
   - component: {fileID: 1600585889}
   - component: {fileID: 1600585888}
   - component: {fileID: 1600585887}
+  - component: {fileID: 1600585890}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -4636,9 +4637,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2090984522}
-        m_TargetAssemblyTypeName: CustomFunctions, Assembly-CSharp
-        m_MethodName: returnToMaze
+      - m_Target: {fileID: 1600585890}
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+        m_MethodName: changeScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4687,6 +4688,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1600585885}
   m_CullTransparentMesh: 1
+--- !u!114 &1600585890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1600585885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a0d5fda5d89b3c4cba04ed41d094d67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: level1
 --- !u!1 &1622369884
 GameObject:
   m_ObjectHideFlags: 0
