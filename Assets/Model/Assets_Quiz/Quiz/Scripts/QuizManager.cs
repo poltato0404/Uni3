@@ -14,7 +14,7 @@ public class QuizManager : MonoBehaviour
 #pragma warning restore 649
 
     private string currentCategory = "";
-    private int correctAnswerCount = 0;
+    public int correctAnswerCount = 0;
     //questions data
     private List<Question> questions;
     //current question data

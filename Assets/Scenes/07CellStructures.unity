@@ -1201,7 +1201,7 @@ GameObject:
   - component: {fileID: 378788906}
   m_Layer: 0
   m_Name: Drop-Endoplasmic
-  m_TagString: Untagged
+  m_TagString: DropZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1313,8 +1313,8 @@ Transform:
   m_GameObject: {fileID: 378788905}
   serializedVersion: 2
   m_LocalRotation: {x: 0.28059128, y: 0, z: 0, w: 0.95982736}
-  m_LocalPosition: {x: 1.164, y: 0.7057, z: 0.34}
-  m_LocalScale: {x: 1.3637575, y: 1.1536, z: 1}
+  m_LocalPosition: {x: 0.9452, y: 0.5135, z: 0.2171}
+  m_LocalScale: {x: 0.9261277, y: 0.69735116, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1196779179}
@@ -1495,6 +1495,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 396725098}
   m_CullTransparentMesh: 1
+--- !u!1 &402521951 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8406213571185293663, guid: f250509820563d943a80d950ee2f019d,
+    type: 3}
+  m_PrefabInstance: {fileID: 6408237620991134024}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &402521956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402521951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a0d5fda5d89b3c4cba04ed41d094d67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: laptop
 --- !u!1 &468687076
 GameObject:
   m_ObjectHideFlags: 0
@@ -1703,7 +1722,7 @@ GameObject:
   - component: {fileID: 480461667}
   m_Layer: 0
   m_Name: Drop-Golgi
-  m_TagString: Untagged
+  m_TagString: DropZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1815,8 +1834,8 @@ Transform:
   m_GameObject: {fileID: 480461666}
   serializedVersion: 2
   m_LocalRotation: {x: 0.28059128, y: 0, z: 0, w: 0.95982736}
-  m_LocalPosition: {x: 1.2443, y: 0.7057, z: -2.021}
-  m_LocalScale: {x: 2.0967453, y: 1.1536, z: 1}
+  m_LocalPosition: {x: 0.881, y: 0.4864, z: -2.1612}
+  m_LocalScale: {x: 1.3700134, y: 0.6329803, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 72693850}
@@ -4347,7 +4366,7 @@ GameObject:
   - component: {fileID: 879264438}
   m_Layer: 0
   m_Name: Drop-Nucleus
-  m_TagString: Untagged
+  m_TagString: DropZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4433,8 +4452,8 @@ Transform:
   m_GameObject: {fileID: 879264432}
   serializedVersion: 2
   m_LocalRotation: {x: 0.28059128, y: 0, z: 0, w: 0.95982736}
-  m_LocalPosition: {x: -0.2426, y: 0.7057, z: -0.2786}
-  m_LocalScale: {x: 1.3637575, y: 1.1536, z: 1}
+  m_LocalPosition: {x: -0.599, y: 0.6163, z: -0.3357}
+  m_LocalScale: {x: 1.1458291, y: 0.9414529, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1324104076}
@@ -5946,7 +5965,7 @@ GameObject:
   - component: {fileID: 1208697890}
   m_Layer: 0
   m_Name: Drop-CellMembrane
-  m_TagString: Untagged
+  m_TagString: DropZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6058,8 +6077,8 @@ Transform:
   m_GameObject: {fileID: 1208697889}
   serializedVersion: 2
   m_LocalRotation: {x: 0.28059128, y: 0, z: 0, w: 0.95982736}
-  m_LocalPosition: {x: -2.539, y: 0.7057, z: 1.271}
-  m_LocalScale: {x: 2.0967453, y: 1.1536, z: 1}
+  m_LocalPosition: {x: -2.7852, y: 0.5399, z: 1.165}
+  m_LocalScale: {x: 1.6042198, y: 0.76010704, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 626450507}
@@ -7283,7 +7302,7 @@ GameObject:
   - component: {fileID: 1657706796}
   m_Layer: 0
   m_Name: Drop-Mitochondria
-  m_TagString: Untagged
+  m_TagString: DropZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7395,8 +7414,8 @@ Transform:
   m_GameObject: {fileID: 1657706795}
   serializedVersion: 2
   m_LocalRotation: {x: 0.28059128, y: 0, z: 0, w: 0.95982736}
-  m_LocalPosition: {x: -0.354, y: 0.467, z: -3.227}
-  m_LocalScale: {x: 1.2892886, y: 1.1536, z: 1}
+  m_LocalPosition: {x: -0.3978, y: 0.1819, z: -3.4093}
+  m_LocalScale: {x: 0.90374655, y: 0.47658247, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 550708202}
@@ -7671,7 +7690,7 @@ GameObject:
   - component: {fileID: 1785661930}
   m_Layer: 0
   m_Name: Drop-Lysosome
-  m_TagString: Untagged
+  m_TagString: DropZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7783,8 +7802,8 @@ Transform:
   m_GameObject: {fileID: 1785661929}
   serializedVersion: 2
   m_LocalRotation: {x: 0.28059128, y: 0, z: 0, w: 0.95982736}
-  m_LocalPosition: {x: 0.871, y: 0.7057, z: 2.016}
-  m_LocalScale: {x: 1.3637575, y: 1.1536, z: 1}
+  m_LocalPosition: {x: 0.6414, y: 0.5164, z: 1.895}
+  m_LocalScale: {x: 0.9045803, y: 0.70427275, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 468687077}
@@ -9694,7 +9713,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1679670276}
+      objectReference: {fileID: 402521956}
     - target: {fileID: 1268070960112862122, guid: f250509820563d943a80d950ee2f019d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -9703,12 +9722,12 @@ PrefabInstance:
     - target: {fileID: 1268070960112862122, guid: f250509820563d943a80d950ee2f019d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: QuitClick
+      value: changeScene
       objectReference: {fileID: 0}
     - target: {fileID: 1268070960112862122, guid: f250509820563d943a80d950ee2f019d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: MiniGamesPause, Assembly-CSharp
+      value: LevelManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1268070960112862122, guid: f250509820563d943a80d950ee2f019d,
         type: 3}
@@ -10981,6 +11000,10 @@ PrefabInstance:
     - {fileID: 2806844020728346356, guid: f250509820563d943a80d950ee2f019d, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8406213571185293663, guid: f250509820563d943a80d950ee2f019d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 402521956}
     - targetCorrespondingSourceObject: {fileID: 3958165307015162522, guid: f250509820563d943a80d950ee2f019d,
         type: 3}
       insertIndex: -1

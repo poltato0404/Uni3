@@ -17,5 +17,10 @@ public class CategoryBtnScript : MonoBehaviour
         categoryTitleText.text = title;
         scoreText.text = PlayerPrefs.GetInt(title, 0) + "/" + totalQuestion; //we get the score save for this category
     }
+    public int GetScore()
+    {
+
+        return PlayerPrefs.GetInt(categoryTitleText.text, 0);
+    }
 
 }

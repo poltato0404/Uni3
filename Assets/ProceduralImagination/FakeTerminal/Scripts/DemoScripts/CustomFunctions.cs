@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class CustomFunctions : MonoBehaviour, IDataPersistence
 {
     public List<Light> lights;
+    public int CurrentLevel;
     public Light directional;
     public bool level1Complete;
     public bool level2Complete;
@@ -88,11 +89,24 @@ public class CustomFunctions : MonoBehaviour, IDataPersistence
     }
     public void nextLvl()
     {
-        SceneManager.LoadScene("Shop");
+        switch (CurrentLevel)
+        {
+            case 1:
+                SceneManager.LoadScene("Quiz_lvl1");
+                break;
+            case 2:
+                SceneManager.LoadScene("Quiz_lvl2");
+                break;
+            case 3:
+                SceneManager.LoadScene("Quiz_lvl3");
+                break;
+
+        }
+
     }
     public void SaveData(ref GameData data) { }
     public void LoadData(GameData data)
     {
-
+        CurrentLevel = data.currentLevel;
     }
 }
