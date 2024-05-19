@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class promptManager : MonoBehaviour, IDataPersistence
 {
@@ -12,16 +13,24 @@ public class promptManager : MonoBehaviour, IDataPersistence
     [SerializeField] private TextMeshProUGUI instructionText;
     [SerializeField] private TextMeshProUGUI instructionTitle;
     [SerializeField] private GameObject Panel;
+    [SerializeField] private Button exitButton;
     public List<string> evidenceStringList;
 
-    private AudioSource audioSource;
+    private AudioSource promptAudioSource;
     private Dictionary<string, AudioClip> audioClips;
+
+    [SerializeField] private AudioSource backgroundMusicAudioSource;
+    private float originalMusicVolume;
 
     void Start()
     {
         Time.timeScale = 1f;
-        audioSource = gameObject.AddComponent<AudioSource>();
+        promptAudioSource = gameObject.AddComponent<AudioSource>();
+        originalMusicVolume = backgroundMusicAudioSource.volume;
         LoadAudioClips();
+
+        // Ensure the exit button stops audio and closes the panel
+        exitButton.onClick.AddListener(StopAudioAndClosePanel);
     }
 
     private void LoadAudioClips()
@@ -32,18 +41,35 @@ public class promptManager : MonoBehaviour, IDataPersistence
             { "coin", Resources.Load<AudioClip>("Audio/Prompts/coin") },
             { "document", Resources.Load<AudioClip>("Audio/Prompts/document") }
         };
+
+        foreach (var clip in audioClips)
+        {
+            if (clip.Value == null)
+            {
+                Debug.LogError("Audio clip for " + clip.Key + " not found!");
+            }
+        }
     }
 
-    private void PlayAudio(string key)
+    private IEnumerator PlayAudio(string key)
     {
-        if (audioClips.ContainsKey(key))
+        if (audioClips.ContainsKey(key) && audioClips[key] != null)
         {
-            audioSource.clip = audioClips[key];
-            audioSource.Play();
+            // Lower the background music volume
+            backgroundMusicAudioSource.volume = originalMusicVolume * 0.3f;
+
+            promptAudioSource.clip = audioClips[key];
+            promptAudioSource.Play();
+
+            // Wait until the prompt audio finishes playing
+            yield return new WaitForSeconds(promptAudioSource.clip.length);
+
+            // Restore the background music volume
+            backgroundMusicAudioSource.volume = originalMusicVolume;
         }
         else
         {
-            Debug.LogWarning("Audio clip not found for key: " + key);
+            Debug.LogWarning("Audio clip not found or is null for key: " + key);
         }
     }
 
@@ -51,10 +77,11 @@ public class promptManager : MonoBehaviour, IDataPersistence
     {
         if (!isLaptopRetrieved)
         {
+            Debug.Log("Displaying laptop prompt");
             Panel.SetActive(true);
             instructionTitle.text = "Item Found";
             instructionText.text = "You've found Dr. Doe's laptop! This is key for accessing the minigames. \n After finding all 3 passwords, click the laptop in your inventory to use them when you're ready.";
-            PlayAudio("laptop");
+            StartCoroutine(PlayAudio("laptop"));
         }
     }
 
@@ -62,21 +89,27 @@ public class promptManager : MonoBehaviour, IDataPersistence
     {
         if (!isCoinRetrieved)
         {
+            Debug.Log("Displaying coin prompt");
             Panel.SetActive(true);
             instructionTitle.text = "Item Found";
             instructionText.text = "You found a coin! Collect these to upgrade your equipment. Keep exploring to find more.";
             isCoinRetrieved = true;
-            PlayAudio("coin");
+            StartCoroutine(PlayAudio("coin"));
+        }
+        else
+        {
+            Debug.Log("Coin already retrieved");
         }
     }
 
     public void promptDocument(int y)
     {
+        Debug.Log("Displaying document prompt");
         Panel.SetActive(true);
         instructionTitle.text = "Item Found";
         instructionText.text = "You've found a document with a password! \n" + evidenceStringList[y] + "\n Remember and collect all 3 to unlock the 3 minigames on the laptop. Keep searching.";
         isDocumentRetrieved = true;
-        PlayAudio("document");
+        StartCoroutine(PlayAudio("document"));
     }
 
     public void SaveData(ref GameData data)
@@ -90,5 +123,20 @@ public class promptManager : MonoBehaviour, IDataPersistence
         isDocumentRetrieved = data.isDocumentRetrieved;
         isCoinRetrieved = data.isCoinRetrieved;
         isLaptopRetrieved = data.isLaptopRetrieved;
+    }
+
+    public void StopAudioAndClosePanel()
+    {
+        // Stop the audio
+        if (promptAudioSource.isPlaying)
+        {
+            promptAudioSource.Stop();
+        }
+
+        // Restore the background music volume
+        backgroundMusicAudioSource.volume = originalMusicVolume;
+
+        // Hide the panel
+        Panel.SetActive(false);
     }
 }

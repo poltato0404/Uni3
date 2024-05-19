@@ -25,16 +25,26 @@ public class VAFeedback : MonoBehaviour
     public void RightAnswer(Transform position)
     {
         source.PlayOneShot(clips[0]);
-        GameObject obj = Instantiate(rightAnswerPrefab, position.position, Quaternion.Euler(0f, 180f, 0f));
-
+        GameObject obj = Instantiate(rightAnswerPrefab, position.position, Quaternion.identity);
         obj.GetComponent<Canvas>().worldCamera = Camera.main;
+
+        // Adjust position to be slightly in front of the object
+        obj.transform.position += Camera.main.transform.forward * 0.1f;
+
+        // Align rotation with the camera
+        obj.transform.rotation = Camera.main.transform.rotation;
     }
 
     public void WrongAnswer(Transform position)
     {
         source.PlayOneShot(clips[1]);
-        GameObject obj = Instantiate(wrongAnswerPrefab, position.position, Quaternion.Euler(0f, 180f, 0f));
-
+        GameObject obj = Instantiate(wrongAnswerPrefab, position.position, Quaternion.identity);
         obj.GetComponent<Canvas>().worldCamera = Camera.main;
+
+        // Adjust position to be slightly in front of the object
+        obj.transform.position += Camera.main.transform.forward * 0.1f;
+
+        // Align rotation with the camera
+        obj.transform.rotation = Camera.main.transform.rotation;
     }
 }
