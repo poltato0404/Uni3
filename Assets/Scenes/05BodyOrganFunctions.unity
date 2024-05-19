@@ -6848,6 +6848,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1944748918}
   - component: {fileID: 1944748919}
+  - component: {fileID: 1944748920}
   m_Layer: 0
   m_Name: Organs ----------
   m_TagString: Untagged
@@ -6907,15 +6908,119 @@ MonoBehaviour:
   - "Inhale, exhale, a rhythmic dance,\r\nOxygen in, carbon dioxide out, our stance.\r\nTogether,
     we ensure the body's breath,\r\nWhich pair of organs are we, in life and death?\r"
   - "I detoxify, a vital role I play,\r\nFrom the heart, I'm not far away.\r\nTogether,
-    we keep the body's beat,\r"
+    we keep the body's beat\r"
   - "I filter blood, and so do they,\r\nFrom the liver, not far away.\r\nTogether,
     we clean and purify,\r\nWhich pair of organs are we, do you spy?\r"
   - "\rI filter and cleanse, a silent chore,\r\nFrom the heart, I'm not far, for
     sure.\r\nTogether, we maintain the body's flow,\r\nWhich organs are we, do you
     know?\r"
+  riddleAudioClips:
+  - {fileID: 8300000, guid: d0c6d0df62bd6fd4dbfe45a1278da5d1, type: 3}
+  - {fileID: 8300000, guid: 606c97df9ab8c6441824802da2adc845, type: 3}
+  - {fileID: 8300000, guid: 7da6220c0f0378645b355809a3d3a730, type: 3}
+  - {fileID: 8300000, guid: dd1609bcc3d2d614187df12ce5c166cc, type: 3}
+  - {fileID: 8300000, guid: a57bd55b0d216944f83acce687bc7fe4, type: 3}
+  - {fileID: 8300000, guid: a5c273742169dc840aa775e04752a414, type: 3}
+  - {fileID: 8300000, guid: 9bd2aa7e94cdb444d9488bfc85b85805, type: 3}
   delayBetweenCharacters: 0.01
   totalTime: 60
   timerText: {fileID: 733405456}
+--- !u!82 &1944748920
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1944748917}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1960355066
 GameObject:
   m_ObjectHideFlags: 0

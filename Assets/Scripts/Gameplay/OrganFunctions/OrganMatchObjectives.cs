@@ -9,7 +9,6 @@ public enum Game
     B
 }
 
-
 public class OrganMatchObjectives : MonoBehaviour
 {
     // 5th minigame
@@ -35,6 +34,9 @@ public class OrganMatchObjectives : MonoBehaviour
     [TextArea(3, 15)]
     public string[] riddleText;
 
+    public AudioClip[] riddleAudioClips; // Array to hold audio clips
+    private AudioSource audioSource; // Reference to the AudioSource component
+
     public float delayBetweenCharacters;
 
     [Header("Timer Properties")]
@@ -46,6 +48,8 @@ public class OrganMatchObjectives : MonoBehaviour
     {
         if (instance == null)
             instance = this;
+
+        audioSource = GetComponent<AudioSource>(); // Initialize the AudioSource component
     }
 
     private void Start()
@@ -91,7 +95,6 @@ public class OrganMatchObjectives : MonoBehaviour
 
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
 
-
         if (currentTime <= 0f)
         {
             //Lose
@@ -121,8 +124,16 @@ public class OrganMatchObjectives : MonoBehaviour
             popupUIText.text = "";
             popupriddleUI.SetActive(true);
             popupUIText.text = riddleText[index];
+
+            // Play the corresponding audio clip
+            if (index < riddleAudioClips.Length && riddleAudioClips[index] != null)
+            {
+                audioSource.clip = riddleAudioClips[index];
+                audioSource.Play();
+            }
         }
     }
+
     public void ShowDescText(string text)
     {
         StartCoroutine(ShowText(text));
