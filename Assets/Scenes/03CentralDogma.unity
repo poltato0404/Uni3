@@ -3132,6 +3132,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 435484700}
   m_PrefabAsset: {fileID: 0}
+--- !u!223 &659785568 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 2694896036719236269, guid: 61784ed77a5522041889b291f26558e0,
+    type: 3}
+  m_PrefabInstance: {fileID: 435484700}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &708741982
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5980,6 +5986,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelId: 2
   gameWinLose: {fileID: 1404753202}
+  saver: {fileID: 1440096213}
   polypeptideCubes: {fileID: 602590629}
   polypetideStrands:
   - {fileID: 917111284}
@@ -6731,6 +6738,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2def9531fbebb94ab46e851d14491e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score: 0
+  finished: 0
 --- !u!4 &1440096214
 Transform:
   m_ObjectHideFlags: 0
@@ -8410,6 +8419,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: VAFeedback
       objectReference: {fileID: 0}
+    - target: {fileID: 7342650440844650478, guid: 23bd8a3f985eb734b9828824ba5d60b2,
+        type: 3}
+      propertyPath: uiCanvas
+      value: 
+      objectReference: {fileID: 659785568}
     - target: {fileID: 8703554152277214199, guid: 23bd8a3f985eb734b9828824ba5d60b2,
         type: 3}
       propertyPath: OutputAudioMixerGroup

@@ -6,11 +6,15 @@ public class AnimateDestroy : MonoBehaviour
 {
     public void Start()
     {
-        
+
+        StartCoroutine(WaitAndPrint());
     }
 
-    public void DestroyMe()
+    // Coroutine to wait for 1 second
+    IEnumerator WaitAndPrint()
     {
+        yield return new WaitForSeconds(1f);
+
         Destroy(gameObject);
     }
 }

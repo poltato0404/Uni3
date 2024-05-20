@@ -100,6 +100,12 @@ public class ShopManager : MonoBehaviour, IDataPersistence
     }
     void Update()
     {
+        coinText.text = coins.ToString();
+        if (coins < (flashLevel * 10) && flashLevel != 3) { flashPrice.text = "Not enough Coins"; }
+        if (coins < (shoeLevel * 10) && shoeLevel != 3) { shoePrice.text = "Not enough Coins"; }
+        if (coins < (drinkLevel * 10) && drinkLevel != 3) { drinkPrice.text = "Not enough Coins"; }
+
+
         switch (flashLevel)
         {
             case 1:

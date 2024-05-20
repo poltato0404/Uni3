@@ -1087,6 +1087,12 @@ Transform:
   - {fileID: 1126883802}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!223 &1069885528 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 2694896036719236269, guid: 61784ed77a5522041889b291f26558e0,
+    type: 3}
+  m_PrefabInstance: {fileID: 2694896037481737810}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1100220175 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3374951501614973926, guid: 3f1445c1bd67b7e4290b48ad5b57b7fa,
@@ -2765,6 +2771,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: VAFeedback
       objectReference: {fileID: 0}
+    - target: {fileID: 7342650440844650478, guid: 23bd8a3f985eb734b9828824ba5d60b2,
+        type: 3}
+      propertyPath: uiCanvas
+      value: 
+      objectReference: {fileID: 1069885528}
     - target: {fileID: 8703554152277214199, guid: 23bd8a3f985eb734b9828824ba5d60b2,
         type: 3}
       propertyPath: OutputAudioMixerGroup

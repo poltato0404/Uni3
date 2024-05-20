@@ -12,6 +12,8 @@ public class VAFeedback : MonoBehaviour
     private AudioSource source;
     public AudioClip[] clips;
 
+    public Canvas uiCanvas;
+
     private void Awake()
     {
         Instance = this;
@@ -20,31 +22,33 @@ public class VAFeedback : MonoBehaviour
     private void Start()
     {
         source = GetComponent<AudioSource>();
+
     }
 
     public void RightAnswer(Transform position)
     {
         source.PlayOneShot(clips[0]);
-        GameObject obj = Instantiate(rightAnswerPrefab, position.position, Quaternion.identity);
-        obj.GetComponent<Canvas>().worldCamera = Camera.main;
-
-        // Adjust position to be slightly in front of the object
-        obj.transform.position += Camera.main.transform.forward * 0.1f;
-
-        // Align rotation with the camera
-        obj.transform.rotation = Camera.main.transform.rotation;
+        InstantiateFeedback(rightAnswerPrefab, position);
     }
 
     public void WrongAnswer(Transform position)
     {
         source.PlayOneShot(clips[1]);
-        GameObject obj = Instantiate(wrongAnswerPrefab, position.position, Quaternion.identity);
-        obj.GetComponent<Canvas>().worldCamera = Camera.main;
+        InstantiateFeedback(wrongAnswerPrefab, position);
+    }
 
-        // Adjust position to be slightly in front of the object
-        obj.transform.position += Camera.main.transform.forward * 0.1f;
+    private void InstantiateFeedback(GameObject prefab, Transform position)
+    {
+        GameObject obj = Instantiate(prefab, uiCanvas.transform); // Instantiate as a child of the UI Canvas
 
-        // Align rotation with the camera
-        obj.transform.rotation = Camera.main.transform.rotation;
+        RectTransform rectTransform = obj.GetComponent<RectTransform>();
+        if (rectTransform != null)
+        {
+            Vector2 screenPoint = RectTransformUtility.WorldToScreenPoint(Camera.main, position.position);
+            rectTransform.anchoredPosition = screenPoint - uiCanvas.GetComponent<RectTransform>().sizeDelta / 2f;
+
+            // Align rotation with the camera if needed (usually not required for 2D UI elements)
+            // obj.transform.rotation = Camera.main.transform.rotation;
+        }
     }
 }
