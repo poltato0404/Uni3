@@ -10,6 +10,8 @@ public class SaveRecombi : MonoBehaviour, IDataPersistence
     {
         data.recombinantFinished = finished;
         data.recombinantScore = score;
+        data.playerCoins += score / 10;
+        data.coinsCollected += score / 10;
         Debug.Log("save recombinant dna");
     }
 

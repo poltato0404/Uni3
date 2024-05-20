@@ -9,6 +9,8 @@ public class SavePS : MonoBehaviour, IDataPersistence
     public void SaveData(ref GameData data)
     {
         data.plantOrganFinished = finished;
+        data.playerCoins += score / 10;
+        data.coinsCollected += score / 10;
         data.plantOrganScore = score;
         Debug.Log("save plant organ systems");
     }

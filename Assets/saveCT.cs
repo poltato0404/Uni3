@@ -12,10 +12,12 @@ public class saveCT : MonoBehaviour, IDataPersistence
 
     public void SaveData(ref GameData data)
     {
-        cardObj.SetActive(true);
+        //cardObj.SetActive(true);
         data.cellTheoryFinished = finished;
         data.cellTheoryScore = score;
         data.cellTheoryTime = time;
+        data.playerCoins += score / 10;
+        data.coinsCollected += score / 10;
         Debug.Log("save cell theory");
 
     }

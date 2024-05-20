@@ -1382,6 +1382,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 771659683}
+    - targetCorrespondingSourceObject: {fileID: 2694896036719236270, guid: 61784ed77a5522041889b291f26558e0,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 771659688}
   m_SourcePrefab: {fileID: 100100000, guid: 61784ed77a5522041889b291f26558e0, type: 3}
 --- !u!114 &219180905 stripped
 MonoBehaviour:
@@ -2942,14 +2946,114 @@ MonoBehaviour:
   - {fileID: 1554797157}
   - {fileID: 966154676}
   questString:
-  - You're body is heating up way too quickly! Find a way to stabilize your temperature
+  - Your body is heating up way too quickly! Find a way to stabilize your temperature
     so you don't overheat.
-  - You're in the heat quite a while, you're body is slowly getting thirsty.
+  - You're in the heat for quite a while, you're body is slowly getting thirsty.
   - Don't go in that hot spring, the water may seem tempting but it got hot because
     of the sun!
   delayBetweenCharacters: 0.01
   totalTime: 120
   timerText: {fileID: 219180906}
+  questAudioClips:
+  - {fileID: 8300000, guid: 4b823ca0c992a4a4b8011e507d696809, type: 3}
+  - {fileID: 8300000, guid: 1de985b2ba9021944bc365647452cbdc, type: 3}
+  - {fileID: 8300000, guid: fff6113b668ec494caed4907509f5d4d, type: 3}
+--- !u!82 &771659688
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771659678}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &854092749
 GameObject:
   m_ObjectHideFlags: 0
@@ -3939,12 +4043,12 @@ PrefabInstance:
     - target: {fileID: 1917737841375234280, guid: 4d60f0112341cb7408b640c59b26b0fd,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -5.7164307
+      value: -5.7163086
       objectReference: {fileID: 0}
     - target: {fileID: 1917737841375234280, guid: 4d60f0112341cb7408b640c59b26b0fd,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 60.716705
+      value: 60.716675
       objectReference: {fileID: 0}
     - target: {fileID: 2863071494756436753, guid: 4d60f0112341cb7408b640c59b26b0fd,
         type: 3}
@@ -6179,6 +6283,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c0180f41c02cc6488ec34af3c909b8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lookAt: {fileID: 2117645800}
+  offset: {x: 0, y: 5, z: 0}
+  Player: {fileID: 2117645800}
+  distance: 5
+  sensitivity: 4
 --- !u!1001 &1980246022
 PrefabInstance:
   m_ObjectHideFlags: 0

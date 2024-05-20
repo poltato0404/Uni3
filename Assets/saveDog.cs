@@ -2,17 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class saveDog : MonoBehaviour
+public class SaveDog : MonoBehaviour, IDataPersistence
 {
-    // Start is called before the first frame update
-    void Start()
+    public int score;
+    public bool finished;
+    public void SaveData(ref GameData data)
     {
-        
+        data.animalOrganFinished = finished;
+        data.animalOrganScore = score;
+        data.playerCoins += score / 10;
+        data.coinsCollected += score / 10;
+        Debug.Log("save animal organ systems");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void LoadData(GameData data)
     {
-        
+
     }
 }
+

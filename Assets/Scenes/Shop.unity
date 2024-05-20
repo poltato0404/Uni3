@@ -992,11 +992,17 @@ MonoBehaviour:
   flashLevel: 0
   shoeLevel: 0
   drinkLevel: 0
+  flashButton: {fileID: 1753116311}
+  drinkButton: {fileID: 1485473666}
+  shoeButton: {fileID: 1745864374}
   coins: 0
   coinText: {fileID: 1920509869}
   flashPrice: {fileID: 2127703455}
   shoePrice: {fileID: 12896085}
   drinkPrice: {fileID: 917196143}
+  flashTitle: {fileID: 1156275419}
+  shoeTitle: {fileID: 1638620978}
+  drinkTitle: {fileID: 684461557}
   va: {fileID: 1771199590}
 --- !u!4 &390265344
 Transform:
@@ -1320,8 +1326,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 41
-  m_fontSizeBase: 41
+  m_fontSize: 34
+  m_fontSizeBase: 34
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1741,8 +1747,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 41.1
-  m_fontSizeBase: 41.1
+  m_fontSize: 34
+  m_fontSizeBase: 34
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2079,7 +2085,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 390265343}
         m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
-        m_MethodName: buydrinks
+        m_MethodName: buyDrinks
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2347,13 +2353,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42
-  m_fontSizeBase: 42
+  m_fontSize: 34
+  m_fontSizeBase: 34
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 16
+  m_fontStyle: 17
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -2760,7 +2766,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 390265343}
         m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
-        m_MethodName: buyshoes
+        m_MethodName: buyShoes
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

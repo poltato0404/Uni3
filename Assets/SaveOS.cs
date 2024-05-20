@@ -10,6 +10,8 @@ public class SaveOS : MonoBehaviour, IDataPersistence
     {
         data.animalOrganFinished = finished;
         data.animalOrganScore = score;
+        data.playerCoins += score / 10;
+        data.coinsCollected += score / 10;
         Debug.Log("save animal organ systems");
     }
 

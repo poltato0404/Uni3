@@ -22,7 +22,7 @@ public class QuestManager : MonoBehaviour
 
     public GameObject[] QuestHolder;
 
-    [TextArea(1,3)]
+    [TextArea(1, 3)]
     public string[] questString =
     {
         "You're body is heating up too quickly. Find a shade quickly so you don't overheat !",
@@ -40,12 +40,16 @@ public class QuestManager : MonoBehaviour
 
     public static QuestManager Instance;
 
+    // Audio variables
+    [Header("Audio Clips")]
+    public AudioClip[] questAudioClips;
+    private AudioSource audioSource;
+
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
             Instance = this;
     }
-
 
     private void Start()
     {
@@ -58,6 +62,14 @@ public class QuestManager : MonoBehaviour
 
         currentQuestText = questString[completedQuest];
         StartCoroutine(ShowText(questString[completedQuest]));
+
+        // Initialize AudioSource
+        audioSource = GetComponent<AudioSource>();
+
+        if (audioSource == null)
+        {
+            Debug.LogError("AudioSource component is missing on this GameObject.");
+        }
     }
 
     private void OnEnable()
@@ -90,14 +102,12 @@ public class QuestManager : MonoBehaviour
 
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
 
-
         if (currentTime <= 0f)
         {
             //Lose
             gameWinLose.GetComponent<GameWinLose>().timeLeft = currentTime;
             gameWinLose.GetComponent<GameWinLose>().score = score;
             gameWinLose.SetActive(true);
-            //Debug.Log("Timer Ran out!");
         }
     }
 
@@ -111,53 +121,17 @@ public class QuestManager : MonoBehaviour
         completedQuest = 0;
     }
 
-
     public void ProceedQuest(int currentQuestNum)
     {
         if (completedQuest < targetQuest)
         {
             if (currentQuestNum == 0) meter.RotateToCenter();
-            
+
             currentQuestText = questString[currentQuestNum];
             StartCoroutine(ShowText(currentQuestText));
+            PlayQuestAudio(currentQuestNum);
             completedQuest++;
         }
-
-        /*
-        if(completedQuest == currentQuestNum)
-        {
-            if (completedQuest == 2)
-            {
-                if (score > 0)
-                {
-                    GameManager.Instance.isLevelComplete[levelId] = true;
-                }
-
-                gameWinLose.GetComponent<GameWinLose>().timeLeft = currentTime;
-                gameWinLose.GetComponent<GameWinLose>().score = score;
-                gameWinLose.SetActive(true);
-                return;
-            }
-
-            if (completedQuest == 0) meter.RotateToCenter();
-
-            questText.text = "";
-
-            if (completedQuest < 2)
-            {
-                QuestHolder[completedQuest].SetActive(false);
-                completedQuest += 1;
-                QuestHolder[completedQuest].SetActive(true);
-            }
-                
-            else
-                completedQuest = 0;
-
-            currentQuestText = questString[completedQuest];
-
-            StartCoroutine(ShowText(currentQuestText));
-        }
-        */
     }
 
     public void UpdateScore(int scoreToAdd)
@@ -167,7 +141,6 @@ public class QuestManager : MonoBehaviour
             score = 0;
     }
 
-
     IEnumerator ShowText(string text)
     {
         questText.text = "";
@@ -176,6 +149,26 @@ public class QuestManager : MonoBehaviour
         {
             questText.text += text[i];
             yield return new WaitForSeconds(delayBetweenCharacters);
+        }
+    }
+
+    private void PlayQuestAudio(int questIndex)
+    {
+        if (audioSource == null)
+        {
+            Debug.LogError("AudioSource component is not found.");
+            return;
+        }
+
+        if (questIndex < questAudioClips.Length && questAudioClips[questIndex] != null)
+        {
+            Debug.Log("Playing audio clip for quest: " + questIndex);
+            audioSource.clip = questAudioClips[questIndex];
+            audioSource.Play();
+        }
+        else
+        {
+            Debug.LogError("Audio clip for quest " + questIndex + " is missing or not assigned.");
         }
     }
 }

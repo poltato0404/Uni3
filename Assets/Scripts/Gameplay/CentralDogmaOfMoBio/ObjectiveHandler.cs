@@ -11,6 +11,7 @@ public class ObjectiveHandler : MonoBehaviour
     public int levelId = 2;
 
     public GameObject gameWinLose;
+    public SaveDog saver;
 
     [Header("Gameplay Objectives")]
     public GameObject polypeptideCubes;
@@ -30,6 +31,7 @@ public class ObjectiveHandler : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timerText;
 
     [SerializeField] private int matchCount;
+    bool finishna;
 
     private void Awake()
     {
@@ -40,6 +42,7 @@ public class ObjectiveHandler : MonoBehaviour
     private void Start()
     {
         currentTime = totalTime;
+        finishna = false;
     }
 
     private void OnEnable()
@@ -66,6 +69,7 @@ public class ObjectiveHandler : MonoBehaviour
             if (score > 0)
             {
                 //GameManager.Instance.isLevelComplete[levelId] = true;
+                finishna = true;
 
             }
 
@@ -98,6 +102,8 @@ public class ObjectiveHandler : MonoBehaviour
     {
         CountdownTimer();
         ScoreCounter();
+        saver.score = score;
+        saver.finished = finishna;
     }
 
     private void ScoreCounter()
